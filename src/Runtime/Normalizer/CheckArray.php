@@ -1,6 +1,6 @@
 <?php
 
-namespace Webhub\Weclapp\Runtime\Normalizer;
+namespace Webhubworks\WeclappApiCore\Runtime\Normalizer;
 
 trait CheckArray
 {

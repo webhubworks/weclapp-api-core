@@ -1,34 +1,30 @@
 <?php
 
-namespace Webhub\Weclapp\Normalizer;
+namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhub\Weclapp\Runtime\Normalizer\CheckArray;
-use Webhub\Weclapp\Runtime\Normalizer\ValidatorTrait;
-
-class ArticleCategoryCountGetResponse200Normalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class ArticleCategoryCountGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Webhub\Weclapp\Model\ArticleCategoryCountGetResponse200::class;
+        return $type === \Webhubworks\WeclappApiCore\Model\ArticleCategoryCountGetResponse200::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Webhub\Weclapp\Model\ArticleCategoryCountGetResponse200::class;
+        return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ArticleCategoryCountGetResponse200::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,8 +33,8 @@ class ArticleCategoryCountGetResponse200Normalizer implements DenormalizerAwareI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhub\Weclapp\Model\ArticleCategoryCountGetResponse200;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\ArticleCategoryCountGetResponse200();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('result', $data)) {
@@ -50,14 +46,12 @@ class ArticleCategoryCountGetResponse200Normalizer implements DenormalizerAwareI
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('result') && $data->getResult() !== null) {
+        if ($data->isInitialized('result') && null !== $data->getResult()) {
             $dataArray['result'] = $data->getResult();
         }
         foreach ($data as $key => $value) {
@@ -65,12 +59,10 @@ class ArticleCategoryCountGetResponse200Normalizer implements DenormalizerAwareI
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Webhub\Weclapp\Model\ArticleCategoryCountGetResponse200::class => false];
+        return [\Webhubworks\WeclappApiCore\Model\ArticleCategoryCountGetResponse200::class => false];
     }
 }

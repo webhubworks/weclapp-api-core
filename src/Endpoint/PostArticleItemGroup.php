@@ -1,49 +1,42 @@
 <?php
 
-namespace Webhub\Weclapp\Endpoint;
+namespace Webhubworks\WeclappApiCore\Endpoint;
 
-class PostArticleItemGroup extends \Webhub\Weclapp\Runtime\Client\BaseEndpoint implements \Webhub\Weclapp\Runtime\Client\Endpoint
+class PostArticleItemGroup extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoint implements \Webhubworks\WeclappApiCore\Runtime\Client\Endpoint
 {
     /**
      * create a articleItemGroup
      *
-     * @param  array  $queryParameters  {
-     *
-     * @var bool $dryRun
-     *           }
+     * @param \Webhubworks\WeclappApiCore\Model\ArticleItemGroup $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
      */
-    public function __construct(\Webhub\Weclapp\Model\ArticleItemGroup $requestBody, array $queryParameters = [])
+    public function __construct(\Webhubworks\WeclappApiCore\Model\ArticleItemGroup $requestBody, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
-
-    use \Webhub\Weclapp\Runtime\Client\EndpointTrait;
-
+    use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'POST';
     }
-
     public function getUri(): string
     {
         return '/articleItemGroup';
     }
-
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof \Webhub\Weclapp\Model\ArticleItemGroup) {
+        if ($this->body instanceof \Webhubworks\WeclappApiCore\Model\ArticleItemGroup) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-
         return [[], null];
     }
-
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
-
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -51,28 +44,25 @@ class PostArticleItemGroup extends \Webhub\Weclapp\Runtime\Client\BaseEndpoint i
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('dryRun', ['bool']);
-
         return $optionsResolver;
     }
-
     /**
      * {@inheritdoc}
      *
      *
-     * @return null|\Webhub\Weclapp\Model\ArticleItemGroup
+     * @return null|\Webhubworks\WeclappApiCore\Model\ArticleItemGroup
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && ($status === 201 && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Webhub\Weclapp\Model\ArticleItemGroup', 'json');
+        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ArticleItemGroup', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);
         }
     }
-
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

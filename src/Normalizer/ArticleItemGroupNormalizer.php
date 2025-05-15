@@ -1,34 +1,30 @@
 <?php
 
-namespace Webhub\Weclapp\Normalizer;
+namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhub\Weclapp\Runtime\Normalizer\CheckArray;
-use Webhub\Weclapp\Runtime\Normalizer\ValidatorTrait;
-
-class ArticleItemGroupNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class ArticleItemGroupNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Webhub\Weclapp\Model\ArticleItemGroup::class;
+        return $type === \Webhubworks\WeclappApiCore\Model\ArticleItemGroup::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Webhub\Weclapp\Model\ArticleItemGroup::class;
+        return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ArticleItemGroup::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,8 +33,8 @@ class ArticleItemGroupNormalizer implements DenormalizerAwareInterface, Denormal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhub\Weclapp\Model\ArticleItemGroup;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\ArticleItemGroup();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -60,7 +56,7 @@ class ArticleItemGroupNormalizer implements DenormalizerAwareInterface, Denormal
         if (\array_key_exists('items', $data)) {
             $values = [];
             foreach ($data['items'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Webhub\Weclapp\Model\ArticleItemGroupItem::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Webhubworks\WeclappApiCore\Model\ArticleItemGroupItem::class, 'json', $context);
             }
             $object->setItems($values);
             unset($data['items']);
@@ -74,24 +70,22 @@ class ArticleItemGroupNormalizer implements DenormalizerAwareInterface, Denormal
                 $object[$key] = $value_1;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('items') && $data->getItems() !== null) {
+        if ($data->isInitialized('items') && null !== $data->getItems()) {
             $values = [];
             foreach ($data->getItems() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['items'] = $values;
         }
-        if ($data->isInitialized('name') && $data->getName() !== null) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
         foreach ($data as $key => $value_1) {
@@ -99,12 +93,10 @@ class ArticleItemGroupNormalizer implements DenormalizerAwareInterface, Denormal
                 $dataArray[$key] = $value_1;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Webhub\Weclapp\Model\ArticleItemGroup::class => false];
+        return [\Webhubworks\WeclappApiCore\Model\ArticleItemGroup::class => false];
     }
 }

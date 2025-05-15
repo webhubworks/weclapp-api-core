@@ -4,7 +4,7 @@ echo 'Generating the new client...'.PHP_EOL;
 
 return [
     'openapi-file' => __DIR__.'/../schema/weclapp-openapi.json',
-    'namespace' => 'Webhub\Weclapp',
+    'namespace' => 'Webhubworks\WeclappApiCore',
     'directory' => __DIR__.'/../src',
     'whitelisted-paths' => [
         '\/article',

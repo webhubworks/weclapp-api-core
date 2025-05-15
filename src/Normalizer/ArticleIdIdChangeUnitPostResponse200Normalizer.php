@@ -1,34 +1,30 @@
 <?php
 
-namespace Webhub\Weclapp\Normalizer;
+namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhub\Weclapp\Runtime\Normalizer\CheckArray;
-use Webhub\Weclapp\Runtime\Normalizer\ValidatorTrait;
-
-class ArticleIdIdChangeUnitPostResponse200Normalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class ArticleIdIdChangeUnitPostResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Webhub\Weclapp\Model\ArticleIdIdChangeUnitPostResponse200::class;
+        return $type === \Webhubworks\WeclappApiCore\Model\ArticleIdIdChangeUnitPostResponse200::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Webhub\Weclapp\Model\ArticleIdIdChangeUnitPostResponse200::class;
+        return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ArticleIdIdChangeUnitPostResponse200::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,12 +33,12 @@ class ArticleIdIdChangeUnitPostResponse200Normalizer implements DenormalizerAwar
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhub\Weclapp\Model\ArticleIdIdChangeUnitPostResponse200;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\ArticleIdIdChangeUnitPostResponse200();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('result', $data)) {
-            $object->setResult($this->denormalizer->denormalize($data['result'], \Webhub\Weclapp\Model\SuccessResponse::class, 'json', $context));
+            $object->setResult($this->denormalizer->denormalize($data['result'], \Webhubworks\WeclappApiCore\Model\SuccessResponse::class, 'json', $context));
             unset($data['result']);
         }
         foreach ($data as $key => $value) {
@@ -50,14 +46,12 @@ class ArticleIdIdChangeUnitPostResponse200Normalizer implements DenormalizerAwar
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('result') && $data->getResult() !== null) {
+        if ($data->isInitialized('result') && null !== $data->getResult()) {
             $dataArray['result'] = $this->normalizer->normalize($data->getResult(), 'json', $context);
         }
         foreach ($data as $key => $value) {
@@ -65,12 +59,10 @@ class ArticleIdIdChangeUnitPostResponse200Normalizer implements DenormalizerAwar
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Webhub\Weclapp\Model\ArticleIdIdChangeUnitPostResponse200::class => false];
+        return [\Webhubworks\WeclappApiCore\Model\ArticleIdIdChangeUnitPostResponse200::class => false];
     }
 }

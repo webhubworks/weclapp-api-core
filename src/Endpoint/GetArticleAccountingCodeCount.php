@@ -1,44 +1,37 @@
 <?php
 
-namespace Webhub\Weclapp\Endpoint;
+namespace Webhubworks\WeclappApiCore\Endpoint;
 
-class GetArticleAccountingCodeCount extends \Webhub\Weclapp\Runtime\Client\BaseEndpoint implements \Webhub\Weclapp\Runtime\Client\Endpoint
+class GetArticleAccountingCodeCount extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoint implements \Webhubworks\WeclappApiCore\Runtime\Client\Endpoint
 {
     /**
      * count articleAccountingCode
      *
-     * @param  array  $queryParameters  {
-     *
-     * @var string $filter
-     *             }
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
-
-    use \Webhub\Weclapp\Runtime\Client\EndpointTrait;
-
+    use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
     }
-
     public function getUri(): string
     {
         return '/articleAccountingCode/count';
     }
-
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
-
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
-
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -46,28 +39,25 @@ class GetArticleAccountingCodeCount extends \Webhub\Weclapp\Runtime\Client\BaseE
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('filter', ['string']);
-
         return $optionsResolver;
     }
-
     /**
      * {@inheritdoc}
      *
      *
-     * @return null|\Webhub\Weclapp\Model\ArticleAccountingCodeCountGetResponse200
+     * @return null|\Webhubworks\WeclappApiCore\Model\ArticleAccountingCodeCountGetResponse200
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && ($status === 200 && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Webhub\Weclapp\Model\ArticleAccountingCodeCountGetResponse200', 'json');
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ArticleAccountingCodeCountGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);
         }
     }
-
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

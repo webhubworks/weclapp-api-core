@@ -1,50 +1,43 @@
 <?php
 
-namespace Webhub\Weclapp\Endpoint;
+namespace Webhubworks\WeclappApiCore\Endpoint;
 
-class GetArticleStatus extends \Webhub\Weclapp\Runtime\Client\BaseEndpoint implements \Webhub\Weclapp\Runtime\Client\Endpoint
+class GetArticleStatus extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoint implements \Webhubworks\WeclappApiCore\Runtime\Client\Endpoint
 {
     /**
      * query articleStatus
      *
-     * @param  array  $queryParameters  {
-     *
-     * @var int $page
-     * @var int $pageSize
-     * @var bool $serializeNulls
-     * @var string $sort
-     * @var string $filter
-     * @var string $properties
-     * @var string $includeReferencedEntities
-     *             }
+     * @param array $queryParameters {
+     *     @var int $page 
+     *     @var int $pageSize 
+     *     @var bool $serializeNulls 
+     *     @var string $sort 
+     *     @var string $filter 
+     *     @var string $properties 
+     *     @var string $includeReferencedEntities 
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
-
-    use \Webhub\Weclapp\Runtime\Client\EndpointTrait;
-
+    use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
     public function getMethod(): string
     {
         return 'GET';
     }
-
     public function getUri(): string
     {
         return '/articleStatus';
     }
-
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
-
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
-
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -58,28 +51,25 @@ class GetArticleStatus extends \Webhub\Weclapp\Runtime\Client\BaseEndpoint imple
         $optionsResolver->addAllowedTypes('filter', ['string']);
         $optionsResolver->addAllowedTypes('properties', ['string']);
         $optionsResolver->addAllowedTypes('includeReferencedEntities', ['string']);
-
         return $optionsResolver;
     }
-
     /**
      * {@inheritdoc}
      *
      *
-     * @return null|\Webhub\Weclapp\Model\ArticleStatusGetResponse200
+     * @return null|\Webhubworks\WeclappApiCore\Model\ArticleStatusGetResponse200
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && ($status === 200 && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Webhub\Weclapp\Model\ArticleStatusGetResponse200', 'json');
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ArticleStatusGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);
         }
     }
-
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

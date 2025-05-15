@@ -1,34 +1,30 @@
 <?php
 
-namespace Webhub\Weclapp\Normalizer;
+namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhub\Weclapp\Runtime\Normalizer\CheckArray;
-use Webhub\Weclapp\Runtime\Normalizer\ValidatorTrait;
-
-class ArticleSupplySourceGetResponse200Normalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class ArticleSupplySourceGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Webhub\Weclapp\Model\ArticleSupplySourceGetResponse200::class;
+        return $type === \Webhubworks\WeclappApiCore\Model\ArticleSupplySourceGetResponse200::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Webhub\Weclapp\Model\ArticleSupplySourceGetResponse200::class;
+        return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ArticleSupplySourceGetResponse200::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,18 +33,18 @@ class ArticleSupplySourceGetResponse200Normalizer implements DenormalizerAwareIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhub\Weclapp\Model\ArticleSupplySourceGetResponse200;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\ArticleSupplySourceGetResponse200();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('additionalProperties', $data)) {
-            $object->setAdditionalProperties($this->denormalizer->denormalize($data['additionalProperties'], \Webhub\Weclapp\Model\ArticleSupplySourceGetResponse200AdditionalProperties::class, 'json', $context));
+            $object->setAdditionalProperties($this->denormalizer->denormalize($data['additionalProperties'], \Webhubworks\WeclappApiCore\Model\ArticleSupplySourceGetResponse200AdditionalProperties::class, 'json', $context));
             unset($data['additionalProperties']);
         }
         if (\array_key_exists('result', $data)) {
             $values = [];
             foreach ($data['result'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Webhub\Weclapp\Model\ArticleSupplySource::class, 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Webhubworks\WeclappApiCore\Model\ArticleSupplySource::class, 'json', $context);
             }
             $object->setResult($values);
             unset($data['result']);
@@ -58,17 +54,15 @@ class ArticleSupplySourceGetResponse200Normalizer implements DenormalizerAwareIn
                 $object[$key] = $value_1;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('additionalProperties') && $data->getAdditionalProperties() !== null) {
+        if ($data->isInitialized('additionalProperties') && null !== $data->getAdditionalProperties()) {
             $dataArray['additionalProperties'] = $this->normalizer->normalize($data->getAdditionalProperties(), 'json', $context);
         }
-        if ($data->isInitialized('result') && $data->getResult() !== null) {
+        if ($data->isInitialized('result') && null !== $data->getResult()) {
             $values = [];
             foreach ($data->getResult() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -80,12 +74,10 @@ class ArticleSupplySourceGetResponse200Normalizer implements DenormalizerAwareIn
                 $dataArray[$key] = $value_1;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Webhub\Weclapp\Model\ArticleSupplySourceGetResponse200::class => false];
+        return [\Webhubworks\WeclappApiCore\Model\ArticleSupplySourceGetResponse200::class => false];
     }
 }
