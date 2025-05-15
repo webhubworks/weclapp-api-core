@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class QuantityConversionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class QuantityConversionNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\QuantityConversion::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\QuantityConversion::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class QuantityConversionNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\QuantityConversion();
+        $object = new \Webhubworks\WeclappApiCore\Model\QuantityConversion;
         if (\array_key_exists('oppositeDirection', $data) && \is_int($data['oppositeDirection'])) {
             $data['oppositeDirection'] = (bool) $data['oppositeDirection'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -81,27 +85,29 @@ class QuantityConversionNormalizer implements DenormalizerInterface, NormalizerI
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('conversionQuantity') && null !== $data->getConversionQuantity()) {
+        if ($data->isInitialized('conversionQuantity') && $data->getConversionQuantity() !== null) {
             $dataArray['conversionQuantity'] = $data->getConversionQuantity();
         }
-        if ($data->isInitialized('createdUserId') && null !== $data->getCreatedUserId()) {
+        if ($data->isInitialized('createdUserId') && $data->getCreatedUserId() !== null) {
             $dataArray['createdUserId'] = $data->getCreatedUserId();
         }
-        if ($data->isInitialized('lastEditedUserId') && null !== $data->getLastEditedUserId()) {
+        if ($data->isInitialized('lastEditedUserId') && $data->getLastEditedUserId() !== null) {
             $dataArray['lastEditedUserId'] = $data->getLastEditedUserId();
         }
-        if ($data->isInitialized('oppositeDirection') && null !== $data->getOppositeDirection()) {
+        if ($data->isInitialized('oppositeDirection') && $data->getOppositeDirection() !== null) {
             $dataArray['oppositeDirection'] = $data->getOppositeDirection();
         }
-        if ($data->isInitialized('unitId') && null !== $data->getUnitId()) {
+        if ($data->isInitialized('unitId') && $data->getUnitId() !== null) {
             $dataArray['unitId'] = $data->getUnitId();
         }
         foreach ($data as $key => $value) {
@@ -109,8 +115,10 @@ class QuantityConversionNormalizer implements DenormalizerInterface, NormalizerI
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\QuantityConversion::class => false];
