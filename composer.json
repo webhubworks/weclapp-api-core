@@ -15,16 +15,20 @@
         }
     ],
     "require": {
-        "php": "^8.3"
+        "php": "^8.3",
+        "jane-php/open-api-runtime": "^7.9"
     },
     "require-dev": {
-        "pestphp/pest": "^3.0",
+        "friendsofphp/php-cs-fixer": "^3.75",
+        "jane-php/open-api-3": "^7.9",
         "laravel/pint": "^1.0",
+        "pestphp/pest": "^3.0",
         "spatie/ray": "^1.28"
     },
     "autoload": {
         "psr-4": {
-            "Webhubworks\\WeclappApiCore\\": "src"
+            "Webhubworks\\WeclappApiCore\\": "src",
+            "Weclapp\\Generated\\": "src/generated/"
         }
     },
     "autoload-dev": {
@@ -41,9 +45,15 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
+            "php-http/discovery": true,
             "phpstan/extension-installer": true
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "extra": {
+        "symfony": {
+            "allow-contrib": "true"
+        }
+    }
 }
