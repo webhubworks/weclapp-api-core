@@ -27,8 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Webhubworks\\WeclappApiCore\\": "src",
-            "Weclapp\\Generated\\": "src/generated/"
+            "Webhub\\Weclapp\\": "src/"
         }
     },
     "autoload-dev": {
