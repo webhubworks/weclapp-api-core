@@ -5,14 +5,14 @@ namespace Webhub\Weclapp\Endpoint;
 class PutArticleCategoryIdById extends \Webhub\Weclapp\Runtime\Client\BaseEndpoint implements \Webhub\Weclapp\Runtime\Client\Endpoint
 {
     protected $id;
+
     /**
      * update articleCategory
      *
-     * @param string $id 
-     * @param \Webhub\Weclapp\Model\ArticleCategory $requestBody 
-     * @param array $queryParameters {
-     *     @var bool $dryRun 
-     * }
+     * @param  array  $queryParameters  {
+     *
+     * @var bool $dryRun
+     *           }
      */
     public function __construct(string $id, \Webhub\Weclapp\Model\ArticleCategory $requestBody, array $queryParameters = [])
     {
@@ -20,26 +20,33 @@ class PutArticleCategoryIdById extends \Webhub\Weclapp\Runtime\Client\BaseEndpoi
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
+
     use \Webhub\Weclapp\Runtime\Client\EndpointTrait;
+
     public function getMethod(): string
     {
         return 'PUT';
     }
+
     public function getUri(): string
     {
         return str_replace(['{id}'], [$this->id], '/articleCategory/id/{id}');
     }
+
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \Webhub\Weclapp\Model\ArticleCategory) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
+
         return [[], null];
     }
+
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
+
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -47,8 +54,10 @@ class PutArticleCategoryIdById extends \Webhub\Weclapp\Runtime\Client\BaseEndpoi
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('dryRun', ['bool']);
+
         return $optionsResolver;
     }
+
     /**
      * {@inheritdoc}
      *
@@ -59,13 +68,14 @@ class PutArticleCategoryIdById extends \Webhub\Weclapp\Runtime\Client\BaseEndpoi
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && ($status === 200 && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Webhub\Weclapp\Model\ArticleCategory', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);
         }
     }
+
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

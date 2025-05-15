@@ -1,6 +1,6 @@
 <?php
 
-echo "Generating the new client...".PHP_EOL;
+echo 'Generating the new client...'.PHP_EOL;
 
 return [
     'openapi-file' => __DIR__.'/../schema/weclapp-openapi.json',
