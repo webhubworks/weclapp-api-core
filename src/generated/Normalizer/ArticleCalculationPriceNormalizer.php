@@ -3,28 +3,32 @@
 namespace Weclapp\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Weclapp\Generated\Runtime\Normalizer\CheckArray;
-use Weclapp\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ArticleCalculationPriceNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Weclapp\Generated\Runtime\Normalizer\CheckArray;
+use Weclapp\Generated\Runtime\Normalizer\ValidatorTrait;
+
+class ArticleCalculationPriceNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Weclapp\Generated\Model\ArticleCalculationPrice::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Weclapp\Generated\Model\ArticleCalculationPrice::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class ArticleCalculationPriceNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Weclapp\Generated\Model\ArticleCalculationPrice();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Weclapp\Generated\Model\ArticleCalculationPrice;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -78,27 +82,29 @@ class ArticleCalculationPriceNormalizer implements DenormalizerInterface, Normal
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('articleCalculationPriceType') && null !== $data->getArticleCalculationPriceType()) {
+        if ($data->isInitialized('articleCalculationPriceType') && $data->getArticleCalculationPriceType() !== null) {
             $dataArray['articleCalculationPriceType'] = $data->getArticleCalculationPriceType();
         }
-        if ($data->isInitialized('endDate') && null !== $data->getEndDate()) {
+        if ($data->isInitialized('endDate') && $data->getEndDate() !== null) {
             $dataArray['endDate'] = $data->getEndDate();
         }
-        if ($data->isInitialized('price') && null !== $data->getPrice()) {
+        if ($data->isInitialized('price') && $data->getPrice() !== null) {
             $dataArray['price'] = $data->getPrice();
         }
-        if ($data->isInitialized('salesChannel') && null !== $data->getSalesChannel()) {
+        if ($data->isInitialized('salesChannel') && $data->getSalesChannel() !== null) {
             $dataArray['salesChannel'] = $data->getSalesChannel();
         }
-        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
+        if ($data->isInitialized('startDate') && $data->getStartDate() !== null) {
             $dataArray['startDate'] = $data->getStartDate();
         }
         foreach ($data as $key => $value) {
@@ -106,8 +112,10 @@ class ArticleCalculationPriceNormalizer implements DenormalizerInterface, Normal
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Weclapp\Generated\Model\ArticleCalculationPrice::class => false];

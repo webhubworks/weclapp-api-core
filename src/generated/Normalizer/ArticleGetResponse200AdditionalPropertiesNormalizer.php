@@ -3,28 +3,32 @@
 namespace Weclapp\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Weclapp\Generated\Runtime\Normalizer\CheckArray;
-use Weclapp\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ArticleGetResponse200AdditionalPropertiesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Weclapp\Generated\Runtime\Normalizer\CheckArray;
+use Weclapp\Generated\Runtime\Normalizer\ValidatorTrait;
+
+class ArticleGetResponse200AdditionalPropertiesNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Weclapp\Generated\Model\ArticleGetResponse200AdditionalProperties::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Weclapp\Generated\Model\ArticleGetResponse200AdditionalProperties::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class ArticleGetResponse200AdditionalPropertiesNormalizer implements Denormalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Weclapp\Generated\Model\ArticleGetResponse200AdditionalProperties();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Weclapp\Generated\Model\ArticleGetResponse200AdditionalProperties;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('aggregateStock', $data)) {
@@ -106,12 +110,14 @@ class ArticleGetResponse200AdditionalPropertiesNormalizer implements Denormalize
                 $object[$key] = $value_10;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('aggregateStock') && null !== $data->getAggregateStock()) {
+        if ($data->isInitialized('aggregateStock') && $data->getAggregateStock() !== null) {
             $values = [];
             foreach ($data->getAggregateStock() as $value) {
                 $values_1 = [];
@@ -122,21 +128,21 @@ class ArticleGetResponse200AdditionalPropertiesNormalizer implements Denormalize
             }
             $dataArray['aggregateStock'] = $values;
         }
-        if ($data->isInitialized('averagePrice') && null !== $data->getAveragePrice()) {
+        if ($data->isInitialized('averagePrice') && $data->getAveragePrice() !== null) {
             $values_2 = [];
             foreach ($data->getAveragePrice() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['averagePrice'] = $values_2;
         }
-        if ($data->isInitialized('currentSalesPrice') && null !== $data->getCurrentSalesPrice()) {
+        if ($data->isInitialized('currentSalesPrice') && $data->getCurrentSalesPrice() !== null) {
             $values_3 = [];
             foreach ($data->getCurrentSalesPrice() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $dataArray['currentSalesPrice'] = $values_3;
         }
-        if ($data->isInitialized('pickableStockQuantity') && null !== $data->getPickableStockQuantity()) {
+        if ($data->isInitialized('pickableStockQuantity') && $data->getPickableStockQuantity() !== null) {
             $values_4 = [];
             foreach ($data->getPickableStockQuantity() as $value_4) {
                 $values_5 = [];
@@ -147,7 +153,7 @@ class ArticleGetResponse200AdditionalPropertiesNormalizer implements Denormalize
             }
             $dataArray['pickableStockQuantity'] = $values_4;
         }
-        if ($data->isInitialized('reservedStockQuantity') && null !== $data->getReservedStockQuantity()) {
+        if ($data->isInitialized('reservedStockQuantity') && $data->getReservedStockQuantity() !== null) {
             $values_6 = [];
             foreach ($data->getReservedStockQuantity() as $value_6) {
                 $values_7 = [];
@@ -158,7 +164,7 @@ class ArticleGetResponse200AdditionalPropertiesNormalizer implements Denormalize
             }
             $dataArray['reservedStockQuantity'] = $values_6;
         }
-        if ($data->isInitialized('totalStockQuantity') && null !== $data->getTotalStockQuantity()) {
+        if ($data->isInitialized('totalStockQuantity') && $data->getTotalStockQuantity() !== null) {
             $values_8 = [];
             foreach ($data->getTotalStockQuantity() as $value_8) {
                 $values_9 = [];
@@ -174,8 +180,10 @@ class ArticleGetResponse200AdditionalPropertiesNormalizer implements Denormalize
                 $dataArray[$key] = $value_10;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Weclapp\Generated\Model\ArticleGetResponse200AdditionalProperties::class => false];

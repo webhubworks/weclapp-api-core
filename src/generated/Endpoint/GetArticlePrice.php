@@ -7,37 +7,44 @@ class GetArticlePrice extends \Weclapp\Generated\Runtime\Client\BaseEndpoint imp
     /**
      * query articlePrice
      *
-     * @param array $queryParameters {
-     *     @var int $page 
-     *     @var int $pageSize 
-     *     @var bool $serializeNulls 
-     *     @var string $sort 
-     *     @var string $filter 
-     *     @var string $properties 
-     *     @var string $includeReferencedEntities 
-     * }
+     * @param  array  $queryParameters  {
+     *
+     * @var int $page
+     * @var int $pageSize
+     * @var bool $serializeNulls
+     * @var string $sort
+     * @var string $filter
+     * @var string $properties
+     * @var string $includeReferencedEntities
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
+
     use \Weclapp\Generated\Runtime\Client\EndpointTrait;
+
     public function getMethod(): string
     {
         return 'GET';
     }
+
     public function getUri(): string
     {
         return '/articlePrice';
     }
+
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
+
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
+
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -51,8 +58,10 @@ class GetArticlePrice extends \Weclapp\Generated\Runtime\Client\BaseEndpoint imp
         $optionsResolver->addAllowedTypes('filter', ['string']);
         $optionsResolver->addAllowedTypes('properties', ['string']);
         $optionsResolver->addAllowedTypes('includeReferencedEntities', ['string']);
+
         return $optionsResolver;
     }
+
     /**
      * {@inheritdoc}
      *
@@ -63,13 +72,14 @@ class GetArticlePrice extends \Weclapp\Generated\Runtime\Client\BaseEndpoint imp
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && ($status === 200 && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Weclapp\Generated\Model\ArticlePriceGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return json_decode($body);
         }
     }
+
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

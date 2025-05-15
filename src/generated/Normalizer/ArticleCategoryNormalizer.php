@@ -3,28 +3,32 @@
 namespace Weclapp\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Weclapp\Generated\Runtime\Normalizer\CheckArray;
-use Weclapp\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ArticleCategoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Weclapp\Generated\Runtime\Normalizer\CheckArray;
+use Weclapp\Generated\Runtime\Normalizer\ValidatorTrait;
+
+class ArticleCategoryNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Weclapp\Generated\Model\ArticleCategory::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Weclapp\Generated\Model\ArticleCategory::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class ArticleCategoryNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Weclapp\Generated\Model\ArticleCategory();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Weclapp\Generated\Model\ArticleCategory;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -94,39 +98,41 @@ class ArticleCategoryNormalizer implements DenormalizerInterface, NormalizerInte
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('articleAccountingCodeId') && null !== $data->getArticleAccountingCodeId()) {
+        if ($data->isInitialized('articleAccountingCodeId') && $data->getArticleAccountingCodeId() !== null) {
             $dataArray['articleAccountingCodeId'] = $data->getArticleAccountingCodeId();
         }
-        if ($data->isInitialized('articleCategoryClassificationId') && null !== $data->getArticleCategoryClassificationId()) {
+        if ($data->isInitialized('articleCategoryClassificationId') && $data->getArticleCategoryClassificationId() !== null) {
             $dataArray['articleCategoryClassificationId'] = $data->getArticleCategoryClassificationId();
         }
-        if ($data->isInitialized('costTypeId') && null !== $data->getCostTypeId()) {
+        if ($data->isInitialized('costTypeId') && $data->getCostTypeId() !== null) {
             $dataArray['costTypeId'] = $data->getCostTypeId();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('imageId') && null !== $data->getImageId()) {
+        if ($data->isInitialized('imageId') && $data->getImageId() !== null) {
             $dataArray['imageId'] = $data->getImageId();
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name') && $data->getName() !== null) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('parentCategoryId') && null !== $data->getParentCategoryId()) {
+        if ($data->isInitialized('parentCategoryId') && $data->getParentCategoryId() !== null) {
             $dataArray['parentCategoryId'] = $data->getParentCategoryId();
         }
-        if ($data->isInitialized('purchaseCostCenterId') && null !== $data->getPurchaseCostCenterId()) {
+        if ($data->isInitialized('purchaseCostCenterId') && $data->getPurchaseCostCenterId() !== null) {
             $dataArray['purchaseCostCenterId'] = $data->getPurchaseCostCenterId();
         }
-        if ($data->isInitialized('salesCostCenterId') && null !== $data->getSalesCostCenterId()) {
+        if ($data->isInitialized('salesCostCenterId') && $data->getSalesCostCenterId() !== null) {
             $dataArray['salesCostCenterId'] = $data->getSalesCostCenterId();
         }
         foreach ($data as $key => $value) {
@@ -134,8 +140,10 @@ class ArticleCategoryNormalizer implements DenormalizerInterface, NormalizerInte
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Weclapp\Generated\Model\ArticleCategory::class => false];

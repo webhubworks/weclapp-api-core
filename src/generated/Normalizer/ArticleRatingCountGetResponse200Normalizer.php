@@ -3,28 +3,32 @@
 namespace Weclapp\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Weclapp\Generated\Runtime\Normalizer\CheckArray;
-use Weclapp\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ArticleRatingCountGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Weclapp\Generated\Runtime\Normalizer\CheckArray;
+use Weclapp\Generated\Runtime\Normalizer\ValidatorTrait;
+
+class ArticleRatingCountGetResponse200Normalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Weclapp\Generated\Model\ArticleRatingCountGetResponse200::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Weclapp\Generated\Model\ArticleRatingCountGetResponse200::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class ArticleRatingCountGetResponse200Normalizer implements DenormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Weclapp\Generated\Model\ArticleRatingCountGetResponse200();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Weclapp\Generated\Model\ArticleRatingCountGetResponse200;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('result', $data)) {
@@ -46,12 +50,14 @@ class ArticleRatingCountGetResponse200Normalizer implements DenormalizerInterfac
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('result') && null !== $data->getResult()) {
+        if ($data->isInitialized('result') && $data->getResult() !== null) {
             $dataArray['result'] = $data->getResult();
         }
         foreach ($data as $key => $value) {
@@ -59,8 +65,10 @@ class ArticleRatingCountGetResponse200Normalizer implements DenormalizerInterfac
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Weclapp\Generated\Model\ArticleRatingCountGetResponse200::class => false];

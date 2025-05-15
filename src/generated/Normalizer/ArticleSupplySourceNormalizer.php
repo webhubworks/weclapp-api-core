@@ -3,28 +3,32 @@
 namespace Weclapp\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Weclapp\Generated\Runtime\Normalizer\CheckArray;
-use Weclapp\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ArticleSupplySourceNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Weclapp\Generated\Runtime\Normalizer\CheckArray;
+use Weclapp\Generated\Runtime\Normalizer\ValidatorTrait;
+
+class ArticleSupplySourceNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Weclapp\Generated\Model\ArticleSupplySource::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Weclapp\Generated\Model\ArticleSupplySource::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,14 +37,14 @@ class ArticleSupplySourceNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Weclapp\Generated\Model\ArticleSupplySource();
+        $object = new \Weclapp\Generated\Model\ArticleSupplySource;
         if (\array_key_exists('dropshippingPossible', $data) && \is_int($data['dropshippingPossible'])) {
             $data['dropshippingPossible'] = (bool) $data['dropshippingPossible'];
         }
         if (\array_key_exists('ignoreInDropshippingAutomation', $data) && \is_int($data['ignoreInDropshippingAutomation'])) {
             $data['ignoreInDropshippingAutomation'] = (bool) $data['ignoreInDropshippingAutomation'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -160,86 +164,88 @@ class ArticleSupplySourceNormalizer implements DenormalizerInterface, Normalizer
                 $object[$key] = $value_2;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('articleNumber') && null !== $data->getArticleNumber()) {
+        if ($data->isInitialized('articleNumber') && $data->getArticleNumber() !== null) {
             $dataArray['articleNumber'] = $data->getArticleNumber();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('ean') && null !== $data->getEan()) {
+        if ($data->isInitialized('ean') && $data->getEan() !== null) {
             $dataArray['ean'] = $data->getEan();
         }
-        if ($data->isInitialized('fixedPurchaseQuantity') && null !== $data->getFixedPurchaseQuantity()) {
+        if ($data->isInitialized('fixedPurchaseQuantity') && $data->getFixedPurchaseQuantity() !== null) {
             $dataArray['fixedPurchaseQuantity'] = $data->getFixedPurchaseQuantity();
         }
-        if ($data->isInitialized('internalNote') && null !== $data->getInternalNote()) {
+        if ($data->isInitialized('internalNote') && $data->getInternalNote() !== null) {
             $dataArray['internalNote'] = $data->getInternalNote();
         }
-        if ($data->isInitialized('manufacturerPartNumber') && null !== $data->getManufacturerPartNumber()) {
+        if ($data->isInitialized('manufacturerPartNumber') && $data->getManufacturerPartNumber() !== null) {
             $dataArray['manufacturerPartNumber'] = $data->getManufacturerPartNumber();
         }
-        if ($data->isInitialized('matchCode') && null !== $data->getMatchCode()) {
+        if ($data->isInitialized('matchCode') && $data->getMatchCode() !== null) {
             $dataArray['matchCode'] = $data->getMatchCode();
         }
-        if ($data->isInitialized('minimumPurchaseQuantity') && null !== $data->getMinimumPurchaseQuantity()) {
+        if ($data->isInitialized('minimumPurchaseQuantity') && $data->getMinimumPurchaseQuantity() !== null) {
             $dataArray['minimumPurchaseQuantity'] = $data->getMinimumPurchaseQuantity();
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name') && $data->getName() !== null) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('shortDescription1') && null !== $data->getShortDescription1()) {
+        if ($data->isInitialized('shortDescription1') && $data->getShortDescription1() !== null) {
             $dataArray['shortDescription1'] = $data->getShortDescription1();
         }
-        if ($data->isInitialized('shortDescription2') && null !== $data->getShortDescription2()) {
+        if ($data->isInitialized('shortDescription2') && $data->getShortDescription2() !== null) {
             $dataArray['shortDescription2'] = $data->getShortDescription2();
         }
-        if ($data->isInitialized('taxRateType') && null !== $data->getTaxRateType()) {
+        if ($data->isInitialized('taxRateType') && $data->getTaxRateType() !== null) {
             $dataArray['taxRateType'] = $data->getTaxRateType();
         }
-        if ($data->isInitialized('unitId') && null !== $data->getUnitId()) {
+        if ($data->isInitialized('unitId') && $data->getUnitId() !== null) {
             $dataArray['unitId'] = $data->getUnitId();
         }
-        if ($data->isInitialized('unitName') && null !== $data->getUnitName()) {
+        if ($data->isInitialized('unitName') && $data->getUnitName() !== null) {
             $dataArray['unitName'] = $data->getUnitName();
         }
-        if ($data->isInitialized('articlePrices') && null !== $data->getArticlePrices()) {
+        if ($data->isInitialized('articlePrices') && $data->getArticlePrices() !== null) {
             $values_1 = [];
             foreach ($data->getArticlePrices() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['articlePrices'] = $values_1;
         }
-        if ($data->isInitialized('dropshippingPossible') && null !== $data->getDropshippingPossible()) {
+        if ($data->isInitialized('dropshippingPossible') && $data->getDropshippingPossible() !== null) {
             $dataArray['dropshippingPossible'] = $data->getDropshippingPossible();
         }
-        if ($data->isInitialized('ignoreInDropshippingAutomation') && null !== $data->getIgnoreInDropshippingAutomation()) {
+        if ($data->isInitialized('ignoreInDropshippingAutomation') && $data->getIgnoreInDropshippingAutomation() !== null) {
             $dataArray['ignoreInDropshippingAutomation'] = $data->getIgnoreInDropshippingAutomation();
         }
-        if ($data->isInitialized('procurementLeadDays') && null !== $data->getProcurementLeadDays()) {
+        if ($data->isInitialized('procurementLeadDays') && $data->getProcurementLeadDays() !== null) {
             $dataArray['procurementLeadDays'] = $data->getProcurementLeadDays();
         }
-        if ($data->isInitialized('supplierId') && null !== $data->getSupplierId()) {
+        if ($data->isInitialized('supplierId') && $data->getSupplierId() !== null) {
             $dataArray['supplierId'] = $data->getSupplierId();
         }
-        if ($data->isInitialized('supplierNumber') && null !== $data->getSupplierNumber()) {
+        if ($data->isInitialized('supplierNumber') && $data->getSupplierNumber() !== null) {
             $dataArray['supplierNumber'] = $data->getSupplierNumber();
         }
-        if ($data->isInitialized('supplierStockQuantity') && null !== $data->getSupplierStockQuantity()) {
+        if ($data->isInitialized('supplierStockQuantity') && $data->getSupplierStockQuantity() !== null) {
             $dataArray['supplierStockQuantity'] = $data->getSupplierStockQuantity();
         }
         foreach ($data as $key => $value_2) {
@@ -247,8 +253,10 @@ class ArticleSupplySourceNormalizer implements DenormalizerInterface, Normalizer
                 $dataArray[$key] = $value_2;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Weclapp\Generated\Model\ArticleSupplySource::class => false];
