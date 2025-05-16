@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SalesOrderGetResponse200AdditionalProperties::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SalesOrderGetResponse200AdditionalProperties::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements Denormal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SalesOrderGetResponse200AdditionalProperties();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\SalesOrderGetResponse200AdditionalProperties;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('bookedBillableWork', $data) && $data['bookedBillableWork'] !== null) {
@@ -44,8 +48,7 @@ class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements Denormal
             }
             $object->setBookedBillableWork($values);
             unset($data['bookedBillableWork']);
-        }
-        elseif (\array_key_exists('bookedBillableWork', $data) && $data['bookedBillableWork'] === null) {
+        } elseif (\array_key_exists('bookedBillableWork', $data) && $data['bookedBillableWork'] === null) {
             $object->setBookedBillableWork(null);
         }
         if (\array_key_exists('bookedWork', $data) && $data['bookedWork'] !== null) {
@@ -55,8 +58,7 @@ class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements Denormal
             }
             $object->setBookedWork($values_1);
             unset($data['bookedWork']);
-        }
-        elseif (\array_key_exists('bookedWork', $data) && $data['bookedWork'] === null) {
+        } elseif (\array_key_exists('bookedWork', $data) && $data['bookedWork'] === null) {
             $object->setBookedWork(null);
         }
         if (\array_key_exists('costOfServices', $data) && $data['costOfServices'] !== null) {
@@ -66,8 +68,7 @@ class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements Denormal
             }
             $object->setCostOfServices($values_2);
             unset($data['costOfServices']);
-        }
-        elseif (\array_key_exists('costOfServices', $data) && $data['costOfServices'] === null) {
+        } elseif (\array_key_exists('costOfServices', $data) && $data['costOfServices'] === null) {
             $object->setCostOfServices(null);
         }
         if (\array_key_exists('invoiceableServices', $data) && $data['invoiceableServices'] !== null) {
@@ -77,8 +78,7 @@ class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements Denormal
             }
             $object->setInvoiceableServices($values_3);
             unset($data['invoiceableServices']);
-        }
-        elseif (\array_key_exists('invoiceableServices', $data) && $data['invoiceableServices'] === null) {
+        } elseif (\array_key_exists('invoiceableServices', $data) && $data['invoiceableServices'] === null) {
             $object->setInvoiceableServices(null);
         }
         if (\array_key_exists('invoicedServices', $data) && $data['invoicedServices'] !== null) {
@@ -88,8 +88,7 @@ class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements Denormal
             }
             $object->setInvoicedServices($values_4);
             unset($data['invoicedServices']);
-        }
-        elseif (\array_key_exists('invoicedServices', $data) && $data['invoicedServices'] === null) {
+        } elseif (\array_key_exists('invoicedServices', $data) && $data['invoicedServices'] === null) {
             $object->setInvoicedServices(null);
         }
         if (\array_key_exists('notInvoicedServices', $data) && $data['notInvoicedServices'] !== null) {
@@ -99,8 +98,7 @@ class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements Denormal
             }
             $object->setNotInvoicedServices($values_5);
             unset($data['notInvoicedServices']);
-        }
-        elseif (\array_key_exists('notInvoicedServices', $data) && $data['notInvoicedServices'] === null) {
+        } elseif (\array_key_exists('notInvoicedServices', $data) && $data['notInvoicedServices'] === null) {
             $object->setNotInvoicedServices(null);
         }
         if (\array_key_exists('plannedBillableEffort', $data) && $data['plannedBillableEffort'] !== null) {
@@ -110,8 +108,7 @@ class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements Denormal
             }
             $object->setPlannedBillableEffort($values_6);
             unset($data['plannedBillableEffort']);
-        }
-        elseif (\array_key_exists('plannedBillableEffort', $data) && $data['plannedBillableEffort'] === null) {
+        } elseif (\array_key_exists('plannedBillableEffort', $data) && $data['plannedBillableEffort'] === null) {
             $object->setPlannedBillableEffort(null);
         }
         if (\array_key_exists('plannedEffort', $data) && $data['plannedEffort'] !== null) {
@@ -121,8 +118,7 @@ class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements Denormal
             }
             $object->setPlannedEffort($values_7);
             unset($data['plannedEffort']);
-        }
-        elseif (\array_key_exists('plannedEffort', $data) && $data['plannedEffort'] === null) {
+        } elseif (\array_key_exists('plannedEffort', $data) && $data['plannedEffort'] === null) {
             $object->setPlannedEffort(null);
         }
         foreach ($data as $key => $value_8) {
@@ -130,61 +126,63 @@ class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements Denormal
                 $object[$key] = $value_8;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('bookedBillableWork') && null !== $data->getBookedBillableWork()) {
+        if ($data->isInitialized('bookedBillableWork') && $data->getBookedBillableWork() !== null) {
             $values = [];
             foreach ($data->getBookedBillableWork() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['bookedBillableWork'] = $values;
         }
-        if ($data->isInitialized('bookedWork') && null !== $data->getBookedWork()) {
+        if ($data->isInitialized('bookedWork') && $data->getBookedWork() !== null) {
             $values_1 = [];
             foreach ($data->getBookedWork() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['bookedWork'] = $values_1;
         }
-        if ($data->isInitialized('costOfServices') && null !== $data->getCostOfServices()) {
+        if ($data->isInitialized('costOfServices') && $data->getCostOfServices() !== null) {
             $values_2 = [];
             foreach ($data->getCostOfServices() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['costOfServices'] = $values_2;
         }
-        if ($data->isInitialized('invoiceableServices') && null !== $data->getInvoiceableServices()) {
+        if ($data->isInitialized('invoiceableServices') && $data->getInvoiceableServices() !== null) {
             $values_3 = [];
             foreach ($data->getInvoiceableServices() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $dataArray['invoiceableServices'] = $values_3;
         }
-        if ($data->isInitialized('invoicedServices') && null !== $data->getInvoicedServices()) {
+        if ($data->isInitialized('invoicedServices') && $data->getInvoicedServices() !== null) {
             $values_4 = [];
             foreach ($data->getInvoicedServices() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $dataArray['invoicedServices'] = $values_4;
         }
-        if ($data->isInitialized('notInvoicedServices') && null !== $data->getNotInvoicedServices()) {
+        if ($data->isInitialized('notInvoicedServices') && $data->getNotInvoicedServices() !== null) {
             $values_5 = [];
             foreach ($data->getNotInvoicedServices() as $value_5) {
                 $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
             }
             $dataArray['notInvoicedServices'] = $values_5;
         }
-        if ($data->isInitialized('plannedBillableEffort') && null !== $data->getPlannedBillableEffort()) {
+        if ($data->isInitialized('plannedBillableEffort') && $data->getPlannedBillableEffort() !== null) {
             $values_6 = [];
             foreach ($data->getPlannedBillableEffort() as $value_6) {
                 $values_6[] = $this->normalizer->normalize($value_6, 'json', $context);
             }
             $dataArray['plannedBillableEffort'] = $values_6;
         }
-        if ($data->isInitialized('plannedEffort') && null !== $data->getPlannedEffort()) {
+        if ($data->isInitialized('plannedEffort') && $data->getPlannedEffort() !== null) {
             $values_7 = [];
             foreach ($data->getPlannedEffort() as $value_7) {
                 $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
@@ -196,8 +194,10 @@ class SalesOrderGetResponse200AdditionalPropertiesNormalizer implements Denormal
                 $dataArray[$key] = $value_8;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SalesOrderGetResponse200AdditionalProperties::class => false];

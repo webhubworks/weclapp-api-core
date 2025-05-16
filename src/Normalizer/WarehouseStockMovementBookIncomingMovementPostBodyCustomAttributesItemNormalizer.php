@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class WarehouseStockMovementBookIncomingMovementPostBodyCustomAttributesItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class WarehouseStockMovementBookIncomingMovementPostBodyCustomAttributesItemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookIncomingMovementPostBodyCustomAttributesItem::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookIncomingMovementPostBodyCustomAttributesItem::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,39 +37,35 @@ class WarehouseStockMovementBookIncomingMovementPostBodyCustomAttributesItemNorm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookIncomingMovementPostBodyCustomAttributesItem();
+        $object = new \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookIncomingMovementPostBodyCustomAttributesItem;
         if (\array_key_exists('booleanValue', $data) && \is_int($data['booleanValue'])) {
             $data['booleanValue'] = (bool) $data['booleanValue'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('attributeDefinitionId', $data) && $data['attributeDefinitionId'] !== null) {
             $object->setAttributeDefinitionId($data['attributeDefinitionId']);
             unset($data['attributeDefinitionId']);
-        }
-        elseif (\array_key_exists('attributeDefinitionId', $data) && $data['attributeDefinitionId'] === null) {
+        } elseif (\array_key_exists('attributeDefinitionId', $data) && $data['attributeDefinitionId'] === null) {
             $object->setAttributeDefinitionId(null);
         }
         if (\array_key_exists('booleanValue', $data) && $data['booleanValue'] !== null) {
             $object->setBooleanValue($data['booleanValue']);
             unset($data['booleanValue']);
-        }
-        elseif (\array_key_exists('booleanValue', $data) && $data['booleanValue'] === null) {
+        } elseif (\array_key_exists('booleanValue', $data) && $data['booleanValue'] === null) {
             $object->setBooleanValue(null);
         }
         if (\array_key_exists('dateValue', $data) && $data['dateValue'] !== null) {
             $object->setDateValue($data['dateValue']);
             unset($data['dateValue']);
-        }
-        elseif (\array_key_exists('dateValue', $data) && $data['dateValue'] === null) {
+        } elseif (\array_key_exists('dateValue', $data) && $data['dateValue'] === null) {
             $object->setDateValue(null);
         }
         if (\array_key_exists('entityId', $data) && $data['entityId'] !== null) {
             $object->setEntityId($data['entityId']);
             unset($data['entityId']);
-        }
-        elseif (\array_key_exists('entityId', $data) && $data['entityId'] === null) {
+        } elseif (\array_key_exists('entityId', $data) && $data['entityId'] === null) {
             $object->setEntityId(null);
         }
         if (\array_key_exists('entityReferences', $data) && $data['entityReferences'] !== null) {
@@ -75,22 +75,19 @@ class WarehouseStockMovementBookIncomingMovementPostBodyCustomAttributesItemNorm
             }
             $object->setEntityReferences($values);
             unset($data['entityReferences']);
-        }
-        elseif (\array_key_exists('entityReferences', $data) && $data['entityReferences'] === null) {
+        } elseif (\array_key_exists('entityReferences', $data) && $data['entityReferences'] === null) {
             $object->setEntityReferences(null);
         }
         if (\array_key_exists('numberValue', $data) && $data['numberValue'] !== null) {
             $object->setNumberValue($data['numberValue']);
             unset($data['numberValue']);
-        }
-        elseif (\array_key_exists('numberValue', $data) && $data['numberValue'] === null) {
+        } elseif (\array_key_exists('numberValue', $data) && $data['numberValue'] === null) {
             $object->setNumberValue(null);
         }
         if (\array_key_exists('selectedValueId', $data) && $data['selectedValueId'] !== null) {
             $object->setSelectedValueId($data['selectedValueId']);
             unset($data['selectedValueId']);
-        }
-        elseif (\array_key_exists('selectedValueId', $data) && $data['selectedValueId'] === null) {
+        } elseif (\array_key_exists('selectedValueId', $data) && $data['selectedValueId'] === null) {
             $object->setSelectedValueId(null);
         }
         if (\array_key_exists('selectedValues', $data) && $data['selectedValues'] !== null) {
@@ -100,15 +97,13 @@ class WarehouseStockMovementBookIncomingMovementPostBodyCustomAttributesItemNorm
             }
             $object->setSelectedValues($values_1);
             unset($data['selectedValues']);
-        }
-        elseif (\array_key_exists('selectedValues', $data) && $data['selectedValues'] === null) {
+        } elseif (\array_key_exists('selectedValues', $data) && $data['selectedValues'] === null) {
             $object->setSelectedValues(null);
         }
         if (\array_key_exists('stringValue', $data) && $data['stringValue'] !== null) {
             $object->setStringValue($data['stringValue']);
             unset($data['stringValue']);
-        }
-        elseif (\array_key_exists('stringValue', $data) && $data['stringValue'] === null) {
+        } elseif (\array_key_exists('stringValue', $data) && $data['stringValue'] === null) {
             $object->setStringValue(null);
         }
         foreach ($data as $key => $value_2) {
@@ -116,44 +111,46 @@ class WarehouseStockMovementBookIncomingMovementPostBodyCustomAttributesItemNorm
                 $object[$key] = $value_2;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('attributeDefinitionId') && null !== $data->getAttributeDefinitionId()) {
+        if ($data->isInitialized('attributeDefinitionId') && $data->getAttributeDefinitionId() !== null) {
             $dataArray['attributeDefinitionId'] = $data->getAttributeDefinitionId();
         }
-        if ($data->isInitialized('booleanValue') && null !== $data->getBooleanValue()) {
+        if ($data->isInitialized('booleanValue') && $data->getBooleanValue() !== null) {
             $dataArray['booleanValue'] = $data->getBooleanValue();
         }
-        if ($data->isInitialized('dateValue') && null !== $data->getDateValue()) {
+        if ($data->isInitialized('dateValue') && $data->getDateValue() !== null) {
             $dataArray['dateValue'] = $data->getDateValue();
         }
-        if ($data->isInitialized('entityId') && null !== $data->getEntityId()) {
+        if ($data->isInitialized('entityId') && $data->getEntityId() !== null) {
             $dataArray['entityId'] = $data->getEntityId();
         }
-        if ($data->isInitialized('entityReferences') && null !== $data->getEntityReferences()) {
+        if ($data->isInitialized('entityReferences') && $data->getEntityReferences() !== null) {
             $values = [];
             foreach ($data->getEntityReferences() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['entityReferences'] = $values;
         }
-        if ($data->isInitialized('numberValue') && null !== $data->getNumberValue()) {
+        if ($data->isInitialized('numberValue') && $data->getNumberValue() !== null) {
             $dataArray['numberValue'] = $data->getNumberValue();
         }
-        if ($data->isInitialized('selectedValueId') && null !== $data->getSelectedValueId()) {
+        if ($data->isInitialized('selectedValueId') && $data->getSelectedValueId() !== null) {
             $dataArray['selectedValueId'] = $data->getSelectedValueId();
         }
-        if ($data->isInitialized('selectedValues') && null !== $data->getSelectedValues()) {
+        if ($data->isInitialized('selectedValues') && $data->getSelectedValues() !== null) {
             $values_1 = [];
             foreach ($data->getSelectedValues() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['selectedValues'] = $values_1;
         }
-        if ($data->isInitialized('stringValue') && null !== $data->getStringValue()) {
+        if ($data->isInitialized('stringValue') && $data->getStringValue() !== null) {
             $dataArray['stringValue'] = $data->getStringValue();
         }
         foreach ($data as $key => $value_2) {
@@ -161,8 +158,10 @@ class WarehouseStockMovementBookIncomingMovementPostBodyCustomAttributesItemNorm
                 $dataArray[$key] = $value_2;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookIncomingMovementPostBodyCustomAttributesItem::class => false];

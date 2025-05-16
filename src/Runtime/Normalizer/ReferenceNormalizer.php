@@ -4,6 +4,7 @@ namespace Webhubworks\WeclappApiCore\Runtime\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class ReferenceNormalizer implements NormalizerInterface
 {
     /**
@@ -13,8 +14,10 @@ class ReferenceNormalizer implements NormalizerInterface
     {
         $ref = [];
         $ref['$ref'] = (string) $data->getReferenceUri();
+
         return $ref;
     }
+
     /**
      * {@inheritdoc}
      */
@@ -22,6 +25,7 @@ class ReferenceNormalizer implements NormalizerInterface
     {
         return $data instanceof Reference;
     }
+
     public function getSupportedTypes(?string $format): array
     {
         return [Reference::class => false];

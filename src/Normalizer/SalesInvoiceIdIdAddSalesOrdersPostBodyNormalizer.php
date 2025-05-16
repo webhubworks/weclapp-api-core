@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class SalesInvoiceIdIdAddSalesOrdersPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class SalesInvoiceIdIdAddSalesOrdersPostBodyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdAddSalesOrdersPostBody::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdAddSalesOrdersPostBody::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,15 +37,14 @@ class SalesInvoiceIdIdAddSalesOrdersPostBodyNormalizer implements DenormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdAddSalesOrdersPostBody();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdAddSalesOrdersPostBody;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('collectiveInvoicePositionPrintType', $data) && $data['collectiveInvoicePositionPrintType'] !== null) {
             $object->setCollectiveInvoicePositionPrintType($data['collectiveInvoicePositionPrintType']);
             unset($data['collectiveInvoicePositionPrintType']);
-        }
-        elseif (\array_key_exists('collectiveInvoicePositionPrintType', $data) && $data['collectiveInvoicePositionPrintType'] === null) {
+        } elseif (\array_key_exists('collectiveInvoicePositionPrintType', $data) && $data['collectiveInvoicePositionPrintType'] === null) {
             $object->setCollectiveInvoicePositionPrintType(null);
         }
         if (\array_key_exists('salesOrderIds', $data) && $data['salesOrderIds'] !== null) {
@@ -51,8 +54,7 @@ class SalesInvoiceIdIdAddSalesOrdersPostBodyNormalizer implements DenormalizerIn
             }
             $object->setSalesOrderIds($values);
             unset($data['salesOrderIds']);
-        }
-        elseif (\array_key_exists('salesOrderIds', $data) && $data['salesOrderIds'] === null) {
+        } elseif (\array_key_exists('salesOrderIds', $data) && $data['salesOrderIds'] === null) {
             $object->setSalesOrderIds(null);
         }
         foreach ($data as $key => $value_1) {
@@ -60,12 +62,14 @@ class SalesInvoiceIdIdAddSalesOrdersPostBodyNormalizer implements DenormalizerIn
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('collectiveInvoicePositionPrintType') && null !== $data->getCollectiveInvoicePositionPrintType()) {
+        if ($data->isInitialized('collectiveInvoicePositionPrintType') && $data->getCollectiveInvoicePositionPrintType() !== null) {
             $dataArray['collectiveInvoicePositionPrintType'] = $data->getCollectiveInvoicePositionPrintType();
         }
         $values = [];
@@ -78,8 +82,10 @@ class SalesInvoiceIdIdAddSalesOrdersPostBodyNormalizer implements DenormalizerIn
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdAddSalesOrdersPostBody::class => false];

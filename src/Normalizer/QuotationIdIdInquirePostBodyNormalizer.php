@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class QuotationIdIdInquirePostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class QuotationIdIdInquirePostBodyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\QuotationIdIdInquirePostBody::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\QuotationIdIdInquirePostBody::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,15 +37,14 @@ class QuotationIdIdInquirePostBodyNormalizer implements DenormalizerInterface, N
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\QuotationIdIdInquirePostBody();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\QuotationIdIdInquirePostBody;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('taskId', $data) && $data['taskId'] !== null) {
             $object->setTaskId($data['taskId']);
             unset($data['taskId']);
-        }
-        elseif (\array_key_exists('taskId', $data) && $data['taskId'] === null) {
+        } elseif (\array_key_exists('taskId', $data) && $data['taskId'] === null) {
             $object->setTaskId(null);
         }
         foreach ($data as $key => $value) {
@@ -49,12 +52,14 @@ class QuotationIdIdInquirePostBodyNormalizer implements DenormalizerInterface, N
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('taskId') && null !== $data->getTaskId()) {
+        if ($data->isInitialized('taskId') && $data->getTaskId() !== null) {
             $dataArray['taskId'] = $data->getTaskId();
         }
         foreach ($data as $key => $value) {
@@ -62,8 +67,10 @@ class QuotationIdIdInquirePostBodyNormalizer implements DenormalizerInterface, N
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\QuotationIdIdInquirePostBody::class => false];

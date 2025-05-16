@@ -4,35 +4,37 @@ namespace Webhubworks\WeclappApiCore\Endpoint;
 
 class PostSystemCreateDemoTestSystem extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoint implements \Webhubworks\WeclappApiCore\Runtime\Client\Endpoint
 {
-    /**
-     * 
-     *
-     * @param null|\Webhubworks\WeclappApiCore\Model\SystemCreateDemoTestSystemPostBody $requestBody 
-     */
     public function __construct(?\Webhubworks\WeclappApiCore\Model\SystemCreateDemoTestSystemPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
+
     use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
+
     public function getMethod(): string
     {
         return 'POST';
     }
+
     public function getUri(): string
     {
         return '/system/createDemoTestSystem';
     }
+
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \Webhubworks\WeclappApiCore\Model\SystemCreateDemoTestSystemPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
+
         return [[], null];
     }
+
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
+
     /**
      * {@inheritdoc}
      *
@@ -43,13 +45,14 @@ class PostSystemCreateDemoTestSystem extends \Webhubworks\WeclappApiCore\Runtime
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && ($status === 200 && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\SystemCreateDemoTestSystemPostResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ApiProblem', 'json');
         }
     }
+
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

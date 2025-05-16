@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class SalesOrderIdIdCreatePurchaseOrderPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class SalesOrderIdIdCreatePurchaseOrderPostBodyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePurchaseOrderPostBody::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePurchaseOrderPostBody::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,32 +37,29 @@ class SalesOrderIdIdCreatePurchaseOrderPostBodyNormalizer implements Denormalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePurchaseOrderPostBody();
+        $object = new \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePurchaseOrderPostBody;
         if (\array_key_exists('multiplePurchaseOrders', $data) && \is_int($data['multiplePurchaseOrders'])) {
             $data['multiplePurchaseOrders'] = (bool) $data['multiplePurchaseOrders'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('multiplePurchaseOrders', $data) && $data['multiplePurchaseOrders'] !== null) {
             $object->setMultiplePurchaseOrders($data['multiplePurchaseOrders']);
             unset($data['multiplePurchaseOrders']);
-        }
-        elseif (\array_key_exists('multiplePurchaseOrders', $data) && $data['multiplePurchaseOrders'] === null) {
+        } elseif (\array_key_exists('multiplePurchaseOrders', $data) && $data['multiplePurchaseOrders'] === null) {
             $object->setMultiplePurchaseOrders(null);
         }
         if (\array_key_exists('supplierId', $data) && $data['supplierId'] !== null) {
             $object->setSupplierId($data['supplierId']);
             unset($data['supplierId']);
-        }
-        elseif (\array_key_exists('supplierId', $data) && $data['supplierId'] === null) {
+        } elseif (\array_key_exists('supplierId', $data) && $data['supplierId'] === null) {
             $object->setSupplierId(null);
         }
         if (\array_key_exists('warehouseId', $data) && $data['warehouseId'] !== null) {
             $object->setWarehouseId($data['warehouseId']);
             unset($data['warehouseId']);
-        }
-        elseif (\array_key_exists('warehouseId', $data) && $data['warehouseId'] === null) {
+        } elseif (\array_key_exists('warehouseId', $data) && $data['warehouseId'] === null) {
             $object->setWarehouseId(null);
         }
         foreach ($data as $key => $value) {
@@ -66,18 +67,20 @@ class SalesOrderIdIdCreatePurchaseOrderPostBodyNormalizer implements Denormalize
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('multiplePurchaseOrders') && null !== $data->getMultiplePurchaseOrders()) {
+        if ($data->isInitialized('multiplePurchaseOrders') && $data->getMultiplePurchaseOrders() !== null) {
             $dataArray['multiplePurchaseOrders'] = $data->getMultiplePurchaseOrders();
         }
-        if ($data->isInitialized('supplierId') && null !== $data->getSupplierId()) {
+        if ($data->isInitialized('supplierId') && $data->getSupplierId() !== null) {
             $dataArray['supplierId'] = $data->getSupplierId();
         }
-        if ($data->isInitialized('warehouseId') && null !== $data->getWarehouseId()) {
+        if ($data->isInitialized('warehouseId') && $data->getWarehouseId() !== null) {
             $dataArray['warehouseId'] = $data->getWarehouseId();
         }
         foreach ($data as $key => $value) {
@@ -85,8 +88,10 @@ class SalesOrderIdIdCreatePurchaseOrderPostBodyNormalizer implements Denormalize
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePurchaseOrderPostBody::class => false];

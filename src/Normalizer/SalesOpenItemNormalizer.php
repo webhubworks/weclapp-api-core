@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class SalesOpenItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class SalesOpenItemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SalesOpenItem::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SalesOpenItem::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,95 +37,83 @@ class SalesOpenItemNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SalesOpenItem();
+        $object = new \Webhubworks\WeclappApiCore\Model\SalesOpenItem;
         if (\array_key_exists('cleared', $data) && \is_int($data['cleared'])) {
             $data['cleared'] = (bool) $data['cleared'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
-        }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
-        }
-        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+        } elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
             $object->setCreatedDate(null);
         }
         if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
-        }
-        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+        } elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
             $object->setLastModifiedDate(null);
         }
         if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
-        }
-        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
             $object->setVersion(null);
         }
         if (\array_key_exists('amount', $data) && $data['amount'] !== null) {
             $object->setAmount($data['amount']);
             unset($data['amount']);
-        }
-        elseif (\array_key_exists('amount', $data) && $data['amount'] === null) {
+        } elseif (\array_key_exists('amount', $data) && $data['amount'] === null) {
             $object->setAmount(null);
         }
         if (\array_key_exists('amountDiscount', $data) && $data['amountDiscount'] !== null) {
             $object->setAmountDiscount($data['amountDiscount']);
             unset($data['amountDiscount']);
-        }
-        elseif (\array_key_exists('amountDiscount', $data) && $data['amountDiscount'] === null) {
+        } elseif (\array_key_exists('amountDiscount', $data) && $data['amountDiscount'] === null) {
             $object->setAmountDiscount(null);
         }
         if (\array_key_exists('amountOpen', $data) && $data['amountOpen'] !== null) {
             $object->setAmountOpen($data['amountOpen']);
             unset($data['amountOpen']);
-        }
-        elseif (\array_key_exists('amountOpen', $data) && $data['amountOpen'] === null) {
+        } elseif (\array_key_exists('amountOpen', $data) && $data['amountOpen'] === null) {
             $object->setAmountOpen(null);
         }
         if (\array_key_exists('amountPaid', $data) && $data['amountPaid'] !== null) {
             $object->setAmountPaid($data['amountPaid']);
             unset($data['amountPaid']);
-        }
-        elseif (\array_key_exists('amountPaid', $data) && $data['amountPaid'] === null) {
+        } elseif (\array_key_exists('amountPaid', $data) && $data['amountPaid'] === null) {
             $object->setAmountPaid(null);
         }
         if (\array_key_exists('clearanceDate', $data) && $data['clearanceDate'] !== null) {
             $object->setClearanceDate($data['clearanceDate']);
             unset($data['clearanceDate']);
-        }
-        elseif (\array_key_exists('clearanceDate', $data) && $data['clearanceDate'] === null) {
+        } elseif (\array_key_exists('clearanceDate', $data) && $data['clearanceDate'] === null) {
             $object->setClearanceDate(null);
         }
         if (\array_key_exists('cleared', $data) && $data['cleared'] !== null) {
             $object->setCleared($data['cleared']);
             unset($data['cleared']);
-        }
-        elseif (\array_key_exists('cleared', $data) && $data['cleared'] === null) {
+        } elseif (\array_key_exists('cleared', $data) && $data['cleared'] === null) {
             $object->setCleared(null);
         }
         if (\array_key_exists('openItemNumber', $data) && $data['openItemNumber'] !== null) {
             $object->setOpenItemNumber($data['openItemNumber']);
             unset($data['openItemNumber']);
-        }
-        elseif (\array_key_exists('openItemNumber', $data) && $data['openItemNumber'] === null) {
+        } elseif (\array_key_exists('openItemNumber', $data) && $data['openItemNumber'] === null) {
             $object->setOpenItemNumber(null);
         }
         if (\array_key_exists('openItemType', $data) && $data['openItemType'] !== null) {
             $object->setOpenItemType($data['openItemType']);
             unset($data['openItemType']);
-        }
-        elseif (\array_key_exists('openItemType', $data) && $data['openItemType'] === null) {
+        } elseif (\array_key_exists('openItemType', $data) && $data['openItemType'] === null) {
             $object->setOpenItemType(null);
         }
         if (\array_key_exists('paymentApplications', $data) && $data['paymentApplications'] !== null) {
@@ -131,15 +123,13 @@ class SalesOpenItemNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $object->setPaymentApplications($values);
             unset($data['paymentApplications']);
-        }
-        elseif (\array_key_exists('paymentApplications', $data) && $data['paymentApplications'] === null) {
+        } elseif (\array_key_exists('paymentApplications', $data) && $data['paymentApplications'] === null) {
             $object->setPaymentApplications(null);
         }
         if (\array_key_exists('salesInvoiceId', $data) && $data['salesInvoiceId'] !== null) {
             $object->setSalesInvoiceId($data['salesInvoiceId']);
             unset($data['salesInvoiceId']);
-        }
-        elseif (\array_key_exists('salesInvoiceId', $data) && $data['salesInvoiceId'] === null) {
+        } elseif (\array_key_exists('salesInvoiceId', $data) && $data['salesInvoiceId'] === null) {
             $object->setSalesInvoiceId(null);
         }
         foreach ($data as $key => $value_1) {
@@ -147,46 +137,48 @@ class SalesOpenItemNormalizer implements DenormalizerInterface, NormalizerInterf
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
+        if ($data->isInitialized('amount') && $data->getAmount() !== null) {
             $dataArray['amount'] = $data->getAmount();
         }
-        if ($data->isInitialized('amountDiscount') && null !== $data->getAmountDiscount()) {
+        if ($data->isInitialized('amountDiscount') && $data->getAmountDiscount() !== null) {
             $dataArray['amountDiscount'] = $data->getAmountDiscount();
         }
-        if ($data->isInitialized('amountOpen') && null !== $data->getAmountOpen()) {
+        if ($data->isInitialized('amountOpen') && $data->getAmountOpen() !== null) {
             $dataArray['amountOpen'] = $data->getAmountOpen();
         }
-        if ($data->isInitialized('amountPaid') && null !== $data->getAmountPaid()) {
+        if ($data->isInitialized('amountPaid') && $data->getAmountPaid() !== null) {
             $dataArray['amountPaid'] = $data->getAmountPaid();
         }
-        if ($data->isInitialized('clearanceDate') && null !== $data->getClearanceDate()) {
+        if ($data->isInitialized('clearanceDate') && $data->getClearanceDate() !== null) {
             $dataArray['clearanceDate'] = $data->getClearanceDate();
         }
-        if ($data->isInitialized('cleared') && null !== $data->getCleared()) {
+        if ($data->isInitialized('cleared') && $data->getCleared() !== null) {
             $dataArray['cleared'] = $data->getCleared();
         }
-        if ($data->isInitialized('openItemNumber') && null !== $data->getOpenItemNumber()) {
+        if ($data->isInitialized('openItemNumber') && $data->getOpenItemNumber() !== null) {
             $dataArray['openItemNumber'] = $data->getOpenItemNumber();
         }
-        if ($data->isInitialized('openItemType') && null !== $data->getOpenItemType()) {
+        if ($data->isInitialized('openItemType') && $data->getOpenItemType() !== null) {
             $dataArray['openItemType'] = $data->getOpenItemType();
         }
-        if ($data->isInitialized('paymentApplications') && null !== $data->getPaymentApplications()) {
+        if ($data->isInitialized('paymentApplications') && $data->getPaymentApplications() !== null) {
             $values = [];
             foreach ($data->getPaymentApplications() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['paymentApplications'] = $values;
         }
-        if ($data->isInitialized('salesInvoiceId') && null !== $data->getSalesInvoiceId()) {
+        if ($data->isInitialized('salesInvoiceId') && $data->getSalesInvoiceId() !== null) {
             $dataArray['salesInvoiceId'] = $data->getSalesInvoiceId();
         }
         foreach ($data as $key => $value_1) {
@@ -194,8 +186,10 @@ class SalesOpenItemNormalizer implements DenormalizerInterface, NormalizerInterf
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SalesOpenItem::class => false];

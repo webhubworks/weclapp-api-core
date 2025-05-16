@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ContractItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class ContractItemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\ContractItem::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ContractItem::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,7 +37,7 @@ class ContractItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\ContractItem();
+        $object = new \Webhubworks\WeclappApiCore\Model\ContractItem;
         if (\array_key_exists('descriptionFixed', $data) && \is_int($data['descriptionFixed'])) {
             $data['descriptionFixed'] = (bool) $data['descriptionFixed'];
         }
@@ -46,35 +50,31 @@ class ContractItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('addPageBreakBefore', $data) && \is_int($data['addPageBreakBefore'])) {
             $data['addPageBreakBefore'] = (bool) $data['addPageBreakBefore'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
-        }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
-        }
-        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+        } elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
             $object->setCreatedDate(null);
         }
         if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
-        }
-        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+        } elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
             $object->setLastModifiedDate(null);
         }
         if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
-        }
-        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
             $object->setVersion(null);
         }
         if (\array_key_exists('customAttributes', $data) && $data['customAttributes'] !== null) {
@@ -84,155 +84,133 @@ class ContractItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->setCustomAttributes($values);
             unset($data['customAttributes']);
-        }
-        elseif (\array_key_exists('customAttributes', $data) && $data['customAttributes'] === null) {
+        } elseif (\array_key_exists('customAttributes', $data) && $data['customAttributes'] === null) {
             $object->setCustomAttributes(null);
         }
         if (\array_key_exists('articleId', $data) && $data['articleId'] !== null) {
             $object->setArticleId($data['articleId']);
             unset($data['articleId']);
-        }
-        elseif (\array_key_exists('articleId', $data) && $data['articleId'] === null) {
+        } elseif (\array_key_exists('articleId', $data) && $data['articleId'] === null) {
             $object->setArticleId(null);
         }
         if (\array_key_exists('articleNumber', $data) && $data['articleNumber'] !== null) {
             $object->setArticleNumber($data['articleNumber']);
             unset($data['articleNumber']);
-        }
-        elseif (\array_key_exists('articleNumber', $data) && $data['articleNumber'] === null) {
+        } elseif (\array_key_exists('articleNumber', $data) && $data['articleNumber'] === null) {
             $object->setArticleNumber(null);
         }
         if (\array_key_exists('note', $data) && $data['note'] !== null) {
             $object->setNote($data['note']);
             unset($data['note']);
-        }
-        elseif (\array_key_exists('note', $data) && $data['note'] === null) {
+        } elseif (\array_key_exists('note', $data) && $data['note'] === null) {
             $object->setNote(null);
         }
         if (\array_key_exists('positionNumber', $data) && $data['positionNumber'] !== null) {
             $object->setPositionNumber($data['positionNumber']);
             unset($data['positionNumber']);
-        }
-        elseif (\array_key_exists('positionNumber', $data) && $data['positionNumber'] === null) {
+        } elseif (\array_key_exists('positionNumber', $data) && $data['positionNumber'] === null) {
             $object->setPositionNumber(null);
         }
         if (\array_key_exists('quantity', $data) && $data['quantity'] !== null) {
             $object->setQuantity($data['quantity']);
             unset($data['quantity']);
-        }
-        elseif (\array_key_exists('quantity', $data) && $data['quantity'] === null) {
+        } elseif (\array_key_exists('quantity', $data) && $data['quantity'] === null) {
             $object->setQuantity(null);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
             unset($data['description']);
-        }
-        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('descriptionFixed', $data) && $data['descriptionFixed'] !== null) {
             $object->setDescriptionFixed($data['descriptionFixed']);
             unset($data['descriptionFixed']);
-        }
-        elseif (\array_key_exists('descriptionFixed', $data) && $data['descriptionFixed'] === null) {
+        } elseif (\array_key_exists('descriptionFixed', $data) && $data['descriptionFixed'] === null) {
             $object->setDescriptionFixed(null);
         }
         if (\array_key_exists('itemType', $data) && $data['itemType'] !== null) {
             $object->setItemType($data['itemType']);
             unset($data['itemType']);
-        }
-        elseif (\array_key_exists('itemType', $data) && $data['itemType'] === null) {
+        } elseif (\array_key_exists('itemType', $data) && $data['itemType'] === null) {
             $object->setItemType(null);
         }
         if (\array_key_exists('manualQuantity', $data) && $data['manualQuantity'] !== null) {
             $object->setManualQuantity($data['manualQuantity']);
             unset($data['manualQuantity']);
-        }
-        elseif (\array_key_exists('manualQuantity', $data) && $data['manualQuantity'] === null) {
+        } elseif (\array_key_exists('manualQuantity', $data) && $data['manualQuantity'] === null) {
             $object->setManualQuantity(null);
         }
         if (\array_key_exists('parentItemId', $data) && $data['parentItemId'] !== null) {
             $object->setParentItemId($data['parentItemId']);
             unset($data['parentItemId']);
-        }
-        elseif (\array_key_exists('parentItemId', $data) && $data['parentItemId'] === null) {
+        } elseif (\array_key_exists('parentItemId', $data) && $data['parentItemId'] === null) {
             $object->setParentItemId(null);
         }
         if (\array_key_exists('title', $data) && $data['title'] !== null) {
             $object->setTitle($data['title']);
             unset($data['title']);
-        }
-        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
+        } elseif (\array_key_exists('title', $data) && $data['title'] === null) {
             $object->setTitle(null);
         }
         if (\array_key_exists('unitId', $data) && $data['unitId'] !== null) {
             $object->setUnitId($data['unitId']);
             unset($data['unitId']);
-        }
-        elseif (\array_key_exists('unitId', $data) && $data['unitId'] === null) {
+        } elseif (\array_key_exists('unitId', $data) && $data['unitId'] === null) {
             $object->setUnitId(null);
         }
         if (\array_key_exists('unitName', $data) && $data['unitName'] !== null) {
             $object->setUnitName($data['unitName']);
             unset($data['unitName']);
-        }
-        elseif (\array_key_exists('unitName', $data) && $data['unitName'] === null) {
+        } elseif (\array_key_exists('unitName', $data) && $data['unitName'] === null) {
             $object->setUnitName(null);
         }
         if (\array_key_exists('discountPercentage', $data) && $data['discountPercentage'] !== null) {
             $object->setDiscountPercentage($data['discountPercentage']);
             unset($data['discountPercentage']);
-        }
-        elseif (\array_key_exists('discountPercentage', $data) && $data['discountPercentage'] === null) {
+        } elseif (\array_key_exists('discountPercentage', $data) && $data['discountPercentage'] === null) {
             $object->setDiscountPercentage(null);
         }
         if (\array_key_exists('grossAmount', $data) && $data['grossAmount'] !== null) {
             $object->setGrossAmount($data['grossAmount']);
             unset($data['grossAmount']);
-        }
-        elseif (\array_key_exists('grossAmount', $data) && $data['grossAmount'] === null) {
+        } elseif (\array_key_exists('grossAmount', $data) && $data['grossAmount'] === null) {
             $object->setGrossAmount(null);
         }
         if (\array_key_exists('grossAmountInCompanyCurrency', $data) && $data['grossAmountInCompanyCurrency'] !== null) {
             $object->setGrossAmountInCompanyCurrency($data['grossAmountInCompanyCurrency']);
             unset($data['grossAmountInCompanyCurrency']);
-        }
-        elseif (\array_key_exists('grossAmountInCompanyCurrency', $data) && $data['grossAmountInCompanyCurrency'] === null) {
+        } elseif (\array_key_exists('grossAmountInCompanyCurrency', $data) && $data['grossAmountInCompanyCurrency'] === null) {
             $object->setGrossAmountInCompanyCurrency(null);
         }
         if (\array_key_exists('manualUnitPrice', $data) && $data['manualUnitPrice'] !== null) {
             $object->setManualUnitPrice($data['manualUnitPrice']);
             unset($data['manualUnitPrice']);
-        }
-        elseif (\array_key_exists('manualUnitPrice', $data) && $data['manualUnitPrice'] === null) {
+        } elseif (\array_key_exists('manualUnitPrice', $data) && $data['manualUnitPrice'] === null) {
             $object->setManualUnitPrice(null);
         }
         if (\array_key_exists('netAmount', $data) && $data['netAmount'] !== null) {
             $object->setNetAmount($data['netAmount']);
             unset($data['netAmount']);
-        }
-        elseif (\array_key_exists('netAmount', $data) && $data['netAmount'] === null) {
+        } elseif (\array_key_exists('netAmount', $data) && $data['netAmount'] === null) {
             $object->setNetAmount(null);
         }
         if (\array_key_exists('netAmountForStatistics', $data) && $data['netAmountForStatistics'] !== null) {
             $object->setNetAmountForStatistics($data['netAmountForStatistics']);
             unset($data['netAmountForStatistics']);
-        }
-        elseif (\array_key_exists('netAmountForStatistics', $data) && $data['netAmountForStatistics'] === null) {
+        } elseif (\array_key_exists('netAmountForStatistics', $data) && $data['netAmountForStatistics'] === null) {
             $object->setNetAmountForStatistics(null);
         }
         if (\array_key_exists('netAmountForStatisticsInCompanyCurrency', $data) && $data['netAmountForStatisticsInCompanyCurrency'] !== null) {
             $object->setNetAmountForStatisticsInCompanyCurrency($data['netAmountForStatisticsInCompanyCurrency']);
             unset($data['netAmountForStatisticsInCompanyCurrency']);
-        }
-        elseif (\array_key_exists('netAmountForStatisticsInCompanyCurrency', $data) && $data['netAmountForStatisticsInCompanyCurrency'] === null) {
+        } elseif (\array_key_exists('netAmountForStatisticsInCompanyCurrency', $data) && $data['netAmountForStatisticsInCompanyCurrency'] === null) {
             $object->setNetAmountForStatisticsInCompanyCurrency(null);
         }
         if (\array_key_exists('netAmountInCompanyCurrency', $data) && $data['netAmountInCompanyCurrency'] !== null) {
             $object->setNetAmountInCompanyCurrency($data['netAmountInCompanyCurrency']);
             unset($data['netAmountInCompanyCurrency']);
-        }
-        elseif (\array_key_exists('netAmountInCompanyCurrency', $data) && $data['netAmountInCompanyCurrency'] === null) {
+        } elseif (\array_key_exists('netAmountInCompanyCurrency', $data) && $data['netAmountInCompanyCurrency'] === null) {
             $object->setNetAmountInCompanyCurrency(null);
         }
         if (\array_key_exists('reductionAdditionItems', $data) && $data['reductionAdditionItems'] !== null) {
@@ -242,57 +220,49 @@ class ContractItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->setReductionAdditionItems($values_1);
             unset($data['reductionAdditionItems']);
-        }
-        elseif (\array_key_exists('reductionAdditionItems', $data) && $data['reductionAdditionItems'] === null) {
+        } elseif (\array_key_exists('reductionAdditionItems', $data) && $data['reductionAdditionItems'] === null) {
             $object->setReductionAdditionItems(null);
         }
         if (\array_key_exists('taxId', $data) && $data['taxId'] !== null) {
             $object->setTaxId($data['taxId']);
             unset($data['taxId']);
-        }
-        elseif (\array_key_exists('taxId', $data) && $data['taxId'] === null) {
+        } elseif (\array_key_exists('taxId', $data) && $data['taxId'] === null) {
             $object->setTaxId(null);
         }
         if (\array_key_exists('taxName', $data) && $data['taxName'] !== null) {
             $object->setTaxName($data['taxName']);
             unset($data['taxName']);
-        }
-        elseif (\array_key_exists('taxName', $data) && $data['taxName'] === null) {
+        } elseif (\array_key_exists('taxName', $data) && $data['taxName'] === null) {
             $object->setTaxName(null);
         }
         if (\array_key_exists('unitPrice', $data) && $data['unitPrice'] !== null) {
             $object->setUnitPrice($data['unitPrice']);
             unset($data['unitPrice']);
-        }
-        elseif (\array_key_exists('unitPrice', $data) && $data['unitPrice'] === null) {
+        } elseif (\array_key_exists('unitPrice', $data) && $data['unitPrice'] === null) {
             $object->setUnitPrice(null);
         }
         if (\array_key_exists('unitPriceInCompanyCurrency', $data) && $data['unitPriceInCompanyCurrency'] !== null) {
             $object->setUnitPriceInCompanyCurrency($data['unitPriceInCompanyCurrency']);
             unset($data['unitPriceInCompanyCurrency']);
-        }
-        elseif (\array_key_exists('unitPriceInCompanyCurrency', $data) && $data['unitPriceInCompanyCurrency'] === null) {
+        } elseif (\array_key_exists('unitPriceInCompanyCurrency', $data) && $data['unitPriceInCompanyCurrency'] === null) {
             $object->setUnitPriceInCompanyCurrency(null);
         }
         if (\array_key_exists('addPageBreakBefore', $data) && $data['addPageBreakBefore'] !== null) {
             $object->setAddPageBreakBefore($data['addPageBreakBefore']);
             unset($data['addPageBreakBefore']);
-        }
-        elseif (\array_key_exists('addPageBreakBefore', $data) && $data['addPageBreakBefore'] === null) {
+        } elseif (\array_key_exists('addPageBreakBefore', $data) && $data['addPageBreakBefore'] === null) {
             $object->setAddPageBreakBefore(null);
         }
         if (\array_key_exists('groupName', $data) && $data['groupName'] !== null) {
             $object->setGroupName($data['groupName']);
             unset($data['groupName']);
-        }
-        elseif (\array_key_exists('groupName', $data) && $data['groupName'] === null) {
+        } elseif (\array_key_exists('groupName', $data) && $data['groupName'] === null) {
             $object->setGroupName(null);
         }
         if (\array_key_exists('billingGroupId', $data) && $data['billingGroupId'] !== null) {
             $object->setBillingGroupId($data['billingGroupId']);
             unset($data['billingGroupId']);
-        }
-        elseif (\array_key_exists('billingGroupId', $data) && $data['billingGroupId'] === null) {
+        } elseif (\array_key_exists('billingGroupId', $data) && $data['billingGroupId'] === null) {
             $object->setBillingGroupId(null);
         }
         if (\array_key_exists('commissionSalesPartners', $data) && $data['commissionSalesPartners'] !== null) {
@@ -302,64 +272,55 @@ class ContractItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $object->setCommissionSalesPartners($values_2);
             unset($data['commissionSalesPartners']);
-        }
-        elseif (\array_key_exists('commissionSalesPartners', $data) && $data['commissionSalesPartners'] === null) {
+        } elseif (\array_key_exists('commissionSalesPartners', $data) && $data['commissionSalesPartners'] === null) {
             $object->setCommissionSalesPartners(null);
         }
         if (\array_key_exists('costTypeId', $data) && $data['costTypeId'] !== null) {
             $object->setCostTypeId($data['costTypeId']);
             unset($data['costTypeId']);
-        }
-        elseif (\array_key_exists('costTypeId', $data) && $data['costTypeId'] === null) {
+        } elseif (\array_key_exists('costTypeId', $data) && $data['costTypeId'] === null) {
             $object->setCostTypeId(null);
         }
         if (\array_key_exists('interval', $data) && $data['interval'] !== null) {
             $object->setInterval($data['interval']);
             unset($data['interval']);
-        }
-        elseif (\array_key_exists('interval', $data) && $data['interval'] === null) {
+        } elseif (\array_key_exists('interval', $data) && $data['interval'] === null) {
             $object->setInterval(null);
         }
         if (\array_key_exists('intervalType', $data) && $data['intervalType'] !== null) {
             $object->setIntervalType($data['intervalType']);
             unset($data['intervalType']);
-        }
-        elseif (\array_key_exists('intervalType', $data) && $data['intervalType'] === null) {
+        } elseif (\array_key_exists('intervalType', $data) && $data['intervalType'] === null) {
             $object->setIntervalType(null);
         }
         if (\array_key_exists('nextContractBillingDate', $data) && $data['nextContractBillingDate'] !== null) {
             $object->setNextContractBillingDate($data['nextContractBillingDate']);
             unset($data['nextContractBillingDate']);
-        }
-        elseif (\array_key_exists('nextContractBillingDate', $data) && $data['nextContractBillingDate'] === null) {
+        } elseif (\array_key_exists('nextContractBillingDate', $data) && $data['nextContractBillingDate'] === null) {
             $object->setNextContractBillingDate(null);
         }
         if (\array_key_exists('previousContractBillingDate', $data) && $data['previousContractBillingDate'] !== null) {
             $object->setPreviousContractBillingDate($data['previousContractBillingDate']);
             unset($data['previousContractBillingDate']);
-        }
-        elseif (\array_key_exists('previousContractBillingDate', $data) && $data['previousContractBillingDate'] === null) {
+        } elseif (\array_key_exists('previousContractBillingDate', $data) && $data['previousContractBillingDate'] === null) {
             $object->setPreviousContractBillingDate(null);
         }
         if (\array_key_exists('servicePeriodFromDate', $data) && $data['servicePeriodFromDate'] !== null) {
             $object->setServicePeriodFromDate($data['servicePeriodFromDate']);
             unset($data['servicePeriodFromDate']);
-        }
-        elseif (\array_key_exists('servicePeriodFromDate', $data) && $data['servicePeriodFromDate'] === null) {
+        } elseif (\array_key_exists('servicePeriodFromDate', $data) && $data['servicePeriodFromDate'] === null) {
             $object->setServicePeriodFromDate(null);
         }
         if (\array_key_exists('servicePeriodToDate', $data) && $data['servicePeriodToDate'] !== null) {
             $object->setServicePeriodToDate($data['servicePeriodToDate']);
             unset($data['servicePeriodToDate']);
-        }
-        elseif (\array_key_exists('servicePeriodToDate', $data) && $data['servicePeriodToDate'] === null) {
+        } elseif (\array_key_exists('servicePeriodToDate', $data) && $data['servicePeriodToDate'] === null) {
             $object->setServicePeriodToDate(null);
         }
         if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
             unset($data['type']);
-        }
-        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
             $object->setType(null);
         }
         foreach ($data as $key => $value_3) {
@@ -367,141 +328,143 @@ class ContractItemNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $object[$key] = $value_3;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
+        if ($data->isInitialized('articleId') && $data->getArticleId() !== null) {
             $dataArray['articleId'] = $data->getArticleId();
         }
-        if ($data->isInitialized('articleNumber') && null !== $data->getArticleNumber()) {
+        if ($data->isInitialized('articleNumber') && $data->getArticleNumber() !== null) {
             $dataArray['articleNumber'] = $data->getArticleNumber();
         }
-        if ($data->isInitialized('note') && null !== $data->getNote()) {
+        if ($data->isInitialized('note') && $data->getNote() !== null) {
             $dataArray['note'] = $data->getNote();
         }
-        if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
+        if ($data->isInitialized('positionNumber') && $data->getPositionNumber() !== null) {
             $dataArray['positionNumber'] = $data->getPositionNumber();
         }
-        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
+        if ($data->isInitialized('quantity') && $data->getQuantity() !== null) {
             $dataArray['quantity'] = $data->getQuantity();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('descriptionFixed') && null !== $data->getDescriptionFixed()) {
+        if ($data->isInitialized('descriptionFixed') && $data->getDescriptionFixed() !== null) {
             $dataArray['descriptionFixed'] = $data->getDescriptionFixed();
         }
-        if ($data->isInitialized('itemType') && null !== $data->getItemType()) {
+        if ($data->isInitialized('itemType') && $data->getItemType() !== null) {
             $dataArray['itemType'] = $data->getItemType();
         }
-        if ($data->isInitialized('manualQuantity') && null !== $data->getManualQuantity()) {
+        if ($data->isInitialized('manualQuantity') && $data->getManualQuantity() !== null) {
             $dataArray['manualQuantity'] = $data->getManualQuantity();
         }
-        if ($data->isInitialized('parentItemId') && null !== $data->getParentItemId()) {
+        if ($data->isInitialized('parentItemId') && $data->getParentItemId() !== null) {
             $dataArray['parentItemId'] = $data->getParentItemId();
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+        if ($data->isInitialized('title') && $data->getTitle() !== null) {
             $dataArray['title'] = $data->getTitle();
         }
-        if ($data->isInitialized('unitId') && null !== $data->getUnitId()) {
+        if ($data->isInitialized('unitId') && $data->getUnitId() !== null) {
             $dataArray['unitId'] = $data->getUnitId();
         }
-        if ($data->isInitialized('unitName') && null !== $data->getUnitName()) {
+        if ($data->isInitialized('unitName') && $data->getUnitName() !== null) {
             $dataArray['unitName'] = $data->getUnitName();
         }
-        if ($data->isInitialized('discountPercentage') && null !== $data->getDiscountPercentage()) {
+        if ($data->isInitialized('discountPercentage') && $data->getDiscountPercentage() !== null) {
             $dataArray['discountPercentage'] = $data->getDiscountPercentage();
         }
-        if ($data->isInitialized('grossAmount') && null !== $data->getGrossAmount()) {
+        if ($data->isInitialized('grossAmount') && $data->getGrossAmount() !== null) {
             $dataArray['grossAmount'] = $data->getGrossAmount();
         }
-        if ($data->isInitialized('grossAmountInCompanyCurrency') && null !== $data->getGrossAmountInCompanyCurrency()) {
+        if ($data->isInitialized('grossAmountInCompanyCurrency') && $data->getGrossAmountInCompanyCurrency() !== null) {
             $dataArray['grossAmountInCompanyCurrency'] = $data->getGrossAmountInCompanyCurrency();
         }
-        if ($data->isInitialized('manualUnitPrice') && null !== $data->getManualUnitPrice()) {
+        if ($data->isInitialized('manualUnitPrice') && $data->getManualUnitPrice() !== null) {
             $dataArray['manualUnitPrice'] = $data->getManualUnitPrice();
         }
-        if ($data->isInitialized('netAmount') && null !== $data->getNetAmount()) {
+        if ($data->isInitialized('netAmount') && $data->getNetAmount() !== null) {
             $dataArray['netAmount'] = $data->getNetAmount();
         }
-        if ($data->isInitialized('netAmountForStatistics') && null !== $data->getNetAmountForStatistics()) {
+        if ($data->isInitialized('netAmountForStatistics') && $data->getNetAmountForStatistics() !== null) {
             $dataArray['netAmountForStatistics'] = $data->getNetAmountForStatistics();
         }
-        if ($data->isInitialized('netAmountForStatisticsInCompanyCurrency') && null !== $data->getNetAmountForStatisticsInCompanyCurrency()) {
+        if ($data->isInitialized('netAmountForStatisticsInCompanyCurrency') && $data->getNetAmountForStatisticsInCompanyCurrency() !== null) {
             $dataArray['netAmountForStatisticsInCompanyCurrency'] = $data->getNetAmountForStatisticsInCompanyCurrency();
         }
-        if ($data->isInitialized('netAmountInCompanyCurrency') && null !== $data->getNetAmountInCompanyCurrency()) {
+        if ($data->isInitialized('netAmountInCompanyCurrency') && $data->getNetAmountInCompanyCurrency() !== null) {
             $dataArray['netAmountInCompanyCurrency'] = $data->getNetAmountInCompanyCurrency();
         }
-        if ($data->isInitialized('reductionAdditionItems') && null !== $data->getReductionAdditionItems()) {
+        if ($data->isInitialized('reductionAdditionItems') && $data->getReductionAdditionItems() !== null) {
             $values_1 = [];
             foreach ($data->getReductionAdditionItems() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['reductionAdditionItems'] = $values_1;
         }
-        if ($data->isInitialized('taxId') && null !== $data->getTaxId()) {
+        if ($data->isInitialized('taxId') && $data->getTaxId() !== null) {
             $dataArray['taxId'] = $data->getTaxId();
         }
-        if ($data->isInitialized('taxName') && null !== $data->getTaxName()) {
+        if ($data->isInitialized('taxName') && $data->getTaxName() !== null) {
             $dataArray['taxName'] = $data->getTaxName();
         }
-        if ($data->isInitialized('unitPrice') && null !== $data->getUnitPrice()) {
+        if ($data->isInitialized('unitPrice') && $data->getUnitPrice() !== null) {
             $dataArray['unitPrice'] = $data->getUnitPrice();
         }
-        if ($data->isInitialized('unitPriceInCompanyCurrency') && null !== $data->getUnitPriceInCompanyCurrency()) {
+        if ($data->isInitialized('unitPriceInCompanyCurrency') && $data->getUnitPriceInCompanyCurrency() !== null) {
             $dataArray['unitPriceInCompanyCurrency'] = $data->getUnitPriceInCompanyCurrency();
         }
-        if ($data->isInitialized('addPageBreakBefore') && null !== $data->getAddPageBreakBefore()) {
+        if ($data->isInitialized('addPageBreakBefore') && $data->getAddPageBreakBefore() !== null) {
             $dataArray['addPageBreakBefore'] = $data->getAddPageBreakBefore();
         }
-        if ($data->isInitialized('groupName') && null !== $data->getGroupName()) {
+        if ($data->isInitialized('groupName') && $data->getGroupName() !== null) {
             $dataArray['groupName'] = $data->getGroupName();
         }
-        if ($data->isInitialized('billingGroupId') && null !== $data->getBillingGroupId()) {
+        if ($data->isInitialized('billingGroupId') && $data->getBillingGroupId() !== null) {
             $dataArray['billingGroupId'] = $data->getBillingGroupId();
         }
-        if ($data->isInitialized('commissionSalesPartners') && null !== $data->getCommissionSalesPartners()) {
+        if ($data->isInitialized('commissionSalesPartners') && $data->getCommissionSalesPartners() !== null) {
             $values_2 = [];
             foreach ($data->getCommissionSalesPartners() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['commissionSalesPartners'] = $values_2;
         }
-        if ($data->isInitialized('costTypeId') && null !== $data->getCostTypeId()) {
+        if ($data->isInitialized('costTypeId') && $data->getCostTypeId() !== null) {
             $dataArray['costTypeId'] = $data->getCostTypeId();
         }
-        if ($data->isInitialized('interval') && null !== $data->getInterval()) {
+        if ($data->isInitialized('interval') && $data->getInterval() !== null) {
             $dataArray['interval'] = $data->getInterval();
         }
-        if ($data->isInitialized('intervalType') && null !== $data->getIntervalType()) {
+        if ($data->isInitialized('intervalType') && $data->getIntervalType() !== null) {
             $dataArray['intervalType'] = $data->getIntervalType();
         }
-        if ($data->isInitialized('nextContractBillingDate') && null !== $data->getNextContractBillingDate()) {
+        if ($data->isInitialized('nextContractBillingDate') && $data->getNextContractBillingDate() !== null) {
             $dataArray['nextContractBillingDate'] = $data->getNextContractBillingDate();
         }
-        if ($data->isInitialized('previousContractBillingDate') && null !== $data->getPreviousContractBillingDate()) {
+        if ($data->isInitialized('previousContractBillingDate') && $data->getPreviousContractBillingDate() !== null) {
             $dataArray['previousContractBillingDate'] = $data->getPreviousContractBillingDate();
         }
-        if ($data->isInitialized('servicePeriodFromDate') && null !== $data->getServicePeriodFromDate()) {
+        if ($data->isInitialized('servicePeriodFromDate') && $data->getServicePeriodFromDate() !== null) {
             $dataArray['servicePeriodFromDate'] = $data->getServicePeriodFromDate();
         }
-        if ($data->isInitialized('servicePeriodToDate') && null !== $data->getServicePeriodToDate()) {
+        if ($data->isInitialized('servicePeriodToDate') && $data->getServicePeriodToDate() !== null) {
             $dataArray['servicePeriodToDate'] = $data->getServicePeriodToDate();
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
+        if ($data->isInitialized('type') && $data->getType() !== null) {
             $dataArray['type'] = $data->getType();
         }
         foreach ($data as $key => $value_3) {
@@ -509,8 +472,10 @@ class ContractItemNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $dataArray[$key] = $value_3;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\ContractItem::class => false];

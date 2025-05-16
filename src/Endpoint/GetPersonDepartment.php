@@ -7,37 +7,44 @@ class GetPersonDepartment extends \Webhubworks\WeclappApiCore\Runtime\Client\Bas
     /**
      * query personDepartment
      *
-     * @param array $queryParameters {
-     *     @var int $page 
-     *     @var int $pageSize 
-     *     @var bool $serializeNulls 
-     *     @var string $sort 
-     *     @var string $filter 
-     *     @var string $properties 
-     *     @var string $includeReferencedEntities 
-     * }
+     * @param  array  $queryParameters  {
+     *
+     * @var int $page
+     * @var int $pageSize
+     * @var bool $serializeNulls
+     * @var string $sort
+     * @var string $filter
+     * @var string $properties
+     * @var string $includeReferencedEntities
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
+
     use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
+
     public function getMethod(): string
     {
         return 'GET';
     }
+
     public function getUri(): string
     {
         return '/personDepartment';
     }
+
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
+
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
+
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -51,8 +58,10 @@ class GetPersonDepartment extends \Webhubworks\WeclappApiCore\Runtime\Client\Bas
         $optionsResolver->addAllowedTypes('filter', ['string']);
         $optionsResolver->addAllowedTypes('properties', ['string']);
         $optionsResolver->addAllowedTypes('includeReferencedEntities', ['string']);
+
         return $optionsResolver;
     }
+
     /**
      * {@inheritdoc}
      *
@@ -63,13 +72,14 @@ class GetPersonDepartment extends \Webhubworks\WeclappApiCore\Runtime\Client\Bas
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && ($status === 200 && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\PersonDepartmentGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ApiProblem', 'json');
         }
     }
+
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

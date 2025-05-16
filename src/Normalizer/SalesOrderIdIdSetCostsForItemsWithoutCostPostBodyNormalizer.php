@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class SalesOrderIdIdSetCostsForItemsWithoutCostPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class SalesOrderIdIdSetCostsForItemsWithoutCostPostBodyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdSetCostsForItemsWithoutCostPostBody::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdSetCostsForItemsWithoutCostPostBody::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,15 +37,14 @@ class SalesOrderIdIdSetCostsForItemsWithoutCostPostBodyNormalizer implements Den
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdSetCostsForItemsWithoutCostPostBody();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdSetCostsForItemsWithoutCostPostBody;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('costUpdateMode', $data) && $data['costUpdateMode'] !== null) {
             $object->setCostUpdateMode($data['costUpdateMode']);
             unset($data['costUpdateMode']);
-        }
-        elseif (\array_key_exists('costUpdateMode', $data) && $data['costUpdateMode'] === null) {
+        } elseif (\array_key_exists('costUpdateMode', $data) && $data['costUpdateMode'] === null) {
             $object->setCostUpdateMode(null);
         }
         foreach ($data as $key => $value) {
@@ -49,8 +52,10 @@ class SalesOrderIdIdSetCostsForItemsWithoutCostPostBodyNormalizer implements Den
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
@@ -60,8 +65,10 @@ class SalesOrderIdIdSetCostsForItemsWithoutCostPostBodyNormalizer implements Den
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SalesOrderIdIdSetCostsForItemsWithoutCostPostBody::class => false];

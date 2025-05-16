@@ -8,36 +8,27 @@ class TaxConfigurePurchaseTaxesPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
+
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
+
     /**
-     * 
-     *
      * @var string|null
      */
     protected $countryCode;
-    /**
-     * 
-     *
-     * @return string|null
-     */
+
     public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
-    /**
-     * 
-     *
-     * @param string|null $countryCode
-     *
-     * @return self
-     */
+
     public function setCountryCode(?string $countryCode): self
     {
         $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
+
         return $this;
     }
 }

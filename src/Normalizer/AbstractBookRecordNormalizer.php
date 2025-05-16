@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class AbstractBookRecordNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class AbstractBookRecordNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\AbstractBookRecord::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\AbstractBookRecord::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,71 +37,62 @@ class AbstractBookRecordNormalizer implements DenormalizerInterface, NormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\AbstractBookRecord();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\AbstractBookRecord;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
-        }
-        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
-        }
-        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+        } elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
             $object->setCreatedDate(null);
         }
         if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
-        }
-        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+        } elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
             $object->setLastModifiedDate(null);
         }
         if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
-        }
-        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
             $object->setVersion(null);
         }
         if (\array_key_exists('batchNumber', $data) && $data['batchNumber'] !== null) {
             $object->setBatchNumber($data['batchNumber']);
             unset($data['batchNumber']);
-        }
-        elseif (\array_key_exists('batchNumber', $data) && $data['batchNumber'] === null) {
+        } elseif (\array_key_exists('batchNumber', $data) && $data['batchNumber'] === null) {
             $object->setBatchNumber(null);
         }
         if (\array_key_exists('confirmedByUserId', $data) && $data['confirmedByUserId'] !== null) {
             $object->setConfirmedByUserId($data['confirmedByUserId']);
             unset($data['confirmedByUserId']);
-        }
-        elseif (\array_key_exists('confirmedByUserId', $data) && $data['confirmedByUserId'] === null) {
+        } elseif (\array_key_exists('confirmedByUserId', $data) && $data['confirmedByUserId'] === null) {
             $object->setConfirmedByUserId(null);
         }
         if (\array_key_exists('confirmedDate', $data) && $data['confirmedDate'] !== null) {
             $object->setConfirmedDate($data['confirmedDate']);
             unset($data['confirmedDate']);
-        }
-        elseif (\array_key_exists('confirmedDate', $data) && $data['confirmedDate'] === null) {
+        } elseif (\array_key_exists('confirmedDate', $data) && $data['confirmedDate'] === null) {
             $object->setConfirmedDate(null);
         }
         if (\array_key_exists('internalTransportReferenceId', $data) && $data['internalTransportReferenceId'] !== null) {
             $object->setInternalTransportReferenceId($data['internalTransportReferenceId']);
             unset($data['internalTransportReferenceId']);
-        }
-        elseif (\array_key_exists('internalTransportReferenceId', $data) && $data['internalTransportReferenceId'] === null) {
+        } elseif (\array_key_exists('internalTransportReferenceId', $data) && $data['internalTransportReferenceId'] === null) {
             $object->setInternalTransportReferenceId(null);
         }
         if (\array_key_exists('quantity', $data) && $data['quantity'] !== null) {
             $object->setQuantity($data['quantity']);
             unset($data['quantity']);
-        }
-        elseif (\array_key_exists('quantity', $data) && $data['quantity'] === null) {
+        } elseif (\array_key_exists('quantity', $data) && $data['quantity'] === null) {
             $object->setQuantity(null);
         }
         if (\array_key_exists('serialNumbers', $data) && $data['serialNumbers'] !== null) {
@@ -107,15 +102,13 @@ class AbstractBookRecordNormalizer implements DenormalizerInterface, NormalizerI
             }
             $object->setSerialNumbers($values);
             unset($data['serialNumbers']);
-        }
-        elseif (\array_key_exists('serialNumbers', $data) && $data['serialNumbers'] === null) {
+        } elseif (\array_key_exists('serialNumbers', $data) && $data['serialNumbers'] === null) {
             $object->setSerialNumbers(null);
         }
         if (\array_key_exists('storagePlaceId', $data) && $data['storagePlaceId'] !== null) {
             $object->setStoragePlaceId($data['storagePlaceId']);
             unset($data['storagePlaceId']);
-        }
-        elseif (\array_key_exists('storagePlaceId', $data) && $data['storagePlaceId'] === null) {
+        } elseif (\array_key_exists('storagePlaceId', $data) && $data['storagePlaceId'] === null) {
             $object->setStoragePlaceId(null);
         }
         foreach ($data as $key => $value_1) {
@@ -123,37 +116,39 @@ class AbstractBookRecordNormalizer implements DenormalizerInterface, NormalizerI
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('batchNumber') && null !== $data->getBatchNumber()) {
+        if ($data->isInitialized('batchNumber') && $data->getBatchNumber() !== null) {
             $dataArray['batchNumber'] = $data->getBatchNumber();
         }
-        if ($data->isInitialized('confirmedByUserId') && null !== $data->getConfirmedByUserId()) {
+        if ($data->isInitialized('confirmedByUserId') && $data->getConfirmedByUserId() !== null) {
             $dataArray['confirmedByUserId'] = $data->getConfirmedByUserId();
         }
-        if ($data->isInitialized('confirmedDate') && null !== $data->getConfirmedDate()) {
+        if ($data->isInitialized('confirmedDate') && $data->getConfirmedDate() !== null) {
             $dataArray['confirmedDate'] = $data->getConfirmedDate();
         }
-        if ($data->isInitialized('internalTransportReferenceId') && null !== $data->getInternalTransportReferenceId()) {
+        if ($data->isInitialized('internalTransportReferenceId') && $data->getInternalTransportReferenceId() !== null) {
             $dataArray['internalTransportReferenceId'] = $data->getInternalTransportReferenceId();
         }
-        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
+        if ($data->isInitialized('quantity') && $data->getQuantity() !== null) {
             $dataArray['quantity'] = $data->getQuantity();
         }
-        if ($data->isInitialized('serialNumbers') && null !== $data->getSerialNumbers()) {
+        if ($data->isInitialized('serialNumbers') && $data->getSerialNumbers() !== null) {
             $values = [];
             foreach ($data->getSerialNumbers() as $value) {
                 $values[] = $value;
             }
             $dataArray['serialNumbers'] = $values;
         }
-        if ($data->isInitialized('storagePlaceId') && null !== $data->getStoragePlaceId()) {
+        if ($data->isInitialized('storagePlaceId') && $data->getStoragePlaceId() !== null) {
             $dataArray['storagePlaceId'] = $data->getStoragePlaceId();
         }
         foreach ($data as $key => $value_1) {
@@ -161,8 +156,10 @@ class AbstractBookRecordNormalizer implements DenormalizerInterface, NormalizerI
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\AbstractBookRecord::class => false];
