@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class WarehouseStockNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class WarehouseStockNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\WarehouseStock::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\WarehouseStock::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class WarehouseStockNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\WarehouseStock();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\WarehouseStock;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -122,63 +126,65 @@ class WarehouseStockNormalizer implements DenormalizerInterface, NormalizerInter
                 $object[$key] = $value_3;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
+        if ($data->isInitialized('articleId') && $data->getArticleId() !== null) {
             $dataArray['articleId'] = $data->getArticleId();
         }
-        if ($data->isInitialized('articleNumber') && null !== $data->getArticleNumber()) {
+        if ($data->isInitialized('articleNumber') && $data->getArticleNumber() !== null) {
             $dataArray['articleNumber'] = $data->getArticleNumber();
         }
-        if ($data->isInitialized('batchNumber') && null !== $data->getBatchNumber()) {
+        if ($data->isInitialized('batchNumber') && $data->getBatchNumber() !== null) {
             $dataArray['batchNumber'] = $data->getBatchNumber();
         }
-        if ($data->isInitialized('batchNumberId') && null !== $data->getBatchNumberId()) {
+        if ($data->isInitialized('batchNumberId') && $data->getBatchNumberId() !== null) {
             $dataArray['batchNumberId'] = $data->getBatchNumberId();
         }
-        if ($data->isInitialized('inboundDate') && null !== $data->getInboundDate()) {
+        if ($data->isInitialized('inboundDate') && $data->getInboundDate() !== null) {
             $dataArray['inboundDate'] = $data->getInboundDate();
         }
-        if ($data->isInitialized('internalTransportReferenceId') && null !== $data->getInternalTransportReferenceId()) {
+        if ($data->isInitialized('internalTransportReferenceId') && $data->getInternalTransportReferenceId() !== null) {
             $dataArray['internalTransportReferenceId'] = $data->getInternalTransportReferenceId();
         }
-        if ($data->isInitialized('packagingUnits') && null !== $data->getPackagingUnits()) {
+        if ($data->isInitialized('packagingUnits') && $data->getPackagingUnits() !== null) {
             $values = [];
             foreach ($data->getPackagingUnits() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['packagingUnits'] = $values;
         }
-        if ($data->isInitialized('picks') && null !== $data->getPicks()) {
+        if ($data->isInitialized('picks') && $data->getPicks() !== null) {
             $values_1 = [];
             foreach ($data->getPicks() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['picks'] = $values_1;
         }
-        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
+        if ($data->isInitialized('quantity') && $data->getQuantity() !== null) {
             $dataArray['quantity'] = $data->getQuantity();
         }
-        if ($data->isInitialized('salesOrderItemId') && null !== $data->getSalesOrderItemId()) {
+        if ($data->isInitialized('salesOrderItemId') && $data->getSalesOrderItemId() !== null) {
             $dataArray['salesOrderItemId'] = $data->getSalesOrderItemId();
         }
-        if ($data->isInitialized('serialNumbers') && null !== $data->getSerialNumbers()) {
+        if ($data->isInitialized('serialNumbers') && $data->getSerialNumbers() !== null) {
             $values_2 = [];
             foreach ($data->getSerialNumbers() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['serialNumbers'] = $values_2;
         }
-        if ($data->isInitialized('storagePlaceId') && null !== $data->getStoragePlaceId()) {
+        if ($data->isInitialized('storagePlaceId') && $data->getStoragePlaceId() !== null) {
             $dataArray['storagePlaceId'] = $data->getStoragePlaceId();
         }
-        if ($data->isInitialized('warehouseId') && null !== $data->getWarehouseId()) {
+        if ($data->isInitialized('warehouseId') && $data->getWarehouseId() !== null) {
             $dataArray['warehouseId'] = $data->getWarehouseId();
         }
         foreach ($data as $key => $value_3) {
@@ -186,8 +192,10 @@ class WarehouseStockNormalizer implements DenormalizerInterface, NormalizerInter
                 $dataArray[$key] = $value_3;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\WarehouseStock::class => false];

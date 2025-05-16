@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class StoragePlaceTypeSettingsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class StoragePlaceTypeSettingsNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\StoragePlaceTypeSettings::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\StoragePlaceTypeSettings::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,7 +37,7 @@ class StoragePlaceTypeSettingsNormalizer implements DenormalizerInterface, Norma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\StoragePlaceTypeSettings();
+        $object = new \Webhubworks\WeclappApiCore\Model\StoragePlaceTypeSettings;
         if (\array_key_exists('allowMixedStoring', $data) && \is_int($data['allowMixedStoring'])) {
             $data['allowMixedStoring'] = (bool) $data['allowMixedStoring'];
         }
@@ -46,7 +50,7 @@ class StoragePlaceTypeSettingsNormalizer implements DenormalizerInterface, Norma
         if (\array_key_exists('transportationOrderRequiresFreeSegment', $data) && \is_int($data['transportationOrderRequiresFreeSegment'])) {
             $data['transportationOrderRequiresFreeSegment'] = (bool) $data['transportationOrderRequiresFreeSegment'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('allowMixedStoring', $data)) {
@@ -70,21 +74,23 @@ class StoragePlaceTypeSettingsNormalizer implements DenormalizerInterface, Norma
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('allowMixedStoring') && null !== $data->getAllowMixedStoring()) {
+        if ($data->isInitialized('allowMixedStoring') && $data->getAllowMixedStoring() !== null) {
             $dataArray['allowMixedStoring'] = $data->getAllowMixedStoring();
         }
-        if ($data->isInitialized('automaticPlaceAssignment') && null !== $data->getAutomaticPlaceAssignment()) {
+        if ($data->isInitialized('automaticPlaceAssignment') && $data->getAutomaticPlaceAssignment() !== null) {
             $dataArray['automaticPlaceAssignment'] = $data->getAutomaticPlaceAssignment();
         }
-        if ($data->isInitialized('multiplePlacesPerBaseArticle') && null !== $data->getMultiplePlacesPerBaseArticle()) {
+        if ($data->isInitialized('multiplePlacesPerBaseArticle') && $data->getMultiplePlacesPerBaseArticle() !== null) {
             $dataArray['multiplePlacesPerBaseArticle'] = $data->getMultiplePlacesPerBaseArticle();
         }
-        if ($data->isInitialized('transportationOrderRequiresFreeSegment') && null !== $data->getTransportationOrderRequiresFreeSegment()) {
+        if ($data->isInitialized('transportationOrderRequiresFreeSegment') && $data->getTransportationOrderRequiresFreeSegment() !== null) {
             $dataArray['transportationOrderRequiresFreeSegment'] = $data->getTransportationOrderRequiresFreeSegment();
         }
         foreach ($data as $key => $value) {
@@ -92,8 +98,10 @@ class StoragePlaceTypeSettingsNormalizer implements DenormalizerInterface, Norma
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\StoragePlaceTypeSettings::class => false];

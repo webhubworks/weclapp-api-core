@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TicketServiceLevelAgreementNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class TicketServiceLevelAgreementNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\TicketServiceLevelAgreement::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\TicketServiceLevelAgreement::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,7 +37,7 @@ class TicketServiceLevelAgreementNormalizer implements DenormalizerInterface, No
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\TicketServiceLevelAgreement();
+        $object = new \Webhubworks\WeclappApiCore\Model\TicketServiceLevelAgreement;
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
@@ -43,7 +47,7 @@ class TicketServiceLevelAgreementNormalizer implements DenormalizerInterface, No
         if (\array_key_exists('visible', $data) && \is_int($data['visible'])) {
             $data['visible'] = (bool) $data['visible'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -123,58 +127,60 @@ class TicketServiceLevelAgreementNormalizer implements DenormalizerInterface, No
                 $object[$key] = $value_4;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('active') && null !== $data->getActive()) {
+        if ($data->isInitialized('active') && $data->getActive() !== null) {
             $dataArray['active'] = $data->getActive();
         }
-        if ($data->isInitialized('categories') && null !== $data->getCategories()) {
+        if ($data->isInitialized('categories') && $data->getCategories() !== null) {
             $values = [];
             foreach ($data->getCategories() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['categories'] = $values;
         }
-        if ($data->isInitialized('customers') && null !== $data->getCustomers()) {
+        if ($data->isInitialized('customers') && $data->getCustomers() !== null) {
             $values_1 = [];
             foreach ($data->getCustomers() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['customers'] = $values_1;
         }
-        if ($data->isInitialized('degreeOfPerformance') && null !== $data->getDegreeOfPerformance()) {
+        if ($data->isInitialized('degreeOfPerformance') && $data->getDegreeOfPerformance() !== null) {
             $dataArray['degreeOfPerformance'] = $data->getDegreeOfPerformance();
         }
-        if ($data->isInitialized('includeNoTicketType') && null !== $data->getIncludeNoTicketType()) {
+        if ($data->isInitialized('includeNoTicketType') && $data->getIncludeNoTicketType() !== null) {
             $dataArray['includeNoTicketType'] = $data->getIncludeNoTicketType();
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name') && $data->getName() !== null) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('ratingId') && null !== $data->getRatingId()) {
+        if ($data->isInitialized('ratingId') && $data->getRatingId() !== null) {
             $dataArray['ratingId'] = $data->getRatingId();
         }
-        if ($data->isInitialized('targets') && null !== $data->getTargets()) {
+        if ($data->isInitialized('targets') && $data->getTargets() !== null) {
             $values_2 = [];
             foreach ($data->getTargets() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['targets'] = $values_2;
         }
-        if ($data->isInitialized('types') && null !== $data->getTypes()) {
+        if ($data->isInitialized('types') && $data->getTypes() !== null) {
             $values_3 = [];
             foreach ($data->getTypes() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $dataArray['types'] = $values_3;
         }
-        if ($data->isInitialized('visible') && null !== $data->getVisible()) {
+        if ($data->isInitialized('visible') && $data->getVisible() !== null) {
             $dataArray['visible'] = $data->getVisible();
         }
         foreach ($data as $key => $value_4) {
@@ -182,8 +188,10 @@ class TicketServiceLevelAgreementNormalizer implements DenormalizerInterface, No
                 $dataArray[$key] = $value_4;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\TicketServiceLevelAgreement::class => false];

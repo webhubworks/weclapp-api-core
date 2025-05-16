@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class IncomingGoodsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class IncomingGoodsItemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\IncomingGoodsItem::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\IncomingGoodsItem::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,14 +37,14 @@ class IncomingGoodsItemNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\IncomingGoodsItem();
+        $object = new \Webhubworks\WeclappApiCore\Model\IncomingGoodsItem;
         if (\array_key_exists('descriptionFixed', $data) && \is_int($data['descriptionFixed'])) {
             $data['descriptionFixed'] = (bool) $data['descriptionFixed'];
         }
         if (\array_key_exists('manualQuantity', $data) && \is_int($data['manualQuantity'])) {
             $data['manualQuantity'] = (bool) $data['manualQuantity'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -176,97 +180,99 @@ class IncomingGoodsItemNormalizer implements DenormalizerInterface, NormalizerIn
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
+        if ($data->isInitialized('articleId') && $data->getArticleId() !== null) {
             $dataArray['articleId'] = $data->getArticleId();
         }
-        if ($data->isInitialized('articleNumber') && null !== $data->getArticleNumber()) {
+        if ($data->isInitialized('articleNumber') && $data->getArticleNumber() !== null) {
             $dataArray['articleNumber'] = $data->getArticleNumber();
         }
-        if ($data->isInitialized('note') && null !== $data->getNote()) {
+        if ($data->isInitialized('note') && $data->getNote() !== null) {
             $dataArray['note'] = $data->getNote();
         }
-        if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
+        if ($data->isInitialized('positionNumber') && $data->getPositionNumber() !== null) {
             $dataArray['positionNumber'] = $data->getPositionNumber();
         }
-        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
+        if ($data->isInitialized('quantity') && $data->getQuantity() !== null) {
             $dataArray['quantity'] = $data->getQuantity();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('descriptionFixed') && null !== $data->getDescriptionFixed()) {
+        if ($data->isInitialized('descriptionFixed') && $data->getDescriptionFixed() !== null) {
             $dataArray['descriptionFixed'] = $data->getDescriptionFixed();
         }
-        if ($data->isInitialized('itemType') && null !== $data->getItemType()) {
+        if ($data->isInitialized('itemType') && $data->getItemType() !== null) {
             $dataArray['itemType'] = $data->getItemType();
         }
-        if ($data->isInitialized('manualQuantity') && null !== $data->getManualQuantity()) {
+        if ($data->isInitialized('manualQuantity') && $data->getManualQuantity() !== null) {
             $dataArray['manualQuantity'] = $data->getManualQuantity();
         }
-        if ($data->isInitialized('parentItemId') && null !== $data->getParentItemId()) {
+        if ($data->isInitialized('parentItemId') && $data->getParentItemId() !== null) {
             $dataArray['parentItemId'] = $data->getParentItemId();
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+        if ($data->isInitialized('title') && $data->getTitle() !== null) {
             $dataArray['title'] = $data->getTitle();
         }
-        if ($data->isInitialized('unitId') && null !== $data->getUnitId()) {
+        if ($data->isInitialized('unitId') && $data->getUnitId() !== null) {
             $dataArray['unitId'] = $data->getUnitId();
         }
-        if ($data->isInitialized('unitName') && null !== $data->getUnitName()) {
+        if ($data->isInitialized('unitName') && $data->getUnitName() !== null) {
             $dataArray['unitName'] = $data->getUnitName();
         }
-        if ($data->isInitialized('dropshippingShipmentItemId') && null !== $data->getDropshippingShipmentItemId()) {
+        if ($data->isInitialized('dropshippingShipmentItemId') && $data->getDropshippingShipmentItemId() !== null) {
             $dataArray['dropshippingShipmentItemId'] = $data->getDropshippingShipmentItemId();
         }
-        if ($data->isInitialized('itemGroup') && null !== $data->getItemGroup()) {
+        if ($data->isInitialized('itemGroup') && $data->getItemGroup() !== null) {
             $dataArray['itemGroup'] = $data->getItemGroup();
         }
-        if ($data->isInitialized('purchaseOrderItemId') && null !== $data->getPurchaseOrderItemId()) {
+        if ($data->isInitialized('purchaseOrderItemId') && $data->getPurchaseOrderItemId() !== null) {
             $dataArray['purchaseOrderItemId'] = $data->getPurchaseOrderItemId();
         }
-        if ($data->isInitialized('returnAssessmentId') && null !== $data->getReturnAssessmentId()) {
+        if ($data->isInitialized('returnAssessmentId') && $data->getReturnAssessmentId() !== null) {
             $dataArray['returnAssessmentId'] = $data->getReturnAssessmentId();
         }
-        if ($data->isInitialized('returnAssessmentName') && null !== $data->getReturnAssessmentName()) {
+        if ($data->isInitialized('returnAssessmentName') && $data->getReturnAssessmentName() !== null) {
             $dataArray['returnAssessmentName'] = $data->getReturnAssessmentName();
         }
-        if ($data->isInitialized('returnDescription') && null !== $data->getReturnDescription()) {
+        if ($data->isInitialized('returnDescription') && $data->getReturnDescription() !== null) {
             $dataArray['returnDescription'] = $data->getReturnDescription();
         }
-        if ($data->isInitialized('returnErrorId') && null !== $data->getReturnErrorId()) {
+        if ($data->isInitialized('returnErrorId') && $data->getReturnErrorId() !== null) {
             $dataArray['returnErrorId'] = $data->getReturnErrorId();
         }
-        if ($data->isInitialized('returnErrorName') && null !== $data->getReturnErrorName()) {
+        if ($data->isInitialized('returnErrorName') && $data->getReturnErrorName() !== null) {
             $dataArray['returnErrorName'] = $data->getReturnErrorName();
         }
-        if ($data->isInitialized('returnReasonId') && null !== $data->getReturnReasonId()) {
+        if ($data->isInitialized('returnReasonId') && $data->getReturnReasonId() !== null) {
             $dataArray['returnReasonId'] = $data->getReturnReasonId();
         }
-        if ($data->isInitialized('returnReasonName') && null !== $data->getReturnReasonName()) {
+        if ($data->isInitialized('returnReasonName') && $data->getReturnReasonName() !== null) {
             $dataArray['returnReasonName'] = $data->getReturnReasonName();
         }
-        if ($data->isInitialized('returnRectificationId') && null !== $data->getReturnRectificationId()) {
+        if ($data->isInitialized('returnRectificationId') && $data->getReturnRectificationId() !== null) {
             $dataArray['returnRectificationId'] = $data->getReturnRectificationId();
         }
-        if ($data->isInitialized('returnRectificationName') && null !== $data->getReturnRectificationName()) {
+        if ($data->isInitialized('returnRectificationName') && $data->getReturnRectificationName() !== null) {
             $dataArray['returnRectificationName'] = $data->getReturnRectificationName();
         }
-        if ($data->isInitialized('salesOrderItemId') && null !== $data->getSalesOrderItemId()) {
+        if ($data->isInitialized('salesOrderItemId') && $data->getSalesOrderItemId() !== null) {
             $dataArray['salesOrderItemId'] = $data->getSalesOrderItemId();
         }
         foreach ($data as $key => $value_1) {
@@ -274,8 +280,10 @@ class IncomingGoodsItemNormalizer implements DenormalizerInterface, NormalizerIn
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\IncomingGoodsItem::class => false];

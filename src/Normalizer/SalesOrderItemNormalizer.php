@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class SalesOrderItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class SalesOrderItemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SalesOrderItem::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SalesOrderItem::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,7 +37,7 @@ class SalesOrderItemNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SalesOrderItem();
+        $object = new \Webhubworks\WeclappApiCore\Model\SalesOrderItem;
         if (\array_key_exists('descriptionFixed', $data) && \is_int($data['descriptionFixed'])) {
             $data['descriptionFixed'] = (bool) $data['descriptionFixed'];
         }
@@ -55,7 +59,7 @@ class SalesOrderItemNormalizer implements DenormalizerInterface, NormalizerInter
         if (\array_key_exists('shipped', $data) && \is_int($data['shipped'])) {
             $data['shipped'] = (bool) $data['shipped'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -307,185 +311,187 @@ class SalesOrderItemNormalizer implements DenormalizerInterface, NormalizerInter
                 $object[$key] = $value_6;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
+        if ($data->isInitialized('articleId') && $data->getArticleId() !== null) {
             $dataArray['articleId'] = $data->getArticleId();
         }
-        if ($data->isInitialized('articleNumber') && null !== $data->getArticleNumber()) {
+        if ($data->isInitialized('articleNumber') && $data->getArticleNumber() !== null) {
             $dataArray['articleNumber'] = $data->getArticleNumber();
         }
-        if ($data->isInitialized('note') && null !== $data->getNote()) {
+        if ($data->isInitialized('note') && $data->getNote() !== null) {
             $dataArray['note'] = $data->getNote();
         }
-        if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
+        if ($data->isInitialized('positionNumber') && $data->getPositionNumber() !== null) {
             $dataArray['positionNumber'] = $data->getPositionNumber();
         }
-        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
+        if ($data->isInitialized('quantity') && $data->getQuantity() !== null) {
             $dataArray['quantity'] = $data->getQuantity();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('descriptionFixed') && null !== $data->getDescriptionFixed()) {
+        if ($data->isInitialized('descriptionFixed') && $data->getDescriptionFixed() !== null) {
             $dataArray['descriptionFixed'] = $data->getDescriptionFixed();
         }
-        if ($data->isInitialized('itemType') && null !== $data->getItemType()) {
+        if ($data->isInitialized('itemType') && $data->getItemType() !== null) {
             $dataArray['itemType'] = $data->getItemType();
         }
-        if ($data->isInitialized('manualQuantity') && null !== $data->getManualQuantity()) {
+        if ($data->isInitialized('manualQuantity') && $data->getManualQuantity() !== null) {
             $dataArray['manualQuantity'] = $data->getManualQuantity();
         }
-        if ($data->isInitialized('parentItemId') && null !== $data->getParentItemId()) {
+        if ($data->isInitialized('parentItemId') && $data->getParentItemId() !== null) {
             $dataArray['parentItemId'] = $data->getParentItemId();
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+        if ($data->isInitialized('title') && $data->getTitle() !== null) {
             $dataArray['title'] = $data->getTitle();
         }
-        if ($data->isInitialized('unitId') && null !== $data->getUnitId()) {
+        if ($data->isInitialized('unitId') && $data->getUnitId() !== null) {
             $dataArray['unitId'] = $data->getUnitId();
         }
-        if ($data->isInitialized('unitName') && null !== $data->getUnitName()) {
+        if ($data->isInitialized('unitName') && $data->getUnitName() !== null) {
             $dataArray['unitName'] = $data->getUnitName();
         }
-        if ($data->isInitialized('discountPercentage') && null !== $data->getDiscountPercentage()) {
+        if ($data->isInitialized('discountPercentage') && $data->getDiscountPercentage() !== null) {
             $dataArray['discountPercentage'] = $data->getDiscountPercentage();
         }
-        if ($data->isInitialized('grossAmount') && null !== $data->getGrossAmount()) {
+        if ($data->isInitialized('grossAmount') && $data->getGrossAmount() !== null) {
             $dataArray['grossAmount'] = $data->getGrossAmount();
         }
-        if ($data->isInitialized('grossAmountInCompanyCurrency') && null !== $data->getGrossAmountInCompanyCurrency()) {
+        if ($data->isInitialized('grossAmountInCompanyCurrency') && $data->getGrossAmountInCompanyCurrency() !== null) {
             $dataArray['grossAmountInCompanyCurrency'] = $data->getGrossAmountInCompanyCurrency();
         }
-        if ($data->isInitialized('manualUnitPrice') && null !== $data->getManualUnitPrice()) {
+        if ($data->isInitialized('manualUnitPrice') && $data->getManualUnitPrice() !== null) {
             $dataArray['manualUnitPrice'] = $data->getManualUnitPrice();
         }
-        if ($data->isInitialized('netAmount') && null !== $data->getNetAmount()) {
+        if ($data->isInitialized('netAmount') && $data->getNetAmount() !== null) {
             $dataArray['netAmount'] = $data->getNetAmount();
         }
-        if ($data->isInitialized('netAmountForStatistics') && null !== $data->getNetAmountForStatistics()) {
+        if ($data->isInitialized('netAmountForStatistics') && $data->getNetAmountForStatistics() !== null) {
             $dataArray['netAmountForStatistics'] = $data->getNetAmountForStatistics();
         }
-        if ($data->isInitialized('netAmountForStatisticsInCompanyCurrency') && null !== $data->getNetAmountForStatisticsInCompanyCurrency()) {
+        if ($data->isInitialized('netAmountForStatisticsInCompanyCurrency') && $data->getNetAmountForStatisticsInCompanyCurrency() !== null) {
             $dataArray['netAmountForStatisticsInCompanyCurrency'] = $data->getNetAmountForStatisticsInCompanyCurrency();
         }
-        if ($data->isInitialized('netAmountInCompanyCurrency') && null !== $data->getNetAmountInCompanyCurrency()) {
+        if ($data->isInitialized('netAmountInCompanyCurrency') && $data->getNetAmountInCompanyCurrency() !== null) {
             $dataArray['netAmountInCompanyCurrency'] = $data->getNetAmountInCompanyCurrency();
         }
-        if ($data->isInitialized('reductionAdditionItems') && null !== $data->getReductionAdditionItems()) {
+        if ($data->isInitialized('reductionAdditionItems') && $data->getReductionAdditionItems() !== null) {
             $values_1 = [];
             foreach ($data->getReductionAdditionItems() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['reductionAdditionItems'] = $values_1;
         }
-        if ($data->isInitialized('taxId') && null !== $data->getTaxId()) {
+        if ($data->isInitialized('taxId') && $data->getTaxId() !== null) {
             $dataArray['taxId'] = $data->getTaxId();
         }
-        if ($data->isInitialized('taxName') && null !== $data->getTaxName()) {
+        if ($data->isInitialized('taxName') && $data->getTaxName() !== null) {
             $dataArray['taxName'] = $data->getTaxName();
         }
-        if ($data->isInitialized('unitPrice') && null !== $data->getUnitPrice()) {
+        if ($data->isInitialized('unitPrice') && $data->getUnitPrice() !== null) {
             $dataArray['unitPrice'] = $data->getUnitPrice();
         }
-        if ($data->isInitialized('unitPriceInCompanyCurrency') && null !== $data->getUnitPriceInCompanyCurrency()) {
+        if ($data->isInitialized('unitPriceInCompanyCurrency') && $data->getUnitPriceInCompanyCurrency() !== null) {
             $dataArray['unitPriceInCompanyCurrency'] = $data->getUnitPriceInCompanyCurrency();
         }
-        if ($data->isInitialized('addPageBreakBefore') && null !== $data->getAddPageBreakBefore()) {
+        if ($data->isInitialized('addPageBreakBefore') && $data->getAddPageBreakBefore() !== null) {
             $dataArray['addPageBreakBefore'] = $data->getAddPageBreakBefore();
         }
-        if ($data->isInitialized('groupName') && null !== $data->getGroupName()) {
+        if ($data->isInitialized('groupName') && $data->getGroupName() !== null) {
             $dataArray['groupName'] = $data->getGroupName();
         }
-        if ($data->isInitialized('commissionSalesPartners') && null !== $data->getCommissionSalesPartners()) {
+        if ($data->isInitialized('commissionSalesPartners') && $data->getCommissionSalesPartners() !== null) {
             $values_2 = [];
             foreach ($data->getCommissionSalesPartners() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['commissionSalesPartners'] = $values_2;
         }
-        if ($data->isInitialized('manualUnitCost') && null !== $data->getManualUnitCost()) {
+        if ($data->isInitialized('manualUnitCost') && $data->getManualUnitCost() !== null) {
             $dataArray['manualUnitCost'] = $data->getManualUnitCost();
         }
-        if ($data->isInitialized('recommendedRetailPrice') && null !== $data->getRecommendedRetailPrice()) {
+        if ($data->isInitialized('recommendedRetailPrice') && $data->getRecommendedRetailPrice() !== null) {
             $dataArray['recommendedRetailPrice'] = $data->getRecommendedRetailPrice();
         }
-        if ($data->isInitialized('servicePeriodFrom') && null !== $data->getServicePeriodFrom()) {
+        if ($data->isInitialized('servicePeriodFrom') && $data->getServicePeriodFrom() !== null) {
             $dataArray['servicePeriodFrom'] = $data->getServicePeriodFrom();
         }
-        if ($data->isInitialized('servicePeriodTo') && null !== $data->getServicePeriodTo()) {
+        if ($data->isInitialized('servicePeriodTo') && $data->getServicePeriodTo() !== null) {
             $dataArray['servicePeriodTo'] = $data->getServicePeriodTo();
         }
-        if ($data->isInitialized('unitCost') && null !== $data->getUnitCost()) {
+        if ($data->isInitialized('unitCost') && $data->getUnitCost() !== null) {
             $dataArray['unitCost'] = $data->getUnitCost();
         }
-        if ($data->isInitialized('unitCostInCompanyCurrency') && null !== $data->getUnitCostInCompanyCurrency()) {
+        if ($data->isInitialized('unitCostInCompanyCurrency') && $data->getUnitCostInCompanyCurrency() !== null) {
             $dataArray['unitCostInCompanyCurrency'] = $data->getUnitCostInCompanyCurrency();
         }
-        if ($data->isInitialized('invoicingType') && null !== $data->getInvoicingType()) {
+        if ($data->isInitialized('invoicingType') && $data->getInvoicingType() !== null) {
             $dataArray['invoicingType'] = $data->getInvoicingType();
         }
-        if ($data->isInitialized('manualPlannedWorkingTimePerUnit') && null !== $data->getManualPlannedWorkingTimePerUnit()) {
+        if ($data->isInitialized('manualPlannedWorkingTimePerUnit') && $data->getManualPlannedWorkingTimePerUnit() !== null) {
             $dataArray['manualPlannedWorkingTimePerUnit'] = $data->getManualPlannedWorkingTimePerUnit();
         }
-        if ($data->isInitialized('plannedDeliveryDate') && null !== $data->getPlannedDeliveryDate()) {
+        if ($data->isInitialized('plannedDeliveryDate') && $data->getPlannedDeliveryDate() !== null) {
             $dataArray['plannedDeliveryDate'] = $data->getPlannedDeliveryDate();
         }
-        if ($data->isInitialized('plannedShippingDate') && null !== $data->getPlannedShippingDate()) {
+        if ($data->isInitialized('plannedShippingDate') && $data->getPlannedShippingDate() !== null) {
             $dataArray['plannedShippingDate'] = $data->getPlannedShippingDate();
         }
-        if ($data->isInitialized('plannedWorkingTimePerUnit') && null !== $data->getPlannedWorkingTimePerUnit()) {
+        if ($data->isInitialized('plannedWorkingTimePerUnit') && $data->getPlannedWorkingTimePerUnit() !== null) {
             $dataArray['plannedWorkingTimePerUnit'] = $data->getPlannedWorkingTimePerUnit();
         }
-        if ($data->isInitialized('availability') && null !== $data->getAvailability()) {
+        if ($data->isInitialized('availability') && $data->getAvailability() !== null) {
             $dataArray['availability'] = $data->getAvailability();
         }
-        if ($data->isInitialized('availabilityForAllWarehouses') && null !== $data->getAvailabilityForAllWarehouses()) {
+        if ($data->isInitialized('availabilityForAllWarehouses') && $data->getAvailabilityForAllWarehouses() !== null) {
             $dataArray['availabilityForAllWarehouses'] = $data->getAvailabilityForAllWarehouses();
         }
-        if ($data->isInitialized('contractChargeId') && null !== $data->getContractChargeId()) {
+        if ($data->isInitialized('contractChargeId') && $data->getContractChargeId() !== null) {
             $dataArray['contractChargeId'] = $data->getContractChargeId();
         }
-        if ($data->isInitialized('ecommerceOrderItemIds') && null !== $data->getEcommerceOrderItemIds()) {
+        if ($data->isInitialized('ecommerceOrderItemIds') && $data->getEcommerceOrderItemIds() !== null) {
             $values_3 = [];
             foreach ($data->getEcommerceOrderItemIds() as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['ecommerceOrderItemIds'] = $values_3;
         }
-        if ($data->isInitialized('invoicedQuantity') && null !== $data->getInvoicedQuantity()) {
+        if ($data->isInitialized('invoicedQuantity') && $data->getInvoicedQuantity() !== null) {
             $dataArray['invoicedQuantity'] = $data->getInvoicedQuantity();
         }
-        if ($data->isInitialized('picks') && null !== $data->getPicks()) {
+        if ($data->isInitialized('picks') && $data->getPicks() !== null) {
             $values_4 = [];
             foreach ($data->getPicks() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $dataArray['picks'] = $values_4;
         }
-        if ($data->isInitialized('returnedQuantity') && null !== $data->getReturnedQuantity()) {
+        if ($data->isInitialized('returnedQuantity') && $data->getReturnedQuantity() !== null) {
             $dataArray['returnedQuantity'] = $data->getReturnedQuantity();
         }
-        if ($data->isInitialized('shipped') && null !== $data->getShipped()) {
+        if ($data->isInitialized('shipped') && $data->getShipped() !== null) {
             $dataArray['shipped'] = $data->getShipped();
         }
-        if ($data->isInitialized('shippedQuantity') && null !== $data->getShippedQuantity()) {
+        if ($data->isInitialized('shippedQuantity') && $data->getShippedQuantity() !== null) {
             $dataArray['shippedQuantity'] = $data->getShippedQuantity();
         }
-        if ($data->isInitialized('tasks') && null !== $data->getTasks()) {
+        if ($data->isInitialized('tasks') && $data->getTasks() !== null) {
             $values_5 = [];
             foreach ($data->getTasks() as $value_5) {
                 $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
@@ -497,8 +503,10 @@ class SalesOrderItemNormalizer implements DenormalizerInterface, NormalizerInter
                 $dataArray[$key] = $value_6;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SalesOrderItem::class => false];

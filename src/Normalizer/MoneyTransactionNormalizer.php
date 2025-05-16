@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class MoneyTransactionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class MoneyTransactionNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\MoneyTransaction::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\MoneyTransaction::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class MoneyTransactionNormalizer implements DenormalizerInterface, NormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\MoneyTransaction();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\MoneyTransaction;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -154,84 +158,86 @@ class MoneyTransactionNormalizer implements DenormalizerInterface, NormalizerInt
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('accountForCostsOfMonetaryTrafficId') && null !== $data->getAccountForCostsOfMonetaryTrafficId()) {
+        if ($data->isInitialized('accountForCostsOfMonetaryTrafficId') && $data->getAccountForCostsOfMonetaryTrafficId() !== null) {
             $dataArray['accountForCostsOfMonetaryTrafficId'] = $data->getAccountForCostsOfMonetaryTrafficId();
         }
-        if ($data->isInitialized('accountForCostsOfMonetaryTrafficNumber') && null !== $data->getAccountForCostsOfMonetaryTrafficNumber()) {
+        if ($data->isInitialized('accountForCostsOfMonetaryTrafficNumber') && $data->getAccountForCostsOfMonetaryTrafficNumber() !== null) {
             $dataArray['accountForCostsOfMonetaryTrafficNumber'] = $data->getAccountForCostsOfMonetaryTrafficNumber();
         }
-        if ($data->isInitialized('accountForDunningFeeId') && null !== $data->getAccountForDunningFeeId()) {
+        if ($data->isInitialized('accountForDunningFeeId') && $data->getAccountForDunningFeeId() !== null) {
             $dataArray['accountForDunningFeeId'] = $data->getAccountForDunningFeeId();
         }
-        if ($data->isInitialized('accountForDunningFeeNumber') && null !== $data->getAccountForDunningFeeNumber()) {
+        if ($data->isInitialized('accountForDunningFeeNumber') && $data->getAccountForDunningFeeNumber() !== null) {
             $dataArray['accountForDunningFeeNumber'] = $data->getAccountForDunningFeeNumber();
         }
-        if ($data->isInitialized('accountId') && null !== $data->getAccountId()) {
+        if ($data->isInitialized('accountId') && $data->getAccountId() !== null) {
             $dataArray['accountId'] = $data->getAccountId();
         }
-        if ($data->isInitialized('accountNumber') && null !== $data->getAccountNumber()) {
+        if ($data->isInitialized('accountNumber') && $data->getAccountNumber() !== null) {
             $dataArray['accountNumber'] = $data->getAccountNumber();
         }
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
+        if ($data->isInitialized('amount') && $data->getAmount() !== null) {
             $dataArray['amount'] = $data->getAmount();
         }
-        if ($data->isInitialized('amountDiscount') && null !== $data->getAmountDiscount()) {
+        if ($data->isInitialized('amountDiscount') && $data->getAmountDiscount() !== null) {
             $dataArray['amountDiscount'] = $data->getAmountDiscount();
         }
-        if ($data->isInitialized('cashAccountSheetId') && null !== $data->getCashAccountSheetId()) {
+        if ($data->isInitialized('cashAccountSheetId') && $data->getCashAccountSheetId() !== null) {
             $dataArray['cashAccountSheetId'] = $data->getCashAccountSheetId();
         }
-        if ($data->isInitialized('createdById') && null !== $data->getCreatedById()) {
+        if ($data->isInitialized('createdById') && $data->getCreatedById() !== null) {
             $dataArray['createdById'] = $data->getCreatedById();
         }
-        if ($data->isInitialized('currencyId') && null !== $data->getCurrencyId()) {
+        if ($data->isInitialized('currencyId') && $data->getCurrencyId() !== null) {
             $dataArray['currencyId'] = $data->getCurrencyId();
         }
-        if ($data->isInitialized('currencyName') && null !== $data->getCurrencyName()) {
+        if ($data->isInitialized('currencyName') && $data->getCurrencyName() !== null) {
             $dataArray['currencyName'] = $data->getCurrencyName();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('effectiveDate') && null !== $data->getEffectiveDate()) {
+        if ($data->isInitialized('effectiveDate') && $data->getEffectiveDate() !== null) {
             $dataArray['effectiveDate'] = $data->getEffectiveDate();
         }
-        if ($data->isInitialized('externalRecordNumber') && null !== $data->getExternalRecordNumber()) {
+        if ($data->isInitialized('externalRecordNumber') && $data->getExternalRecordNumber() !== null) {
             $dataArray['externalRecordNumber'] = $data->getExternalRecordNumber();
         }
-        if ($data->isInitialized('origin') && null !== $data->getOrigin()) {
+        if ($data->isInitialized('origin') && $data->getOrigin() !== null) {
             $dataArray['origin'] = $data->getOrigin();
         }
-        if ($data->isInitialized('partyId') && null !== $data->getPartyId()) {
+        if ($data->isInitialized('partyId') && $data->getPartyId() !== null) {
             $dataArray['partyId'] = $data->getPartyId();
         }
-        if ($data->isInitialized('paymentMethodId') && null !== $data->getPaymentMethodId()) {
+        if ($data->isInitialized('paymentMethodId') && $data->getPaymentMethodId() !== null) {
             $dataArray['paymentMethodId'] = $data->getPaymentMethodId();
         }
-        if ($data->isInitialized('paymentMethodName') && null !== $data->getPaymentMethodName()) {
+        if ($data->isInitialized('paymentMethodName') && $data->getPaymentMethodName() !== null) {
             $dataArray['paymentMethodName'] = $data->getPaymentMethodName();
         }
-        if ($data->isInitialized('paymentToleranceAccountId') && null !== $data->getPaymentToleranceAccountId()) {
+        if ($data->isInitialized('paymentToleranceAccountId') && $data->getPaymentToleranceAccountId() !== null) {
             $dataArray['paymentToleranceAccountId'] = $data->getPaymentToleranceAccountId();
         }
-        if ($data->isInitialized('paymentToleranceAccountNumber') && null !== $data->getPaymentToleranceAccountNumber()) {
+        if ($data->isInitialized('paymentToleranceAccountNumber') && $data->getPaymentToleranceAccountNumber() !== null) {
             $dataArray['paymentToleranceAccountNumber'] = $data->getPaymentToleranceAccountNumber();
         }
-        if ($data->isInitialized('paymentType') && null !== $data->getPaymentType()) {
+        if ($data->isInitialized('paymentType') && $data->getPaymentType() !== null) {
             $dataArray['paymentType'] = $data->getPaymentType();
         }
-        if ($data->isInitialized('taxId') && null !== $data->getTaxId()) {
+        if ($data->isInitialized('taxId') && $data->getTaxId() !== null) {
             $dataArray['taxId'] = $data->getTaxId();
         }
-        if ($data->isInitialized('taxName') && null !== $data->getTaxName()) {
+        if ($data->isInitialized('taxName') && $data->getTaxName() !== null) {
             $dataArray['taxName'] = $data->getTaxName();
         }
         foreach ($data as $key => $value) {
@@ -239,8 +245,10 @@ class MoneyTransactionNormalizer implements DenormalizerInterface, NormalizerInt
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\MoneyTransaction::class => false];

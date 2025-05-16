@@ -8,36 +8,33 @@ class CurrencyGetResponse200 extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
+
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
+
     /**
-     * 
-     *
      * @var list<Currency>
      */
     protected $result;
+
     /**
-     * 
-     *
      * @return list<Currency>
      */
     public function getResult(): array
     {
         return $this->result;
     }
+
     /**
-     * 
-     *
-     * @param list<Currency> $result
-     *
-     * @return self
+     * @param  list<Currency>  $result
      */
     public function setResult(array $result): self
     {
         $this->initialized['result'] = true;
         $this->result = $result;
+
         return $this;
     }
 }

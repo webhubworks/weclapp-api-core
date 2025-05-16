@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class PurchaseOpenItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class PurchaseOpenItemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\PurchaseOpenItem::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\PurchaseOpenItem::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class PurchaseOpenItemNormalizer implements DenormalizerInterface, NormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\PurchaseOpenItem();
+        $object = new \Webhubworks\WeclappApiCore\Model\PurchaseOpenItem;
         if (\array_key_exists('cleared', $data) && \is_int($data['cleared'])) {
             $data['cleared'] = (bool) $data['cleared'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -105,46 +109,48 @@ class PurchaseOpenItemNormalizer implements DenormalizerInterface, NormalizerInt
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
+        if ($data->isInitialized('amount') && $data->getAmount() !== null) {
             $dataArray['amount'] = $data->getAmount();
         }
-        if ($data->isInitialized('amountDiscount') && null !== $data->getAmountDiscount()) {
+        if ($data->isInitialized('amountDiscount') && $data->getAmountDiscount() !== null) {
             $dataArray['amountDiscount'] = $data->getAmountDiscount();
         }
-        if ($data->isInitialized('amountOpen') && null !== $data->getAmountOpen()) {
+        if ($data->isInitialized('amountOpen') && $data->getAmountOpen() !== null) {
             $dataArray['amountOpen'] = $data->getAmountOpen();
         }
-        if ($data->isInitialized('amountPaid') && null !== $data->getAmountPaid()) {
+        if ($data->isInitialized('amountPaid') && $data->getAmountPaid() !== null) {
             $dataArray['amountPaid'] = $data->getAmountPaid();
         }
-        if ($data->isInitialized('clearanceDate') && null !== $data->getClearanceDate()) {
+        if ($data->isInitialized('clearanceDate') && $data->getClearanceDate() !== null) {
             $dataArray['clearanceDate'] = $data->getClearanceDate();
         }
-        if ($data->isInitialized('cleared') && null !== $data->getCleared()) {
+        if ($data->isInitialized('cleared') && $data->getCleared() !== null) {
             $dataArray['cleared'] = $data->getCleared();
         }
-        if ($data->isInitialized('openItemNumber') && null !== $data->getOpenItemNumber()) {
+        if ($data->isInitialized('openItemNumber') && $data->getOpenItemNumber() !== null) {
             $dataArray['openItemNumber'] = $data->getOpenItemNumber();
         }
-        if ($data->isInitialized('openItemType') && null !== $data->getOpenItemType()) {
+        if ($data->isInitialized('openItemType') && $data->getOpenItemType() !== null) {
             $dataArray['openItemType'] = $data->getOpenItemType();
         }
-        if ($data->isInitialized('paymentApplications') && null !== $data->getPaymentApplications()) {
+        if ($data->isInitialized('paymentApplications') && $data->getPaymentApplications() !== null) {
             $values = [];
             foreach ($data->getPaymentApplications() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['paymentApplications'] = $values;
         }
-        if ($data->isInitialized('purchaseInvoiceId') && null !== $data->getPurchaseInvoiceId()) {
+        if ($data->isInitialized('purchaseInvoiceId') && $data->getPurchaseInvoiceId() !== null) {
             $dataArray['purchaseInvoiceId'] = $data->getPurchaseInvoiceId();
         }
         foreach ($data as $key => $value_1) {
@@ -152,8 +158,10 @@ class PurchaseOpenItemNormalizer implements DenormalizerInterface, NormalizerInt
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\PurchaseOpenItem::class => false];

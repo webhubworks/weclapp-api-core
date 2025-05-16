@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class BaseRecordNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class BaseRecordNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\BaseRecord::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\BaseRecord::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,14 +37,14 @@ class BaseRecordNormalizer implements DenormalizerInterface, NormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\BaseRecord();
+        $object = new \Webhubworks\WeclappApiCore\Model\BaseRecord;
         if (\array_key_exists('disableEmailTemplate', $data) && \is_int($data['disableEmailTemplate'])) {
             $data['disableEmailTemplate'] = (bool) $data['disableEmailTemplate'];
         }
         if (\array_key_exists('sentToRecipient', $data) && \is_int($data['sentToRecipient'])) {
             $data['sentToRecipient'] = (bool) $data['sentToRecipient'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -112,46 +116,48 @@ class BaseRecordNormalizer implements DenormalizerInterface, NormalizerInterface
                 $object[$key] = $value_2;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('commercialLanguage') && null !== $data->getCommercialLanguage()) {
+        if ($data->isInitialized('commercialLanguage') && $data->getCommercialLanguage() !== null) {
             $dataArray['commercialLanguage'] = $data->getCommercialLanguage();
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
+        if ($data->isInitialized('creatorId') && $data->getCreatorId() !== null) {
             $dataArray['creatorId'] = $data->getCreatorId();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('disableEmailTemplate') && null !== $data->getDisableEmailTemplate()) {
+        if ($data->isInitialized('disableEmailTemplate') && $data->getDisableEmailTemplate() !== null) {
             $dataArray['disableEmailTemplate'] = $data->getDisableEmailTemplate();
         }
-        if ($data->isInitialized('recordComment') && null !== $data->getRecordComment()) {
+        if ($data->isInitialized('recordComment') && $data->getRecordComment() !== null) {
             $dataArray['recordComment'] = $data->getRecordComment();
         }
-        if ($data->isInitialized('recordFreeText') && null !== $data->getRecordFreeText()) {
+        if ($data->isInitialized('recordFreeText') && $data->getRecordFreeText() !== null) {
             $dataArray['recordFreeText'] = $data->getRecordFreeText();
         }
-        if ($data->isInitialized('recordOpening') && null !== $data->getRecordOpening()) {
+        if ($data->isInitialized('recordOpening') && $data->getRecordOpening() !== null) {
             $dataArray['recordOpening'] = $data->getRecordOpening();
         }
-        if ($data->isInitialized('sentToRecipient') && null !== $data->getSentToRecipient()) {
+        if ($data->isInitialized('sentToRecipient') && $data->getSentToRecipient() !== null) {
             $dataArray['sentToRecipient'] = $data->getSentToRecipient();
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if ($data->isInitialized('tags') && $data->getTags() !== null) {
             $values_1 = [];
             foreach ($data->getTags() as $value_1) {
                 $values_1[] = $value_1;
@@ -163,8 +169,10 @@ class BaseRecordNormalizer implements DenormalizerInterface, NormalizerInterface
                 $dataArray[$key] = $value_2;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\BaseRecord::class => false];

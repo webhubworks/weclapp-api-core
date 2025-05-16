@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TicketNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class TicketNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\Ticket::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\Ticket::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,7 +37,7 @@ class TicketNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\Ticket();
+        $object = new \Webhubworks\WeclappApiCore\Model\Ticket;
         if (\array_key_exists('billable', $data) && \is_int($data['billable'])) {
             $data['billable'] = (bool) $data['billable'];
         }
@@ -52,7 +56,7 @@ class TicketNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (\array_key_exists('resolvedYourIssue', $data) && \is_int($data['resolvedYourIssue'])) {
             $data['resolvedYourIssue'] = (bool) $data['resolvedYourIssue'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -280,165 +284,167 @@ class TicketNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $object[$key] = $value_4;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('assignedPoolingGroupId') && null !== $data->getAssignedPoolingGroupId()) {
+        if ($data->isInitialized('assignedPoolingGroupId') && $data->getAssignedPoolingGroupId() !== null) {
             $dataArray['assignedPoolingGroupId'] = $data->getAssignedPoolingGroupId();
         }
-        if ($data->isInitialized('assignedUserId') && null !== $data->getAssignedUserId()) {
+        if ($data->isInitialized('assignedUserId') && $data->getAssignedUserId() !== null) {
             $dataArray['assignedUserId'] = $data->getAssignedUserId();
         }
-        if ($data->isInitialized('billable') && null !== $data->getBillable()) {
+        if ($data->isInitialized('billable') && $data->getBillable() !== null) {
             $dataArray['billable'] = $data->getBillable();
         }
-        if ($data->isInitialized('billableStatus') && null !== $data->getBillableStatus()) {
+        if ($data->isInitialized('billableStatus') && $data->getBillableStatus() !== null) {
             $dataArray['billableStatus'] = $data->getBillableStatus();
         }
-        if ($data->isInitialized('ccEmailAddresses') && null !== $data->getCcEmailAddresses()) {
+        if ($data->isInitialized('ccEmailAddresses') && $data->getCcEmailAddresses() !== null) {
             $dataArray['ccEmailAddresses'] = $data->getCcEmailAddresses();
         }
-        if ($data->isInitialized('contactId') && null !== $data->getContactId()) {
+        if ($data->isInitialized('contactId') && $data->getContactId() !== null) {
             $dataArray['contactId'] = $data->getContactId();
         }
-        if ($data->isInitialized('contractId') && null !== $data->getContractId()) {
+        if ($data->isInitialized('contractId') && $data->getContractId() !== null) {
             $dataArray['contractId'] = $data->getContractId();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('disableEmailTemplates') && null !== $data->getDisableEmailTemplates()) {
+        if ($data->isInitialized('disableEmailTemplates') && $data->getDisableEmailTemplates() !== null) {
             $dataArray['disableEmailTemplates'] = $data->getDisableEmailTemplates();
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
+        if ($data->isInitialized('email') && $data->getEmail() !== null) {
             $dataArray['email'] = $data->getEmail();
         }
-        if ($data->isInitialized('entityReferences') && null !== $data->getEntityReferences()) {
+        if ($data->isInitialized('entityReferences') && $data->getEntityReferences() !== null) {
             $values_1 = [];
             foreach ($data->getEntityReferences() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['entityReferences'] = $values_1;
         }
-        if ($data->isInitialized('finishedDate') && null !== $data->getFinishedDate()) {
+        if ($data->isInitialized('finishedDate') && $data->getFinishedDate() !== null) {
             $dataArray['finishedDate'] = $data->getFinishedDate();
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
+        if ($data->isInitialized('firstName') && $data->getFirstName() !== null) {
             $dataArray['firstName'] = $data->getFirstName();
         }
-        if ($data->isInitialized('followUpDate') && null !== $data->getFollowUpDate()) {
+        if ($data->isInitialized('followUpDate') && $data->getFollowUpDate() !== null) {
             $dataArray['followUpDate'] = $data->getFollowUpDate();
         }
-        if ($data->isInitialized('invoicingStatus') && null !== $data->getInvoicingStatus()) {
+        if ($data->isInitialized('invoicingStatus') && $data->getInvoicingStatus() !== null) {
             $dataArray['invoicingStatus'] = $data->getInvoicingStatus();
         }
-        if ($data->isInitialized('isTemplate') && null !== $data->getIsTemplate()) {
+        if ($data->isInitialized('isTemplate') && $data->getIsTemplate() !== null) {
             $dataArray['isTemplate'] = $data->getIsTemplate();
         }
-        if ($data->isInitialized('language') && null !== $data->getLanguage()) {
+        if ($data->isInitialized('language') && $data->getLanguage() !== null) {
             $dataArray['language'] = $data->getLanguage();
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
+        if ($data->isInitialized('lastName') && $data->getLastName() !== null) {
             $dataArray['lastName'] = $data->getLastName();
         }
-        if ($data->isInitialized('legacyArticleId') && null !== $data->getLegacyArticleId()) {
+        if ($data->isInitialized('legacyArticleId') && $data->getLegacyArticleId() !== null) {
             $dataArray['legacyArticleId'] = $data->getLegacyArticleId();
         }
-        if ($data->isInitialized('legacyTimeAndMaterialTicket') && null !== $data->getLegacyTimeAndMaterialTicket()) {
+        if ($data->isInitialized('legacyTimeAndMaterialTicket') && $data->getLegacyTimeAndMaterialTicket() !== null) {
             $dataArray['legacyTimeAndMaterialTicket'] = $data->getLegacyTimeAndMaterialTicket();
         }
-        if ($data->isInitialized('mail2TicketId') && null !== $data->getMail2TicketId()) {
+        if ($data->isInitialized('mail2TicketId') && $data->getMail2TicketId() !== null) {
             $dataArray['mail2TicketId'] = $data->getMail2TicketId();
         }
-        if ($data->isInitialized('mobilePhoneNumber') && null !== $data->getMobilePhoneNumber()) {
+        if ($data->isInitialized('mobilePhoneNumber') && $data->getMobilePhoneNumber() !== null) {
             $dataArray['mobilePhoneNumber'] = $data->getMobilePhoneNumber();
         }
-        if ($data->isInitialized('note') && null !== $data->getNote()) {
+        if ($data->isInitialized('note') && $data->getNote() !== null) {
             $dataArray['note'] = $data->getNote();
         }
-        if ($data->isInitialized('partyId') && null !== $data->getPartyId()) {
+        if ($data->isInitialized('partyId') && $data->getPartyId() !== null) {
             $dataArray['partyId'] = $data->getPartyId();
         }
-        if ($data->isInitialized('performanceRecordedStatus') && null !== $data->getPerformanceRecordedStatus()) {
+        if ($data->isInitialized('performanceRecordedStatus') && $data->getPerformanceRecordedStatus() !== null) {
             $dataArray['performanceRecordedStatus'] = $data->getPerformanceRecordedStatus();
         }
-        if ($data->isInitialized('phoneNumber') && null !== $data->getPhoneNumber()) {
+        if ($data->isInitialized('phoneNumber') && $data->getPhoneNumber() !== null) {
             $dataArray['phoneNumber'] = $data->getPhoneNumber();
         }
-        if ($data->isInitialized('publicPageExpirationDate') && null !== $data->getPublicPageExpirationDate()) {
+        if ($data->isInitialized('publicPageExpirationDate') && $data->getPublicPageExpirationDate() !== null) {
             $dataArray['publicPageExpirationDate'] = $data->getPublicPageExpirationDate();
         }
-        if ($data->isInitialized('publicPageUuid') && null !== $data->getPublicPageUuid()) {
+        if ($data->isInitialized('publicPageUuid') && $data->getPublicPageUuid() !== null) {
             $dataArray['publicPageUuid'] = $data->getPublicPageUuid();
         }
-        if ($data->isInitialized('resolvedYourIssue') && null !== $data->getResolvedYourIssue()) {
+        if ($data->isInitialized('resolvedYourIssue') && $data->getResolvedYourIssue() !== null) {
             $dataArray['resolvedYourIssue'] = $data->getResolvedYourIssue();
         }
-        if ($data->isInitialized('responsibleUserId') && null !== $data->getResponsibleUserId()) {
+        if ($data->isInitialized('responsibleUserId') && $data->getResponsibleUserId() !== null) {
             $dataArray['responsibleUserId'] = $data->getResponsibleUserId();
         }
-        if ($data->isInitialized('room') && null !== $data->getRoom()) {
+        if ($data->isInitialized('room') && $data->getRoom() !== null) {
             $dataArray['room'] = $data->getRoom();
         }
-        if ($data->isInitialized('salesOrderId') && null !== $data->getSalesOrderId()) {
+        if ($data->isInitialized('salesOrderId') && $data->getSalesOrderId() !== null) {
             $dataArray['salesOrderId'] = $data->getSalesOrderId();
         }
-        if ($data->isInitialized('solutionDueDate') && null !== $data->getSolutionDueDate()) {
+        if ($data->isInitialized('solutionDueDate') && $data->getSolutionDueDate() !== null) {
             $dataArray['solutionDueDate'] = $data->getSolutionDueDate();
         }
-        if ($data->isInitialized('subject') && null !== $data->getSubject()) {
+        if ($data->isInitialized('subject') && $data->getSubject() !== null) {
             $dataArray['subject'] = $data->getSubject();
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if ($data->isInitialized('tags') && $data->getTags() !== null) {
             $values_2 = [];
             foreach ($data->getTags() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['tags'] = $values_2;
         }
-        if ($data->isInitialized('ticketCategoryId') && null !== $data->getTicketCategoryId()) {
+        if ($data->isInitialized('ticketCategoryId') && $data->getTicketCategoryId() !== null) {
             $dataArray['ticketCategoryId'] = $data->getTicketCategoryId();
         }
-        if ($data->isInitialized('ticketChannelId') && null !== $data->getTicketChannelId()) {
+        if ($data->isInitialized('ticketChannelId') && $data->getTicketChannelId() !== null) {
             $dataArray['ticketChannelId'] = $data->getTicketChannelId();
         }
-        if ($data->isInitialized('ticketNumber') && null !== $data->getTicketNumber()) {
+        if ($data->isInitialized('ticketNumber') && $data->getTicketNumber() !== null) {
             $dataArray['ticketNumber'] = $data->getTicketNumber();
         }
-        if ($data->isInitialized('ticketPriorityId') && null !== $data->getTicketPriorityId()) {
+        if ($data->isInitialized('ticketPriorityId') && $data->getTicketPriorityId() !== null) {
             $dataArray['ticketPriorityId'] = $data->getTicketPriorityId();
         }
-        if ($data->isInitialized('ticketRating') && null !== $data->getTicketRating()) {
+        if ($data->isInitialized('ticketRating') && $data->getTicketRating() !== null) {
             $dataArray['ticketRating'] = $data->getTicketRating();
         }
-        if ($data->isInitialized('ticketRatingComment') && null !== $data->getTicketRatingComment()) {
+        if ($data->isInitialized('ticketRatingComment') && $data->getTicketRatingComment() !== null) {
             $dataArray['ticketRatingComment'] = $data->getTicketRatingComment();
         }
-        if ($data->isInitialized('ticketRatingDate') && null !== $data->getTicketRatingDate()) {
+        if ($data->isInitialized('ticketRatingDate') && $data->getTicketRatingDate() !== null) {
             $dataArray['ticketRatingDate'] = $data->getTicketRatingDate();
         }
-        if ($data->isInitialized('ticketServiceLevelAgreementId') && null !== $data->getTicketServiceLevelAgreementId()) {
+        if ($data->isInitialized('ticketServiceLevelAgreementId') && $data->getTicketServiceLevelAgreementId() !== null) {
             $dataArray['ticketServiceLevelAgreementId'] = $data->getTicketServiceLevelAgreementId();
         }
-        if ($data->isInitialized('ticketStatusId') && null !== $data->getTicketStatusId()) {
+        if ($data->isInitialized('ticketStatusId') && $data->getTicketStatusId() !== null) {
             $dataArray['ticketStatusId'] = $data->getTicketStatusId();
         }
-        if ($data->isInitialized('ticketTypeId') && null !== $data->getTicketTypeId()) {
+        if ($data->isInitialized('ticketTypeId') && $data->getTicketTypeId() !== null) {
             $dataArray['ticketTypeId'] = $data->getTicketTypeId();
         }
-        if ($data->isInitialized('watchers') && null !== $data->getWatchers()) {
+        if ($data->isInitialized('watchers') && $data->getWatchers() !== null) {
             $values_3 = [];
             foreach ($data->getWatchers() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
@@ -450,8 +456,10 @@ class TicketNormalizer implements DenormalizerInterface, NormalizerInterface, De
                 $dataArray[$key] = $value_4;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\Ticket::class => false];

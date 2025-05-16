@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ProductionOrderNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class ProductionOrderNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\ProductionOrder::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ProductionOrder::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class ProductionOrderNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\ProductionOrder();
+        $object = new \Webhubworks\WeclappApiCore\Model\ProductionOrder;
         if (\array_key_exists('picksComplete', $data) && \is_int($data['picksComplete'])) {
             $data['picksComplete'] = (bool) $data['picksComplete'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -161,87 +165,89 @@ class ProductionOrderNormalizer implements DenormalizerInterface, NormalizerInte
                 $object[$key] = $value_4;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('actualEndDate') && null !== $data->getActualEndDate()) {
+        if ($data->isInitialized('actualEndDate') && $data->getActualEndDate() !== null) {
             $dataArray['actualEndDate'] = $data->getActualEndDate();
         }
-        if ($data->isInitialized('actualQuantity') && null !== $data->getActualQuantity()) {
+        if ($data->isInitialized('actualQuantity') && $data->getActualQuantity() !== null) {
             $dataArray['actualQuantity'] = $data->getActualQuantity();
         }
-        if ($data->isInitialized('actualStartDate') && null !== $data->getActualStartDate()) {
+        if ($data->isInitialized('actualStartDate') && $data->getActualStartDate() !== null) {
             $dataArray['actualStartDate'] = $data->getActualStartDate();
         }
-        if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
+        if ($data->isInitialized('articleId') && $data->getArticleId() !== null) {
             $dataArray['articleId'] = $data->getArticleId();
         }
-        if ($data->isInitialized('articleNumber') && null !== $data->getArticleNumber()) {
+        if ($data->isInitialized('articleNumber') && $data->getArticleNumber() !== null) {
             $dataArray['articleNumber'] = $data->getArticleNumber();
         }
-        if ($data->isInitialized('assemblyStoragePlaceId') && null !== $data->getAssemblyStoragePlaceId()) {
+        if ($data->isInitialized('assemblyStoragePlaceId') && $data->getAssemblyStoragePlaceId() !== null) {
             $dataArray['assemblyStoragePlaceId'] = $data->getAssemblyStoragePlaceId();
         }
-        if ($data->isInitialized('availability') && null !== $data->getAvailability()) {
+        if ($data->isInitialized('availability') && $data->getAvailability() !== null) {
             $dataArray['availability'] = $data->getAvailability();
         }
-        if ($data->isInitialized('availabilityForAllWarehouses') && null !== $data->getAvailabilityForAllWarehouses()) {
+        if ($data->isInitialized('availabilityForAllWarehouses') && $data->getAvailabilityForAllWarehouses() !== null) {
             $dataArray['availabilityForAllWarehouses'] = $data->getAvailabilityForAllWarehouses();
         }
-        if ($data->isInitialized('pickingInstructions') && null !== $data->getPickingInstructions()) {
+        if ($data->isInitialized('pickingInstructions') && $data->getPickingInstructions() !== null) {
             $dataArray['pickingInstructions'] = $data->getPickingInstructions();
         }
-        if ($data->isInitialized('picksComplete') && null !== $data->getPicksComplete()) {
+        if ($data->isInitialized('picksComplete') && $data->getPicksComplete() !== null) {
             $dataArray['picksComplete'] = $data->getPicksComplete();
         }
-        if ($data->isInitialized('productionOrderItems') && null !== $data->getProductionOrderItems()) {
+        if ($data->isInitialized('productionOrderItems') && $data->getProductionOrderItems() !== null) {
             $values_1 = [];
             foreach ($data->getProductionOrderItems() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['productionOrderItems'] = $values_1;
         }
-        if ($data->isInitialized('productionOrderNumber') && null !== $data->getProductionOrderNumber()) {
+        if ($data->isInitialized('productionOrderNumber') && $data->getProductionOrderNumber() !== null) {
             $dataArray['productionOrderNumber'] = $data->getProductionOrderNumber();
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
+        if ($data->isInitialized('status') && $data->getStatus() !== null) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('statusHistory') && null !== $data->getStatusHistory()) {
+        if ($data->isInitialized('statusHistory') && $data->getStatusHistory() !== null) {
             $values_2 = [];
             foreach ($data->getStatusHistory() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['statusHistory'] = $values_2;
         }
-        if ($data->isInitialized('targetEndDate') && null !== $data->getTargetEndDate()) {
+        if ($data->isInitialized('targetEndDate') && $data->getTargetEndDate() !== null) {
             $dataArray['targetEndDate'] = $data->getTargetEndDate();
         }
-        if ($data->isInitialized('targetQuantity') && null !== $data->getTargetQuantity()) {
+        if ($data->isInitialized('targetQuantity') && $data->getTargetQuantity() !== null) {
             $dataArray['targetQuantity'] = $data->getTargetQuantity();
         }
-        if ($data->isInitialized('targetStartDate') && null !== $data->getTargetStartDate()) {
+        if ($data->isInitialized('targetStartDate') && $data->getTargetStartDate() !== null) {
             $dataArray['targetStartDate'] = $data->getTargetStartDate();
         }
-        if ($data->isInitialized('warehouseId') && null !== $data->getWarehouseId()) {
+        if ($data->isInitialized('warehouseId') && $data->getWarehouseId() !== null) {
             $dataArray['warehouseId'] = $data->getWarehouseId();
         }
-        if ($data->isInitialized('warehouseName') && null !== $data->getWarehouseName()) {
+        if ($data->isInitialized('warehouseName') && $data->getWarehouseName() !== null) {
             $dataArray['warehouseName'] = $data->getWarehouseName();
         }
-        if ($data->isInitialized('workItems') && null !== $data->getWorkItems()) {
+        if ($data->isInitialized('workItems') && $data->getWorkItems() !== null) {
             $values_3 = [];
             foreach ($data->getWorkItems() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
@@ -253,8 +259,10 @@ class ProductionOrderNormalizer implements DenormalizerInterface, NormalizerInte
                 $dataArray[$key] = $value_4;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\ProductionOrder::class => false];

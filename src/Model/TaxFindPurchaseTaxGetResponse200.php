@@ -8,36 +8,27 @@ class TaxFindPurchaseTaxGetResponse200 extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
+
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
+
     /**
-     * 
-     *
      * @var Tax
      */
     protected $result;
-    /**
-     * 
-     *
-     * @return Tax
-     */
+
     public function getResult(): Tax
     {
         return $this->result;
     }
-    /**
-     * 
-     *
-     * @param Tax $result
-     *
-     * @return self
-     */
+
     public function setResult(Tax $result): self
     {
         $this->initialized['result'] = true;
         $this->result = $result;
+
         return $this;
     }
 }

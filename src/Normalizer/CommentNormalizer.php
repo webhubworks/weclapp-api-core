@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class CommentNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class CommentNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\Comment::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\Comment::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,7 +37,7 @@ class CommentNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\Comment();
+        $object = new \Webhubworks\WeclappApiCore\Model\Comment;
         if (\array_key_exists('privateComment', $data) && \is_int($data['privateComment'])) {
             $data['privateComment'] = (bool) $data['privateComment'];
         }
@@ -43,7 +47,7 @@ class CommentNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('solution', $data) && \is_int($data['solution'])) {
             $data['solution'] = (bool) $data['solution'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -123,55 +127,57 @@ class CommentNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('authorName') && null !== $data->getAuthorName()) {
+        if ($data->isInitialized('authorName') && $data->getAuthorName() !== null) {
             $dataArray['authorName'] = $data->getAuthorName();
         }
-        if ($data->isInitialized('authorUserId') && null !== $data->getAuthorUserId()) {
+        if ($data->isInitialized('authorUserId') && $data->getAuthorUserId() !== null) {
             $dataArray['authorUserId'] = $data->getAuthorUserId();
         }
-        if ($data->isInitialized('authorUserUsername') && null !== $data->getAuthorUserUsername()) {
+        if ($data->isInitialized('authorUserUsername') && $data->getAuthorUserUsername() !== null) {
             $dataArray['authorUserUsername'] = $data->getAuthorUserUsername();
         }
-        if ($data->isInitialized('comment') && null !== $data->getComment()) {
+        if ($data->isInitialized('comment') && $data->getComment() !== null) {
             $dataArray['comment'] = $data->getComment();
         }
-        if ($data->isInitialized('entityId') && null !== $data->getEntityId()) {
+        if ($data->isInitialized('entityId') && $data->getEntityId() !== null) {
             $dataArray['entityId'] = $data->getEntityId();
         }
-        if ($data->isInitialized('entityName') && null !== $data->getEntityName()) {
+        if ($data->isInitialized('entityName') && $data->getEntityName() !== null) {
             $dataArray['entityName'] = $data->getEntityName();
         }
-        if ($data->isInitialized('htmlComment') && null !== $data->getHtmlComment()) {
+        if ($data->isInitialized('htmlComment') && $data->getHtmlComment() !== null) {
             $dataArray['htmlComment'] = $data->getHtmlComment();
         }
-        if ($data->isInitialized('lastEditDate') && null !== $data->getLastEditDate()) {
+        if ($data->isInitialized('lastEditDate') && $data->getLastEditDate() !== null) {
             $dataArray['lastEditDate'] = $data->getLastEditDate();
         }
-        if ($data->isInitialized('parentCommentId') && null !== $data->getParentCommentId()) {
+        if ($data->isInitialized('parentCommentId') && $data->getParentCommentId() !== null) {
             $dataArray['parentCommentId'] = $data->getParentCommentId();
         }
-        if ($data->isInitialized('privateComment') && null !== $data->getPrivateComment()) {
+        if ($data->isInitialized('privateComment') && $data->getPrivateComment() !== null) {
             $dataArray['privateComment'] = $data->getPrivateComment();
         }
-        if ($data->isInitialized('publicComment') && null !== $data->getPublicComment()) {
+        if ($data->isInitialized('publicComment') && $data->getPublicComment() !== null) {
             $dataArray['publicComment'] = $data->getPublicComment();
         }
-        if ($data->isInitialized('recipientUsers') && null !== $data->getRecipientUsers()) {
+        if ($data->isInitialized('recipientUsers') && $data->getRecipientUsers() !== null) {
             $values = [];
             foreach ($data->getRecipientUsers() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['recipientUsers'] = $values;
         }
-        if ($data->isInitialized('solution') && null !== $data->getSolution()) {
+        if ($data->isInitialized('solution') && $data->getSolution() !== null) {
             $dataArray['solution'] = $data->getSolution();
         }
         foreach ($data as $key => $value_1) {
@@ -179,8 +185,10 @@ class CommentNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\Comment::class => false];

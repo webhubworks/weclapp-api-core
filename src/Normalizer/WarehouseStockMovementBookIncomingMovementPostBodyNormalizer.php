@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class WarehouseStockMovementBookIncomingMovementPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class WarehouseStockMovementBookIncomingMovementPostBodyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookIncomingMovementPostBody::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookIncomingMovementPostBody::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class WarehouseStockMovementBookIncomingMovementPostBodyNormalizer implements De
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookIncomingMovementPostBody();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookIncomingMovementPostBody;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('articleId', $data)) {
@@ -94,46 +98,48 @@ class WarehouseStockMovementBookIncomingMovementPostBodyNormalizer implements De
                 $object[$key] = $value_2;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
         $dataArray['articleId'] = $data->getArticleId();
-        if ($data->isInitialized('articleValuationPrice') && null !== $data->getArticleValuationPrice()) {
+        if ($data->isInitialized('articleValuationPrice') && $data->getArticleValuationPrice() !== null) {
             $dataArray['articleValuationPrice'] = $data->getArticleValuationPrice();
         }
-        if ($data->isInitialized('batchNumber') && null !== $data->getBatchNumber()) {
+        if ($data->isInitialized('batchNumber') && $data->getBatchNumber() !== null) {
             $dataArray['batchNumber'] = $data->getBatchNumber();
         }
-        if ($data->isInitialized('batchNumberExpirationDate') && null !== $data->getBatchNumberExpirationDate()) {
+        if ($data->isInitialized('batchNumberExpirationDate') && $data->getBatchNumberExpirationDate() !== null) {
             $dataArray['batchNumberExpirationDate'] = $data->getBatchNumberExpirationDate();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('internalTransportReferenceId') && null !== $data->getInternalTransportReferenceId()) {
+        if ($data->isInitialized('internalTransportReferenceId') && $data->getInternalTransportReferenceId() !== null) {
             $dataArray['internalTransportReferenceId'] = $data->getInternalTransportReferenceId();
         }
-        if ($data->isInitialized('loadingEquipmentIdentifierId') && null !== $data->getLoadingEquipmentIdentifierId()) {
+        if ($data->isInitialized('loadingEquipmentIdentifierId') && $data->getLoadingEquipmentIdentifierId() !== null) {
             $dataArray['loadingEquipmentIdentifierId'] = $data->getLoadingEquipmentIdentifierId();
         }
-        if ($data->isInitialized('movementNote') && null !== $data->getMovementNote()) {
+        if ($data->isInitialized('movementNote') && $data->getMovementNote() !== null) {
             $dataArray['movementNote'] = $data->getMovementNote();
         }
         $dataArray['quantity'] = $data->getQuantity();
-        if ($data->isInitialized('serialNumbers') && null !== $data->getSerialNumbers()) {
+        if ($data->isInitialized('serialNumbers') && $data->getSerialNumbers() !== null) {
             $values_1 = [];
             foreach ($data->getSerialNumbers() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['serialNumbers'] = $values_1;
         }
-        if ($data->isInitialized('targetStoragePlaceId') && null !== $data->getTargetStoragePlaceId()) {
+        if ($data->isInitialized('targetStoragePlaceId') && $data->getTargetStoragePlaceId() !== null) {
             $dataArray['targetStoragePlaceId'] = $data->getTargetStoragePlaceId();
         }
         foreach ($data as $key => $value_2) {
@@ -141,8 +147,10 @@ class WarehouseStockMovementBookIncomingMovementPostBodyNormalizer implements De
                 $dataArray[$key] = $value_2;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookIncomingMovementPostBody::class => false];

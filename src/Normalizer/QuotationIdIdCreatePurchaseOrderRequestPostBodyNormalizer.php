@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class QuotationIdIdCreatePurchaseOrderRequestPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class QuotationIdIdCreatePurchaseOrderRequestPostBodyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\QuotationIdIdCreatePurchaseOrderRequestPostBody::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\QuotationIdIdCreatePurchaseOrderRequestPostBody::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,14 +37,14 @@ class QuotationIdIdCreatePurchaseOrderRequestPostBodyNormalizer implements Denor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\QuotationIdIdCreatePurchaseOrderRequestPostBody();
+        $object = new \Webhubworks\WeclappApiCore\Model\QuotationIdIdCreatePurchaseOrderRequestPostBody;
         if (\array_key_exists('mergeItems', $data) && \is_int($data['mergeItems'])) {
             $data['mergeItems'] = (bool) $data['mergeItems'];
         }
         if (\array_key_exists('useItemQuantity', $data) && \is_int($data['useItemQuantity'])) {
             $data['useItemQuantity'] = (bool) $data['useItemQuantity'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('mergeItems', $data)) {
@@ -80,15 +84,17 @@ class QuotationIdIdCreatePurchaseOrderRequestPostBodyNormalizer implements Denor
                 $object[$key] = $value_2;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('mergeItems') && null !== $data->getMergeItems()) {
+        if ($data->isInitialized('mergeItems') && $data->getMergeItems() !== null) {
             $dataArray['mergeItems'] = $data->getMergeItems();
         }
-        if ($data->isInitialized('quotationItemIds') && null !== $data->getQuotationItemIds()) {
+        if ($data->isInitialized('quotationItemIds') && $data->getQuotationItemIds() !== null) {
             $values = [];
             foreach ($data->getQuotationItemIds() as $value) {
                 $values[] = $value;
@@ -96,14 +102,14 @@ class QuotationIdIdCreatePurchaseOrderRequestPostBodyNormalizer implements Denor
             $dataArray['quotationItemIds'] = $values;
         }
         $dataArray['requestType'] = $data->getRequestType();
-        if ($data->isInitialized('supplierIds') && null !== $data->getSupplierIds()) {
+        if ($data->isInitialized('supplierIds') && $data->getSupplierIds() !== null) {
             $values_1 = [];
             foreach ($data->getSupplierIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['supplierIds'] = $values_1;
         }
-        if ($data->isInitialized('useItemQuantity') && null !== $data->getUseItemQuantity()) {
+        if ($data->isInitialized('useItemQuantity') && $data->getUseItemQuantity() !== null) {
             $dataArray['useItemQuantity'] = $data->getUseItemQuantity();
         }
         $dataArray['warehouseId'] = $data->getWarehouseId();
@@ -112,8 +118,10 @@ class QuotationIdIdCreatePurchaseOrderRequestPostBodyNormalizer implements Denor
                 $dataArray[$key] = $value_2;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\QuotationIdIdCreatePurchaseOrderRequestPostBody::class => false];

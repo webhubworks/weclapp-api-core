@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TransportationOrderNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class TransportationOrderNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\TransportationOrder::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\TransportationOrder::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class TransportationOrderNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\TransportationOrder();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\TransportationOrder;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -122,63 +126,65 @@ class TransportationOrderNormalizer implements DenormalizerInterface, Normalizer
                 $object[$key] = $value_3;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('assignedUserId') && null !== $data->getAssignedUserId()) {
+        if ($data->isInitialized('assignedUserId') && $data->getAssignedUserId() !== null) {
             $dataArray['assignedUserId'] = $data->getAssignedUserId();
         }
-        if ($data->isInitialized('destinationStoragePlaceId') && null !== $data->getDestinationStoragePlaceId()) {
+        if ($data->isInitialized('destinationStoragePlaceId') && $data->getDestinationStoragePlaceId() !== null) {
             $dataArray['destinationStoragePlaceId'] = $data->getDestinationStoragePlaceId();
         }
-        if ($data->isInitialized('internalTransportReferenceId') && null !== $data->getInternalTransportReferenceId()) {
+        if ($data->isInitialized('internalTransportReferenceId') && $data->getInternalTransportReferenceId() !== null) {
             $dataArray['internalTransportReferenceId'] = $data->getInternalTransportReferenceId();
         }
-        if ($data->isInitialized('loadingEquipmentArticleId') && null !== $data->getLoadingEquipmentArticleId()) {
+        if ($data->isInitialized('loadingEquipmentArticleId') && $data->getLoadingEquipmentArticleId() !== null) {
             $dataArray['loadingEquipmentArticleId'] = $data->getLoadingEquipmentArticleId();
         }
-        if ($data->isInitialized('loadingEquipmentIdentifierId') && null !== $data->getLoadingEquipmentIdentifierId()) {
+        if ($data->isInitialized('loadingEquipmentIdentifierId') && $data->getLoadingEquipmentIdentifierId() !== null) {
             $dataArray['loadingEquipmentIdentifierId'] = $data->getLoadingEquipmentIdentifierId();
         }
-        if ($data->isInitialized('picks') && null !== $data->getPicks()) {
+        if ($data->isInitialized('picks') && $data->getPicks() !== null) {
             $values_1 = [];
             foreach ($data->getPicks() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['picks'] = $values_1;
         }
-        if ($data->isInitialized('productionOrderId') && null !== $data->getProductionOrderId()) {
+        if ($data->isInitialized('productionOrderId') && $data->getProductionOrderId() !== null) {
             $dataArray['productionOrderId'] = $data->getProductionOrderId();
         }
-        if ($data->isInitialized('shipmentId') && null !== $data->getShipmentId()) {
+        if ($data->isInitialized('shipmentId') && $data->getShipmentId() !== null) {
             $dataArray['shipmentId'] = $data->getShipmentId();
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
+        if ($data->isInitialized('status') && $data->getStatus() !== null) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('statusHistory') && null !== $data->getStatusHistory()) {
+        if ($data->isInitialized('statusHistory') && $data->getStatusHistory() !== null) {
             $values_2 = [];
             foreach ($data->getStatusHistory() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['statusHistory'] = $values_2;
         }
-        if ($data->isInitialized('transportationOrderNumber') && null !== $data->getTransportationOrderNumber()) {
+        if ($data->isInitialized('transportationOrderNumber') && $data->getTransportationOrderNumber() !== null) {
             $dataArray['transportationOrderNumber'] = $data->getTransportationOrderNumber();
         }
-        if ($data->isInitialized('transportationOrderType') && null !== $data->getTransportationOrderType()) {
+        if ($data->isInitialized('transportationOrderType') && $data->getTransportationOrderType() !== null) {
             $dataArray['transportationOrderType'] = $data->getTransportationOrderType();
         }
         foreach ($data as $key => $value_3) {
@@ -186,8 +192,10 @@ class TransportationOrderNormalizer implements DenormalizerInterface, Normalizer
                 $dataArray[$key] = $value_3;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\TransportationOrder::class => false];

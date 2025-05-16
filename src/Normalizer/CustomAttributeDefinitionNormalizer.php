@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class CustomAttributeDefinitionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class CustomAttributeDefinitionNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\CustomAttributeDefinition::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\CustomAttributeDefinition::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,7 +37,7 @@ class CustomAttributeDefinitionNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\CustomAttributeDefinition();
+        $object = new \Webhubworks\WeclappApiCore\Model\CustomAttributeDefinition;
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
@@ -58,7 +62,7 @@ class CustomAttributeDefinitionNormalizer implements DenormalizerInterface, Norm
         if (\array_key_exists('systemCustomAttribute', $data) && \is_int($data['systemCustomAttribute'])) {
             $data['systemCustomAttribute'] = (bool) $data['systemCustomAttribute'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -202,108 +206,110 @@ class CustomAttributeDefinitionNormalizer implements DenormalizerInterface, Norm
                 $object[$key] = $value_6;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('active') && null !== $data->getActive()) {
+        if ($data->isInitialized('active') && $data->getActive() !== null) {
             $dataArray['active'] = $data->getActive();
         }
-        if ($data->isInitialized('attributeDescription') && null !== $data->getAttributeDescription()) {
+        if ($data->isInitialized('attributeDescription') && $data->getAttributeDescription() !== null) {
             $dataArray['attributeDescription'] = $data->getAttributeDescription();
         }
-        if ($data->isInitialized('attributeEntityType') && null !== $data->getAttributeEntityType()) {
+        if ($data->isInitialized('attributeEntityType') && $data->getAttributeEntityType() !== null) {
             $dataArray['attributeEntityType'] = $data->getAttributeEntityType();
         }
-        if ($data->isInitialized('attributeKey') && null !== $data->getAttributeKey()) {
+        if ($data->isInitialized('attributeKey') && $data->getAttributeKey() !== null) {
             $dataArray['attributeKey'] = $data->getAttributeKey();
         }
-        if ($data->isInitialized('attributeLabels') && null !== $data->getAttributeLabels()) {
+        if ($data->isInitialized('attributeLabels') && $data->getAttributeLabels() !== null) {
             $values = [];
             foreach ($data->getAttributeLabels() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['attributeLabels'] = $values;
         }
-        if ($data->isInitialized('attributeType') && null !== $data->getAttributeType()) {
+        if ($data->isInitialized('attributeType') && $data->getAttributeType() !== null) {
             $dataArray['attributeType'] = $data->getAttributeType();
         }
-        if ($data->isInitialized('conditions') && null !== $data->getConditions()) {
+        if ($data->isInitialized('conditions') && $data->getConditions() !== null) {
             $dataArray['conditions'] = $this->normalizer->normalize($data->getConditions(), 'json', $context);
         }
-        if ($data->isInitialized('defaultBooleanValue') && null !== $data->getDefaultBooleanValue()) {
+        if ($data->isInitialized('defaultBooleanValue') && $data->getDefaultBooleanValue() !== null) {
             $dataArray['defaultBooleanValue'] = $data->getDefaultBooleanValue();
         }
-        if ($data->isInitialized('defaultDateValue') && null !== $data->getDefaultDateValue()) {
+        if ($data->isInitialized('defaultDateValue') && $data->getDefaultDateValue() !== null) {
             $dataArray['defaultDateValue'] = $data->getDefaultDateValue();
         }
-        if ($data->isInitialized('defaultNumberValue') && null !== $data->getDefaultNumberValue()) {
+        if ($data->isInitialized('defaultNumberValue') && $data->getDefaultNumberValue() !== null) {
             $dataArray['defaultNumberValue'] = $data->getDefaultNumberValue();
         }
-        if ($data->isInitialized('defaultStringValue') && null !== $data->getDefaultStringValue()) {
+        if ($data->isInitialized('defaultStringValue') && $data->getDefaultStringValue() !== null) {
             $dataArray['defaultStringValue'] = $data->getDefaultStringValue();
         }
-        if ($data->isInitialized('entities') && null !== $data->getEntities()) {
+        if ($data->isInitialized('entities') && $data->getEntities() !== null) {
             $values_1 = [];
             foreach ($data->getEntities() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['entities'] = $values_1;
         }
-        if ($data->isInitialized('groupName') && null !== $data->getGroupName()) {
+        if ($data->isInitialized('groupName') && $data->getGroupName() !== null) {
             $dataArray['groupName'] = $data->getGroupName();
         }
-        if ($data->isInitialized('label') && null !== $data->getLabel()) {
+        if ($data->isInitialized('label') && $data->getLabel() !== null) {
             $dataArray['label'] = $data->getLabel();
         }
-        if ($data->isInitialized('legacyEntities') && null !== $data->getLegacyEntities()) {
+        if ($data->isInitialized('legacyEntities') && $data->getLegacyEntities() !== null) {
             $values_2 = [];
             foreach ($data->getLegacyEntities() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['legacyEntities'] = $values_2;
         }
-        if ($data->isInitialized('mandatory') && null !== $data->getMandatory()) {
+        if ($data->isInitialized('mandatory') && $data->getMandatory() !== null) {
             $dataArray['mandatory'] = $data->getMandatory();
         }
-        if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
+        if ($data->isInitialized('permissions') && $data->getPermissions() !== null) {
             $values_3 = [];
             foreach ($data->getPermissions() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $dataArray['permissions'] = $values_3;
         }
-        if ($data->isInitialized('publicPageTypes') && null !== $data->getPublicPageTypes()) {
+        if ($data->isInitialized('publicPageTypes') && $data->getPublicPageTypes() !== null) {
             $values_4 = [];
             foreach ($data->getPublicPageTypes() as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['publicPageTypes'] = $values_4;
         }
-        if ($data->isInitialized('readOnly') && null !== $data->getReadOnly()) {
+        if ($data->isInitialized('readOnly') && $data->getReadOnly() !== null) {
             $dataArray['readOnly'] = $data->getReadOnly();
         }
-        if ($data->isInitialized('selectableValues') && null !== $data->getSelectableValues()) {
+        if ($data->isInitialized('selectableValues') && $data->getSelectableValues() !== null) {
             $values_5 = [];
             foreach ($data->getSelectableValues() as $value_5) {
                 $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
             }
             $dataArray['selectableValues'] = $values_5;
         }
-        if ($data->isInitialized('showAttributeEntityType') && null !== $data->getShowAttributeEntityType()) {
+        if ($data->isInitialized('showAttributeEntityType') && $data->getShowAttributeEntityType() !== null) {
             $dataArray['showAttributeEntityType'] = $data->getShowAttributeEntityType();
         }
-        if ($data->isInitialized('showInOverview') && null !== $data->getShowInOverview()) {
+        if ($data->isInitialized('showInOverview') && $data->getShowInOverview() !== null) {
             $dataArray['showInOverview'] = $data->getShowInOverview();
         }
-        if ($data->isInitialized('showOnCreationDialog') && null !== $data->getShowOnCreationDialog()) {
+        if ($data->isInitialized('showOnCreationDialog') && $data->getShowOnCreationDialog() !== null) {
             $dataArray['showOnCreationDialog'] = $data->getShowOnCreationDialog();
         }
-        if ($data->isInitialized('systemCustomAttribute') && null !== $data->getSystemCustomAttribute()) {
+        if ($data->isInitialized('systemCustomAttribute') && $data->getSystemCustomAttribute() !== null) {
             $dataArray['systemCustomAttribute'] = $data->getSystemCustomAttribute();
         }
         foreach ($data as $key => $value_6) {
@@ -311,8 +317,10 @@ class CustomAttributeDefinitionNormalizer implements DenormalizerInterface, Norm
                 $dataArray[$key] = $value_6;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\CustomAttributeDefinition::class => false];

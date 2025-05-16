@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class SepaDirectDebitMandateNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class SepaDirectDebitMandateNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SepaDirectDebitMandate::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SepaDirectDebitMandate::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class SepaDirectDebitMandateNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SepaDirectDebitMandate();
+        $object = new \Webhubworks\WeclappApiCore\Model\SepaDirectDebitMandate;
         if (\array_key_exists('firstDebit', $data) && \is_int($data['firstDebit'])) {
             $data['firstDebit'] = (bool) $data['firstDebit'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -97,39 +101,41 @@ class SepaDirectDebitMandateNormalizer implements DenormalizerInterface, Normali
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('bankAccountId') && null !== $data->getBankAccountId()) {
+        if ($data->isInitialized('bankAccountId') && $data->getBankAccountId() !== null) {
             $dataArray['bankAccountId'] = $data->getBankAccountId();
         }
-        if ($data->isInitialized('cancellationDate') && null !== $data->getCancellationDate()) {
+        if ($data->isInitialized('cancellationDate') && $data->getCancellationDate() !== null) {
             $dataArray['cancellationDate'] = $data->getCancellationDate();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('firstDebit') && null !== $data->getFirstDebit()) {
+        if ($data->isInitialized('firstDebit') && $data->getFirstDebit() !== null) {
             $dataArray['firstDebit'] = $data->getFirstDebit();
         }
-        if ($data->isInitialized('mandateReference') && null !== $data->getMandateReference()) {
+        if ($data->isInitialized('mandateReference') && $data->getMandateReference() !== null) {
             $dataArray['mandateReference'] = $data->getMandateReference();
         }
-        if ($data->isInitialized('partyBankAccountId') && null !== $data->getPartyBankAccountId()) {
+        if ($data->isInitialized('partyBankAccountId') && $data->getPartyBankAccountId() !== null) {
             $dataArray['partyBankAccountId'] = $data->getPartyBankAccountId();
         }
-        if ($data->isInitialized('runtime') && null !== $data->getRuntime()) {
+        if ($data->isInitialized('runtime') && $data->getRuntime() !== null) {
             $dataArray['runtime'] = $data->getRuntime();
         }
-        if ($data->isInitialized('signatureDate') && null !== $data->getSignatureDate()) {
+        if ($data->isInitialized('signatureDate') && $data->getSignatureDate() !== null) {
             $dataArray['signatureDate'] = $data->getSignatureDate();
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
+        if ($data->isInitialized('type') && $data->getType() !== null) {
             $dataArray['type'] = $data->getType();
         }
         foreach ($data as $key => $value) {
@@ -137,8 +143,10 @@ class SepaDirectDebitMandateNormalizer implements DenormalizerInterface, Normali
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SepaDirectDebitMandate::class => false];

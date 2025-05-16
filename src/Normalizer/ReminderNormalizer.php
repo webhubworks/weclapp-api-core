@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ReminderNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class ReminderNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\Reminder::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\Reminder::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class ReminderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\Reminder();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\Reminder;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -106,49 +110,51 @@ class ReminderNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('additionalRecipients') && null !== $data->getAdditionalRecipients()) {
+        if ($data->isInitialized('additionalRecipients') && $data->getAdditionalRecipients() !== null) {
             $values = [];
             foreach ($data->getAdditionalRecipients() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['additionalRecipients'] = $values;
         }
-        if ($data->isInitialized('ccMail') && null !== $data->getCcMail()) {
+        if ($data->isInitialized('ccMail') && $data->getCcMail() !== null) {
             $dataArray['ccMail'] = $data->getCcMail();
         }
-        if ($data->isInitialized('entityId') && null !== $data->getEntityId()) {
+        if ($data->isInitialized('entityId') && $data->getEntityId() !== null) {
             $dataArray['entityId'] = $data->getEntityId();
         }
-        if ($data->isInitialized('entityName') && null !== $data->getEntityName()) {
+        if ($data->isInitialized('entityName') && $data->getEntityName() !== null) {
             $dataArray['entityName'] = $data->getEntityName();
         }
-        if ($data->isInitialized('lastReminderSentDate') && null !== $data->getLastReminderSentDate()) {
+        if ($data->isInitialized('lastReminderSentDate') && $data->getLastReminderSentDate() !== null) {
             $dataArray['lastReminderSentDate'] = $data->getLastReminderSentDate();
         }
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
+        if ($data->isInitialized('message') && $data->getMessage() !== null) {
             $dataArray['message'] = $data->getMessage();
         }
-        if ($data->isInitialized('recurringEvent') && null !== $data->getRecurringEvent()) {
+        if ($data->isInitialized('recurringEvent') && $data->getRecurringEvent() !== null) {
             $dataArray['recurringEvent'] = $this->normalizer->normalize($data->getRecurringEvent(), 'json', $context);
         }
-        if ($data->isInitialized('reminderDate') && null !== $data->getReminderDate()) {
+        if ($data->isInitialized('reminderDate') && $data->getReminderDate() !== null) {
             $dataArray['reminderDate'] = $data->getReminderDate();
         }
-        if ($data->isInitialized('sendType') && null !== $data->getSendType()) {
+        if ($data->isInitialized('sendType') && $data->getSendType() !== null) {
             $dataArray['sendType'] = $data->getSendType();
         }
-        if ($data->isInitialized('subject') && null !== $data->getSubject()) {
+        if ($data->isInitialized('subject') && $data->getSubject() !== null) {
             $dataArray['subject'] = $data->getSubject();
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
+        if ($data->isInitialized('userId') && $data->getUserId() !== null) {
             $dataArray['userId'] = $data->getUserId();
         }
         foreach ($data as $key => $value_1) {
@@ -156,8 +162,10 @@ class ReminderNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\Reminder::class => false];

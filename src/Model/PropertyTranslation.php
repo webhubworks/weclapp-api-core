@@ -8,64 +8,51 @@ class PropertyTranslation extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
+
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
+
     /**
-     * 
-     *
      * @var string
      */
     protected $propertyName;
+
     /**
-     * 
-     *
      * @var list<PropertyTranslationValue>
      */
     protected $values;
-    /**
-     * 
-     *
-     * @return string
-     */
+
     public function getPropertyName(): string
     {
         return $this->propertyName;
     }
-    /**
-     * 
-     *
-     * @param string $propertyName
-     *
-     * @return self
-     */
+
     public function setPropertyName(string $propertyName): self
     {
         $this->initialized['propertyName'] = true;
         $this->propertyName = $propertyName;
+
         return $this;
     }
+
     /**
-     * 
-     *
      * @return list<PropertyTranslationValue>
      */
     public function getValues(): array
     {
         return $this->values;
     }
+
     /**
-     * 
-     *
-     * @param list<PropertyTranslationValue> $values
-     *
-     * @return self
+     * @param  list<PropertyTranslationValue>  $values
      */
     public function setValues(array $values): self
     {
         $this->initialized['values'] = true;
         $this->values = $values;
+
         return $this;
     }
 }

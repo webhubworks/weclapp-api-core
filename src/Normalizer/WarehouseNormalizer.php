@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class WarehouseNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class WarehouseNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\Warehouse::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\Warehouse::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,14 +37,14 @@ class WarehouseNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\Warehouse();
+        $object = new \Webhubworks\WeclappApiCore\Model\Warehouse;
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
         if (\array_key_exists('standard', $data) && \is_int($data['standard'])) {
             $data['standard'] = (bool) $data['standard'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -132,64 +136,66 @@ class WarehouseNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('active') && null !== $data->getActive()) {
+        if ($data->isInitialized('active') && $data->getActive() !== null) {
             $dataArray['active'] = $data->getActive();
         }
-        if ($data->isInitialized('defaultConsolidationStoragePlaceId') && null !== $data->getDefaultConsolidationStoragePlaceId()) {
+        if ($data->isInitialized('defaultConsolidationStoragePlaceId') && $data->getDefaultConsolidationStoragePlaceId() !== null) {
             $dataArray['defaultConsolidationStoragePlaceId'] = $data->getDefaultConsolidationStoragePlaceId();
         }
-        if ($data->isInitialized('defaultProductionStoragePlaceId') && null !== $data->getDefaultProductionStoragePlaceId()) {
+        if ($data->isInitialized('defaultProductionStoragePlaceId') && $data->getDefaultProductionStoragePlaceId() !== null) {
             $dataArray['defaultProductionStoragePlaceId'] = $data->getDefaultProductionStoragePlaceId();
         }
-        if ($data->isInitialized('defaultReturnsStoragePlaceId') && null !== $data->getDefaultReturnsStoragePlaceId()) {
+        if ($data->isInitialized('defaultReturnsStoragePlaceId') && $data->getDefaultReturnsStoragePlaceId() !== null) {
             $dataArray['defaultReturnsStoragePlaceId'] = $data->getDefaultReturnsStoragePlaceId();
         }
-        if ($data->isInitialized('defaultStoragePlaceId') && null !== $data->getDefaultStoragePlaceId()) {
+        if ($data->isInitialized('defaultStoragePlaceId') && $data->getDefaultStoragePlaceId() !== null) {
             $dataArray['defaultStoragePlaceId'] = $data->getDefaultStoragePlaceId();
         }
-        if ($data->isInitialized('deliveryAddress') && null !== $data->getDeliveryAddress()) {
+        if ($data->isInitialized('deliveryAddress') && $data->getDeliveryAddress() !== null) {
             $dataArray['deliveryAddress'] = $this->normalizer->normalize($data->getDeliveryAddress(), 'json', $context);
         }
-        if ($data->isInitialized('directBookingInternalTransportReferenceId') && null !== $data->getDirectBookingInternalTransportReferenceId()) {
+        if ($data->isInitialized('directBookingInternalTransportReferenceId') && $data->getDirectBookingInternalTransportReferenceId() !== null) {
             $dataArray['directBookingInternalTransportReferenceId'] = $data->getDirectBookingInternalTransportReferenceId();
         }
-        if ($data->isInitialized('invoiceAddress') && null !== $data->getInvoiceAddress()) {
+        if ($data->isInitialized('invoiceAddress') && $data->getInvoiceAddress() !== null) {
             $dataArray['invoiceAddress'] = $this->normalizer->normalize($data->getInvoiceAddress(), 'json', $context);
         }
-        if ($data->isInitialized('loadingEquipmentStoragePlace') && null !== $data->getLoadingEquipmentStoragePlace()) {
+        if ($data->isInitialized('loadingEquipmentStoragePlace') && $data->getLoadingEquipmentStoragePlace() !== null) {
             $dataArray['loadingEquipmentStoragePlace'] = $this->normalizer->normalize($data->getLoadingEquipmentStoragePlace(), 'json', $context);
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name') && $data->getName() !== null) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('primaryAddress') && null !== $data->getPrimaryAddress()) {
+        if ($data->isInitialized('primaryAddress') && $data->getPrimaryAddress() !== null) {
             $dataArray['primaryAddress'] = $this->normalizer->normalize($data->getPrimaryAddress(), 'json', $context);
         }
-        if ($data->isInitialized('shortIdentifier') && null !== $data->getShortIdentifier()) {
+        if ($data->isInitialized('shortIdentifier') && $data->getShortIdentifier() !== null) {
             $dataArray['shortIdentifier'] = $data->getShortIdentifier();
         }
-        if ($data->isInitialized('standard') && null !== $data->getStandard()) {
+        if ($data->isInitialized('standard') && $data->getStandard() !== null) {
             $dataArray['standard'] = $data->getStandard();
         }
-        if ($data->isInitialized('transitStoragePlace') && null !== $data->getTransitStoragePlace()) {
+        if ($data->isInitialized('transitStoragePlace') && $data->getTransitStoragePlace() !== null) {
             $dataArray['transitStoragePlace'] = $this->normalizer->normalize($data->getTransitStoragePlace(), 'json', $context);
         }
-        if ($data->isInitialized('warehouseType') && null !== $data->getWarehouseType()) {
+        if ($data->isInitialized('warehouseType') && $data->getWarehouseType() !== null) {
             $dataArray['warehouseType'] = $data->getWarehouseType();
         }
         foreach ($data as $key => $value_1) {
@@ -197,8 +203,10 @@ class WarehouseNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\Warehouse::class => false];

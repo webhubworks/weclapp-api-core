@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItem::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItem::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItemNormali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItem();
+        $object = new \Webhubworks\WeclappApiCore\Model\IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItem;
         if (\array_key_exists('bookIntoWarehouse', $data) && \is_int($data['bookIntoWarehouse'])) {
             $data['bookIntoWarehouse'] = (bool) $data['bookIntoWarehouse'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('articleValuationPrice', $data)) {
@@ -125,70 +129,72 @@ class IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItemNormali
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('articleValuationPrice') && null !== $data->getArticleValuationPrice()) {
+        if ($data->isInitialized('articleValuationPrice') && $data->getArticleValuationPrice() !== null) {
             $dataArray['articleValuationPrice'] = $data->getArticleValuationPrice();
         }
-        if ($data->isInitialized('batchNumber') && null !== $data->getBatchNumber()) {
+        if ($data->isInitialized('batchNumber') && $data->getBatchNumber() !== null) {
             $dataArray['batchNumber'] = $data->getBatchNumber();
         }
-        if ($data->isInitialized('bookIntoWarehouse') && null !== $data->getBookIntoWarehouse()) {
+        if ($data->isInitialized('bookIntoWarehouse') && $data->getBookIntoWarehouse() !== null) {
             $dataArray['bookIntoWarehouse'] = $data->getBookIntoWarehouse();
         }
-        if ($data->isInitialized('confirmedByUserId') && null !== $data->getConfirmedByUserId()) {
+        if ($data->isInitialized('confirmedByUserId') && $data->getConfirmedByUserId() !== null) {
             $dataArray['confirmedByUserId'] = $data->getConfirmedByUserId();
         }
-        if ($data->isInitialized('confirmedByUserIdDeprecated') && null !== $data->getConfirmedByUserIdDeprecated()) {
+        if ($data->isInitialized('confirmedByUserIdDeprecated') && $data->getConfirmedByUserIdDeprecated() !== null) {
             $dataArray['confirmedByUserIdDeprecated'] = $data->getConfirmedByUserIdDeprecated();
         }
-        if ($data->isInitialized('confirmedDate') && null !== $data->getConfirmedDate()) {
+        if ($data->isInitialized('confirmedDate') && $data->getConfirmedDate() !== null) {
             $dataArray['confirmedDate'] = $data->getConfirmedDate();
         }
-        if ($data->isInitialized('confirmedDateDeprecated') && null !== $data->getConfirmedDateDeprecated()) {
+        if ($data->isInitialized('confirmedDateDeprecated') && $data->getConfirmedDateDeprecated() !== null) {
             $dataArray['confirmedDateDeprecated'] = $data->getConfirmedDateDeprecated();
         }
-        if ($data->isInitialized('confirmedQuantityDeprecated') && null !== $data->getConfirmedQuantityDeprecated()) {
+        if ($data->isInitialized('confirmedQuantityDeprecated') && $data->getConfirmedQuantityDeprecated() !== null) {
             $dataArray['confirmedQuantityDeprecated'] = $data->getConfirmedQuantityDeprecated();
         }
-        if ($data->isInitialized('createdDate') && null !== $data->getCreatedDate()) {
+        if ($data->isInitialized('createdDate') && $data->getCreatedDate() !== null) {
             $dataArray['createdDate'] = $data->getCreatedDate();
         }
-        if ($data->isInitialized('expirationDate') && null !== $data->getExpirationDate()) {
+        if ($data->isInitialized('expirationDate') && $data->getExpirationDate() !== null) {
             $dataArray['expirationDate'] = $data->getExpirationDate();
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id') && $data->getId() !== null) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('incomingGoodsItemId') && null !== $data->getIncomingGoodsItemId()) {
+        if ($data->isInitialized('incomingGoodsItemId') && $data->getIncomingGoodsItemId() !== null) {
             $dataArray['incomingGoodsItemId'] = $data->getIncomingGoodsItemId();
         }
-        if ($data->isInitialized('internalTransportReferenceId') && null !== $data->getInternalTransportReferenceId()) {
+        if ($data->isInitialized('internalTransportReferenceId') && $data->getInternalTransportReferenceId() !== null) {
             $dataArray['internalTransportReferenceId'] = $data->getInternalTransportReferenceId();
         }
-        if ($data->isInitialized('lastModifiedDate') && null !== $data->getLastModifiedDate()) {
+        if ($data->isInitialized('lastModifiedDate') && $data->getLastModifiedDate() !== null) {
             $dataArray['lastModifiedDate'] = $data->getLastModifiedDate();
         }
-        if ($data->isInitialized('loadingEquipmentIdentifierId') && null !== $data->getLoadingEquipmentIdentifierId()) {
+        if ($data->isInitialized('loadingEquipmentIdentifierId') && $data->getLoadingEquipmentIdentifierId() !== null) {
             $dataArray['loadingEquipmentIdentifierId'] = $data->getLoadingEquipmentIdentifierId();
         }
-        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
+        if ($data->isInitialized('quantity') && $data->getQuantity() !== null) {
             $dataArray['quantity'] = $data->getQuantity();
         }
-        if ($data->isInitialized('serialNumbers') && null !== $data->getSerialNumbers()) {
+        if ($data->isInitialized('serialNumbers') && $data->getSerialNumbers() !== null) {
             $values = [];
             foreach ($data->getSerialNumbers() as $value) {
                 $values[] = $value;
             }
             $dataArray['serialNumbers'] = $values;
         }
-        if ($data->isInitialized('storagePlaceId') && null !== $data->getStoragePlaceId()) {
+        if ($data->isInitialized('storagePlaceId') && $data->getStoragePlaceId() !== null) {
             $dataArray['storagePlaceId'] = $data->getStoragePlaceId();
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
         foreach ($data as $key => $value_1) {
@@ -196,8 +202,10 @@ class IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItemNormali
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItem::class => false];

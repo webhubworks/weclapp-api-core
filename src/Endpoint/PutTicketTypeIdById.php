@@ -5,14 +5,14 @@ namespace Webhubworks\WeclappApiCore\Endpoint;
 class PutTicketTypeIdById extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoint implements \Webhubworks\WeclappApiCore\Runtime\Client\Endpoint
 {
     protected $id;
+
     /**
      * update ticketType
      *
-     * @param string $id 
-     * @param \Webhubworks\WeclappApiCore\Model\TicketType $requestBody 
-     * @param array $queryParameters {
-     *     @var bool $dryRun 
-     * }
+     * @param  array  $queryParameters  {
+     *
+     * @var bool $dryRun
+     *           }
      */
     public function __construct(string $id, \Webhubworks\WeclappApiCore\Model\TicketType $requestBody, array $queryParameters = [])
     {
@@ -20,26 +20,33 @@ class PutTicketTypeIdById extends \Webhubworks\WeclappApiCore\Runtime\Client\Bas
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
+
     use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
+
     public function getMethod(): string
     {
         return 'PUT';
     }
+
     public function getUri(): string
     {
         return str_replace(['{id}'], [$this->id], '/ticketType/id/{id}');
     }
+
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \Webhubworks\WeclappApiCore\Model\TicketType) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
+
         return [[], null];
     }
+
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
+
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -47,8 +54,10 @@ class PutTicketTypeIdById extends \Webhubworks\WeclappApiCore\Runtime\Client\Bas
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('dryRun', ['bool']);
+
         return $optionsResolver;
     }
+
     /**
      * {@inheritdoc}
      *
@@ -59,13 +68,14 @@ class PutTicketTypeIdById extends \Webhubworks\WeclappApiCore\Runtime\Client\Bas
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && ($status === 200 && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\TicketType', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ApiProblem', 'json');
         }
     }
+
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

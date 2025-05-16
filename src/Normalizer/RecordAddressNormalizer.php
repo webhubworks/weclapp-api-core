@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class RecordAddressNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class RecordAddressNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\RecordAddress::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\RecordAddress::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class RecordAddressNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\RecordAddress();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\RecordAddress;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('city', $data)) {
@@ -118,66 +122,68 @@ class RecordAddressNormalizer implements DenormalizerInterface, NormalizerInterf
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('city') && null !== $data->getCity()) {
+        if ($data->isInitialized('city') && $data->getCity() !== null) {
             $dataArray['city'] = $data->getCity();
         }
-        if ($data->isInitialized('company') && null !== $data->getCompany()) {
+        if ($data->isInitialized('company') && $data->getCompany() !== null) {
             $dataArray['company'] = $data->getCompany();
         }
-        if ($data->isInitialized('company2') && null !== $data->getCompany2()) {
+        if ($data->isInitialized('company2') && $data->getCompany2() !== null) {
             $dataArray['company2'] = $data->getCompany2();
         }
-        if ($data->isInitialized('countryCode') && null !== $data->getCountryCode()) {
+        if ($data->isInitialized('countryCode') && $data->getCountryCode() !== null) {
             $dataArray['countryCode'] = $data->getCountryCode();
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
+        if ($data->isInitialized('firstName') && $data->getFirstName() !== null) {
             $dataArray['firstName'] = $data->getFirstName();
         }
-        if ($data->isInitialized('globalLocationNumber') && null !== $data->getGlobalLocationNumber()) {
+        if ($data->isInitialized('globalLocationNumber') && $data->getGlobalLocationNumber() !== null) {
             $dataArray['globalLocationNumber'] = $data->getGlobalLocationNumber();
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
+        if ($data->isInitialized('lastName') && $data->getLastName() !== null) {
             $dataArray['lastName'] = $data->getLastName();
         }
-        if ($data->isInitialized('middleName') && null !== $data->getMiddleName()) {
+        if ($data->isInitialized('middleName') && $data->getMiddleName() !== null) {
             $dataArray['middleName'] = $data->getMiddleName();
         }
-        if ($data->isInitialized('phoneNumber') && null !== $data->getPhoneNumber()) {
+        if ($data->isInitialized('phoneNumber') && $data->getPhoneNumber() !== null) {
             $dataArray['phoneNumber'] = $data->getPhoneNumber();
         }
-        if ($data->isInitialized('postOfficeBoxCity') && null !== $data->getPostOfficeBoxCity()) {
+        if ($data->isInitialized('postOfficeBoxCity') && $data->getPostOfficeBoxCity() !== null) {
             $dataArray['postOfficeBoxCity'] = $data->getPostOfficeBoxCity();
         }
-        if ($data->isInitialized('postOfficeBoxNumber') && null !== $data->getPostOfficeBoxNumber()) {
+        if ($data->isInitialized('postOfficeBoxNumber') && $data->getPostOfficeBoxNumber() !== null) {
             $dataArray['postOfficeBoxNumber'] = $data->getPostOfficeBoxNumber();
         }
-        if ($data->isInitialized('postOfficeBoxZipCode') && null !== $data->getPostOfficeBoxZipCode()) {
+        if ($data->isInitialized('postOfficeBoxZipCode') && $data->getPostOfficeBoxZipCode() !== null) {
             $dataArray['postOfficeBoxZipCode'] = $data->getPostOfficeBoxZipCode();
         }
-        if ($data->isInitialized('salutation') && null !== $data->getSalutation()) {
+        if ($data->isInitialized('salutation') && $data->getSalutation() !== null) {
             $dataArray['salutation'] = $data->getSalutation();
         }
-        if ($data->isInitialized('state') && null !== $data->getState()) {
+        if ($data->isInitialized('state') && $data->getState() !== null) {
             $dataArray['state'] = $data->getState();
         }
-        if ($data->isInitialized('street1') && null !== $data->getStreet1()) {
+        if ($data->isInitialized('street1') && $data->getStreet1() !== null) {
             $dataArray['street1'] = $data->getStreet1();
         }
-        if ($data->isInitialized('street2') && null !== $data->getStreet2()) {
+        if ($data->isInitialized('street2') && $data->getStreet2() !== null) {
             $dataArray['street2'] = $data->getStreet2();
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+        if ($data->isInitialized('title') && $data->getTitle() !== null) {
             $dataArray['title'] = $data->getTitle();
         }
-        if ($data->isInitialized('titleId') && null !== $data->getTitleId()) {
+        if ($data->isInitialized('titleId') && $data->getTitleId() !== null) {
             $dataArray['titleId'] = $data->getTitleId();
         }
-        if ($data->isInitialized('zipcode') && null !== $data->getZipcode()) {
+        if ($data->isInitialized('zipcode') && $data->getZipcode() !== null) {
             $dataArray['zipcode'] = $data->getZipcode();
         }
         foreach ($data as $key => $value) {
@@ -185,8 +191,10 @@ class RecordAddressNormalizer implements DenormalizerInterface, NormalizerInterf
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\RecordAddress::class => false];

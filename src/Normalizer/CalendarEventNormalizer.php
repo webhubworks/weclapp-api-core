@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class CalendarEventNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class CalendarEventNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\CalendarEvent::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\CalendarEvent::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,7 +37,7 @@ class CalendarEventNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\CalendarEvent();
+        $object = new \Webhubworks\WeclappApiCore\Model\CalendarEvent;
         if (\array_key_exists('allDayEvent', $data) && \is_int($data['allDayEvent'])) {
             $data['allDayEvent'] = (bool) $data['allDayEvent'];
         }
@@ -43,7 +47,7 @@ class CalendarEventNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('privateEvent', $data) && \is_int($data['privateEvent'])) {
             $data['privateEvent'] = (bool) $data['privateEvent'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -147,74 +151,76 @@ class CalendarEventNormalizer implements DenormalizerInterface, NormalizerInterf
                 $object[$key] = $value_2;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('allDayEvent') && null !== $data->getAllDayEvent()) {
+        if ($data->isInitialized('allDayEvent') && $data->getAllDayEvent() !== null) {
             $dataArray['allDayEvent'] = $data->getAllDayEvent();
         }
-        if ($data->isInitialized('attendees') && null !== $data->getAttendees()) {
+        if ($data->isInitialized('attendees') && $data->getAttendees() !== null) {
             $values = [];
             foreach ($data->getAttendees() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['attendees'] = $values;
         }
-        if ($data->isInitialized('calendarId') && null !== $data->getCalendarId()) {
+        if ($data->isInitialized('calendarId') && $data->getCalendarId() !== null) {
             $dataArray['calendarId'] = $data->getCalendarId();
         }
-        if ($data->isInitialized('concerningId') && null !== $data->getConcerningId()) {
+        if ($data->isInitialized('concerningId') && $data->getConcerningId() !== null) {
             $dataArray['concerningId'] = $data->getConcerningId();
         }
-        if ($data->isInitialized('contactId') && null !== $data->getContactId()) {
+        if ($data->isInitialized('contactId') && $data->getContactId() !== null) {
             $dataArray['contactId'] = $data->getContactId();
         }
-        if ($data->isInitialized('deleted') && null !== $data->getDeleted()) {
+        if ($data->isInitialized('deleted') && $data->getDeleted() !== null) {
             $dataArray['deleted'] = $data->getDeleted();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('endDate') && null !== $data->getEndDate()) {
+        if ($data->isInitialized('endDate') && $data->getEndDate() !== null) {
             $dataArray['endDate'] = $data->getEndDate();
         }
-        if ($data->isInitialized('location') && null !== $data->getLocation()) {
+        if ($data->isInitialized('location') && $data->getLocation() !== null) {
             $dataArray['location'] = $data->getLocation();
         }
-        if ($data->isInitialized('privateEvent') && null !== $data->getPrivateEvent()) {
+        if ($data->isInitialized('privateEvent') && $data->getPrivateEvent() !== null) {
             $dataArray['privateEvent'] = $data->getPrivateEvent();
         }
-        if ($data->isInitialized('recurringEvent') && null !== $data->getRecurringEvent()) {
+        if ($data->isInitialized('recurringEvent') && $data->getRecurringEvent() !== null) {
             $dataArray['recurringEvent'] = $this->normalizer->normalize($data->getRecurringEvent(), 'json', $context);
         }
-        if ($data->isInitialized('references') && null !== $data->getReferences()) {
+        if ($data->isInitialized('references') && $data->getReferences() !== null) {
             $values_1 = [];
             foreach ($data->getReferences() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['references'] = $values_1;
         }
-        if ($data->isInitialized('reminderSendType') && null !== $data->getReminderSendType()) {
+        if ($data->isInitialized('reminderSendType') && $data->getReminderSendType() !== null) {
             $dataArray['reminderSendType'] = $data->getReminderSendType();
         }
-        if ($data->isInitialized('reminderTime') && null !== $data->getReminderTime()) {
+        if ($data->isInitialized('reminderTime') && $data->getReminderTime() !== null) {
             $dataArray['reminderTime'] = $data->getReminderTime();
         }
-        if ($data->isInitialized('showAs') && null !== $data->getShowAs()) {
+        if ($data->isInitialized('showAs') && $data->getShowAs() !== null) {
             $dataArray['showAs'] = $data->getShowAs();
         }
-        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
+        if ($data->isInitialized('startDate') && $data->getStartDate() !== null) {
             $dataArray['startDate'] = $data->getStartDate();
         }
-        if ($data->isInitialized('subject') && null !== $data->getSubject()) {
+        if ($data->isInitialized('subject') && $data->getSubject() !== null) {
             $dataArray['subject'] = $data->getSubject();
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
+        if ($data->isInitialized('userId') && $data->getUserId() !== null) {
             $dataArray['userId'] = $data->getUserId();
         }
         foreach ($data as $key => $value_2) {
@@ -222,8 +228,10 @@ class CalendarEventNormalizer implements DenormalizerInterface, NormalizerInterf
                 $dataArray[$key] = $value_2;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\CalendarEvent::class => false];

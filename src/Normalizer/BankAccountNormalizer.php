@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class BankAccountNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class BankAccountNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\BankAccount::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\BankAccount::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,7 +37,7 @@ class BankAccountNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\BankAccount();
+        $object = new \Webhubworks\WeclappApiCore\Model\BankAccount;
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
@@ -46,7 +50,7 @@ class BankAccountNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('primary', $data) && \is_int($data['primary'])) {
             $data['primary'] = (bool) $data['primary'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -170,87 +174,89 @@ class BankAccountNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('accountHolder') && null !== $data->getAccountHolder()) {
+        if ($data->isInitialized('accountHolder') && $data->getAccountHolder() !== null) {
             $dataArray['accountHolder'] = $data->getAccountHolder();
         }
-        if ($data->isInitialized('accountId') && null !== $data->getAccountId()) {
+        if ($data->isInitialized('accountId') && $data->getAccountId() !== null) {
             $dataArray['accountId'] = $data->getAccountId();
         }
-        if ($data->isInitialized('accountNumber') && null !== $data->getAccountNumber()) {
+        if ($data->isInitialized('accountNumber') && $data->getAccountNumber() !== null) {
             $dataArray['accountNumber'] = $data->getAccountNumber();
         }
-        if ($data->isInitialized('active') && null !== $data->getActive()) {
+        if ($data->isInitialized('active') && $data->getActive() !== null) {
             $dataArray['active'] = $data->getActive();
         }
-        if ($data->isInitialized('autoSync') && null !== $data->getAutoSync()) {
+        if ($data->isInitialized('autoSync') && $data->getAutoSync() !== null) {
             $dataArray['autoSync'] = $data->getAutoSync();
         }
-        if ($data->isInitialized('automaticProcessing') && null !== $data->getAutomaticProcessing()) {
+        if ($data->isInitialized('automaticProcessing') && $data->getAutomaticProcessing() !== null) {
             $dataArray['automaticProcessing'] = $data->getAutomaticProcessing();
         }
-        if ($data->isInitialized('balance') && null !== $data->getBalance()) {
+        if ($data->isInitialized('balance') && $data->getBalance() !== null) {
             $dataArray['balance'] = $data->getBalance();
         }
-        if ($data->isInitialized('bankCode') && null !== $data->getBankCode()) {
+        if ($data->isInitialized('bankCode') && $data->getBankCode() !== null) {
             $dataArray['bankCode'] = $data->getBankCode();
         }
-        if ($data->isInitialized('connectionFailure') && null !== $data->getConnectionFailure()) {
+        if ($data->isInitialized('connectionFailure') && $data->getConnectionFailure() !== null) {
             $dataArray['connectionFailure'] = $data->getConnectionFailure();
         }
-        if ($data->isInitialized('creditInstitute') && null !== $data->getCreditInstitute()) {
+        if ($data->isInitialized('creditInstitute') && $data->getCreditInstitute() !== null) {
             $dataArray['creditInstitute'] = $data->getCreditInstitute();
         }
-        if ($data->isInitialized('creditInstituteCity') && null !== $data->getCreditInstituteCity()) {
+        if ($data->isInitialized('creditInstituteCity') && $data->getCreditInstituteCity() !== null) {
             $dataArray['creditInstituteCity'] = $data->getCreditInstituteCity();
         }
-        if ($data->isInitialized('creditInstituteStreet') && null !== $data->getCreditInstituteStreet()) {
+        if ($data->isInitialized('creditInstituteStreet') && $data->getCreditInstituteStreet() !== null) {
             $dataArray['creditInstituteStreet'] = $data->getCreditInstituteStreet();
         }
-        if ($data->isInitialized('creditInstituteZip') && null !== $data->getCreditInstituteZip()) {
+        if ($data->isInitialized('creditInstituteZip') && $data->getCreditInstituteZip() !== null) {
             $dataArray['creditInstituteZip'] = $data->getCreditInstituteZip();
         }
-        if ($data->isInitialized('creditLine') && null !== $data->getCreditLine()) {
+        if ($data->isInitialized('creditLine') && $data->getCreditLine() !== null) {
             $dataArray['creditLine'] = $data->getCreditLine();
         }
-        if ($data->isInitialized('currencyId') && null !== $data->getCurrencyId()) {
+        if ($data->isInitialized('currencyId') && $data->getCurrencyId() !== null) {
             $dataArray['currencyId'] = $data->getCurrencyId();
         }
-        if ($data->isInitialized('differentSepaCreditorIdentifier') && null !== $data->getDifferentSepaCreditorIdentifier()) {
+        if ($data->isInitialized('differentSepaCreditorIdentifier') && $data->getDifferentSepaCreditorIdentifier() !== null) {
             $dataArray['differentSepaCreditorIdentifier'] = $data->getDifferentSepaCreditorIdentifier();
         }
-        if ($data->isInitialized('enabledForElectronicPaymentTransactions') && null !== $data->getEnabledForElectronicPaymentTransactions()) {
+        if ($data->isInitialized('enabledForElectronicPaymentTransactions') && $data->getEnabledForElectronicPaymentTransactions() !== null) {
             $dataArray['enabledForElectronicPaymentTransactions'] = $data->getEnabledForElectronicPaymentTransactions();
         }
-        if ($data->isInitialized('iban') && null !== $data->getIban()) {
+        if ($data->isInitialized('iban') && $data->getIban() !== null) {
             $dataArray['iban'] = $data->getIban();
         }
-        if ($data->isInitialized('incidentalCostsOfMonetaryTrafficAccountId') && null !== $data->getIncidentalCostsOfMonetaryTrafficAccountId()) {
+        if ($data->isInitialized('incidentalCostsOfMonetaryTrafficAccountId') && $data->getIncidentalCostsOfMonetaryTrafficAccountId() !== null) {
             $dataArray['incidentalCostsOfMonetaryTrafficAccountId'] = $data->getIncidentalCostsOfMonetaryTrafficAccountId();
         }
-        if ($data->isInitialized('incidentalCostsOfMonetaryTrafficTaxId') && null !== $data->getIncidentalCostsOfMonetaryTrafficTaxId()) {
+        if ($data->isInitialized('incidentalCostsOfMonetaryTrafficTaxId') && $data->getIncidentalCostsOfMonetaryTrafficTaxId() !== null) {
             $dataArray['incidentalCostsOfMonetaryTrafficTaxId'] = $data->getIncidentalCostsOfMonetaryTrafficTaxId();
         }
-        if ($data->isInitialized('lastDownload') && null !== $data->getLastDownload()) {
+        if ($data->isInitialized('lastDownload') && $data->getLastDownload() !== null) {
             $dataArray['lastDownload'] = $data->getLastDownload();
         }
-        if ($data->isInitialized('primary') && null !== $data->getPrimary()) {
+        if ($data->isInitialized('primary') && $data->getPrimary() !== null) {
             $dataArray['primary'] = $data->getPrimary();
         }
-        if ($data->isInitialized('qrIban') && null !== $data->getQrIban()) {
+        if ($data->isInitialized('qrIban') && $data->getQrIban() !== null) {
             $dataArray['qrIban'] = $data->getQrIban();
         }
-        if ($data->isInitialized('qrIdentifier') && null !== $data->getQrIdentifier()) {
+        if ($data->isInitialized('qrIdentifier') && $data->getQrIdentifier() !== null) {
             $dataArray['qrIdentifier'] = $data->getQrIdentifier();
         }
-        if ($data->isInitialized('swiftBic') && null !== $data->getSwiftBic()) {
+        if ($data->isInitialized('swiftBic') && $data->getSwiftBic() !== null) {
             $dataArray['swiftBic'] = $data->getSwiftBic();
         }
         foreach ($data as $key => $value) {
@@ -258,8 +264,10 @@ class BankAccountNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\BankAccount::class => false];

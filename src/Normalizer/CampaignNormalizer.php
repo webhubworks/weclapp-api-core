@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class CampaignNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class CampaignNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\Campaign::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\Campaign::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class CampaignNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\Campaign();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\Campaign;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -98,43 +102,45 @@ class CampaignNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('campaignEndDate') && null !== $data->getCampaignEndDate()) {
+        if ($data->isInitialized('campaignEndDate') && $data->getCampaignEndDate() !== null) {
             $dataArray['campaignEndDate'] = $data->getCampaignEndDate();
         }
-        if ($data->isInitialized('campaignName') && null !== $data->getCampaignName()) {
+        if ($data->isInitialized('campaignName') && $data->getCampaignName() !== null) {
             $dataArray['campaignName'] = $data->getCampaignName();
         }
-        if ($data->isInitialized('campaignNumber') && null !== $data->getCampaignNumber()) {
+        if ($data->isInitialized('campaignNumber') && $data->getCampaignNumber() !== null) {
             $dataArray['campaignNumber'] = $data->getCampaignNumber();
         }
-        if ($data->isInitialized('campaignStartDate') && null !== $data->getCampaignStartDate()) {
+        if ($data->isInitialized('campaignStartDate') && $data->getCampaignStartDate() !== null) {
             $dataArray['campaignStartDate'] = $data->getCampaignStartDate();
         }
-        if ($data->isInitialized('campaignType') && null !== $data->getCampaignType()) {
+        if ($data->isInitialized('campaignType') && $data->getCampaignType() !== null) {
             $dataArray['campaignType'] = $data->getCampaignType();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('responsibleUserId') && null !== $data->getResponsibleUserId()) {
+        if ($data->isInitialized('responsibleUserId') && $data->getResponsibleUserId() !== null) {
             $dataArray['responsibleUserId'] = $data->getResponsibleUserId();
         }
-        if ($data->isInitialized('responsibleUserUsername') && null !== $data->getResponsibleUserUsername()) {
+        if ($data->isInitialized('responsibleUserUsername') && $data->getResponsibleUserUsername() !== null) {
             $dataArray['responsibleUserUsername'] = $data->getResponsibleUserUsername();
         }
         foreach ($data as $key => $value_1) {
@@ -142,8 +148,10 @@ class CampaignNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\Campaign::class => false];

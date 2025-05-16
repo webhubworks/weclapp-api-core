@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class QuotationItemScaleValueNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class QuotationItemScaleValueNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\QuotationItemScaleValue::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\QuotationItemScaleValue::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class QuotationItemScaleValueNormalizer implements DenormalizerInterface, Normal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\QuotationItemScaleValue();
+        $object = new \Webhubworks\WeclappApiCore\Model\QuotationItemScaleValue;
         if (\array_key_exists('fromSalesPrice', $data) && \is_int($data['fromSalesPrice'])) {
             $data['fromSalesPrice'] = (bool) $data['fromSalesPrice'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('discountPercentage', $data)) {
@@ -69,24 +73,26 @@ class QuotationItemScaleValueNormalizer implements DenormalizerInterface, Normal
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('discountPercentage') && null !== $data->getDiscountPercentage()) {
+        if ($data->isInitialized('discountPercentage') && $data->getDiscountPercentage() !== null) {
             $dataArray['discountPercentage'] = $data->getDiscountPercentage();
         }
-        if ($data->isInitialized('fromSalesPrice') && null !== $data->getFromSalesPrice()) {
+        if ($data->isInitialized('fromSalesPrice') && $data->getFromSalesPrice() !== null) {
             $dataArray['fromSalesPrice'] = $data->getFromSalesPrice();
         }
-        if ($data->isInitialized('price') && null !== $data->getPrice()) {
+        if ($data->isInitialized('price') && $data->getPrice() !== null) {
             $dataArray['price'] = $data->getPrice();
         }
-        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
+        if ($data->isInitialized('quantity') && $data->getQuantity() !== null) {
             $dataArray['quantity'] = $data->getQuantity();
         }
-        if ($data->isInitialized('reductionAdditionItems') && null !== $data->getReductionAdditionItems()) {
+        if ($data->isInitialized('reductionAdditionItems') && $data->getReductionAdditionItems() !== null) {
             $values = [];
             foreach ($data->getReductionAdditionItems() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -98,8 +104,10 @@ class QuotationItemScaleValueNormalizer implements DenormalizerInterface, Normal
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\QuotationItemScaleValue::class => false];

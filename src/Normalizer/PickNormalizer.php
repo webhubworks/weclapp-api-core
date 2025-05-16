@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class PickNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class PickNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\Pick::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\Pick::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class PickNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\Pick();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\Pick;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -130,67 +134,69 @@ class PickNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('batchNumber') && null !== $data->getBatchNumber()) {
+        if ($data->isInitialized('batchNumber') && $data->getBatchNumber() !== null) {
             $dataArray['batchNumber'] = $data->getBatchNumber();
         }
-        if ($data->isInitialized('confirmedByUserId') && null !== $data->getConfirmedByUserId()) {
+        if ($data->isInitialized('confirmedByUserId') && $data->getConfirmedByUserId() !== null) {
             $dataArray['confirmedByUserId'] = $data->getConfirmedByUserId();
         }
-        if ($data->isInitialized('confirmedDate') && null !== $data->getConfirmedDate()) {
+        if ($data->isInitialized('confirmedDate') && $data->getConfirmedDate() !== null) {
             $dataArray['confirmedDate'] = $data->getConfirmedDate();
         }
-        if ($data->isInitialized('internalTransportReferenceId') && null !== $data->getInternalTransportReferenceId()) {
+        if ($data->isInitialized('internalTransportReferenceId') && $data->getInternalTransportReferenceId() !== null) {
             $dataArray['internalTransportReferenceId'] = $data->getInternalTransportReferenceId();
         }
-        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
+        if ($data->isInitialized('quantity') && $data->getQuantity() !== null) {
             $dataArray['quantity'] = $data->getQuantity();
         }
-        if ($data->isInitialized('serialNumbers') && null !== $data->getSerialNumbers()) {
+        if ($data->isInitialized('serialNumbers') && $data->getSerialNumbers() !== null) {
             $values = [];
             foreach ($data->getSerialNumbers() as $value) {
                 $values[] = $value;
             }
             $dataArray['serialNumbers'] = $values;
         }
-        if ($data->isInitialized('storagePlaceId') && null !== $data->getStoragePlaceId()) {
+        if ($data->isInitialized('storagePlaceId') && $data->getStoragePlaceId() !== null) {
             $dataArray['storagePlaceId'] = $data->getStoragePlaceId();
         }
-        if ($data->isInitialized('bookedDate') && null !== $data->getBookedDate()) {
+        if ($data->isInitialized('bookedDate') && $data->getBookedDate() !== null) {
             $dataArray['bookedDate'] = $data->getBookedDate();
         }
-        if ($data->isInitialized('orderItemId') && null !== $data->getOrderItemId()) {
+        if ($data->isInitialized('orderItemId') && $data->getOrderItemId() !== null) {
             $dataArray['orderItemId'] = $data->getOrderItemId();
         }
-        if ($data->isInitialized('sourceInternalTransportReferenceId') && null !== $data->getSourceInternalTransportReferenceId()) {
+        if ($data->isInitialized('sourceInternalTransportReferenceId') && $data->getSourceInternalTransportReferenceId() !== null) {
             $dataArray['sourceInternalTransportReferenceId'] = $data->getSourceInternalTransportReferenceId();
         }
-        if ($data->isInitialized('sourceStoragePlaceId') && null !== $data->getSourceStoragePlaceId()) {
+        if ($data->isInitialized('sourceStoragePlaceId') && $data->getSourceStoragePlaceId() !== null) {
             $dataArray['sourceStoragePlaceId'] = $data->getSourceStoragePlaceId();
         }
-        if ($data->isInitialized('packagingUnitBaseArticleId') && null !== $data->getPackagingUnitBaseArticleId()) {
+        if ($data->isInitialized('packagingUnitBaseArticleId') && $data->getPackagingUnitBaseArticleId() !== null) {
             $dataArray['packagingUnitBaseArticleId'] = $data->getPackagingUnitBaseArticleId();
         }
-        if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
+        if ($data->isInitialized('positionNumber') && $data->getPositionNumber() !== null) {
             $dataArray['positionNumber'] = $data->getPositionNumber();
         }
-        if ($data->isInitialized('productionOrderItemId') && null !== $data->getProductionOrderItemId()) {
+        if ($data->isInitialized('productionOrderItemId') && $data->getProductionOrderItemId() !== null) {
             $dataArray['productionOrderItemId'] = $data->getProductionOrderItemId();
         }
-        if ($data->isInitialized('salesOrderItemId') && null !== $data->getSalesOrderItemId()) {
+        if ($data->isInitialized('salesOrderItemId') && $data->getSalesOrderItemId() !== null) {
             $dataArray['salesOrderItemId'] = $data->getSalesOrderItemId();
         }
-        if ($data->isInitialized('shipmentItemId') && null !== $data->getShipmentItemId()) {
+        if ($data->isInitialized('shipmentItemId') && $data->getShipmentItemId() !== null) {
             $dataArray['shipmentItemId'] = $data->getShipmentItemId();
         }
-        if ($data->isInitialized('transportationOrderId') && null !== $data->getTransportationOrderId()) {
+        if ($data->isInitialized('transportationOrderId') && $data->getTransportationOrderId() !== null) {
             $dataArray['transportationOrderId'] = $data->getTransportationOrderId();
         }
         foreach ($data as $key => $value_1) {
@@ -198,8 +204,10 @@ class PickNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\Pick::class => false];

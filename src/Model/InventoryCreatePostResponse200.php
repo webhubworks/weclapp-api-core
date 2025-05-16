@@ -8,36 +8,27 @@ class InventoryCreatePostResponse200 extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
+
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
+
     /**
-     * 
-     *
      * @var Inventory
      */
     protected $result;
-    /**
-     * 
-     *
-     * @return Inventory
-     */
+
     public function getResult(): Inventory
     {
         return $this->result;
     }
-    /**
-     * 
-     *
-     * @param Inventory $result
-     *
-     * @return self
-     */
+
     public function setResult(Inventory $result): self
     {
         $this->initialized['result'] = true;
         $this->result = $result;
+
         return $this;
     }
 }

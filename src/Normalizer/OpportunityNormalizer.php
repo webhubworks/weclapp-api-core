@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class OpportunityNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class OpportunityNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\Opportunity::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\Opportunity::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class OpportunityNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\Opportunity();
+        $object = new \Webhubworks\WeclappApiCore\Model\Opportunity;
         if (\array_key_exists('hotLead', $data) && \is_int($data['hotLead'])) {
             $data['hotLead'] = (bool) $data['hotLead'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -181,106 +185,108 @@ class OpportunityNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $object[$key] = $value_4;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('contactId') && null !== $data->getContactId()) {
+        if ($data->isInitialized('contactId') && $data->getContactId() !== null) {
             $dataArray['contactId'] = $data->getContactId();
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
+        if ($data->isInitialized('creatorId') && $data->getCreatorId() !== null) {
             $dataArray['creatorId'] = $data->getCreatorId();
         }
-        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
+        if ($data->isInitialized('customerId') && $data->getCustomerId() !== null) {
             $dataArray['customerId'] = $data->getCustomerId();
         }
-        if ($data->isInitialized('customerNumber') && null !== $data->getCustomerNumber()) {
+        if ($data->isInitialized('customerNumber') && $data->getCustomerNumber() !== null) {
             $dataArray['customerNumber'] = $data->getCustomerNumber();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('expectedDeliveryDate') && null !== $data->getExpectedDeliveryDate()) {
+        if ($data->isInitialized('expectedDeliveryDate') && $data->getExpectedDeliveryDate() !== null) {
             $dataArray['expectedDeliveryDate'] = $data->getExpectedDeliveryDate();
         }
-        if ($data->isInitialized('expectedSignatureDate') && null !== $data->getExpectedSignatureDate()) {
+        if ($data->isInitialized('expectedSignatureDate') && $data->getExpectedSignatureDate() !== null) {
             $dataArray['expectedSignatureDate'] = $data->getExpectedSignatureDate();
         }
-        if ($data->isInitialized('hotLead') && null !== $data->getHotLead()) {
+        if ($data->isInitialized('hotLead') && $data->getHotLead() !== null) {
             $dataArray['hotLead'] = $data->getHotLead();
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name') && $data->getName() !== null) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('nextCallDate') && null !== $data->getNextCallDate()) {
+        if ($data->isInitialized('nextCallDate') && $data->getNextCallDate() !== null) {
             $dataArray['nextCallDate'] = $data->getNextCallDate();
         }
-        if ($data->isInitialized('opportunityNumber') && null !== $data->getOpportunityNumber()) {
+        if ($data->isInitialized('opportunityNumber') && $data->getOpportunityNumber() !== null) {
             $dataArray['opportunityNumber'] = $data->getOpportunityNumber();
         }
-        if ($data->isInitialized('responsibleUserId') && null !== $data->getResponsibleUserId()) {
+        if ($data->isInitialized('responsibleUserId') && $data->getResponsibleUserId() !== null) {
             $dataArray['responsibleUserId'] = $data->getResponsibleUserId();
         }
-        if ($data->isInitialized('responsibleUserUsername') && null !== $data->getResponsibleUserUsername()) {
+        if ($data->isInitialized('responsibleUserUsername') && $data->getResponsibleUserUsername() !== null) {
             $dataArray['responsibleUserUsername'] = $data->getResponsibleUserUsername();
         }
-        if ($data->isInitialized('revenue') && null !== $data->getRevenue()) {
+        if ($data->isInitialized('revenue') && $data->getRevenue() !== null) {
             $dataArray['revenue'] = $data->getRevenue();
         }
-        if ($data->isInitialized('salesChannel') && null !== $data->getSalesChannel()) {
+        if ($data->isInitialized('salesChannel') && $data->getSalesChannel() !== null) {
             $dataArray['salesChannel'] = $data->getSalesChannel();
         }
-        if ($data->isInitialized('salesProbability') && null !== $data->getSalesProbability()) {
+        if ($data->isInitialized('salesProbability') && $data->getSalesProbability() !== null) {
             $dataArray['salesProbability'] = $data->getSalesProbability();
         }
-        if ($data->isInitialized('salesStageHistory') && null !== $data->getSalesStageHistory()) {
+        if ($data->isInitialized('salesStageHistory') && $data->getSalesStageHistory() !== null) {
             $values_1 = [];
             foreach ($data->getSalesStageHistory() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['salesStageHistory'] = $values_1;
         }
-        if ($data->isInitialized('salesStageId') && null !== $data->getSalesStageId()) {
+        if ($data->isInitialized('salesStageId') && $data->getSalesStageId() !== null) {
             $dataArray['salesStageId'] = $data->getSalesStageId();
         }
-        if ($data->isInitialized('salesStageName') && null !== $data->getSalesStageName()) {
+        if ($data->isInitialized('salesStageName') && $data->getSalesStageName() !== null) {
             $dataArray['salesStageName'] = $data->getSalesStageName();
         }
-        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
+        if ($data->isInitialized('startDate') && $data->getStartDate() !== null) {
             $dataArray['startDate'] = $data->getStartDate();
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if ($data->isInitialized('tags') && $data->getTags() !== null) {
             $values_2 = [];
             foreach ($data->getTags() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['tags'] = $values_2;
         }
-        if ($data->isInitialized('topics') && null !== $data->getTopics()) {
+        if ($data->isInitialized('topics') && $data->getTopics() !== null) {
             $values_3 = [];
             foreach ($data->getTopics() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $dataArray['topics'] = $values_3;
         }
-        if ($data->isInitialized('winLossDescription') && null !== $data->getWinLossDescription()) {
+        if ($data->isInitialized('winLossDescription') && $data->getWinLossDescription() !== null) {
             $dataArray['winLossDescription'] = $data->getWinLossDescription();
         }
-        if ($data->isInitialized('winLossReasonId') && null !== $data->getWinLossReasonId()) {
+        if ($data->isInitialized('winLossReasonId') && $data->getWinLossReasonId() !== null) {
             $dataArray['winLossReasonId'] = $data->getWinLossReasonId();
         }
-        if ($data->isInitialized('winLossReasonName') && null !== $data->getWinLossReasonName()) {
+        if ($data->isInitialized('winLossReasonName') && $data->getWinLossReasonName() !== null) {
             $dataArray['winLossReasonName'] = $data->getWinLossReasonName();
         }
         foreach ($data as $key => $value_4) {
@@ -288,8 +294,10 @@ class OpportunityNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $dataArray[$key] = $value_4;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\Opportunity::class => false];

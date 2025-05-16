@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class PurchaseOrderRequestOfferNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class PurchaseOrderRequestOfferNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\PurchaseOrderRequestOffer::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\PurchaseOrderRequestOffer::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,14 +37,14 @@ class PurchaseOrderRequestOfferNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\PurchaseOrderRequestOffer();
+        $object = new \Webhubworks\WeclappApiCore\Model\PurchaseOrderRequestOffer;
         if (\array_key_exists('disableEmailTemplate', $data) && \is_int($data['disableEmailTemplate'])) {
             $data['disableEmailTemplate'] = (bool) $data['disableEmailTemplate'];
         }
         if (\array_key_exists('sentToRecipient', $data) && \is_int($data['sentToRecipient'])) {
             $data['sentToRecipient'] = (bool) $data['sentToRecipient'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -236,144 +240,146 @@ class PurchaseOrderRequestOfferNormalizer implements DenormalizerInterface, Norm
                 $object[$key] = $value_3;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('commercialLanguage') && null !== $data->getCommercialLanguage()) {
+        if ($data->isInitialized('commercialLanguage') && $data->getCommercialLanguage() !== null) {
             $dataArray['commercialLanguage'] = $data->getCommercialLanguage();
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
+        if ($data->isInitialized('creatorId') && $data->getCreatorId() !== null) {
             $dataArray['creatorId'] = $data->getCreatorId();
         }
-        if ($data->isInitialized('currencyConversionDate') && null !== $data->getCurrencyConversionDate()) {
+        if ($data->isInitialized('currencyConversionDate') && $data->getCurrencyConversionDate() !== null) {
             $dataArray['currencyConversionDate'] = $data->getCurrencyConversionDate();
         }
-        if ($data->isInitialized('currencyConversionRate') && null !== $data->getCurrencyConversionRate()) {
+        if ($data->isInitialized('currencyConversionRate') && $data->getCurrencyConversionRate() !== null) {
             $dataArray['currencyConversionRate'] = $data->getCurrencyConversionRate();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('disableEmailTemplate') && null !== $data->getDisableEmailTemplate()) {
+        if ($data->isInitialized('disableEmailTemplate') && $data->getDisableEmailTemplate() !== null) {
             $dataArray['disableEmailTemplate'] = $data->getDisableEmailTemplate();
         }
-        if ($data->isInitialized('endDate') && null !== $data->getEndDate()) {
+        if ($data->isInitialized('endDate') && $data->getEndDate() !== null) {
             $dataArray['endDate'] = $data->getEndDate();
         }
-        if ($data->isInitialized('grossAmount') && null !== $data->getGrossAmount()) {
+        if ($data->isInitialized('grossAmount') && $data->getGrossAmount() !== null) {
             $dataArray['grossAmount'] = $data->getGrossAmount();
         }
-        if ($data->isInitialized('grossAmountInCompanyCurrency') && null !== $data->getGrossAmountInCompanyCurrency()) {
+        if ($data->isInitialized('grossAmountInCompanyCurrency') && $data->getGrossAmountInCompanyCurrency() !== null) {
             $dataArray['grossAmountInCompanyCurrency'] = $data->getGrossAmountInCompanyCurrency();
         }
-        if ($data->isInitialized('headerDiscount') && null !== $data->getHeaderDiscount()) {
+        if ($data->isInitialized('headerDiscount') && $data->getHeaderDiscount() !== null) {
             $dataArray['headerDiscount'] = $data->getHeaderDiscount();
         }
-        if ($data->isInitialized('headerSurcharge') && null !== $data->getHeaderSurcharge()) {
+        if ($data->isInitialized('headerSurcharge') && $data->getHeaderSurcharge() !== null) {
             $dataArray['headerSurcharge'] = $data->getHeaderSurcharge();
         }
-        if ($data->isInitialized('netAmount') && null !== $data->getNetAmount()) {
+        if ($data->isInitialized('netAmount') && $data->getNetAmount() !== null) {
             $dataArray['netAmount'] = $data->getNetAmount();
         }
-        if ($data->isInitialized('netAmountInCompanyCurrency') && null !== $data->getNetAmountInCompanyCurrency()) {
+        if ($data->isInitialized('netAmountInCompanyCurrency') && $data->getNetAmountInCompanyCurrency() !== null) {
             $dataArray['netAmountInCompanyCurrency'] = $data->getNetAmountInCompanyCurrency();
         }
-        if ($data->isInitialized('nonStandardTaxId') && null !== $data->getNonStandardTaxId()) {
+        if ($data->isInitialized('nonStandardTaxId') && $data->getNonStandardTaxId() !== null) {
             $dataArray['nonStandardTaxId'] = $data->getNonStandardTaxId();
         }
-        if ($data->isInitialized('nonStandardTaxName') && null !== $data->getNonStandardTaxName()) {
+        if ($data->isInitialized('nonStandardTaxName') && $data->getNonStandardTaxName() !== null) {
             $dataArray['nonStandardTaxName'] = $data->getNonStandardTaxName();
         }
-        if ($data->isInitialized('offerDate') && null !== $data->getOfferDate()) {
+        if ($data->isInitialized('offerDate') && $data->getOfferDate() !== null) {
             $dataArray['offerDate'] = $data->getOfferDate();
         }
-        if ($data->isInitialized('paymentMethodId') && null !== $data->getPaymentMethodId()) {
+        if ($data->isInitialized('paymentMethodId') && $data->getPaymentMethodId() !== null) {
             $dataArray['paymentMethodId'] = $data->getPaymentMethodId();
         }
-        if ($data->isInitialized('paymentMethodName') && null !== $data->getPaymentMethodName()) {
+        if ($data->isInitialized('paymentMethodName') && $data->getPaymentMethodName() !== null) {
             $dataArray['paymentMethodName'] = $data->getPaymentMethodName();
         }
-        if ($data->isInitialized('plannedDeliveryDate') && null !== $data->getPlannedDeliveryDate()) {
+        if ($data->isInitialized('plannedDeliveryDate') && $data->getPlannedDeliveryDate() !== null) {
             $dataArray['plannedDeliveryDate'] = $data->getPlannedDeliveryDate();
         }
-        if ($data->isInitialized('purchaseOrderRequestOfferItems') && null !== $data->getPurchaseOrderRequestOfferItems()) {
+        if ($data->isInitialized('purchaseOrderRequestOfferItems') && $data->getPurchaseOrderRequestOfferItems() !== null) {
             $values_1 = [];
             foreach ($data->getPurchaseOrderRequestOfferItems() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['purchaseOrderRequestOfferItems'] = $values_1;
         }
-        if ($data->isInitialized('recordComment') && null !== $data->getRecordComment()) {
+        if ($data->isInitialized('recordComment') && $data->getRecordComment() !== null) {
             $dataArray['recordComment'] = $data->getRecordComment();
         }
-        if ($data->isInitialized('recordCurrencyId') && null !== $data->getRecordCurrencyId()) {
+        if ($data->isInitialized('recordCurrencyId') && $data->getRecordCurrencyId() !== null) {
             $dataArray['recordCurrencyId'] = $data->getRecordCurrencyId();
         }
-        if ($data->isInitialized('recordCurrencyName') && null !== $data->getRecordCurrencyName()) {
+        if ($data->isInitialized('recordCurrencyName') && $data->getRecordCurrencyName() !== null) {
             $dataArray['recordCurrencyName'] = $data->getRecordCurrencyName();
         }
-        if ($data->isInitialized('recordEmailAddresses') && null !== $data->getRecordEmailAddresses()) {
+        if ($data->isInitialized('recordEmailAddresses') && $data->getRecordEmailAddresses() !== null) {
             $dataArray['recordEmailAddresses'] = $this->normalizer->normalize($data->getRecordEmailAddresses(), 'json', $context);
         }
-        if ($data->isInitialized('recordFreeText') && null !== $data->getRecordFreeText()) {
+        if ($data->isInitialized('recordFreeText') && $data->getRecordFreeText() !== null) {
             $dataArray['recordFreeText'] = $data->getRecordFreeText();
         }
-        if ($data->isInitialized('recordOpening') && null !== $data->getRecordOpening()) {
+        if ($data->isInitialized('recordOpening') && $data->getRecordOpening() !== null) {
             $dataArray['recordOpening'] = $data->getRecordOpening();
         }
-        if ($data->isInitialized('replyDate') && null !== $data->getReplyDate()) {
+        if ($data->isInitialized('replyDate') && $data->getReplyDate() !== null) {
             $dataArray['replyDate'] = $data->getReplyDate();
         }
-        if ($data->isInitialized('requestDate') && null !== $data->getRequestDate()) {
+        if ($data->isInitialized('requestDate') && $data->getRequestDate() !== null) {
             $dataArray['requestDate'] = $data->getRequestDate();
         }
-        if ($data->isInitialized('sentToRecipient') && null !== $data->getSentToRecipient()) {
+        if ($data->isInitialized('sentToRecipient') && $data->getSentToRecipient() !== null) {
             $dataArray['sentToRecipient'] = $data->getSentToRecipient();
         }
-        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
+        if ($data->isInitialized('startDate') && $data->getStartDate() !== null) {
             $dataArray['startDate'] = $data->getStartDate();
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
+        if ($data->isInitialized('status') && $data->getStatus() !== null) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('supplierId') && null !== $data->getSupplierId()) {
+        if ($data->isInitialized('supplierId') && $data->getSupplierId() !== null) {
             $dataArray['supplierId'] = $data->getSupplierId();
         }
-        if ($data->isInitialized('supplierNumber') && null !== $data->getSupplierNumber()) {
+        if ($data->isInitialized('supplierNumber') && $data->getSupplierNumber() !== null) {
             $dataArray['supplierNumber'] = $data->getSupplierNumber();
         }
-        if ($data->isInitialized('supplierReference') && null !== $data->getSupplierReference()) {
+        if ($data->isInitialized('supplierReference') && $data->getSupplierReference() !== null) {
             $dataArray['supplierReference'] = $data->getSupplierReference();
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if ($data->isInitialized('tags') && $data->getTags() !== null) {
             $values_2 = [];
             foreach ($data->getTags() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['tags'] = $values_2;
         }
-        if ($data->isInitialized('termOfPaymentId') && null !== $data->getTermOfPaymentId()) {
+        if ($data->isInitialized('termOfPaymentId') && $data->getTermOfPaymentId() !== null) {
             $dataArray['termOfPaymentId'] = $data->getTermOfPaymentId();
         }
-        if ($data->isInitialized('termOfPaymentName') && null !== $data->getTermOfPaymentName()) {
+        if ($data->isInitialized('termOfPaymentName') && $data->getTermOfPaymentName() !== null) {
             $dataArray['termOfPaymentName'] = $data->getTermOfPaymentName();
         }
-        if ($data->isInitialized('validFrom') && null !== $data->getValidFrom()) {
+        if ($data->isInitialized('validFrom') && $data->getValidFrom() !== null) {
             $dataArray['validFrom'] = $data->getValidFrom();
         }
-        if ($data->isInitialized('validTo') && null !== $data->getValidTo()) {
+        if ($data->isInitialized('validTo') && $data->getValidTo() !== null) {
             $dataArray['validTo'] = $data->getValidTo();
         }
         foreach ($data as $key => $value_3) {
@@ -381,8 +387,10 @@ class PurchaseOrderRequestOfferNormalizer implements DenormalizerInterface, Norm
                 $dataArray[$key] = $value_3;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\PurchaseOrderRequestOffer::class => false];

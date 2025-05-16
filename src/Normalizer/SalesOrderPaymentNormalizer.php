@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class SalesOrderPaymentNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class SalesOrderPaymentNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SalesOrderPayment::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SalesOrderPayment::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class SalesOrderPaymentNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SalesOrderPayment();
+        $object = new \Webhubworks\WeclappApiCore\Model\SalesOrderPayment;
         if (\array_key_exists('conditionMet', $data) && \is_int($data['conditionMet'])) {
             $data['conditionMet'] = (bool) $data['conditionMet'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -93,33 +97,35 @@ class SalesOrderPaymentNormalizer implements DenormalizerInterface, NormalizerIn
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
+        if ($data->isInitialized('amount') && $data->getAmount() !== null) {
             $dataArray['amount'] = $data->getAmount();
         }
-        if ($data->isInitialized('condition') && null !== $data->getCondition()) {
+        if ($data->isInitialized('condition') && $data->getCondition() !== null) {
             $dataArray['condition'] = $data->getCondition();
         }
-        if ($data->isInitialized('conditionMet') && null !== $data->getConditionMet()) {
+        if ($data->isInitialized('conditionMet') && $data->getConditionMet() !== null) {
             $dataArray['conditionMet'] = $data->getConditionMet();
         }
-        if ($data->isInitialized('dueDate') && null !== $data->getDueDate()) {
+        if ($data->isInitialized('dueDate') && $data->getDueDate() !== null) {
             $dataArray['dueDate'] = $data->getDueDate();
         }
-        if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
+        if ($data->isInitialized('positionNumber') && $data->getPositionNumber() !== null) {
             $dataArray['positionNumber'] = $data->getPositionNumber();
         }
-        if ($data->isInitialized('salesInvoiceId') && null !== $data->getSalesInvoiceId()) {
+        if ($data->isInitialized('salesInvoiceId') && $data->getSalesInvoiceId() !== null) {
             $dataArray['salesInvoiceId'] = $data->getSalesInvoiceId();
         }
-        if ($data->isInitialized('salesInvoices') && null !== $data->getSalesInvoices()) {
+        if ($data->isInitialized('salesInvoices') && $data->getSalesInvoices() !== null) {
             $values = [];
             foreach ($data->getSalesInvoices() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -131,8 +137,10 @@ class SalesOrderPaymentNormalizer implements DenormalizerInterface, NormalizerIn
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SalesOrderPayment::class => false];

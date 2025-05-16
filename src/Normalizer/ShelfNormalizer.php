@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ShelfNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class ShelfNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\Shelf::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\Shelf::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class ShelfNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\Shelf();
+        $object = new \Webhubworks\WeclappApiCore\Model\Shelf;
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -81,24 +85,26 @@ class ShelfNormalizer implements DenormalizerInterface, NormalizerInterface, Den
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('active') && null !== $data->getActive()) {
+        if ($data->isInitialized('active') && $data->getActive() !== null) {
             $dataArray['active'] = $data->getActive();
         }
-        if ($data->isInitialized('shortIdentifier') && null !== $data->getShortIdentifier()) {
+        if ($data->isInitialized('shortIdentifier') && $data->getShortIdentifier() !== null) {
             $dataArray['shortIdentifier'] = $data->getShortIdentifier();
         }
-        if ($data->isInitialized('storageLocationId') && null !== $data->getStorageLocationId()) {
+        if ($data->isInitialized('storageLocationId') && $data->getStorageLocationId() !== null) {
             $dataArray['storageLocationId'] = $data->getStorageLocationId();
         }
-        if ($data->isInitialized('storagePlaces') && null !== $data->getStoragePlaces()) {
+        if ($data->isInitialized('storagePlaces') && $data->getStoragePlaces() !== null) {
             $values = [];
             foreach ($data->getStoragePlaces() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -110,8 +116,10 @@ class ShelfNormalizer implements DenormalizerInterface, NormalizerInterface, Den
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\Shelf::class => false];

@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ProductionWorkScheduleItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class ProductionWorkScheduleItemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleItem::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleItem::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class ProductionWorkScheduleItemNormalizer implements DenormalizerInterface, Nor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleItem();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleItem;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -122,61 +126,63 @@ class ProductionWorkScheduleItemNormalizer implements DenormalizerInterface, Nor
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('costCenterId') && null !== $data->getCostCenterId()) {
+        if ($data->isInitialized('costCenterId') && $data->getCostCenterId() !== null) {
             $dataArray['costCenterId'] = $data->getCostCenterId();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('multipleHumanOperation') && null !== $data->getMultipleHumanOperation()) {
+        if ($data->isInitialized('multipleHumanOperation') && $data->getMultipleHumanOperation() !== null) {
             $dataArray['multipleHumanOperation'] = $data->getMultipleHumanOperation();
         }
-        if ($data->isInitialized('multipleMachineOperation') && null !== $data->getMultipleMachineOperation()) {
+        if ($data->isInitialized('multipleMachineOperation') && $data->getMultipleMachineOperation() !== null) {
             $dataArray['multipleMachineOperation'] = $data->getMultipleMachineOperation();
         }
-        if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
+        if ($data->isInitialized('positionNumber') && $data->getPositionNumber() !== null) {
             $dataArray['positionNumber'] = $data->getPositionNumber();
         }
-        if ($data->isInitialized('productionWorkScheduleId') && null !== $data->getProductionWorkScheduleId()) {
+        if ($data->isInitialized('productionWorkScheduleId') && $data->getProductionWorkScheduleId() !== null) {
             $dataArray['productionWorkScheduleId'] = $data->getProductionWorkScheduleId();
         }
-        if ($data->isInitialized('quantityBase') && null !== $data->getQuantityBase()) {
+        if ($data->isInitialized('quantityBase') && $data->getQuantityBase() !== null) {
             $dataArray['quantityBase'] = $data->getQuantityBase();
         }
-        if ($data->isInitialized('setupTime') && null !== $data->getSetupTime()) {
+        if ($data->isInitialized('setupTime') && $data->getSetupTime() !== null) {
             $dataArray['setupTime'] = $data->getSetupTime();
         }
-        if ($data->isInitialized('shortDescription') && null !== $data->getShortDescription()) {
+        if ($data->isInitialized('shortDescription') && $data->getShortDescription() !== null) {
             $dataArray['shortDescription'] = $data->getShortDescription();
         }
-        if ($data->isInitialized('timeType') && null !== $data->getTimeType()) {
+        if ($data->isInitialized('timeType') && $data->getTimeType() !== null) {
             $dataArray['timeType'] = $data->getTimeType();
         }
-        if ($data->isInitialized('timeUnit') && null !== $data->getTimeUnit()) {
+        if ($data->isInitialized('timeUnit') && $data->getTimeUnit() !== null) {
             $dataArray['timeUnit'] = $data->getTimeUnit();
         }
-        if ($data->isInitialized('unitTime') && null !== $data->getUnitTime()) {
+        if ($data->isInitialized('unitTime') && $data->getUnitTime() !== null) {
             $dataArray['unitTime'] = $data->getUnitTime();
         }
-        if ($data->isInitialized('validFrom') && null !== $data->getValidFrom()) {
+        if ($data->isInitialized('validFrom') && $data->getValidFrom() !== null) {
             $dataArray['validFrom'] = $data->getValidFrom();
         }
-        if ($data->isInitialized('validTo') && null !== $data->getValidTo()) {
+        if ($data->isInitialized('validTo') && $data->getValidTo() !== null) {
             $dataArray['validTo'] = $data->getValidTo();
         }
         foreach ($data as $key => $value_1) {
@@ -184,8 +190,10 @@ class ProductionWorkScheduleItemNormalizer implements DenormalizerInterface, Nor
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleItem::class => false];

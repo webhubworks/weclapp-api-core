@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class CrmEventNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class CrmEventNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\CrmEvent::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\CrmEvent::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class CrmEventNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\CrmEvent();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\CrmEvent;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -114,55 +118,57 @@ class CrmEventNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('callCategoryId') && null !== $data->getCallCategoryId()) {
+        if ($data->isInitialized('callCategoryId') && $data->getCallCategoryId() !== null) {
             $dataArray['callCategoryId'] = $data->getCallCategoryId();
         }
-        if ($data->isInitialized('contactId') && null !== $data->getContactId()) {
+        if ($data->isInitialized('contactId') && $data->getContactId() !== null) {
             $dataArray['contactId'] = $data->getContactId();
         }
-        if ($data->isInitialized('creatorUserId') && null !== $data->getCreatorUserId()) {
+        if ($data->isInitialized('creatorUserId') && $data->getCreatorUserId() !== null) {
             $dataArray['creatorUserId'] = $data->getCreatorUserId();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('endDate') && null !== $data->getEndDate()) {
+        if ($data->isInitialized('endDate') && $data->getEndDate() !== null) {
             $dataArray['endDate'] = $data->getEndDate();
         }
-        if ($data->isInitialized('eventCategoryId') && null !== $data->getEventCategoryId()) {
+        if ($data->isInitialized('eventCategoryId') && $data->getEventCategoryId() !== null) {
             $dataArray['eventCategoryId'] = $data->getEventCategoryId();
         }
-        if ($data->isInitialized('location') && null !== $data->getLocation()) {
+        if ($data->isInitialized('location') && $data->getLocation() !== null) {
             $dataArray['location'] = $data->getLocation();
         }
-        if ($data->isInitialized('opportunityId') && null !== $data->getOpportunityId()) {
+        if ($data->isInitialized('opportunityId') && $data->getOpportunityId() !== null) {
             $dataArray['opportunityId'] = $data->getOpportunityId();
         }
-        if ($data->isInitialized('partyId') && null !== $data->getPartyId()) {
+        if ($data->isInitialized('partyId') && $data->getPartyId() !== null) {
             $dataArray['partyId'] = $data->getPartyId();
         }
-        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
+        if ($data->isInitialized('startDate') && $data->getStartDate() !== null) {
             $dataArray['startDate'] = $data->getStartDate();
         }
-        if ($data->isInitialized('subject') && null !== $data->getSubject()) {
+        if ($data->isInitialized('subject') && $data->getSubject() !== null) {
             $dataArray['subject'] = $data->getSubject();
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
+        if ($data->isInitialized('type') && $data->getType() !== null) {
             $dataArray['type'] = $data->getType();
         }
         foreach ($data as $key => $value_1) {
@@ -170,8 +176,10 @@ class CrmEventNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\CrmEvent::class => false];

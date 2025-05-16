@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class InventoryCreatePostBodyInventoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class InventoryCreatePostBodyInventoryNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\InventoryCreatePostBodyInventory::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\InventoryCreatePostBodyInventory::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class InventoryCreatePostBodyInventoryNormalizer implements DenormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\InventoryCreatePostBodyInventory();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\InventoryCreatePostBodyInventory;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('counter', $data)) {
@@ -110,61 +114,63 @@ class InventoryCreatePostBodyInventoryNormalizer implements DenormalizerInterfac
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('counter') && null !== $data->getCounter()) {
+        if ($data->isInitialized('counter') && $data->getCounter() !== null) {
             $dataArray['counter'] = $data->getCounter();
         }
-        if ($data->isInitialized('createdDate') && null !== $data->getCreatedDate()) {
+        if ($data->isInitialized('createdDate') && $data->getCreatedDate() !== null) {
             $dataArray['createdDate'] = $data->getCreatedDate();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('endDate') && null !== $data->getEndDate()) {
+        if ($data->isInitialized('endDate') && $data->getEndDate() !== null) {
             $dataArray['endDate'] = $data->getEndDate();
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
+        if ($data->isInitialized('id') && $data->getId() !== null) {
             $dataArray['id'] = $data->getId();
         }
-        if ($data->isInitialized('inventoryGroupId') && null !== $data->getInventoryGroupId()) {
+        if ($data->isInitialized('inventoryGroupId') && $data->getInventoryGroupId() !== null) {
             $dataArray['inventoryGroupId'] = $data->getInventoryGroupId();
         }
-        if ($data->isInitialized('inventoryNumber') && null !== $data->getInventoryNumber()) {
+        if ($data->isInitialized('inventoryNumber') && $data->getInventoryNumber() !== null) {
             $dataArray['inventoryNumber'] = $data->getInventoryNumber();
         }
-        if ($data->isInitialized('lastModifiedDate') && null !== $data->getLastModifiedDate()) {
+        if ($data->isInitialized('lastModifiedDate') && $data->getLastModifiedDate() !== null) {
             $dataArray['lastModifiedDate'] = $data->getLastModifiedDate();
         }
-        if ($data->isInitialized('levelOfDetail') && null !== $data->getLevelOfDetail()) {
+        if ($data->isInitialized('levelOfDetail') && $data->getLevelOfDetail() !== null) {
             $dataArray['levelOfDetail'] = $data->getLevelOfDetail();
         }
-        if ($data->isInitialized('managerId') && null !== $data->getManagerId()) {
+        if ($data->isInitialized('managerId') && $data->getManagerId() !== null) {
             $dataArray['managerId'] = $data->getManagerId();
         }
-        if ($data->isInitialized('recorder') && null !== $data->getRecorder()) {
+        if ($data->isInitialized('recorder') && $data->getRecorder() !== null) {
             $dataArray['recorder'] = $data->getRecorder();
         }
-        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
+        if ($data->isInitialized('startDate') && $data->getStartDate() !== null) {
             $dataArray['startDate'] = $data->getStartDate();
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
+        if ($data->isInitialized('status') && $data->getStatus() !== null) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('statusHistory') && null !== $data->getStatusHistory()) {
+        if ($data->isInitialized('statusHistory') && $data->getStatusHistory() !== null) {
             $values = [];
             foreach ($data->getStatusHistory() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['statusHistory'] = $values;
         }
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('warehouseId') && null !== $data->getWarehouseId()) {
+        if ($data->isInitialized('warehouseId') && $data->getWarehouseId() !== null) {
             $dataArray['warehouseId'] = $data->getWarehouseId();
         }
         foreach ($data as $key => $value_1) {
@@ -172,8 +178,10 @@ class InventoryCreatePostBodyInventoryNormalizer implements DenormalizerInterfac
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\InventoryCreatePostBodyInventory::class => false];

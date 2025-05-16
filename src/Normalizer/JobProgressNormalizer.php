@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class JobProgressNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class JobProgressNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\JobProgress::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\JobProgress::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class JobProgressNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\JobProgress();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\JobProgress;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('failedCreateCount', $data)) {
@@ -66,27 +70,29 @@ class JobProgressNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('failedCreateCount') && null !== $data->getFailedCreateCount()) {
+        if ($data->isInitialized('failedCreateCount') && $data->getFailedCreateCount() !== null) {
             $dataArray['failedCreateCount'] = $data->getFailedCreateCount();
         }
-        if ($data->isInitialized('failedUpdateCount') && null !== $data->getFailedUpdateCount()) {
+        if ($data->isInitialized('failedUpdateCount') && $data->getFailedUpdateCount() !== null) {
             $dataArray['failedUpdateCount'] = $data->getFailedUpdateCount();
         }
-        if ($data->isInitialized('lastModifiedDate') && null !== $data->getLastModifiedDate()) {
+        if ($data->isInitialized('lastModifiedDate') && $data->getLastModifiedDate() !== null) {
             $dataArray['lastModifiedDate'] = $data->getLastModifiedDate();
         }
-        if ($data->isInitialized('succeededCreateCount') && null !== $data->getSucceededCreateCount()) {
+        if ($data->isInitialized('succeededCreateCount') && $data->getSucceededCreateCount() !== null) {
             $dataArray['succeededCreateCount'] = $data->getSucceededCreateCount();
         }
-        if ($data->isInitialized('succeededUpdateCount') && null !== $data->getSucceededUpdateCount()) {
+        if ($data->isInitialized('succeededUpdateCount') && $data->getSucceededUpdateCount() !== null) {
             $dataArray['succeededUpdateCount'] = $data->getSucceededUpdateCount();
         }
-        if ($data->isInitialized('totalCount') && null !== $data->getTotalCount()) {
+        if ($data->isInitialized('totalCount') && $data->getTotalCount() !== null) {
             $dataArray['totalCount'] = $data->getTotalCount();
         }
         foreach ($data as $key => $value) {
@@ -94,8 +100,10 @@ class JobProgressNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\JobProgress::class => false];

@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ContractNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class ContractNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\Contract::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\Contract::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,7 +37,7 @@ class ContractNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\Contract();
+        $object = new \Webhubworks\WeclappApiCore\Model\Contract;
         if (\array_key_exists('disableEmailTemplate', $data) && \is_int($data['disableEmailTemplate'])) {
             $data['disableEmailTemplate'] = (bool) $data['disableEmailTemplate'];
         }
@@ -61,7 +65,7 @@ class ContractNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('unlimited', $data) && \is_int($data['unlimited'])) {
             $data['unlimited'] = (bool) $data['unlimited'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -389,247 +393,249 @@ class ContractNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $object[$key] = $value_7;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('commercialLanguage') && null !== $data->getCommercialLanguage()) {
+        if ($data->isInitialized('commercialLanguage') && $data->getCommercialLanguage() !== null) {
             $dataArray['commercialLanguage'] = $data->getCommercialLanguage();
         }
-        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
+        if ($data->isInitialized('creatorId') && $data->getCreatorId() !== null) {
             $dataArray['creatorId'] = $data->getCreatorId();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('disableEmailTemplate') && null !== $data->getDisableEmailTemplate()) {
+        if ($data->isInitialized('disableEmailTemplate') && $data->getDisableEmailTemplate() !== null) {
             $dataArray['disableEmailTemplate'] = $data->getDisableEmailTemplate();
         }
-        if ($data->isInitialized('recordComment') && null !== $data->getRecordComment()) {
+        if ($data->isInitialized('recordComment') && $data->getRecordComment() !== null) {
             $dataArray['recordComment'] = $data->getRecordComment();
         }
-        if ($data->isInitialized('recordFreeText') && null !== $data->getRecordFreeText()) {
+        if ($data->isInitialized('recordFreeText') && $data->getRecordFreeText() !== null) {
             $dataArray['recordFreeText'] = $data->getRecordFreeText();
         }
-        if ($data->isInitialized('recordOpening') && null !== $data->getRecordOpening()) {
+        if ($data->isInitialized('recordOpening') && $data->getRecordOpening() !== null) {
             $dataArray['recordOpening'] = $data->getRecordOpening();
         }
-        if ($data->isInitialized('sentToRecipient') && null !== $data->getSentToRecipient()) {
+        if ($data->isInitialized('sentToRecipient') && $data->getSentToRecipient() !== null) {
             $dataArray['sentToRecipient'] = $data->getSentToRecipient();
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if ($data->isInitialized('tags') && $data->getTags() !== null) {
             $values_1 = [];
             foreach ($data->getTags() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['tags'] = $values_1;
         }
-        if ($data->isInitialized('additionalAddresses') && null !== $data->getAdditionalAddresses()) {
+        if ($data->isInitialized('additionalAddresses') && $data->getAdditionalAddresses() !== null) {
             $values_2 = [];
             foreach ($data->getAdditionalAddresses() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['additionalAddresses'] = $values_2;
         }
-        if ($data->isInitialized('authorizationUnitId') && null !== $data->getAuthorizationUnitId()) {
+        if ($data->isInitialized('authorizationUnitId') && $data->getAuthorizationUnitId() !== null) {
             $dataArray['authorizationUnitId'] = $data->getAuthorizationUnitId();
         }
-        if ($data->isInitialized('automaticExtension') && null !== $data->getAutomaticExtension()) {
+        if ($data->isInitialized('automaticExtension') && $data->getAutomaticExtension() !== null) {
             $dataArray['automaticExtension'] = $data->getAutomaticExtension();
         }
-        if ($data->isInitialized('billUntil') && null !== $data->getBillUntil()) {
+        if ($data->isInitialized('billUntil') && $data->getBillUntil() !== null) {
             $dataArray['billUntil'] = $data->getBillUntil();
         }
-        if ($data->isInitialized('billingDay') && null !== $data->getBillingDay()) {
+        if ($data->isInitialized('billingDay') && $data->getBillingDay() !== null) {
             $dataArray['billingDay'] = $data->getBillingDay();
         }
-        if ($data->isInitialized('billingTargetInvoiceStatus') && null !== $data->getBillingTargetInvoiceStatus()) {
+        if ($data->isInitialized('billingTargetInvoiceStatus') && $data->getBillingTargetInvoiceStatus() !== null) {
             $dataArray['billingTargetInvoiceStatus'] = $data->getBillingTargetInvoiceStatus();
         }
-        if ($data->isInitialized('billingType') && null !== $data->getBillingType()) {
+        if ($data->isInitialized('billingType') && $data->getBillingType() !== null) {
             $dataArray['billingType'] = $data->getBillingType();
         }
-        if ($data->isInitialized('cancellationDate') && null !== $data->getCancellationDate()) {
+        if ($data->isInitialized('cancellationDate') && $data->getCancellationDate() !== null) {
             $dataArray['cancellationDate'] = $data->getCancellationDate();
         }
-        if ($data->isInitialized('cancellationPeriodQuantity') && null !== $data->getCancellationPeriodQuantity()) {
+        if ($data->isInitialized('cancellationPeriodQuantity') && $data->getCancellationPeriodQuantity() !== null) {
             $dataArray['cancellationPeriodQuantity'] = $data->getCancellationPeriodQuantity();
         }
-        if ($data->isInitialized('cancellationPeriodSoftframe') && null !== $data->getCancellationPeriodSoftframe()) {
+        if ($data->isInitialized('cancellationPeriodSoftframe') && $data->getCancellationPeriodSoftframe() !== null) {
             $dataArray['cancellationPeriodSoftframe'] = $data->getCancellationPeriodSoftframe();
         }
-        if ($data->isInitialized('cancellationPeriodUnit') && null !== $data->getCancellationPeriodUnit()) {
+        if ($data->isInitialized('cancellationPeriodUnit') && $data->getCancellationPeriodUnit() !== null) {
             $dataArray['cancellationPeriodUnit'] = $data->getCancellationPeriodUnit();
         }
-        if ($data->isInitialized('commission') && null !== $data->getCommission()) {
+        if ($data->isInitialized('commission') && $data->getCommission() !== null) {
             $dataArray['commission'] = $data->getCommission();
         }
-        if ($data->isInitialized('commissionSalesPartners') && null !== $data->getCommissionSalesPartners()) {
+        if ($data->isInitialized('commissionSalesPartners') && $data->getCommissionSalesPartners() !== null) {
             $values_3 = [];
             foreach ($data->getCommissionSalesPartners() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $dataArray['commissionSalesPartners'] = $values_3;
         }
-        if ($data->isInitialized('contractCostItems') && null !== $data->getContractCostItems()) {
+        if ($data->isInitialized('contractCostItems') && $data->getContractCostItems() !== null) {
             $values_4 = [];
             foreach ($data->getContractCostItems() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $dataArray['contractCostItems'] = $values_4;
         }
-        if ($data->isInitialized('contractDate') && null !== $data->getContractDate()) {
+        if ($data->isInitialized('contractDate') && $data->getContractDate() !== null) {
             $dataArray['contractDate'] = $data->getContractDate();
         }
-        if ($data->isInitialized('contractItems') && null !== $data->getContractItems()) {
+        if ($data->isInitialized('contractItems') && $data->getContractItems() !== null) {
             $values_5 = [];
             foreach ($data->getContractItems() as $value_5) {
                 $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
             }
             $dataArray['contractItems'] = $values_5;
         }
-        if ($data->isInitialized('contractNumber') && null !== $data->getContractNumber()) {
+        if ($data->isInitialized('contractNumber') && $data->getContractNumber() !== null) {
             $dataArray['contractNumber'] = $data->getContractNumber();
         }
-        if ($data->isInitialized('contractNumberAtParty') && null !== $data->getContractNumberAtParty()) {
+        if ($data->isInitialized('contractNumberAtParty') && $data->getContractNumberAtParty() !== null) {
             $dataArray['contractNumberAtParty'] = $data->getContractNumberAtParty();
         }
-        if ($data->isInitialized('contractStatus') && null !== $data->getContractStatus()) {
+        if ($data->isInitialized('contractStatus') && $data->getContractStatus() !== null) {
             $dataArray['contractStatus'] = $data->getContractStatus();
         }
-        if ($data->isInitialized('correspondenceAddress') && null !== $data->getCorrespondenceAddress()) {
+        if ($data->isInitialized('correspondenceAddress') && $data->getCorrespondenceAddress() !== null) {
             $dataArray['correspondenceAddress'] = $this->normalizer->normalize($data->getCorrespondenceAddress(), 'json', $context);
         }
-        if ($data->isInitialized('deliveryAddress') && null !== $data->getDeliveryAddress()) {
+        if ($data->isInitialized('deliveryAddress') && $data->getDeliveryAddress() !== null) {
             $dataArray['deliveryAddress'] = $this->normalizer->normalize($data->getDeliveryAddress(), 'json', $context);
         }
-        if ($data->isInitialized('deliveryEmailAddresses') && null !== $data->getDeliveryEmailAddresses()) {
+        if ($data->isInitialized('deliveryEmailAddresses') && $data->getDeliveryEmailAddresses() !== null) {
             $dataArray['deliveryEmailAddresses'] = $this->normalizer->normalize($data->getDeliveryEmailAddresses(), 'json', $context);
         }
-        if ($data->isInitialized('differingCorrespondenceAddress') && null !== $data->getDifferingCorrespondenceAddress()) {
+        if ($data->isInitialized('differingCorrespondenceAddress') && $data->getDifferingCorrespondenceAddress() !== null) {
             $dataArray['differingCorrespondenceAddress'] = $data->getDifferingCorrespondenceAddress();
         }
-        if ($data->isInitialized('differingDeliveryAddress') && null !== $data->getDifferingDeliveryAddress()) {
+        if ($data->isInitialized('differingDeliveryAddress') && $data->getDifferingDeliveryAddress() !== null) {
             $dataArray['differingDeliveryAddress'] = $data->getDifferingDeliveryAddress();
         }
-        if ($data->isInitialized('differingInvoiceAddress') && null !== $data->getDifferingInvoiceAddress()) {
+        if ($data->isInitialized('differingInvoiceAddress') && $data->getDifferingInvoiceAddress() !== null) {
             $dataArray['differingInvoiceAddress'] = $data->getDifferingInvoiceAddress();
         }
-        if ($data->isInitialized('endDate') && null !== $data->getEndDate()) {
+        if ($data->isInitialized('endDate') && $data->getEndDate() !== null) {
             $dataArray['endDate'] = $data->getEndDate();
         }
-        if ($data->isInitialized('extensionQuantity') && null !== $data->getExtensionQuantity()) {
+        if ($data->isInitialized('extensionQuantity') && $data->getExtensionQuantity() !== null) {
             $dataArray['extensionQuantity'] = $data->getExtensionQuantity();
         }
-        if ($data->isInitialized('extensionUnit') && null !== $data->getExtensionUnit()) {
+        if ($data->isInitialized('extensionUnit') && $data->getExtensionUnit() !== null) {
             $dataArray['extensionUnit'] = $data->getExtensionUnit();
         }
-        if ($data->isInitialized('factoring') && null !== $data->getFactoring()) {
+        if ($data->isInitialized('factoring') && $data->getFactoring() !== null) {
             $dataArray['factoring'] = $data->getFactoring();
         }
-        if ($data->isInitialized('invoiceAddress') && null !== $data->getInvoiceAddress()) {
+        if ($data->isInitialized('invoiceAddress') && $data->getInvoiceAddress() !== null) {
             $dataArray['invoiceAddress'] = $this->normalizer->normalize($data->getInvoiceAddress(), 'json', $context);
         }
-        if ($data->isInitialized('invoiceRecipientId') && null !== $data->getInvoiceRecipientId()) {
+        if ($data->isInitialized('invoiceRecipientId') && $data->getInvoiceRecipientId() !== null) {
             $dataArray['invoiceRecipientId'] = $data->getInvoiceRecipientId();
         }
-        if ($data->isInitialized('latestCancellationWarningQuantity') && null !== $data->getLatestCancellationWarningQuantity()) {
+        if ($data->isInitialized('latestCancellationWarningQuantity') && $data->getLatestCancellationWarningQuantity() !== null) {
             $dataArray['latestCancellationWarningQuantity'] = $data->getLatestCancellationWarningQuantity();
         }
-        if ($data->isInitialized('latestCancellationWarningUnit') && null !== $data->getLatestCancellationWarningUnit()) {
+        if ($data->isInitialized('latestCancellationWarningUnit') && $data->getLatestCancellationWarningUnit() !== null) {
             $dataArray['latestCancellationWarningUnit'] = $data->getLatestCancellationWarningUnit();
         }
-        if ($data->isInitialized('latestPossibleTerminationDate') && null !== $data->getLatestPossibleTerminationDate()) {
+        if ($data->isInitialized('latestPossibleTerminationDate') && $data->getLatestPossibleTerminationDate() !== null) {
             $dataArray['latestPossibleTerminationDate'] = $data->getLatestPossibleTerminationDate();
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name') && $data->getName() !== null) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('nextContractBillingDate') && null !== $data->getNextContractBillingDate()) {
+        if ($data->isInitialized('nextContractBillingDate') && $data->getNextContractBillingDate() !== null) {
             $dataArray['nextContractBillingDate'] = $data->getNextContractBillingDate();
         }
-        if ($data->isInitialized('nonStandardInputTaxId') && null !== $data->getNonStandardInputTaxId()) {
+        if ($data->isInitialized('nonStandardInputTaxId') && $data->getNonStandardInputTaxId() !== null) {
             $dataArray['nonStandardInputTaxId'] = $data->getNonStandardInputTaxId();
         }
-        if ($data->isInitialized('orderNumberAtCustomer') && null !== $data->getOrderNumberAtCustomer()) {
+        if ($data->isInitialized('orderNumberAtCustomer') && $data->getOrderNumberAtCustomer() !== null) {
             $dataArray['orderNumberAtCustomer'] = $data->getOrderNumberAtCustomer();
         }
-        if ($data->isInitialized('partyId') && null !== $data->getPartyId()) {
+        if ($data->isInitialized('partyId') && $data->getPartyId() !== null) {
             $dataArray['partyId'] = $data->getPartyId();
         }
-        if ($data->isInitialized('paymentMethodId') && null !== $data->getPaymentMethodId()) {
+        if ($data->isInitialized('paymentMethodId') && $data->getPaymentMethodId() !== null) {
             $dataArray['paymentMethodId'] = $data->getPaymentMethodId();
         }
-        if ($data->isInitialized('pricingDate') && null !== $data->getPricingDate()) {
+        if ($data->isInitialized('pricingDate') && $data->getPricingDate() !== null) {
             $dataArray['pricingDate'] = $data->getPricingDate();
         }
-        if ($data->isInitialized('purchaseEmailAddresses') && null !== $data->getPurchaseEmailAddresses()) {
+        if ($data->isInitialized('purchaseEmailAddresses') && $data->getPurchaseEmailAddresses() !== null) {
             $dataArray['purchaseEmailAddresses'] = $this->normalizer->normalize($data->getPurchaseEmailAddresses(), 'json', $context);
         }
-        if ($data->isInitialized('recordCurrencyId') && null !== $data->getRecordCurrencyId()) {
+        if ($data->isInitialized('recordCurrencyId') && $data->getRecordCurrencyId() !== null) {
             $dataArray['recordCurrencyId'] = $data->getRecordCurrencyId();
         }
-        if ($data->isInitialized('recordCurrencyName') && null !== $data->getRecordCurrencyName()) {
+        if ($data->isInitialized('recordCurrencyName') && $data->getRecordCurrencyName() !== null) {
             $dataArray['recordCurrencyName'] = $data->getRecordCurrencyName();
         }
-        if ($data->isInitialized('recordEmailAddresses') && null !== $data->getRecordEmailAddresses()) {
+        if ($data->isInitialized('recordEmailAddresses') && $data->getRecordEmailAddresses() !== null) {
             $dataArray['recordEmailAddresses'] = $this->normalizer->normalize($data->getRecordEmailAddresses(), 'json', $context);
         }
-        if ($data->isInitialized('reminderDate') && null !== $data->getReminderDate()) {
+        if ($data->isInitialized('reminderDate') && $data->getReminderDate() !== null) {
             $dataArray['reminderDate'] = $data->getReminderDate();
         }
-        if ($data->isInitialized('reminderSendType') && null !== $data->getReminderSendType()) {
+        if ($data->isInitialized('reminderSendType') && $data->getReminderSendType() !== null) {
             $dataArray['reminderSendType'] = $data->getReminderSendType();
         }
-        if ($data->isInitialized('reminderType') && null !== $data->getReminderType()) {
+        if ($data->isInitialized('reminderType') && $data->getReminderType() !== null) {
             $dataArray['reminderType'] = $data->getReminderType();
         }
-        if ($data->isInitialized('responsibleUserId') && null !== $data->getResponsibleUserId()) {
+        if ($data->isInitialized('responsibleUserId') && $data->getResponsibleUserId() !== null) {
             $dataArray['responsibleUserId'] = $data->getResponsibleUserId();
         }
-        if ($data->isInitialized('salesChannel') && null !== $data->getSalesChannel()) {
+        if ($data->isInitialized('salesChannel') && $data->getSalesChannel() !== null) {
             $dataArray['salesChannel'] = $data->getSalesChannel();
         }
-        if ($data->isInitialized('salesInvoiceEmailAddresses') && null !== $data->getSalesInvoiceEmailAddresses()) {
+        if ($data->isInitialized('salesInvoiceEmailAddresses') && $data->getSalesInvoiceEmailAddresses() !== null) {
             $dataArray['salesInvoiceEmailAddresses'] = $this->normalizer->normalize($data->getSalesInvoiceEmailAddresses(), 'json', $context);
         }
-        if ($data->isInitialized('salesOrderEmailAddresses') && null !== $data->getSalesOrderEmailAddresses()) {
+        if ($data->isInitialized('salesOrderEmailAddresses') && $data->getSalesOrderEmailAddresses() !== null) {
             $dataArray['salesOrderEmailAddresses'] = $this->normalizer->normalize($data->getSalesOrderEmailAddresses(), 'json', $context);
         }
-        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
+        if ($data->isInitialized('startDate') && $data->getStartDate() !== null) {
             $dataArray['startDate'] = $data->getStartDate();
         }
-        if ($data->isInitialized('template') && null !== $data->getTemplate()) {
+        if ($data->isInitialized('template') && $data->getTemplate() !== null) {
             $dataArray['template'] = $data->getTemplate();
         }
-        if ($data->isInitialized('termOfPaymentId') && null !== $data->getTermOfPaymentId()) {
+        if ($data->isInitialized('termOfPaymentId') && $data->getTermOfPaymentId() !== null) {
             $dataArray['termOfPaymentId'] = $data->getTermOfPaymentId();
         }
-        if ($data->isInitialized('terminationReasonId') && null !== $data->getTerminationReasonId()) {
+        if ($data->isInitialized('terminationReasonId') && $data->getTerminationReasonId() !== null) {
             $dataArray['terminationReasonId'] = $data->getTerminationReasonId();
         }
-        if ($data->isInitialized('ticketServiceLevelAgreementId') && null !== $data->getTicketServiceLevelAgreementId()) {
+        if ($data->isInitialized('ticketServiceLevelAgreementId') && $data->getTicketServiceLevelAgreementId() !== null) {
             $dataArray['ticketServiceLevelAgreementId'] = $data->getTicketServiceLevelAgreementId();
         }
-        if ($data->isInitialized('types') && null !== $data->getTypes()) {
+        if ($data->isInitialized('types') && $data->getTypes() !== null) {
             $values_6 = [];
             foreach ($data->getTypes() as $value_6) {
                 $values_6[] = $this->normalizer->normalize($value_6, 'json', $context);
             }
             $dataArray['types'] = $values_6;
         }
-        if ($data->isInitialized('unlimited') && null !== $data->getUnlimited()) {
+        if ($data->isInitialized('unlimited') && $data->getUnlimited() !== null) {
             $dataArray['unlimited'] = $data->getUnlimited();
         }
         foreach ($data as $key => $value_7) {
@@ -637,8 +643,10 @@ class ContractNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $dataArray[$key] = $value_7;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\Contract::class => false];

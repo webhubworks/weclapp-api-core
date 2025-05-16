@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TicketAssignmentRuleNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class TicketAssignmentRuleNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\TicketAssignmentRule::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\TicketAssignmentRule::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class TicketAssignmentRuleNormalizer implements DenormalizerInterface, Normalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\TicketAssignmentRule();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\TicketAssignmentRule;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -106,48 +110,50 @@ class TicketAssignmentRuleNormalizer implements DenormalizerInterface, Normalize
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('assignedPoolingGroupId') && null !== $data->getAssignedPoolingGroupId()) {
+        if ($data->isInitialized('assignedPoolingGroupId') && $data->getAssignedPoolingGroupId() !== null) {
             $dataArray['assignedPoolingGroupId'] = $data->getAssignedPoolingGroupId();
         }
-        if ($data->isInitialized('assigneeUserId') && null !== $data->getAssigneeUserId()) {
+        if ($data->isInitialized('assigneeUserId') && $data->getAssigneeUserId() !== null) {
             $dataArray['assigneeUserId'] = $data->getAssigneeUserId();
         }
-        if ($data->isInitialized('commercialLanguage') && null !== $data->getCommercialLanguage()) {
+        if ($data->isInitialized('commercialLanguage') && $data->getCommercialLanguage() !== null) {
             $dataArray['commercialLanguage'] = $data->getCommercialLanguage();
         }
-        if ($data->isInitialized('distributionChannel') && null !== $data->getDistributionChannel()) {
+        if ($data->isInitialized('distributionChannel') && $data->getDistributionChannel() !== null) {
             $dataArray['distributionChannel'] = $data->getDistributionChannel();
         }
-        if ($data->isInitialized('partyId') && null !== $data->getPartyId()) {
+        if ($data->isInitialized('partyId') && $data->getPartyId() !== null) {
             $dataArray['partyId'] = $data->getPartyId();
         }
-        if ($data->isInitialized('responsibleUserId') && null !== $data->getResponsibleUserId()) {
+        if ($data->isInitialized('responsibleUserId') && $data->getResponsibleUserId() !== null) {
             $dataArray['responsibleUserId'] = $data->getResponsibleUserId();
         }
-        if ($data->isInitialized('targetStatusId') && null !== $data->getTargetStatusId()) {
+        if ($data->isInitialized('targetStatusId') && $data->getTargetStatusId() !== null) {
             $dataArray['targetStatusId'] = $data->getTargetStatusId();
         }
-        if ($data->isInitialized('ticketAssigneeType') && null !== $data->getTicketAssigneeType()) {
+        if ($data->isInitialized('ticketAssigneeType') && $data->getTicketAssigneeType() !== null) {
             $dataArray['ticketAssigneeType'] = $data->getTicketAssigneeType();
         }
-        if ($data->isInitialized('ticketCategoryId') && null !== $data->getTicketCategoryId()) {
+        if ($data->isInitialized('ticketCategoryId') && $data->getTicketCategoryId() !== null) {
             $dataArray['ticketCategoryId'] = $data->getTicketCategoryId();
         }
-        if ($data->isInitialized('ticketChannelId') && null !== $data->getTicketChannelId()) {
+        if ($data->isInitialized('ticketChannelId') && $data->getTicketChannelId() !== null) {
             $dataArray['ticketChannelId'] = $data->getTicketChannelId();
         }
-        if ($data->isInitialized('ticketPriorityId') && null !== $data->getTicketPriorityId()) {
+        if ($data->isInitialized('ticketPriorityId') && $data->getTicketPriorityId() !== null) {
             $dataArray['ticketPriorityId'] = $data->getTicketPriorityId();
         }
-        if ($data->isInitialized('ticketTypeId') && null !== $data->getTicketTypeId()) {
+        if ($data->isInitialized('ticketTypeId') && $data->getTicketTypeId() !== null) {
             $dataArray['ticketTypeId'] = $data->getTicketTypeId();
         }
         foreach ($data as $key => $value) {
@@ -155,8 +161,10 @@ class TicketAssignmentRuleNormalizer implements DenormalizerInterface, Normalize
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\TicketAssignmentRule::class => false];

@@ -7,36 +7,43 @@ class PostTranslation extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEnd
     /**
      * create a translation
      *
-     * @param \Webhubworks\WeclappApiCore\Model\Translation $requestBody 
-     * @param array $queryParameters {
-     *     @var bool $dryRun 
-     * }
+     * @param  array  $queryParameters  {
+     *
+     * @var bool $dryRun
+     *           }
      */
     public function __construct(\Webhubworks\WeclappApiCore\Model\Translation $requestBody, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
+
     use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
+
     public function getMethod(): string
     {
         return 'POST';
     }
+
     public function getUri(): string
     {
         return '/translation';
     }
+
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \Webhubworks\WeclappApiCore\Model\Translation) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
+
         return [[], null];
     }
+
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
+
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -44,8 +51,10 @@ class PostTranslation extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEnd
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('dryRun', ['bool']);
+
         return $optionsResolver;
     }
+
     /**
      * {@inheritdoc}
      *
@@ -56,13 +65,14 @@ class PostTranslation extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEnd
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && ($status === 201 && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\Translation', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ApiProblem', 'json');
         }
     }
+
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

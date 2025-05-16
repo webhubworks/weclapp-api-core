@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ValidationErrorNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class ValidationErrorNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\ValidationError::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ValidationError::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class ValidationErrorNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\ValidationError();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\ValidationError;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('allowed', $data)) {
@@ -74,28 +78,30 @@ class ValidationErrorNormalizer implements DenormalizerInterface, NormalizerInte
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('allowed') && null !== $data->getAllowed()) {
+        if ($data->isInitialized('allowed') && $data->getAllowed() !== null) {
             $values = [];
             foreach ($data->getAllowed() as $value) {
                 $values[] = $value;
             }
             $dataArray['allowed'] = $values;
         }
-        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
+        if ($data->isInitialized('detail') && $data->getDetail() !== null) {
             $dataArray['detail'] = $data->getDetail();
         }
-        if ($data->isInitialized('errorCode') && null !== $data->getErrorCode()) {
+        if ($data->isInitialized('errorCode') && $data->getErrorCode() !== null) {
             $dataArray['errorCode'] = $data->getErrorCode();
         }
-        if ($data->isInitialized('instance') && null !== $data->getInstance()) {
+        if ($data->isInitialized('instance') && $data->getInstance() !== null) {
             $dataArray['instance'] = $data->getInstance();
         }
-        if ($data->isInitialized('location') && null !== $data->getLocation()) {
+        if ($data->isInitialized('location') && $data->getLocation() !== null) {
             $dataArray['location'] = $data->getLocation();
         }
         $dataArray['title'] = $data->getTitle();
@@ -105,8 +111,10 @@ class ValidationErrorNormalizer implements DenormalizerInterface, NormalizerInte
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\ValidationError::class => false];

@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class PurchaseRequisitionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class PurchaseRequisitionNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\PurchaseRequisition::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\PurchaseRequisition::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class PurchaseRequisitionNormalizer implements DenormalizerInterface, Normalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\PurchaseRequisition();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\PurchaseRequisition;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -138,74 +142,76 @@ class PurchaseRequisitionNormalizer implements DenormalizerInterface, Normalizer
                 $object[$key] = $value_2;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
+        if ($data->isInitialized('articleId') && $data->getArticleId() !== null) {
             $dataArray['articleId'] = $data->getArticleId();
         }
-        if ($data->isInitialized('earliestRequiredDate') && null !== $data->getEarliestRequiredDate()) {
+        if ($data->isInitialized('earliestRequiredDate') && $data->getEarliestRequiredDate() !== null) {
             $dataArray['earliestRequiredDate'] = $data->getEarliestRequiredDate();
         }
-        if ($data->isInitialized('internalShipmentId') && null !== $data->getInternalShipmentId()) {
+        if ($data->isInitialized('internalShipmentId') && $data->getInternalShipmentId() !== null) {
             $dataArray['internalShipmentId'] = $data->getInternalShipmentId();
         }
-        if ($data->isInitialized('latestRequiredDate') && null !== $data->getLatestRequiredDate()) {
+        if ($data->isInitialized('latestRequiredDate') && $data->getLatestRequiredDate() !== null) {
             $dataArray['latestRequiredDate'] = $data->getLatestRequiredDate();
         }
-        if ($data->isInitialized('packagingUnitToOrderId') && null !== $data->getPackagingUnitToOrderId()) {
+        if ($data->isInitialized('packagingUnitToOrderId') && $data->getPackagingUnitToOrderId() !== null) {
             $dataArray['packagingUnitToOrderId'] = $data->getPackagingUnitToOrderId();
         }
-        if ($data->isInitialized('productionOrderId') && null !== $data->getProductionOrderId()) {
+        if ($data->isInitialized('productionOrderId') && $data->getProductionOrderId() !== null) {
             $dataArray['productionOrderId'] = $data->getProductionOrderId();
         }
-        if ($data->isInitialized('productionOrderItemId') && null !== $data->getProductionOrderItemId()) {
+        if ($data->isInitialized('productionOrderItemId') && $data->getProductionOrderItemId() !== null) {
             $dataArray['productionOrderItemId'] = $data->getProductionOrderItemId();
         }
-        if ($data->isInitialized('proposedDate') && null !== $data->getProposedDate()) {
+        if ($data->isInitialized('proposedDate') && $data->getProposedDate() !== null) {
             $dataArray['proposedDate'] = $data->getProposedDate();
         }
-        if ($data->isInitialized('proposedQuantity') && null !== $data->getProposedQuantity()) {
+        if ($data->isInitialized('proposedQuantity') && $data->getProposedQuantity() !== null) {
             $dataArray['proposedQuantity'] = $data->getProposedQuantity();
         }
-        if ($data->isInitialized('purchaseOrderId') && null !== $data->getPurchaseOrderId()) {
+        if ($data->isInitialized('purchaseOrderId') && $data->getPurchaseOrderId() !== null) {
             $dataArray['purchaseOrderId'] = $data->getPurchaseOrderId();
         }
-        if ($data->isInitialized('requirementQuantity') && null !== $data->getRequirementQuantity()) {
+        if ($data->isInitialized('requirementQuantity') && $data->getRequirementQuantity() !== null) {
             $dataArray['requirementQuantity'] = $data->getRequirementQuantity();
         }
-        if ($data->isInitialized('requisitionNumber') && null !== $data->getRequisitionNumber()) {
+        if ($data->isInitialized('requisitionNumber') && $data->getRequisitionNumber() !== null) {
             $dataArray['requisitionNumber'] = $data->getRequisitionNumber();
         }
-        if ($data->isInitialized('salesOrderItemId') && null !== $data->getSalesOrderItemId()) {
+        if ($data->isInitialized('salesOrderItemId') && $data->getSalesOrderItemId() !== null) {
             $dataArray['salesOrderItemId'] = $data->getSalesOrderItemId();
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
+        if ($data->isInitialized('status') && $data->getStatus() !== null) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('statusHistory') && null !== $data->getStatusHistory()) {
+        if ($data->isInitialized('statusHistory') && $data->getStatusHistory() !== null) {
             $values_1 = [];
             foreach ($data->getStatusHistory() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['statusHistory'] = $values_1;
         }
-        if ($data->isInitialized('supplierId') && null !== $data->getSupplierId()) {
+        if ($data->isInitialized('supplierId') && $data->getSupplierId() !== null) {
             $dataArray['supplierId'] = $data->getSupplierId();
         }
-        if ($data->isInitialized('warehouseId') && null !== $data->getWarehouseId()) {
+        if ($data->isInitialized('warehouseId') && $data->getWarehouseId() !== null) {
             $dataArray['warehouseId'] = $data->getWarehouseId();
         }
         foreach ($data as $key => $value_2) {
@@ -213,8 +219,10 @@ class PurchaseRequisitionNormalizer implements DenormalizerInterface, Normalizer
                 $dataArray[$key] = $value_2;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\PurchaseRequisition::class => false];

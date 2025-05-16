@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ProductionWorkScheduleAssignmentNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class ProductionWorkScheduleAssignmentNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleAssignment::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleAssignment::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class ProductionWorkScheduleAssignmentNormalizer implements DenormalizerInterfac
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleAssignment();
+        $object = new \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleAssignment;
         if (\array_key_exists('alternative', $data) && \is_int($data['alternative'])) {
             $data['alternative'] = (bool) $data['alternative'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -89,34 +93,36 @@ class ProductionWorkScheduleAssignmentNormalizer implements DenormalizerInterfac
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('alternative') && null !== $data->getAlternative()) {
+        if ($data->isInitialized('alternative') && $data->getAlternative() !== null) {
             $dataArray['alternative'] = $data->getAlternative();
         }
-        if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
+        if ($data->isInitialized('articleId') && $data->getArticleId() !== null) {
             $dataArray['articleId'] = $data->getArticleId();
         }
-        if ($data->isInitialized('productionWorkScheduleId') && null !== $data->getProductionWorkScheduleId()) {
+        if ($data->isInitialized('productionWorkScheduleId') && $data->getProductionWorkScheduleId() !== null) {
             $dataArray['productionWorkScheduleId'] = $data->getProductionWorkScheduleId();
         }
-        if ($data->isInitialized('validFrom') && null !== $data->getValidFrom()) {
+        if ($data->isInitialized('validFrom') && $data->getValidFrom() !== null) {
             $dataArray['validFrom'] = $data->getValidFrom();
         }
-        if ($data->isInitialized('validTo') && null !== $data->getValidTo()) {
+        if ($data->isInitialized('validTo') && $data->getValidTo() !== null) {
             $dataArray['validTo'] = $data->getValidTo();
         }
         foreach ($data as $key => $value_1) {
@@ -124,8 +130,10 @@ class ProductionWorkScheduleAssignmentNormalizer implements DenormalizerInterfac
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleAssignment::class => false];

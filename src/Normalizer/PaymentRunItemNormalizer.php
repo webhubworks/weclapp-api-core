@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class PaymentRunItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class PaymentRunItemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\PaymentRunItem::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\PaymentRunItem::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class PaymentRunItemNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\PaymentRunItem();
+        $object = new \Webhubworks\WeclappApiCore\Model\PaymentRunItem;
         if (\array_key_exists('cleared', $data) && \is_int($data['cleared'])) {
             $data['cleared'] = (bool) $data['cleared'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -113,51 +117,53 @@ class PaymentRunItemNormalizer implements DenormalizerInterface, NormalizerInter
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('amountDiscount') && null !== $data->getAmountDiscount()) {
+        if ($data->isInitialized('amountDiscount') && $data->getAmountDiscount() !== null) {
             $dataArray['amountDiscount'] = $data->getAmountDiscount();
         }
-        if ($data->isInitialized('amountPayment') && null !== $data->getAmountPayment()) {
+        if ($data->isInitialized('amountPayment') && $data->getAmountPayment() !== null) {
             $dataArray['amountPayment'] = $data->getAmountPayment();
         }
-        if ($data->isInitialized('bankAccountId') && null !== $data->getBankAccountId()) {
+        if ($data->isInitialized('bankAccountId') && $data->getBankAccountId() !== null) {
             $dataArray['bankAccountId'] = $data->getBankAccountId();
         }
-        if ($data->isInitialized('cleared') && null !== $data->getCleared()) {
+        if ($data->isInitialized('cleared') && $data->getCleared() !== null) {
             $dataArray['cleared'] = $data->getCleared();
         }
-        if ($data->isInitialized('conversionRate') && null !== $data->getConversionRate()) {
+        if ($data->isInitialized('conversionRate') && $data->getConversionRate() !== null) {
             $dataArray['conversionRate'] = $data->getConversionRate();
         }
-        if ($data->isInitialized('conversionRateDate') && null !== $data->getConversionRateDate()) {
+        if ($data->isInitialized('conversionRateDate') && $data->getConversionRateDate() !== null) {
             $dataArray['conversionRateDate'] = $data->getConversionRateDate();
         }
-        if ($data->isInitialized('moneyTransaction') && null !== $data->getMoneyTransaction()) {
+        if ($data->isInitialized('moneyTransaction') && $data->getMoneyTransaction() !== null) {
             $dataArray['moneyTransaction'] = $this->normalizer->normalize($data->getMoneyTransaction(), 'json', $context);
         }
-        if ($data->isInitialized('partyBankAccountId') && null !== $data->getPartyBankAccountId()) {
+        if ($data->isInitialized('partyBankAccountId') && $data->getPartyBankAccountId() !== null) {
             $dataArray['partyBankAccountId'] = $data->getPartyBankAccountId();
         }
-        if ($data->isInitialized('paymentRunId') && null !== $data->getPaymentRunId()) {
+        if ($data->isInitialized('paymentRunId') && $data->getPaymentRunId() !== null) {
             $dataArray['paymentRunId'] = $data->getPaymentRunId();
         }
-        if ($data->isInitialized('paymentRunPaymentType') && null !== $data->getPaymentRunPaymentType()) {
+        if ($data->isInitialized('paymentRunPaymentType') && $data->getPaymentRunPaymentType() !== null) {
             $dataArray['paymentRunPaymentType'] = $data->getPaymentRunPaymentType();
         }
-        if ($data->isInitialized('purchaseOpenItemId') && null !== $data->getPurchaseOpenItemId()) {
+        if ($data->isInitialized('purchaseOpenItemId') && $data->getPurchaseOpenItemId() !== null) {
             $dataArray['purchaseOpenItemId'] = $data->getPurchaseOpenItemId();
         }
-        if ($data->isInitialized('purpose') && null !== $data->getPurpose()) {
+        if ($data->isInitialized('purpose') && $data->getPurpose() !== null) {
             $dataArray['purpose'] = $data->getPurpose();
         }
-        if ($data->isInitialized('recordCurrency') && null !== $data->getRecordCurrency()) {
+        if ($data->isInitialized('recordCurrency') && $data->getRecordCurrency() !== null) {
             $dataArray['recordCurrency'] = $this->normalizer->normalize($data->getRecordCurrency(), 'json', $context);
         }
         foreach ($data as $key => $value) {
@@ -165,8 +171,10 @@ class PaymentRunItemNormalizer implements DenormalizerInterface, NormalizerInter
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\PaymentRunItem::class => false];

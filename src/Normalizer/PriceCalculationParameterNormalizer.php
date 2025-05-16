@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class PriceCalculationParameterNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class PriceCalculationParameterNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\PriceCalculationParameter::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\PriceCalculationParameter::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class PriceCalculationParameterNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\PriceCalculationParameter();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\PriceCalculationParameter;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -94,39 +98,41 @@ class PriceCalculationParameterNormalizer implements DenormalizerInterface, Norm
                 $object[$key] = $value;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('articleCategoryId') && null !== $data->getArticleCategoryId()) {
+        if ($data->isInitialized('articleCategoryId') && $data->getArticleCategoryId() !== null) {
             $dataArray['articleCategoryId'] = $data->getArticleCategoryId();
         }
-        if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
+        if ($data->isInitialized('articleId') && $data->getArticleId() !== null) {
             $dataArray['articleId'] = $data->getArticleId();
         }
-        if ($data->isInitialized('fixSurcharge') && null !== $data->getFixSurcharge()) {
+        if ($data->isInitialized('fixSurcharge') && $data->getFixSurcharge() !== null) {
             $dataArray['fixSurcharge'] = $data->getFixSurcharge();
         }
-        if ($data->isInitialized('fromScale') && null !== $data->getFromScale()) {
+        if ($data->isInitialized('fromScale') && $data->getFromScale() !== null) {
             $dataArray['fromScale'] = $data->getFromScale();
         }
-        if ($data->isInitialized('lowerPurchasePriceBound') && null !== $data->getLowerPurchasePriceBound()) {
+        if ($data->isInitialized('lowerPurchasePriceBound') && $data->getLowerPurchasePriceBound() !== null) {
             $dataArray['lowerPurchasePriceBound'] = $data->getLowerPurchasePriceBound();
         }
-        if ($data->isInitialized('margin') && null !== $data->getMargin()) {
+        if ($data->isInitialized('margin') && $data->getMargin() !== null) {
             $dataArray['margin'] = $data->getMargin();
         }
-        if ($data->isInitialized('percentSurcharge') && null !== $data->getPercentSurcharge()) {
+        if ($data->isInitialized('percentSurcharge') && $data->getPercentSurcharge() !== null) {
             $dataArray['percentSurcharge'] = $data->getPercentSurcharge();
         }
-        if ($data->isInitialized('profit') && null !== $data->getProfit()) {
+        if ($data->isInitialized('profit') && $data->getProfit() !== null) {
             $dataArray['profit'] = $data->getProfit();
         }
-        if ($data->isInitialized('salesChannel') && null !== $data->getSalesChannel()) {
+        if ($data->isInitialized('salesChannel') && $data->getSalesChannel() !== null) {
             $dataArray['salesChannel'] = $data->getSalesChannel();
         }
         foreach ($data as $key => $value) {
@@ -134,8 +140,10 @@ class PriceCalculationParameterNormalizer implements DenormalizerInterface, Norm
                 $dataArray[$key] = $value;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\PriceCalculationParameter::class => false];

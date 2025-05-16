@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class AccountingTransactionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class AccountingTransactionNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\AccountingTransaction::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\AccountingTransaction::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,14 +37,14 @@ class AccountingTransactionNormalizer implements DenormalizerInterface, Normaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\AccountingTransaction();
+        $object = new \Webhubworks\WeclappApiCore\Model\AccountingTransaction;
         if (\array_key_exists('draft', $data) && \is_int($data['draft'])) {
             $data['draft'] = (bool) $data['draft'];
         }
         if (\array_key_exists('reverseTransaction', $data) && \is_int($data['reverseTransaction'])) {
             $data['reverseTransaction'] = (bool) $data['reverseTransaction'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -128,61 +132,63 @@ class AccountingTransactionNormalizer implements DenormalizerInterface, Normaliz
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('accountingImportDate') && null !== $data->getAccountingImportDate()) {
+        if ($data->isInitialized('accountingImportDate') && $data->getAccountingImportDate() !== null) {
             $dataArray['accountingImportDate'] = $data->getAccountingImportDate();
         }
-        if ($data->isInitialized('conversionRate') && null !== $data->getConversionRate()) {
+        if ($data->isInitialized('conversionRate') && $data->getConversionRate() !== null) {
             $dataArray['conversionRate'] = $data->getConversionRate();
         }
-        if ($data->isInitialized('conversionRateDate') && null !== $data->getConversionRateDate()) {
+        if ($data->isInitialized('conversionRateDate') && $data->getConversionRateDate() !== null) {
             $dataArray['conversionRateDate'] = $data->getConversionRateDate();
         }
-        if ($data->isInitialized('currencyId') && null !== $data->getCurrencyId()) {
+        if ($data->isInitialized('currencyId') && $data->getCurrencyId() !== null) {
             $dataArray['currencyId'] = $data->getCurrencyId();
         }
-        if ($data->isInitialized('currencyName') && null !== $data->getCurrencyName()) {
+        if ($data->isInitialized('currencyName') && $data->getCurrencyName() !== null) {
             $dataArray['currencyName'] = $data->getCurrencyName();
         }
-        if ($data->isInitialized('draft') && null !== $data->getDraft()) {
+        if ($data->isInitialized('draft') && $data->getDraft() !== null) {
             $dataArray['draft'] = $data->getDraft();
         }
-        if ($data->isInitialized('externalRecordNumber') && null !== $data->getExternalRecordNumber()) {
+        if ($data->isInitialized('externalRecordNumber') && $data->getExternalRecordNumber() !== null) {
             $dataArray['externalRecordNumber'] = $data->getExternalRecordNumber();
         }
-        if ($data->isInitialized('internalRecordNumber') && null !== $data->getInternalRecordNumber()) {
+        if ($data->isInitialized('internalRecordNumber') && $data->getInternalRecordNumber() !== null) {
             $dataArray['internalRecordNumber'] = $data->getInternalRecordNumber();
         }
-        if ($data->isInitialized('reverseTransaction') && null !== $data->getReverseTransaction()) {
+        if ($data->isInitialized('reverseTransaction') && $data->getReverseTransaction() !== null) {
             $dataArray['reverseTransaction'] = $data->getReverseTransaction();
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
+        if ($data->isInitialized('status') && $data->getStatus() !== null) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('transactionDate') && null !== $data->getTransactionDate()) {
+        if ($data->isInitialized('transactionDate') && $data->getTransactionDate() !== null) {
             $dataArray['transactionDate'] = $data->getTransactionDate();
         }
-        if ($data->isInitialized('transactionDetails') && null !== $data->getTransactionDetails()) {
+        if ($data->isInitialized('transactionDetails') && $data->getTransactionDetails() !== null) {
             $values = [];
             foreach ($data->getTransactionDetails() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['transactionDetails'] = $values;
         }
-        if ($data->isInitialized('transactionEstablishDate') && null !== $data->getTransactionEstablishDate()) {
+        if ($data->isInitialized('transactionEstablishDate') && $data->getTransactionEstablishDate() !== null) {
             $dataArray['transactionEstablishDate'] = $data->getTransactionEstablishDate();
         }
-        if ($data->isInitialized('transactionNumber') && null !== $data->getTransactionNumber()) {
+        if ($data->isInitialized('transactionNumber') && $data->getTransactionNumber() !== null) {
             $dataArray['transactionNumber'] = $data->getTransactionNumber();
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
+        if ($data->isInitialized('type') && $data->getType() !== null) {
             $dataArray['type'] = $data->getType();
         }
         foreach ($data as $key => $value_1) {
@@ -190,8 +196,10 @@ class AccountingTransactionNormalizer implements DenormalizerInterface, Normaliz
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\AccountingTransaction::class => false];

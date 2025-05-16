@@ -7,36 +7,43 @@ class PostPaymentMethod extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseE
     /**
      * create a paymentMethod
      *
-     * @param \Webhubworks\WeclappApiCore\Model\PaymentMethod $requestBody 
-     * @param array $queryParameters {
-     *     @var bool $dryRun 
-     * }
+     * @param  array  $queryParameters  {
+     *
+     * @var bool $dryRun
+     *           }
      */
     public function __construct(\Webhubworks\WeclappApiCore\Model\PaymentMethod $requestBody, array $queryParameters = [])
     {
         $this->body = $requestBody;
         $this->queryParameters = $queryParameters;
     }
+
     use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
+
     public function getMethod(): string
     {
         return 'POST';
     }
+
     public function getUri(): string
     {
         return '/paymentMethod';
     }
+
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \Webhubworks\WeclappApiCore\Model\PaymentMethod) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
+
         return [[], null];
     }
+
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
+
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -44,8 +51,10 @@ class PostPaymentMethod extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseE
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('dryRun', ['bool']);
+
         return $optionsResolver;
     }
+
     /**
      * {@inheritdoc}
      *
@@ -56,13 +65,14 @@ class PostPaymentMethod extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseE
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && ($status === 201 && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\PaymentMethod', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ApiProblem', 'json');
         }
     }
+
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

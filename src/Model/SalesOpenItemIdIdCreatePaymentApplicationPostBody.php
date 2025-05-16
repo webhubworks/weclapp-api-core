@@ -8,36 +8,27 @@ class SalesOpenItemIdIdCreatePaymentApplicationPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
+
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
+
     /**
-     * 
-     *
      * @var string
      */
     protected $moneyTransactionId;
-    /**
-     * 
-     *
-     * @return string
-     */
+
     public function getMoneyTransactionId(): string
     {
         return $this->moneyTransactionId;
     }
-    /**
-     * 
-     *
-     * @param string $moneyTransactionId
-     *
-     * @return self
-     */
+
     public function setMoneyTransactionId(string $moneyTransactionId): self
     {
         $this->initialized['moneyTransactionId'] = true;
         $this->moneyTransactionId = $moneyTransactionId;
+
         return $this;
     }
 }

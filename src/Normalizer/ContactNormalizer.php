@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class ContactNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\Contact::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\Contact::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,7 +37,7 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\Contact();
+        $object = new \Webhubworks\WeclappApiCore\Model\Contact;
         if (\array_key_exists('optIn', $data) && \is_int($data['optIn'])) {
             $data['optIn'] = (bool) $data['optIn'];
         }
@@ -46,7 +50,7 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('optInSms', $data) && \is_int($data['optInSms'])) {
             $data['optInSms'] = (bool) $data['optInSms'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -226,133 +230,135 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $object[$key] = $value_4;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('addresses') && null !== $data->getAddresses()) {
+        if ($data->isInitialized('addresses') && $data->getAddresses() !== null) {
             $values_1 = [];
             foreach ($data->getAddresses() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['addresses'] = $values_1;
         }
-        if ($data->isInitialized('birthDate') && null !== $data->getBirthDate()) {
+        if ($data->isInitialized('birthDate') && $data->getBirthDate() !== null) {
             $dataArray['birthDate'] = $data->getBirthDate();
         }
-        if ($data->isInitialized('company') && null !== $data->getCompany()) {
+        if ($data->isInitialized('company') && $data->getCompany() !== null) {
             $dataArray['company'] = $data->getCompany();
         }
-        if ($data->isInitialized('company2') && null !== $data->getCompany2()) {
+        if ($data->isInitialized('company2') && $data->getCompany2() !== null) {
             $dataArray['company2'] = $data->getCompany2();
         }
-        if ($data->isInitialized('deliveryAddressId') && null !== $data->getDeliveryAddressId()) {
+        if ($data->isInitialized('deliveryAddressId') && $data->getDeliveryAddressId() !== null) {
             $dataArray['deliveryAddressId'] = $data->getDeliveryAddressId();
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
+        if ($data->isInitialized('email') && $data->getEmail() !== null) {
             $dataArray['email'] = $data->getEmail();
         }
-        if ($data->isInitialized('fax') && null !== $data->getFax()) {
+        if ($data->isInitialized('fax') && $data->getFax() !== null) {
             $dataArray['fax'] = $data->getFax();
         }
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
+        if ($data->isInitialized('firstName') && $data->getFirstName() !== null) {
             $dataArray['firstName'] = $data->getFirstName();
         }
-        if ($data->isInitialized('invoiceAddressId') && null !== $data->getInvoiceAddressId()) {
+        if ($data->isInitialized('invoiceAddressId') && $data->getInvoiceAddressId() !== null) {
             $dataArray['invoiceAddressId'] = $data->getInvoiceAddressId();
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
+        if ($data->isInitialized('lastName') && $data->getLastName() !== null) {
             $dataArray['lastName'] = $data->getLastName();
         }
-        if ($data->isInitialized('middleName') && null !== $data->getMiddleName()) {
+        if ($data->isInitialized('middleName') && $data->getMiddleName() !== null) {
             $dataArray['middleName'] = $data->getMiddleName();
         }
-        if ($data->isInitialized('mobilePhone1') && null !== $data->getMobilePhone1()) {
+        if ($data->isInitialized('mobilePhone1') && $data->getMobilePhone1() !== null) {
             $dataArray['mobilePhone1'] = $data->getMobilePhone1();
         }
-        if ($data->isInitialized('onlineAccounts') && null !== $data->getOnlineAccounts()) {
+        if ($data->isInitialized('onlineAccounts') && $data->getOnlineAccounts() !== null) {
             $values_2 = [];
             foreach ($data->getOnlineAccounts() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['onlineAccounts'] = $values_2;
         }
-        if ($data->isInitialized('partyType') && null !== $data->getPartyType()) {
+        if ($data->isInitialized('partyType') && $data->getPartyType() !== null) {
             $dataArray['partyType'] = $data->getPartyType();
         }
-        if ($data->isInitialized('personCompany') && null !== $data->getPersonCompany()) {
+        if ($data->isInitialized('personCompany') && $data->getPersonCompany() !== null) {
             $dataArray['personCompany'] = $data->getPersonCompany();
         }
-        if ($data->isInitialized('personDepartmentId') && null !== $data->getPersonDepartmentId()) {
+        if ($data->isInitialized('personDepartmentId') && $data->getPersonDepartmentId() !== null) {
             $dataArray['personDepartmentId'] = $data->getPersonDepartmentId();
         }
-        if ($data->isInitialized('personRoleId') && null !== $data->getPersonRoleId()) {
+        if ($data->isInitialized('personRoleId') && $data->getPersonRoleId() !== null) {
             $dataArray['personRoleId'] = $data->getPersonRoleId();
         }
-        if ($data->isInitialized('phone') && null !== $data->getPhone()) {
+        if ($data->isInitialized('phone') && $data->getPhone() !== null) {
             $dataArray['phone'] = $data->getPhone();
         }
-        if ($data->isInitialized('primaryAddressId') && null !== $data->getPrimaryAddressId()) {
+        if ($data->isInitialized('primaryAddressId') && $data->getPrimaryAddressId() !== null) {
             $dataArray['primaryAddressId'] = $data->getPrimaryAddressId();
         }
-        if ($data->isInitialized('salutation') && null !== $data->getSalutation()) {
+        if ($data->isInitialized('salutation') && $data->getSalutation() !== null) {
             $dataArray['salutation'] = $data->getSalutation();
         }
-        if ($data->isInitialized('tags') && null !== $data->getTags()) {
+        if ($data->isInitialized('tags') && $data->getTags() !== null) {
             $values_3 = [];
             foreach ($data->getTags() as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['tags'] = $values_3;
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+        if ($data->isInitialized('title') && $data->getTitle() !== null) {
             $dataArray['title'] = $data->getTitle();
         }
-        if ($data->isInitialized('titleId') && null !== $data->getTitleId()) {
+        if ($data->isInitialized('titleId') && $data->getTitleId() !== null) {
             $dataArray['titleId'] = $data->getTitleId();
         }
-        if ($data->isInitialized('website') && null !== $data->getWebsite()) {
+        if ($data->isInitialized('website') && $data->getWebsite() !== null) {
             $dataArray['website'] = $data->getWebsite();
         }
-        if ($data->isInitialized('customerCategoryId') && null !== $data->getCustomerCategoryId()) {
+        if ($data->isInitialized('customerCategoryId') && $data->getCustomerCategoryId() !== null) {
             $dataArray['customerCategoryId'] = $data->getCustomerCategoryId();
         }
-        if ($data->isInitialized('customerCategoryName') && null !== $data->getCustomerCategoryName()) {
+        if ($data->isInitialized('customerCategoryName') && $data->getCustomerCategoryName() !== null) {
             $dataArray['customerCategoryName'] = $data->getCustomerCategoryName();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('fixPhone2') && null !== $data->getFixPhone2()) {
+        if ($data->isInitialized('fixPhone2') && $data->getFixPhone2() !== null) {
             $dataArray['fixPhone2'] = $data->getFixPhone2();
         }
-        if ($data->isInitialized('mobilePhone2') && null !== $data->getMobilePhone2()) {
+        if ($data->isInitialized('mobilePhone2') && $data->getMobilePhone2() !== null) {
             $dataArray['mobilePhone2'] = $data->getMobilePhone2();
         }
-        if ($data->isInitialized('optIn') && null !== $data->getOptIn()) {
+        if ($data->isInitialized('optIn') && $data->getOptIn() !== null) {
             $dataArray['optIn'] = $data->getOptIn();
         }
-        if ($data->isInitialized('optInLetter') && null !== $data->getOptInLetter()) {
+        if ($data->isInitialized('optInLetter') && $data->getOptInLetter() !== null) {
             $dataArray['optInLetter'] = $data->getOptInLetter();
         }
-        if ($data->isInitialized('optInPhone') && null !== $data->getOptInPhone()) {
+        if ($data->isInitialized('optInPhone') && $data->getOptInPhone() !== null) {
             $dataArray['optInPhone'] = $data->getOptInPhone();
         }
-        if ($data->isInitialized('optInSms') && null !== $data->getOptInSms()) {
+        if ($data->isInitialized('optInSms') && $data->getOptInSms() !== null) {
             $dataArray['optInSms'] = $data->getOptInSms();
         }
-        if ($data->isInitialized('phoneHome') && null !== $data->getPhoneHome()) {
+        if ($data->isInitialized('phoneHome') && $data->getPhoneHome() !== null) {
             $dataArray['phoneHome'] = $data->getPhoneHome();
         }
         foreach ($data as $key => $value_4) {
@@ -360,8 +366,10 @@ class ContactNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $dataArray[$key] = $value_4;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\Contact::class => false];

@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class StorageLocationNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class StorageLocationNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\StorageLocation::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\StorageLocation::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class StorageLocationNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\StorageLocation();
+        $object = new \Webhubworks\WeclappApiCore\Model\StorageLocation;
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -113,54 +117,56 @@ class StorageLocationNormalizer implements DenormalizerInterface, NormalizerInte
                 $object[$key] = $value_3;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('active') && null !== $data->getActive()) {
+        if ($data->isInitialized('active') && $data->getActive() !== null) {
             $dataArray['active'] = $data->getActive();
         }
-        if ($data->isInitialized('blockStoragePlaces') && null !== $data->getBlockStoragePlaces()) {
+        if ($data->isInitialized('blockStoragePlaces') && $data->getBlockStoragePlaces() !== null) {
             $values_1 = [];
             foreach ($data->getBlockStoragePlaces() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['blockStoragePlaces'] = $values_1;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name') && $data->getName() !== null) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('shelves') && null !== $data->getShelves()) {
+        if ($data->isInitialized('shelves') && $data->getShelves() !== null) {
             $values_2 = [];
             foreach ($data->getShelves() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['shelves'] = $values_2;
         }
-        if ($data->isInitialized('shortIdentifier') && null !== $data->getShortIdentifier()) {
+        if ($data->isInitialized('shortIdentifier') && $data->getShortIdentifier() !== null) {
             $dataArray['shortIdentifier'] = $data->getShortIdentifier();
         }
-        if ($data->isInitialized('storagePlaceTypeSettingsBlocked') && null !== $data->getStoragePlaceTypeSettingsBlocked()) {
+        if ($data->isInitialized('storagePlaceTypeSettingsBlocked') && $data->getStoragePlaceTypeSettingsBlocked() !== null) {
             $dataArray['storagePlaceTypeSettingsBlocked'] = $this->normalizer->normalize($data->getStoragePlaceTypeSettingsBlocked(), 'json', $context);
         }
-        if ($data->isInitialized('storagePlaceTypeSettingsPicking') && null !== $data->getStoragePlaceTypeSettingsPicking()) {
+        if ($data->isInitialized('storagePlaceTypeSettingsPicking') && $data->getStoragePlaceTypeSettingsPicking() !== null) {
             $dataArray['storagePlaceTypeSettingsPicking'] = $this->normalizer->normalize($data->getStoragePlaceTypeSettingsPicking(), 'json', $context);
         }
-        if ($data->isInitialized('storagePlaceTypeSettingsStock') && null !== $data->getStoragePlaceTypeSettingsStock()) {
+        if ($data->isInitialized('storagePlaceTypeSettingsStock') && $data->getStoragePlaceTypeSettingsStock() !== null) {
             $dataArray['storagePlaceTypeSettingsStock'] = $this->normalizer->normalize($data->getStoragePlaceTypeSettingsStock(), 'json', $context);
         }
-        if ($data->isInitialized('warehouseId') && null !== $data->getWarehouseId()) {
+        if ($data->isInitialized('warehouseId') && $data->getWarehouseId() !== null) {
             $dataArray['warehouseId'] = $data->getWarehouseId();
         }
         foreach ($data as $key => $value_3) {
@@ -168,8 +174,10 @@ class StorageLocationNormalizer implements DenormalizerInterface, NormalizerInte
                 $dataArray[$key] = $value_3;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\StorageLocation::class => false];

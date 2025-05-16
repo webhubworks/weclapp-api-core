@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TicketFaqNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class TicketFaqNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\TicketFaq::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\TicketFaq::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class TicketFaqNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\TicketFaq();
+        $object = new \Webhubworks\WeclappApiCore\Model\TicketFaq;
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -101,44 +105,46 @@ class TicketFaqNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $object[$key] = $value_2;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('active') && null !== $data->getActive()) {
+        if ($data->isInitialized('active') && $data->getActive() !== null) {
             $dataArray['active'] = $data->getActive();
         }
-        if ($data->isInitialized('answer') && null !== $data->getAnswer()) {
+        if ($data->isInitialized('answer') && $data->getAnswer() !== null) {
             $dataArray['answer'] = $data->getAnswer();
         }
-        if ($data->isInitialized('createdById') && null !== $data->getCreatedById()) {
+        if ($data->isInitialized('createdById') && $data->getCreatedById() !== null) {
             $dataArray['createdById'] = $data->getCreatedById();
         }
-        if ($data->isInitialized('customers') && null !== $data->getCustomers()) {
+        if ($data->isInitialized('customers') && $data->getCustomers() !== null) {
             $values = [];
             foreach ($data->getCustomers() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['customers'] = $values;
         }
-        if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
+        if ($data->isInitialized('positionNumber') && $data->getPositionNumber() !== null) {
             $dataArray['positionNumber'] = $data->getPositionNumber();
         }
-        if ($data->isInitialized('question') && null !== $data->getQuestion()) {
+        if ($data->isInitialized('question') && $data->getQuestion() !== null) {
             $dataArray['question'] = $data->getQuestion();
         }
-        if ($data->isInitialized('ticketCategories') && null !== $data->getTicketCategories()) {
+        if ($data->isInitialized('ticketCategories') && $data->getTicketCategories() !== null) {
             $values_1 = [];
             foreach ($data->getTicketCategories() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['ticketCategories'] = $values_1;
         }
-        if ($data->isInitialized('visibility') && null !== $data->getVisibility()) {
+        if ($data->isInitialized('visibility') && $data->getVisibility() !== null) {
             $dataArray['visibility'] = $data->getVisibility();
         }
         foreach ($data as $key => $value_2) {
@@ -146,8 +152,10 @@ class TicketFaqNormalizer implements DenormalizerInterface, NormalizerInterface,
                 $dataArray[$key] = $value_2;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\TicketFaq::class => false];

@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TermOfPaymentNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class TermOfPaymentNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\TermOfPayment::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\TermOfPayment::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class TermOfPaymentNormalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\TermOfPayment();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\TermOfPayment;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -102,46 +106,48 @@ class TermOfPaymentNormalizer implements DenormalizerInterface, NormalizerInterf
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('conditions') && null !== $data->getConditions()) {
+        if ($data->isInitialized('conditions') && $data->getConditions() !== null) {
             $values = [];
             foreach ($data->getConditions() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['conditions'] = $values;
         }
-        if ($data->isInitialized('datevTermOfPaymentNumber') && null !== $data->getDatevTermOfPaymentNumber()) {
+        if ($data->isInitialized('datevTermOfPaymentNumber') && $data->getDatevTermOfPaymentNumber() !== null) {
             $dataArray['datevTermOfPaymentNumber'] = $data->getDatevTermOfPaymentNumber();
         }
-        if ($data->isInitialized('description') && null !== $data->getDescription()) {
+        if ($data->isInitialized('description') && $data->getDescription() !== null) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('dueDateOption') && null !== $data->getDueDateOption()) {
+        if ($data->isInitialized('dueDateOption') && $data->getDueDateOption() !== null) {
             $dataArray['dueDateOption'] = $data->getDueDateOption();
         }
-        if ($data->isInitialized('fixedDay') && null !== $data->getFixedDay()) {
+        if ($data->isInitialized('fixedDay') && $data->getFixedDay() !== null) {
             $dataArray['fixedDay'] = $data->getFixedDay();
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name') && $data->getName() !== null) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('numberOfDays') && null !== $data->getNumberOfDays()) {
+        if ($data->isInitialized('numberOfDays') && $data->getNumberOfDays() !== null) {
             $dataArray['numberOfDays'] = $data->getNumberOfDays();
         }
-        if ($data->isInitialized('reference') && null !== $data->getReference()) {
+        if ($data->isInitialized('reference') && $data->getReference() !== null) {
             $dataArray['reference'] = $data->getReference();
         }
-        if ($data->isInitialized('validFrom') && null !== $data->getValidFrom()) {
+        if ($data->isInitialized('validFrom') && $data->getValidFrom() !== null) {
             $dataArray['validFrom'] = $data->getValidFrom();
         }
-        if ($data->isInitialized('validTo') && null !== $data->getValidTo()) {
+        if ($data->isInitialized('validTo') && $data->getValidTo() !== null) {
             $dataArray['validTo'] = $data->getValidTo();
         }
         foreach ($data as $key => $value_1) {
@@ -149,8 +155,10 @@ class TermOfPaymentNormalizer implements DenormalizerInterface, NormalizerInterf
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\TermOfPayment::class => false];

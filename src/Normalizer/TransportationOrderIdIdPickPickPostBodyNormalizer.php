@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class TransportationOrderIdIdPickPickPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class TransportationOrderIdIdPickPickPostBodyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\TransportationOrderIdIdPickPickPostBody::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\TransportationOrderIdIdPickPickPostBody::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,11 +37,11 @@ class TransportationOrderIdIdPickPickPostBodyNormalizer implements DenormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\TransportationOrderIdIdPickPickPostBody();
+        $object = new \Webhubworks\WeclappApiCore\Model\TransportationOrderIdIdPickPickPostBody;
         if (\array_key_exists('bookLoadingEquipmentOnDissolveOfPreferred', $data) && \is_int($data['bookLoadingEquipmentOnDissolveOfPreferred'])) {
             $data['bookLoadingEquipmentOnDissolveOfPreferred'] = (bool) $data['bookLoadingEquipmentOnDissolveOfPreferred'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('bookLoadingEquipmentOnDissolveOfPreferred', $data)) {
@@ -69,14 +73,16 @@ class TransportationOrderIdIdPickPickPostBodyNormalizer implements DenormalizerI
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
         $dataArray['bookLoadingEquipmentOnDissolveOfPreferred'] = $data->getBookLoadingEquipmentOnDissolveOfPreferred();
         $dataArray['inputQuantity'] = $data->getInputQuantity();
-        if ($data->isInitialized('inputSerialNumbers') && null !== $data->getInputSerialNumbers()) {
+        if ($data->isInitialized('inputSerialNumbers') && $data->getInputSerialNumbers() !== null) {
             $values = [];
             foreach ($data->getInputSerialNumbers() as $value) {
                 $values[] = $value;
@@ -84,7 +90,7 @@ class TransportationOrderIdIdPickPickPostBodyNormalizer implements DenormalizerI
             $dataArray['inputSerialNumbers'] = $values;
         }
         $dataArray['pickId'] = $data->getPickId();
-        if ($data->isInitialized('preferredPackagingUnitId') && null !== $data->getPreferredPackagingUnitId()) {
+        if ($data->isInitialized('preferredPackagingUnitId') && $data->getPreferredPackagingUnitId() !== null) {
             $dataArray['preferredPackagingUnitId'] = $data->getPreferredPackagingUnitId();
         }
         foreach ($data as $key => $value_1) {
@@ -92,8 +98,10 @@ class TransportationOrderIdIdPickPickPostBodyNormalizer implements DenormalizerI
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\TransportationOrderIdIdPickPickPostBody::class => false];

@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class StoragePlaceNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class StoragePlaceNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\StoragePlace::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\StoragePlace::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,14 +37,14 @@ class StoragePlaceNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\StoragePlace();
+        $object = new \Webhubworks\WeclappApiCore\Model\StoragePlace;
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
         if (\array_key_exists('blockedForResupply', $data) && \is_int($data['blockedForResupply'])) {
             $data['blockedForResupply'] = (bool) $data['blockedForResupply'];
         }
-        if (null === $data || false === \is_array($data)) {
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -132,64 +136,66 @@ class StoragePlaceNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $object[$key] = $value_1;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+        if ($data->isInitialized('version') && $data->getVersion() !== null) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
+        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
+        if ($data->isInitialized('name') && $data->getName() !== null) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('active') && null !== $data->getActive()) {
+        if ($data->isInitialized('active') && $data->getActive() !== null) {
             $dataArray['active'] = $data->getActive();
         }
-        if ($data->isInitialized('barcode') && null !== $data->getBarcode()) {
+        if ($data->isInitialized('barcode') && $data->getBarcode() !== null) {
             $dataArray['barcode'] = $data->getBarcode();
         }
-        if ($data->isInitialized('blockedForResupply') && null !== $data->getBlockedForResupply()) {
+        if ($data->isInitialized('blockedForResupply') && $data->getBlockedForResupply() !== null) {
             $dataArray['blockedForResupply'] = $data->getBlockedForResupply();
         }
-        if ($data->isInitialized('blockedForResupplyReasonId') && null !== $data->getBlockedForResupplyReasonId()) {
+        if ($data->isInitialized('blockedForResupplyReasonId') && $data->getBlockedForResupplyReasonId() !== null) {
             $dataArray['blockedForResupplyReasonId'] = $data->getBlockedForResupplyReasonId();
         }
-        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
+        if ($data->isInitialized('customerId') && $data->getCustomerId() !== null) {
             $dataArray['customerId'] = $data->getCustomerId();
         }
-        if ($data->isInitialized('fieldNumber') && null !== $data->getFieldNumber()) {
+        if ($data->isInitialized('fieldNumber') && $data->getFieldNumber() !== null) {
             $dataArray['fieldNumber'] = $data->getFieldNumber();
         }
-        if ($data->isInitialized('levelNumber') && null !== $data->getLevelNumber()) {
+        if ($data->isInitialized('levelNumber') && $data->getLevelNumber() !== null) {
             $dataArray['levelNumber'] = $data->getLevelNumber();
         }
-        if ($data->isInitialized('storagePlaceSizeId') && null !== $data->getStoragePlaceSizeId()) {
+        if ($data->isInitialized('storagePlaceSizeId') && $data->getStoragePlaceSizeId() !== null) {
             $dataArray['storagePlaceSizeId'] = $data->getStoragePlaceSizeId();
         }
-        if ($data->isInitialized('storagePlaceType') && null !== $data->getStoragePlaceType()) {
+        if ($data->isInitialized('storagePlaceType') && $data->getStoragePlaceType() !== null) {
             $dataArray['storagePlaceType'] = $data->getStoragePlaceType();
         }
-        if ($data->isInitialized('currentInventoryId') && null !== $data->getCurrentInventoryId()) {
+        if ($data->isInitialized('currentInventoryId') && $data->getCurrentInventoryId() !== null) {
             $dataArray['currentInventoryId'] = $data->getCurrentInventoryId();
         }
-        if ($data->isInitialized('shelfId') && null !== $data->getShelfId()) {
+        if ($data->isInitialized('shelfId') && $data->getShelfId() !== null) {
             $dataArray['shelfId'] = $data->getShelfId();
         }
-        if ($data->isInitialized('shelfStorageLocationId') && null !== $data->getShelfStorageLocationId()) {
+        if ($data->isInitialized('shelfStorageLocationId') && $data->getShelfStorageLocationId() !== null) {
             $dataArray['shelfStorageLocationId'] = $data->getShelfStorageLocationId();
         }
-        if ($data->isInitialized('storageLocationId') && null !== $data->getStorageLocationId()) {
+        if ($data->isInitialized('storageLocationId') && $data->getStorageLocationId() !== null) {
             $dataArray['storageLocationId'] = $data->getStorageLocationId();
         }
-        if ($data->isInitialized('warehouseId') && null !== $data->getWarehouseId()) {
+        if ($data->isInitialized('warehouseId') && $data->getWarehouseId() !== null) {
             $dataArray['warehouseId'] = $data->getWarehouseId();
         }
         foreach ($data as $key => $value_1) {
@@ -197,8 +203,10 @@ class StoragePlaceNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $dataArray[$key] = $value_1;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\StoragePlace::class => false];

@@ -3,28 +3,32 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ApiProblemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+
+class ApiProblemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
     use ValidatorTrait;
+
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\ApiProblem::class;
     }
+
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ApiProblem::class;
     }
+
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -33,8 +37,8 @@ class ApiProblemNormalizer implements DenormalizerInterface, NormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\ApiProblem();
-        if (null === $data || false === \is_array($data)) {
+        $object = new \Webhubworks\WeclappApiCore\Model\ApiProblem;
+        if ($data === null || \is_array($data) === false) {
             return $object;
         }
         if (\array_key_exists('detail', $data)) {
@@ -86,21 +90,23 @@ class ApiProblemNormalizer implements DenormalizerInterface, NormalizerInterface
                 $object[$key_1] = $value_3;
             }
         }
+
         return $object;
     }
+
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
+        if ($data->isInitialized('detail') && $data->getDetail() !== null) {
             $dataArray['detail'] = $data->getDetail();
         }
-        if ($data->isInitialized('error') && null !== $data->getError()) {
+        if ($data->isInitialized('error') && $data->getError() !== null) {
             $dataArray['error'] = $data->getError();
         }
-        if ($data->isInitialized('instance') && null !== $data->getInstance()) {
+        if ($data->isInitialized('instance') && $data->getInstance() !== null) {
             $dataArray['instance'] = $data->getInstance();
         }
-        if ($data->isInitialized('messages') && null !== $data->getMessages()) {
+        if ($data->isInitialized('messages') && $data->getMessages() !== null) {
             $values = [];
             foreach ($data->getMessages() as $value) {
                 $values_1 = [];
@@ -114,7 +120,7 @@ class ApiProblemNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['status'] = $data->getStatus();
         $dataArray['title'] = $data->getTitle();
         $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('validationErrors') && null !== $data->getValidationErrors()) {
+        if ($data->isInitialized('validationErrors') && $data->getValidationErrors() !== null) {
             $values_2 = [];
             foreach ($data->getValidationErrors() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
@@ -126,8 +132,10 @@ class ApiProblemNormalizer implements DenormalizerInterface, NormalizerInterface
                 $dataArray[$key_1] = $value_3;
             }
         }
+
         return $dataArray;
     }
+
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\ApiProblem::class => false];
