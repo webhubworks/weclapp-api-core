@@ -8,1431 +8,2106 @@ class PurchaseInvoice extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var list<mixed>
+     * 
+     *
+     * @var list<mixed>|null
      */
     protected $customAttributes;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $commercialLanguage;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $creatorId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var bool
+     * @var bool|null
      */
     protected $disableEmailTemplate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $recordComment;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $recordFreeText;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $recordOpening;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $sentToRecipient;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $tags;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $currencyConversionDate;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $currencyConversionRate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $grossAmount;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $grossAmountInCompanyCurrency;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $headerDiscount;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $headerSurcharge;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $netAmount;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $netAmountInCompanyCurrency;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $nonStandardTaxId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $nonStandardTaxName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $paymentMethodId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $paymentMethodName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $recordCurrencyId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $recordCurrencyName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $termOfPaymentId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $termOfPaymentName;
-
     /**
-     * @var EmailAddresses
+     * 
+     *
+     * @var EmailAddresses|null
      */
     protected $recordEmailAddresses;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $responsibleUserId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $responsibleUserUsername;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $servicePeriodFrom;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $servicePeriodTo;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $supplierId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $supplierNumber;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $bookingDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $bookingText;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $cancellationDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $costCenterId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $costCenterNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $costTypeId;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $createdViaOcr;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $creditResetsOrderState;
-
     /**
-     * @var RecordAddress
+     * 
+     *
+     * @var RecordAddress|null
      */
     protected $deliveryAddress;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $deliveryDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $dueDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $grossAmountOfHeaderTaxes;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $grossAmountOfHeaderTaxesInCompanyCurrency;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $grossPrices;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $importSalesTaxAmount;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $importSalesTaxId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $internalInvoiceNumber;
-
     /**
-     * @var RecordAddress
+     * 
+     *
+     * @var RecordAddress|null
      */
     protected $invoiceAddress;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $invoiceDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $invoiceNumber;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $paymentBlock;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $paymentBlockNote;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $paymentStatus;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $precedingPurchaseInvoiceId;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $pricingDate;
-
     /**
-     * @var list<PurchaseInvoiceItem>
+     * 
+     *
+     * @var list<PurchaseInvoiceItem>|null
      */
     protected $purchaseInvoiceItems;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $purchaseInvoiceType;
-
     /**
-     * @var list<OnlyId>
+     * 
+     *
+     * @var list<OnlyId>|null
      */
     protected $purchaseOrders;
-
     /**
-     * @var RecordAddress
+     * 
+     *
+     * @var RecordAddress|null
      */
     protected $recordAddress;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $senderCountryCode;
-
     /**
-     * @var list<PurchaseInvoiceShippingCostItem>
+     * 
+     *
+     * @var list<PurchaseInvoiceShippingCostItem>|null
      */
     protected $shippingCostItems;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $shippingDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $status;
-
     /**
-     * @var list<PurchaseInvoiceStatusHistory>
+     * 
+     *
+     * @var list<PurchaseInvoiceStatusHistory>|null
      */
     protected $statusHistory;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $supplierHabitualExporterLetterOfIntentId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $vatRegistrationNumber;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
     /**
-     * @return list<mixed>
+     * 
+     *
+     * @return list<mixed>|null
      */
-    public function getCustomAttributes(): array
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
-
     /**
-     * @param  list<mixed>  $customAttributes
+     * 
+     *
+     * @param list<mixed>|null $customAttributes
+     *
+     * @return self
      */
-    public function setCustomAttributes(array $customAttributes): self
+    public function setCustomAttributes(?array $customAttributes): self
     {
         $this->initialized['customAttributes'] = true;
         $this->customAttributes = $customAttributes;
-
         return $this;
     }
-
-    public function getCommercialLanguage(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCommercialLanguage(): ?string
     {
         return $this->commercialLanguage;
     }
-
-    public function setCommercialLanguage(string $commercialLanguage): self
+    /**
+     * 
+     *
+     * @param string|null $commercialLanguage
+     *
+     * @return self
+     */
+    public function setCommercialLanguage(?string $commercialLanguage): self
     {
         $this->initialized['commercialLanguage'] = true;
         $this->commercialLanguage = $commercialLanguage;
-
         return $this;
     }
-
-    public function getCreatorId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCreatorId(): ?string
     {
         return $this->creatorId;
     }
-
-    public function setCreatorId(string $creatorId): self
+    /**
+     * 
+     *
+     * @param string|null $creatorId
+     *
+     * @return self
+     */
+    public function setCreatorId(?string $creatorId): self
     {
         $this->initialized['creatorId'] = true;
         $this->creatorId = $creatorId;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return bool|null
      */
-    public function getDisableEmailTemplate(): bool
+    public function getDisableEmailTemplate(): ?bool
     {
         return $this->disableEmailTemplate;
     }
-
     /**
+     * 
+     *
+     * @param bool|null $disableEmailTemplate
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setDisableEmailTemplate(bool $disableEmailTemplate): self
+    public function setDisableEmailTemplate(?bool $disableEmailTemplate): self
     {
         $this->initialized['disableEmailTemplate'] = true;
         $this->disableEmailTemplate = $disableEmailTemplate;
-
         return $this;
     }
-
-    public function getRecordComment(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRecordComment(): ?string
     {
         return $this->recordComment;
     }
-
-    public function setRecordComment(string $recordComment): self
+    /**
+     * 
+     *
+     * @param string|null $recordComment
+     *
+     * @return self
+     */
+    public function setRecordComment(?string $recordComment): self
     {
         $this->initialized['recordComment'] = true;
         $this->recordComment = $recordComment;
-
         return $this;
     }
-
-    public function getRecordFreeText(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRecordFreeText(): ?string
     {
         return $this->recordFreeText;
     }
-
-    public function setRecordFreeText(string $recordFreeText): self
+    /**
+     * 
+     *
+     * @param string|null $recordFreeText
+     *
+     * @return self
+     */
+    public function setRecordFreeText(?string $recordFreeText): self
     {
         $this->initialized['recordFreeText'] = true;
         $this->recordFreeText = $recordFreeText;
-
         return $this;
     }
-
-    public function getRecordOpening(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRecordOpening(): ?string
     {
         return $this->recordOpening;
     }
-
-    public function setRecordOpening(string $recordOpening): self
+    /**
+     * 
+     *
+     * @param string|null $recordOpening
+     *
+     * @return self
+     */
+    public function setRecordOpening(?string $recordOpening): self
     {
         $this->initialized['recordOpening'] = true;
         $this->recordOpening = $recordOpening;
-
         return $this;
     }
-
-    public function getSentToRecipient(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getSentToRecipient(): ?bool
     {
         return $this->sentToRecipient;
     }
-
-    public function setSentToRecipient(bool $sentToRecipient): self
+    /**
+     * 
+     *
+     * @param bool|null $sentToRecipient
+     *
+     * @return self
+     */
+    public function setSentToRecipient(?bool $sentToRecipient): self
     {
         $this->initialized['sentToRecipient'] = true;
         $this->sentToRecipient = $sentToRecipient;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getTags(): array
+    public function getTags(): ?array
     {
         return $this->tags;
     }
-
     /**
-     * @param  list<string>  $tags
+     * 
+     *
+     * @param list<string>|null $tags
+     *
+     * @return self
      */
-    public function setTags(array $tags): self
+    public function setTags(?array $tags): self
     {
         $this->initialized['tags'] = true;
         $this->tags = $tags;
-
         return $this;
     }
-
-    public function getCurrencyConversionDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCurrencyConversionDate(): ?int
     {
         return $this->currencyConversionDate;
     }
-
-    public function setCurrencyConversionDate(int $currencyConversionDate): self
+    /**
+     * 
+     *
+     * @param int|null $currencyConversionDate
+     *
+     * @return self
+     */
+    public function setCurrencyConversionDate(?int $currencyConversionDate): self
     {
         $this->initialized['currencyConversionDate'] = true;
         $this->currencyConversionDate = $currencyConversionDate;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getCurrencyConversionRate(): string
+    public function getCurrencyConversionRate(): ?string
     {
         return $this->currencyConversionRate;
     }
-
     /**
+     * 
+     *
+     * @param string|null $currencyConversionRate
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setCurrencyConversionRate(string $currencyConversionRate): self
+    public function setCurrencyConversionRate(?string $currencyConversionRate): self
     {
         $this->initialized['currencyConversionRate'] = true;
         $this->currencyConversionRate = $currencyConversionRate;
-
         return $this;
     }
-
-    public function getGrossAmount(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getGrossAmount(): ?string
     {
         return $this->grossAmount;
     }
-
-    public function setGrossAmount(string $grossAmount): self
+    /**
+     * 
+     *
+     * @param string|null $grossAmount
+     *
+     * @return self
+     */
+    public function setGrossAmount(?string $grossAmount): self
     {
         $this->initialized['grossAmount'] = true;
         $this->grossAmount = $grossAmount;
-
         return $this;
     }
-
-    public function getGrossAmountInCompanyCurrency(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getGrossAmountInCompanyCurrency(): ?string
     {
         return $this->grossAmountInCompanyCurrency;
     }
-
-    public function setGrossAmountInCompanyCurrency(string $grossAmountInCompanyCurrency): self
+    /**
+     * 
+     *
+     * @param string|null $grossAmountInCompanyCurrency
+     *
+     * @return self
+     */
+    public function setGrossAmountInCompanyCurrency(?string $grossAmountInCompanyCurrency): self
     {
         $this->initialized['grossAmountInCompanyCurrency'] = true;
         $this->grossAmountInCompanyCurrency = $grossAmountInCompanyCurrency;
-
         return $this;
     }
-
-    public function getHeaderDiscount(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getHeaderDiscount(): ?string
     {
         return $this->headerDiscount;
     }
-
-    public function setHeaderDiscount(string $headerDiscount): self
+    /**
+     * 
+     *
+     * @param string|null $headerDiscount
+     *
+     * @return self
+     */
+    public function setHeaderDiscount(?string $headerDiscount): self
     {
         $this->initialized['headerDiscount'] = true;
         $this->headerDiscount = $headerDiscount;
-
         return $this;
     }
-
-    public function getHeaderSurcharge(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getHeaderSurcharge(): ?string
     {
         return $this->headerSurcharge;
     }
-
-    public function setHeaderSurcharge(string $headerSurcharge): self
+    /**
+     * 
+     *
+     * @param string|null $headerSurcharge
+     *
+     * @return self
+     */
+    public function setHeaderSurcharge(?string $headerSurcharge): self
     {
         $this->initialized['headerSurcharge'] = true;
         $this->headerSurcharge = $headerSurcharge;
-
         return $this;
     }
-
-    public function getNetAmount(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getNetAmount(): ?string
     {
         return $this->netAmount;
     }
-
-    public function setNetAmount(string $netAmount): self
+    /**
+     * 
+     *
+     * @param string|null $netAmount
+     *
+     * @return self
+     */
+    public function setNetAmount(?string $netAmount): self
     {
         $this->initialized['netAmount'] = true;
         $this->netAmount = $netAmount;
-
         return $this;
     }
-
-    public function getNetAmountInCompanyCurrency(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getNetAmountInCompanyCurrency(): ?string
     {
         return $this->netAmountInCompanyCurrency;
     }
-
-    public function setNetAmountInCompanyCurrency(string $netAmountInCompanyCurrency): self
+    /**
+     * 
+     *
+     * @param string|null $netAmountInCompanyCurrency
+     *
+     * @return self
+     */
+    public function setNetAmountInCompanyCurrency(?string $netAmountInCompanyCurrency): self
     {
         $this->initialized['netAmountInCompanyCurrency'] = true;
         $this->netAmountInCompanyCurrency = $netAmountInCompanyCurrency;
-
         return $this;
     }
-
-    public function getNonStandardTaxId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getNonStandardTaxId(): ?string
     {
         return $this->nonStandardTaxId;
     }
-
-    public function setNonStandardTaxId(string $nonStandardTaxId): self
+    /**
+     * 
+     *
+     * @param string|null $nonStandardTaxId
+     *
+     * @return self
+     */
+    public function setNonStandardTaxId(?string $nonStandardTaxId): self
     {
         $this->initialized['nonStandardTaxId'] = true;
         $this->nonStandardTaxId = $nonStandardTaxId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getNonStandardTaxName(): string
+    public function getNonStandardTaxName(): ?string
     {
         return $this->nonStandardTaxName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $nonStandardTaxName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setNonStandardTaxName(string $nonStandardTaxName): self
+    public function setNonStandardTaxName(?string $nonStandardTaxName): self
     {
         $this->initialized['nonStandardTaxName'] = true;
         $this->nonStandardTaxName = $nonStandardTaxName;
-
         return $this;
     }
-
-    public function getPaymentMethodId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPaymentMethodId(): ?string
     {
         return $this->paymentMethodId;
     }
-
-    public function setPaymentMethodId(string $paymentMethodId): self
+    /**
+     * 
+     *
+     * @param string|null $paymentMethodId
+     *
+     * @return self
+     */
+    public function setPaymentMethodId(?string $paymentMethodId): self
     {
         $this->initialized['paymentMethodId'] = true;
         $this->paymentMethodId = $paymentMethodId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getPaymentMethodName(): string
+    public function getPaymentMethodName(): ?string
     {
         return $this->paymentMethodName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $paymentMethodName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setPaymentMethodName(string $paymentMethodName): self
+    public function setPaymentMethodName(?string $paymentMethodName): self
     {
         $this->initialized['paymentMethodName'] = true;
         $this->paymentMethodName = $paymentMethodName;
-
         return $this;
     }
-
-    public function getRecordCurrencyId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRecordCurrencyId(): ?string
     {
         return $this->recordCurrencyId;
     }
-
-    public function setRecordCurrencyId(string $recordCurrencyId): self
+    /**
+     * 
+     *
+     * @param string|null $recordCurrencyId
+     *
+     * @return self
+     */
+    public function setRecordCurrencyId(?string $recordCurrencyId): self
     {
         $this->initialized['recordCurrencyId'] = true;
         $this->recordCurrencyId = $recordCurrencyId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getRecordCurrencyName(): string
+    public function getRecordCurrencyName(): ?string
     {
         return $this->recordCurrencyName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $recordCurrencyName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setRecordCurrencyName(string $recordCurrencyName): self
+    public function setRecordCurrencyName(?string $recordCurrencyName): self
     {
         $this->initialized['recordCurrencyName'] = true;
         $this->recordCurrencyName = $recordCurrencyName;
-
         return $this;
     }
-
-    public function getTermOfPaymentId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTermOfPaymentId(): ?string
     {
         return $this->termOfPaymentId;
     }
-
-    public function setTermOfPaymentId(string $termOfPaymentId): self
+    /**
+     * 
+     *
+     * @param string|null $termOfPaymentId
+     *
+     * @return self
+     */
+    public function setTermOfPaymentId(?string $termOfPaymentId): self
     {
         $this->initialized['termOfPaymentId'] = true;
         $this->termOfPaymentId = $termOfPaymentId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getTermOfPaymentName(): string
+    public function getTermOfPaymentName(): ?string
     {
         return $this->termOfPaymentName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $termOfPaymentName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setTermOfPaymentName(string $termOfPaymentName): self
+    public function setTermOfPaymentName(?string $termOfPaymentName): self
     {
         $this->initialized['termOfPaymentName'] = true;
         $this->termOfPaymentName = $termOfPaymentName;
-
         return $this;
     }
-
-    public function getRecordEmailAddresses(): EmailAddresses
+    /**
+     * 
+     *
+     * @return EmailAddresses|null
+     */
+    public function getRecordEmailAddresses(): ?EmailAddresses
     {
         return $this->recordEmailAddresses;
     }
-
-    public function setRecordEmailAddresses(EmailAddresses $recordEmailAddresses): self
+    /**
+     * 
+     *
+     * @param EmailAddresses|null $recordEmailAddresses
+     *
+     * @return self
+     */
+    public function setRecordEmailAddresses(?EmailAddresses $recordEmailAddresses): self
     {
         $this->initialized['recordEmailAddresses'] = true;
         $this->recordEmailAddresses = $recordEmailAddresses;
-
         return $this;
     }
-
-    public function getResponsibleUserId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getResponsibleUserId(): ?string
     {
         return $this->responsibleUserId;
     }
-
-    public function setResponsibleUserId(string $responsibleUserId): self
+    /**
+     * 
+     *
+     * @param string|null $responsibleUserId
+     *
+     * @return self
+     */
+    public function setResponsibleUserId(?string $responsibleUserId): self
     {
         $this->initialized['responsibleUserId'] = true;
         $this->responsibleUserId = $responsibleUserId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getResponsibleUserUsername(): string
+    public function getResponsibleUserUsername(): ?string
     {
         return $this->responsibleUserUsername;
     }
-
     /**
+     * 
+     *
+     * @param string|null $responsibleUserUsername
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setResponsibleUserUsername(string $responsibleUserUsername): self
+    public function setResponsibleUserUsername(?string $responsibleUserUsername): self
     {
         $this->initialized['responsibleUserUsername'] = true;
         $this->responsibleUserUsername = $responsibleUserUsername;
-
         return $this;
     }
-
-    public function getServicePeriodFrom(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getServicePeriodFrom(): ?int
     {
         return $this->servicePeriodFrom;
     }
-
-    public function setServicePeriodFrom(int $servicePeriodFrom): self
+    /**
+     * 
+     *
+     * @param int|null $servicePeriodFrom
+     *
+     * @return self
+     */
+    public function setServicePeriodFrom(?int $servicePeriodFrom): self
     {
         $this->initialized['servicePeriodFrom'] = true;
         $this->servicePeriodFrom = $servicePeriodFrom;
-
         return $this;
     }
-
-    public function getServicePeriodTo(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getServicePeriodTo(): ?int
     {
         return $this->servicePeriodTo;
     }
-
-    public function setServicePeriodTo(int $servicePeriodTo): self
+    /**
+     * 
+     *
+     * @param int|null $servicePeriodTo
+     *
+     * @return self
+     */
+    public function setServicePeriodTo(?int $servicePeriodTo): self
     {
         $this->initialized['servicePeriodTo'] = true;
         $this->servicePeriodTo = $servicePeriodTo;
-
         return $this;
     }
-
-    public function getSupplierId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSupplierId(): ?string
     {
         return $this->supplierId;
     }
-
-    public function setSupplierId(string $supplierId): self
+    /**
+     * 
+     *
+     * @param string|null $supplierId
+     *
+     * @return self
+     */
+    public function setSupplierId(?string $supplierId): self
     {
         $this->initialized['supplierId'] = true;
         $this->supplierId = $supplierId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getSupplierNumber(): string
+    public function getSupplierNumber(): ?string
     {
         return $this->supplierNumber;
     }
-
     /**
+     * 
+     *
+     * @param string|null $supplierNumber
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setSupplierNumber(string $supplierNumber): self
+    public function setSupplierNumber(?string $supplierNumber): self
     {
         $this->initialized['supplierNumber'] = true;
         $this->supplierNumber = $supplierNumber;
-
         return $this;
     }
-
-    public function getBookingDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getBookingDate(): ?int
     {
         return $this->bookingDate;
     }
-
-    public function setBookingDate(int $bookingDate): self
+    /**
+     * 
+     *
+     * @param int|null $bookingDate
+     *
+     * @return self
+     */
+    public function setBookingDate(?int $bookingDate): self
     {
         $this->initialized['bookingDate'] = true;
         $this->bookingDate = $bookingDate;
-
         return $this;
     }
-
-    public function getBookingText(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getBookingText(): ?string
     {
         return $this->bookingText;
     }
-
-    public function setBookingText(string $bookingText): self
+    /**
+     * 
+     *
+     * @param string|null $bookingText
+     *
+     * @return self
+     */
+    public function setBookingText(?string $bookingText): self
     {
         $this->initialized['bookingText'] = true;
         $this->bookingText = $bookingText;
-
         return $this;
     }
-
-    public function getCancellationDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCancellationDate(): ?int
     {
         return $this->cancellationDate;
     }
-
-    public function setCancellationDate(int $cancellationDate): self
+    /**
+     * 
+     *
+     * @param int|null $cancellationDate
+     *
+     * @return self
+     */
+    public function setCancellationDate(?int $cancellationDate): self
     {
         $this->initialized['cancellationDate'] = true;
         $this->cancellationDate = $cancellationDate;
-
         return $this;
     }
-
-    public function getCostCenterId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCostCenterId(): ?string
     {
         return $this->costCenterId;
     }
-
-    public function setCostCenterId(string $costCenterId): self
+    /**
+     * 
+     *
+     * @param string|null $costCenterId
+     *
+     * @return self
+     */
+    public function setCostCenterId(?string $costCenterId): self
     {
         $this->initialized['costCenterId'] = true;
         $this->costCenterId = $costCenterId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getCostCenterNumber(): string
+    public function getCostCenterNumber(): ?string
     {
         return $this->costCenterNumber;
     }
-
     /**
+     * 
+     *
+     * @param string|null $costCenterNumber
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setCostCenterNumber(string $costCenterNumber): self
+    public function setCostCenterNumber(?string $costCenterNumber): self
     {
         $this->initialized['costCenterNumber'] = true;
         $this->costCenterNumber = $costCenterNumber;
-
         return $this;
     }
-
-    public function getCostTypeId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCostTypeId(): ?string
     {
         return $this->costTypeId;
     }
-
-    public function setCostTypeId(string $costTypeId): self
+    /**
+     * 
+     *
+     * @param string|null $costTypeId
+     *
+     * @return self
+     */
+    public function setCostTypeId(?string $costTypeId): self
     {
         $this->initialized['costTypeId'] = true;
         $this->costTypeId = $costTypeId;
-
         return $this;
     }
-
-    public function getCreatedViaOcr(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getCreatedViaOcr(): ?bool
     {
         return $this->createdViaOcr;
     }
-
-    public function setCreatedViaOcr(bool $createdViaOcr): self
+    /**
+     * 
+     *
+     * @param bool|null $createdViaOcr
+     *
+     * @return self
+     */
+    public function setCreatedViaOcr(?bool $createdViaOcr): self
     {
         $this->initialized['createdViaOcr'] = true;
         $this->createdViaOcr = $createdViaOcr;
-
         return $this;
     }
-
-    public function getCreditResetsOrderState(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getCreditResetsOrderState(): ?bool
     {
         return $this->creditResetsOrderState;
     }
-
-    public function setCreditResetsOrderState(bool $creditResetsOrderState): self
+    /**
+     * 
+     *
+     * @param bool|null $creditResetsOrderState
+     *
+     * @return self
+     */
+    public function setCreditResetsOrderState(?bool $creditResetsOrderState): self
     {
         $this->initialized['creditResetsOrderState'] = true;
         $this->creditResetsOrderState = $creditResetsOrderState;
-
         return $this;
     }
-
-    public function getDeliveryAddress(): RecordAddress
+    /**
+     * 
+     *
+     * @return RecordAddress|null
+     */
+    public function getDeliveryAddress(): ?RecordAddress
     {
         return $this->deliveryAddress;
     }
-
-    public function setDeliveryAddress(RecordAddress $deliveryAddress): self
+    /**
+     * 
+     *
+     * @param RecordAddress|null $deliveryAddress
+     *
+     * @return self
+     */
+    public function setDeliveryAddress(?RecordAddress $deliveryAddress): self
     {
         $this->initialized['deliveryAddress'] = true;
         $this->deliveryAddress = $deliveryAddress;
-
         return $this;
     }
-
-    public function getDeliveryDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getDeliveryDate(): ?int
     {
         return $this->deliveryDate;
     }
-
-    public function setDeliveryDate(int $deliveryDate): self
+    /**
+     * 
+     *
+     * @param int|null $deliveryDate
+     *
+     * @return self
+     */
+    public function setDeliveryDate(?int $deliveryDate): self
     {
         $this->initialized['deliveryDate'] = true;
         $this->deliveryDate = $deliveryDate;
-
         return $this;
     }
-
-    public function getDueDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getDueDate(): ?int
     {
         return $this->dueDate;
     }
-
-    public function setDueDate(int $dueDate): self
+    /**
+     * 
+     *
+     * @param int|null $dueDate
+     *
+     * @return self
+     */
+    public function setDueDate(?int $dueDate): self
     {
         $this->initialized['dueDate'] = true;
         $this->dueDate = $dueDate;
-
         return $this;
     }
-
-    public function getGrossAmountOfHeaderTaxes(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getGrossAmountOfHeaderTaxes(): ?string
     {
         return $this->grossAmountOfHeaderTaxes;
     }
-
-    public function setGrossAmountOfHeaderTaxes(string $grossAmountOfHeaderTaxes): self
+    /**
+     * 
+     *
+     * @param string|null $grossAmountOfHeaderTaxes
+     *
+     * @return self
+     */
+    public function setGrossAmountOfHeaderTaxes(?string $grossAmountOfHeaderTaxes): self
     {
         $this->initialized['grossAmountOfHeaderTaxes'] = true;
         $this->grossAmountOfHeaderTaxes = $grossAmountOfHeaderTaxes;
-
         return $this;
     }
-
-    public function getGrossAmountOfHeaderTaxesInCompanyCurrency(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getGrossAmountOfHeaderTaxesInCompanyCurrency(): ?string
     {
         return $this->grossAmountOfHeaderTaxesInCompanyCurrency;
     }
-
-    public function setGrossAmountOfHeaderTaxesInCompanyCurrency(string $grossAmountOfHeaderTaxesInCompanyCurrency): self
+    /**
+     * 
+     *
+     * @param string|null $grossAmountOfHeaderTaxesInCompanyCurrency
+     *
+     * @return self
+     */
+    public function setGrossAmountOfHeaderTaxesInCompanyCurrency(?string $grossAmountOfHeaderTaxesInCompanyCurrency): self
     {
         $this->initialized['grossAmountOfHeaderTaxesInCompanyCurrency'] = true;
         $this->grossAmountOfHeaderTaxesInCompanyCurrency = $grossAmountOfHeaderTaxesInCompanyCurrency;
-
         return $this;
     }
-
-    public function getGrossPrices(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getGrossPrices(): ?bool
     {
         return $this->grossPrices;
     }
-
-    public function setGrossPrices(bool $grossPrices): self
+    /**
+     * 
+     *
+     * @param bool|null $grossPrices
+     *
+     * @return self
+     */
+    public function setGrossPrices(?bool $grossPrices): self
     {
         $this->initialized['grossPrices'] = true;
         $this->grossPrices = $grossPrices;
-
         return $this;
     }
-
-    public function getImportSalesTaxAmount(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getImportSalesTaxAmount(): ?string
     {
         return $this->importSalesTaxAmount;
     }
-
-    public function setImportSalesTaxAmount(string $importSalesTaxAmount): self
+    /**
+     * 
+     *
+     * @param string|null $importSalesTaxAmount
+     *
+     * @return self
+     */
+    public function setImportSalesTaxAmount(?string $importSalesTaxAmount): self
     {
         $this->initialized['importSalesTaxAmount'] = true;
         $this->importSalesTaxAmount = $importSalesTaxAmount;
-
         return $this;
     }
-
-    public function getImportSalesTaxId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getImportSalesTaxId(): ?string
     {
         return $this->importSalesTaxId;
     }
-
-    public function setImportSalesTaxId(string $importSalesTaxId): self
+    /**
+     * 
+     *
+     * @param string|null $importSalesTaxId
+     *
+     * @return self
+     */
+    public function setImportSalesTaxId(?string $importSalesTaxId): self
     {
         $this->initialized['importSalesTaxId'] = true;
         $this->importSalesTaxId = $importSalesTaxId;
-
         return $this;
     }
-
-    public function getInternalInvoiceNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getInternalInvoiceNumber(): ?string
     {
         return $this->internalInvoiceNumber;
     }
-
-    public function setInternalInvoiceNumber(string $internalInvoiceNumber): self
+    /**
+     * 
+     *
+     * @param string|null $internalInvoiceNumber
+     *
+     * @return self
+     */
+    public function setInternalInvoiceNumber(?string $internalInvoiceNumber): self
     {
         $this->initialized['internalInvoiceNumber'] = true;
         $this->internalInvoiceNumber = $internalInvoiceNumber;
-
         return $this;
     }
-
-    public function getInvoiceAddress(): RecordAddress
+    /**
+     * 
+     *
+     * @return RecordAddress|null
+     */
+    public function getInvoiceAddress(): ?RecordAddress
     {
         return $this->invoiceAddress;
     }
-
-    public function setInvoiceAddress(RecordAddress $invoiceAddress): self
+    /**
+     * 
+     *
+     * @param RecordAddress|null $invoiceAddress
+     *
+     * @return self
+     */
+    public function setInvoiceAddress(?RecordAddress $invoiceAddress): self
     {
         $this->initialized['invoiceAddress'] = true;
         $this->invoiceAddress = $invoiceAddress;
-
         return $this;
     }
-
-    public function getInvoiceDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getInvoiceDate(): ?int
     {
         return $this->invoiceDate;
     }
-
-    public function setInvoiceDate(int $invoiceDate): self
+    /**
+     * 
+     *
+     * @param int|null $invoiceDate
+     *
+     * @return self
+     */
+    public function setInvoiceDate(?int $invoiceDate): self
     {
         $this->initialized['invoiceDate'] = true;
         $this->invoiceDate = $invoiceDate;
-
         return $this;
     }
-
-    public function getInvoiceNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getInvoiceNumber(): ?string
     {
         return $this->invoiceNumber;
     }
-
-    public function setInvoiceNumber(string $invoiceNumber): self
+    /**
+     * 
+     *
+     * @param string|null $invoiceNumber
+     *
+     * @return self
+     */
+    public function setInvoiceNumber(?string $invoiceNumber): self
     {
         $this->initialized['invoiceNumber'] = true;
         $this->invoiceNumber = $invoiceNumber;
-
         return $this;
     }
-
-    public function getPaymentBlock(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getPaymentBlock(): ?bool
     {
         return $this->paymentBlock;
     }
-
-    public function setPaymentBlock(bool $paymentBlock): self
+    /**
+     * 
+     *
+     * @param bool|null $paymentBlock
+     *
+     * @return self
+     */
+    public function setPaymentBlock(?bool $paymentBlock): self
     {
         $this->initialized['paymentBlock'] = true;
         $this->paymentBlock = $paymentBlock;
-
         return $this;
     }
-
-    public function getPaymentBlockNote(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPaymentBlockNote(): ?string
     {
         return $this->paymentBlockNote;
     }
-
-    public function setPaymentBlockNote(string $paymentBlockNote): self
+    /**
+     * 
+     *
+     * @param string|null $paymentBlockNote
+     *
+     * @return self
+     */
+    public function setPaymentBlockNote(?string $paymentBlockNote): self
     {
         $this->initialized['paymentBlockNote'] = true;
         $this->paymentBlockNote = $paymentBlockNote;
-
         return $this;
     }
-
-    public function getPaymentStatus(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPaymentStatus(): ?string
     {
         return $this->paymentStatus;
     }
-
-    public function setPaymentStatus(string $paymentStatus): self
+    /**
+     * 
+     *
+     * @param string|null $paymentStatus
+     *
+     * @return self
+     */
+    public function setPaymentStatus(?string $paymentStatus): self
     {
         $this->initialized['paymentStatus'] = true;
         $this->paymentStatus = $paymentStatus;
-
         return $this;
     }
-
-    public function getPrecedingPurchaseInvoiceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPrecedingPurchaseInvoiceId(): ?string
     {
         return $this->precedingPurchaseInvoiceId;
     }
-
-    public function setPrecedingPurchaseInvoiceId(string $precedingPurchaseInvoiceId): self
+    /**
+     * 
+     *
+     * @param string|null $precedingPurchaseInvoiceId
+     *
+     * @return self
+     */
+    public function setPrecedingPurchaseInvoiceId(?string $precedingPurchaseInvoiceId): self
     {
         $this->initialized['precedingPurchaseInvoiceId'] = true;
         $this->precedingPurchaseInvoiceId = $precedingPurchaseInvoiceId;
-
         return $this;
     }
-
-    public function getPricingDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getPricingDate(): ?int
     {
         return $this->pricingDate;
     }
-
-    public function setPricingDate(int $pricingDate): self
+    /**
+     * 
+     *
+     * @param int|null $pricingDate
+     *
+     * @return self
+     */
+    public function setPricingDate(?int $pricingDate): self
     {
         $this->initialized['pricingDate'] = true;
         $this->pricingDate = $pricingDate;
-
         return $this;
     }
-
     /**
-     * @return list<PurchaseInvoiceItem>
+     * 
+     *
+     * @return list<PurchaseInvoiceItem>|null
      */
-    public function getPurchaseInvoiceItems(): array
+    public function getPurchaseInvoiceItems(): ?array
     {
         return $this->purchaseInvoiceItems;
     }
-
     /**
-     * @param  list<PurchaseInvoiceItem>  $purchaseInvoiceItems
+     * 
+     *
+     * @param list<PurchaseInvoiceItem>|null $purchaseInvoiceItems
+     *
+     * @return self
      */
-    public function setPurchaseInvoiceItems(array $purchaseInvoiceItems): self
+    public function setPurchaseInvoiceItems(?array $purchaseInvoiceItems): self
     {
         $this->initialized['purchaseInvoiceItems'] = true;
         $this->purchaseInvoiceItems = $purchaseInvoiceItems;
-
         return $this;
     }
-
-    public function getPurchaseInvoiceType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPurchaseInvoiceType(): ?string
     {
         return $this->purchaseInvoiceType;
     }
-
-    public function setPurchaseInvoiceType(string $purchaseInvoiceType): self
+    /**
+     * 
+     *
+     * @param string|null $purchaseInvoiceType
+     *
+     * @return self
+     */
+    public function setPurchaseInvoiceType(?string $purchaseInvoiceType): self
     {
         $this->initialized['purchaseInvoiceType'] = true;
         $this->purchaseInvoiceType = $purchaseInvoiceType;
-
         return $this;
     }
-
     /**
-     * @return list<OnlyId>
+     * 
+     *
+     * @return list<OnlyId>|null
      */
-    public function getPurchaseOrders(): array
+    public function getPurchaseOrders(): ?array
     {
         return $this->purchaseOrders;
     }
-
     /**
-     * @param  list<OnlyId>  $purchaseOrders
+     * 
+     *
+     * @param list<OnlyId>|null $purchaseOrders
+     *
+     * @return self
      */
-    public function setPurchaseOrders(array $purchaseOrders): self
+    public function setPurchaseOrders(?array $purchaseOrders): self
     {
         $this->initialized['purchaseOrders'] = true;
         $this->purchaseOrders = $purchaseOrders;
-
         return $this;
     }
-
-    public function getRecordAddress(): RecordAddress
+    /**
+     * 
+     *
+     * @return RecordAddress|null
+     */
+    public function getRecordAddress(): ?RecordAddress
     {
         return $this->recordAddress;
     }
-
-    public function setRecordAddress(RecordAddress $recordAddress): self
+    /**
+     * 
+     *
+     * @param RecordAddress|null $recordAddress
+     *
+     * @return self
+     */
+    public function setRecordAddress(?RecordAddress $recordAddress): self
     {
         $this->initialized['recordAddress'] = true;
         $this->recordAddress = $recordAddress;
-
         return $this;
     }
-
-    public function getSenderCountryCode(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSenderCountryCode(): ?string
     {
         return $this->senderCountryCode;
     }
-
-    public function setSenderCountryCode(string $senderCountryCode): self
+    /**
+     * 
+     *
+     * @param string|null $senderCountryCode
+     *
+     * @return self
+     */
+    public function setSenderCountryCode(?string $senderCountryCode): self
     {
         $this->initialized['senderCountryCode'] = true;
         $this->senderCountryCode = $senderCountryCode;
-
         return $this;
     }
-
     /**
-     * @return list<PurchaseInvoiceShippingCostItem>
+     * 
+     *
+     * @return list<PurchaseInvoiceShippingCostItem>|null
      */
-    public function getShippingCostItems(): array
+    public function getShippingCostItems(): ?array
     {
         return $this->shippingCostItems;
     }
-
     /**
-     * @param  list<PurchaseInvoiceShippingCostItem>  $shippingCostItems
+     * 
+     *
+     * @param list<PurchaseInvoiceShippingCostItem>|null $shippingCostItems
+     *
+     * @return self
      */
-    public function setShippingCostItems(array $shippingCostItems): self
+    public function setShippingCostItems(?array $shippingCostItems): self
     {
         $this->initialized['shippingCostItems'] = true;
         $this->shippingCostItems = $shippingCostItems;
-
         return $this;
     }
-
-    public function getShippingDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getShippingDate(): ?int
     {
         return $this->shippingDate;
     }
-
-    public function setShippingDate(int $shippingDate): self
+    /**
+     * 
+     *
+     * @param int|null $shippingDate
+     *
+     * @return self
+     */
+    public function setShippingDate(?int $shippingDate): self
     {
         $this->initialized['shippingDate'] = true;
         $this->shippingDate = $shippingDate;
-
         return $this;
     }
-
-    public function getStatus(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getStatus(): ?string
     {
         return $this->status;
     }
-
-    public function setStatus(string $status): self
+    /**
+     * 
+     *
+     * @param string|null $status
+     *
+     * @return self
+     */
+    public function setStatus(?string $status): self
     {
         $this->initialized['status'] = true;
         $this->status = $status;
-
         return $this;
     }
-
     /**
-     * @return list<PurchaseInvoiceStatusHistory>
+     * 
+     *
+     * @return list<PurchaseInvoiceStatusHistory>|null
      */
-    public function getStatusHistory(): array
+    public function getStatusHistory(): ?array
     {
         return $this->statusHistory;
     }
-
     /**
-     * @param  list<PurchaseInvoiceStatusHistory>  $statusHistory
+     * 
+     *
+     * @param list<PurchaseInvoiceStatusHistory>|null $statusHistory
+     *
+     * @return self
      */
-    public function setStatusHistory(array $statusHistory): self
+    public function setStatusHistory(?array $statusHistory): self
     {
         $this->initialized['statusHistory'] = true;
         $this->statusHistory = $statusHistory;
-
         return $this;
     }
-
-    public function getSupplierHabitualExporterLetterOfIntentId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSupplierHabitualExporterLetterOfIntentId(): ?string
     {
         return $this->supplierHabitualExporterLetterOfIntentId;
     }
-
-    public function setSupplierHabitualExporterLetterOfIntentId(string $supplierHabitualExporterLetterOfIntentId): self
+    /**
+     * 
+     *
+     * @param string|null $supplierHabitualExporterLetterOfIntentId
+     *
+     * @return self
+     */
+    public function setSupplierHabitualExporterLetterOfIntentId(?string $supplierHabitualExporterLetterOfIntentId): self
     {
         $this->initialized['supplierHabitualExporterLetterOfIntentId'] = true;
         $this->supplierHabitualExporterLetterOfIntentId = $supplierHabitualExporterLetterOfIntentId;
-
         return $this;
     }
-
-    public function getVatRegistrationNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVatRegistrationNumber(): ?string
     {
         return $this->vatRegistrationNumber;
     }
-
-    public function setVatRegistrationNumber(string $vatRegistrationNumber): self
+    /**
+     * 
+     *
+     * @param string|null $vatRegistrationNumber
+     *
+     * @return self
+     */
+    public function setVatRegistrationNumber(?string $vatRegistrationNumber): self
     {
         $this->initialized['vatRegistrationNumber'] = true;
         $this->vatRegistrationNumber = $vatRegistrationNumber;
-
         return $this;
     }
 }

@@ -8,45 +8,64 @@ class SalesOpenItemIdIdUpdatePaymentStatePostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $datePaid;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $paymentState;
-
-    public function getDatePaid(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getDatePaid(): ?int
     {
         return $this->datePaid;
     }
-
-    public function setDatePaid(int $datePaid): self
+    /**
+     * 
+     *
+     * @param int|null $datePaid
+     *
+     * @return self
+     */
+    public function setDatePaid(?int $datePaid): self
     {
         $this->initialized['datePaid'] = true;
         $this->datePaid = $datePaid;
-
         return $this;
     }
-
-    public function getPaymentState(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPaymentState(): ?string
     {
         return $this->paymentState;
     }
-
-    public function setPaymentState(string $paymentState): self
+    /**
+     * 
+     *
+     * @param string|null $paymentState
+     *
+     * @return self
+     */
+    public function setPaymentState(?string $paymentState): self
     {
         $this->initialized['paymentState'] = true;
         $this->paymentState = $paymentState;
-
         return $this;
     }
 }

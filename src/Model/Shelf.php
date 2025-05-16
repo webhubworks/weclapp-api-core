@@ -8,159 +8,232 @@ class Shelf extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $active;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $shortIdentifier;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $storageLocationId;
-
     /**
-     * @var list<NestedStoragePlace>
+     * 
+     *
+     * @var list<NestedStoragePlace>|null
      */
     protected $storagePlaces;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getActive(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getActive(): ?bool
     {
         return $this->active;
     }
-
-    public function setActive(bool $active): self
+    /**
+     * 
+     *
+     * @param bool|null $active
+     *
+     * @return self
+     */
+    public function setActive(?bool $active): self
     {
         $this->initialized['active'] = true;
         $this->active = $active;
-
         return $this;
     }
-
-    public function getShortIdentifier(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getShortIdentifier(): ?string
     {
         return $this->shortIdentifier;
     }
-
-    public function setShortIdentifier(string $shortIdentifier): self
+    /**
+     * 
+     *
+     * @param string|null $shortIdentifier
+     *
+     * @return self
+     */
+    public function setShortIdentifier(?string $shortIdentifier): self
     {
         $this->initialized['shortIdentifier'] = true;
         $this->shortIdentifier = $shortIdentifier;
-
         return $this;
     }
-
-    public function getStorageLocationId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getStorageLocationId(): ?string
     {
         return $this->storageLocationId;
     }
-
-    public function setStorageLocationId(string $storageLocationId): self
+    /**
+     * 
+     *
+     * @param string|null $storageLocationId
+     *
+     * @return self
+     */
+    public function setStorageLocationId(?string $storageLocationId): self
     {
         $this->initialized['storageLocationId'] = true;
         $this->storageLocationId = $storageLocationId;
-
         return $this;
     }
-
     /**
-     * @return list<NestedStoragePlace>
+     * 
+     *
+     * @return list<NestedStoragePlace>|null
      */
-    public function getStoragePlaces(): array
+    public function getStoragePlaces(): ?array
     {
         return $this->storagePlaces;
     }
-
     /**
-     * @param  list<NestedStoragePlace>  $storagePlaces
+     * 
+     *
+     * @param list<NestedStoragePlace>|null $storagePlaces
+     *
+     * @return self
      */
-    public function setStoragePlaces(array $storagePlaces): self
+    public function setStoragePlaces(?array $storagePlaces): self
     {
         $this->initialized['storagePlaces'] = true;
         $this->storagePlaces = $storagePlaces;
-
         return $this;
     }
 }

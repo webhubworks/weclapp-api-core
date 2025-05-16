@@ -8,45 +8,64 @@ class ArticleIdIdCreateDatasheetPdfPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $commercialLanguageId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $salesChannel;
-
-    public function getCommercialLanguageId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCommercialLanguageId(): ?string
     {
         return $this->commercialLanguageId;
     }
-
-    public function setCommercialLanguageId(string $commercialLanguageId): self
+    /**
+     * 
+     *
+     * @param string|null $commercialLanguageId
+     *
+     * @return self
+     */
+    public function setCommercialLanguageId(?string $commercialLanguageId): self
     {
         $this->initialized['commercialLanguageId'] = true;
         $this->commercialLanguageId = $commercialLanguageId;
-
         return $this;
     }
-
-    public function getSalesChannel(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSalesChannel(): ?string
     {
         return $this->salesChannel;
     }
-
-    public function setSalesChannel(string $salesChannel): self
+    /**
+     * 
+     *
+     * @param string|null $salesChannel
+     *
+     * @return self
+     */
+    public function setSalesChannel(?string $salesChannel): self
     {
         $this->initialized['salesChannel'] = true;
         $this->salesChannel = $salesChannel;
-
         return $this;
     }
 }

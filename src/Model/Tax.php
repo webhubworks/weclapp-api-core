@@ -8,347 +8,508 @@ class Tax extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $accountId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $accountNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $contraAccountId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $contraAccountNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $defaultDiscountAccountId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $defaultDiscountAccountNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $defaultNominalAccountId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $defaultNominalAccountNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $depositAccountId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $name;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $taxKey;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $taxType;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $taxValue;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getAccountId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAccountId(): ?string
     {
         return $this->accountId;
     }
-
-    public function setAccountId(string $accountId): self
+    /**
+     * 
+     *
+     * @param string|null $accountId
+     *
+     * @return self
+     */
+    public function setAccountId(?string $accountId): self
     {
         $this->initialized['accountId'] = true;
         $this->accountId = $accountId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getAccountNumber(): string
+    public function getAccountNumber(): ?string
     {
         return $this->accountNumber;
     }
-
     /**
+     * 
+     *
+     * @param string|null $accountNumber
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setAccountNumber(string $accountNumber): self
+    public function setAccountNumber(?string $accountNumber): self
     {
         $this->initialized['accountNumber'] = true;
         $this->accountNumber = $accountNumber;
-
         return $this;
     }
-
-    public function getContraAccountId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getContraAccountId(): ?string
     {
         return $this->contraAccountId;
     }
-
-    public function setContraAccountId(string $contraAccountId): self
+    /**
+     * 
+     *
+     * @param string|null $contraAccountId
+     *
+     * @return self
+     */
+    public function setContraAccountId(?string $contraAccountId): self
     {
         $this->initialized['contraAccountId'] = true;
         $this->contraAccountId = $contraAccountId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getContraAccountNumber(): string
+    public function getContraAccountNumber(): ?string
     {
         return $this->contraAccountNumber;
     }
-
     /**
+     * 
+     *
+     * @param string|null $contraAccountNumber
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setContraAccountNumber(string $contraAccountNumber): self
+    public function setContraAccountNumber(?string $contraAccountNumber): self
     {
         $this->initialized['contraAccountNumber'] = true;
         $this->contraAccountNumber = $contraAccountNumber;
-
         return $this;
     }
-
-    public function getDefaultDiscountAccountId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDefaultDiscountAccountId(): ?string
     {
         return $this->defaultDiscountAccountId;
     }
-
-    public function setDefaultDiscountAccountId(string $defaultDiscountAccountId): self
+    /**
+     * 
+     *
+     * @param string|null $defaultDiscountAccountId
+     *
+     * @return self
+     */
+    public function setDefaultDiscountAccountId(?string $defaultDiscountAccountId): self
     {
         $this->initialized['defaultDiscountAccountId'] = true;
         $this->defaultDiscountAccountId = $defaultDiscountAccountId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getDefaultDiscountAccountNumber(): string
+    public function getDefaultDiscountAccountNumber(): ?string
     {
         return $this->defaultDiscountAccountNumber;
     }
-
     /**
+     * 
+     *
+     * @param string|null $defaultDiscountAccountNumber
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setDefaultDiscountAccountNumber(string $defaultDiscountAccountNumber): self
+    public function setDefaultDiscountAccountNumber(?string $defaultDiscountAccountNumber): self
     {
         $this->initialized['defaultDiscountAccountNumber'] = true;
         $this->defaultDiscountAccountNumber = $defaultDiscountAccountNumber;
-
         return $this;
     }
-
-    public function getDefaultNominalAccountId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDefaultNominalAccountId(): ?string
     {
         return $this->defaultNominalAccountId;
     }
-
-    public function setDefaultNominalAccountId(string $defaultNominalAccountId): self
+    /**
+     * 
+     *
+     * @param string|null $defaultNominalAccountId
+     *
+     * @return self
+     */
+    public function setDefaultNominalAccountId(?string $defaultNominalAccountId): self
     {
         $this->initialized['defaultNominalAccountId'] = true;
         $this->defaultNominalAccountId = $defaultNominalAccountId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getDefaultNominalAccountNumber(): string
+    public function getDefaultNominalAccountNumber(): ?string
     {
         return $this->defaultNominalAccountNumber;
     }
-
     /**
+     * 
+     *
+     * @param string|null $defaultNominalAccountNumber
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setDefaultNominalAccountNumber(string $defaultNominalAccountNumber): self
+    public function setDefaultNominalAccountNumber(?string $defaultNominalAccountNumber): self
     {
         $this->initialized['defaultNominalAccountNumber'] = true;
         $this->defaultNominalAccountNumber = $defaultNominalAccountNumber;
-
         return $this;
     }
-
-    public function getDepositAccountId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDepositAccountId(): ?string
     {
         return $this->depositAccountId;
     }
-
-    public function setDepositAccountId(string $depositAccountId): self
+    /**
+     * 
+     *
+     * @param string|null $depositAccountId
+     *
+     * @return self
+     */
+    public function setDepositAccountId(?string $depositAccountId): self
     {
         $this->initialized['depositAccountId'] = true;
         $this->depositAccountId = $depositAccountId;
-
         return $this;
     }
-
-    public function getName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    /**
+     * 
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
         return $this;
     }
-
-    public function getTaxKey(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTaxKey(): ?string
     {
         return $this->taxKey;
     }
-
-    public function setTaxKey(string $taxKey): self
+    /**
+     * 
+     *
+     * @param string|null $taxKey
+     *
+     * @return self
+     */
+    public function setTaxKey(?string $taxKey): self
     {
         $this->initialized['taxKey'] = true;
         $this->taxKey = $taxKey;
-
         return $this;
     }
-
-    public function getTaxType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTaxType(): ?string
     {
         return $this->taxType;
     }
-
-    public function setTaxType(string $taxType): self
+    /**
+     * 
+     *
+     * @param string|null $taxType
+     *
+     * @return self
+     */
+    public function setTaxType(?string $taxType): self
     {
         $this->initialized['taxType'] = true;
         $this->taxType = $taxType;
-
         return $this;
     }
-
-    public function getTaxValue(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTaxValue(): ?string
     {
         return $this->taxValue;
     }
-
-    public function setTaxValue(string $taxValue): self
+    /**
+     * 
+     *
+     * @param string|null $taxValue
+     *
+     * @return self
+     */
+    public function setTaxValue(?string $taxValue): self
     {
         $this->initialized['taxValue'] = true;
         $this->taxValue = $taxValue;
-
         return $this;
     }
 }

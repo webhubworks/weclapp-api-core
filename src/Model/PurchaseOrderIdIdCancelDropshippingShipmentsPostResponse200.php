@@ -8,27 +8,36 @@ class PurchaseOrderIdIdCancelDropshippingShipmentsPostResponse200 extends \Array
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var PurchaseOrder
+     * 
+     *
+     * @var PurchaseOrder|null
      */
     protected $result;
-
-    public function getResult(): PurchaseOrder
+    /**
+     * 
+     *
+     * @return PurchaseOrder|null
+     */
+    public function getResult(): ?PurchaseOrder
     {
         return $this->result;
     }
-
-    public function setResult(PurchaseOrder $result): self
+    /**
+     * 
+     *
+     * @param PurchaseOrder|null $result
+     *
+     * @return self
+     */
+    public function setResult(?PurchaseOrder $result): self
     {
         $this->initialized['result'] = true;
         $this->result = $result;
-
         return $this;
     }
 }

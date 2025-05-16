@@ -8,393 +8,596 @@ class Pick extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $batchNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $confirmedByUserId;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $confirmedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $internalTransportReferenceId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $quantity;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $serialNumbers;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $storagePlaceId;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $bookedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $orderItemId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $sourceInternalTransportReferenceId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $sourceStoragePlaceId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $packagingUnitBaseArticleId;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $positionNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $productionOrderItemId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $salesOrderItemId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $shipmentItemId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $transportationOrderId;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getBatchNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getBatchNumber(): ?string
     {
         return $this->batchNumber;
     }
-
-    public function setBatchNumber(string $batchNumber): self
+    /**
+     * 
+     *
+     * @param string|null $batchNumber
+     *
+     * @return self
+     */
+    public function setBatchNumber(?string $batchNumber): self
     {
         $this->initialized['batchNumber'] = true;
         $this->batchNumber = $batchNumber;
-
         return $this;
     }
-
-    public function getConfirmedByUserId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getConfirmedByUserId(): ?string
     {
         return $this->confirmedByUserId;
     }
-
-    public function setConfirmedByUserId(string $confirmedByUserId): self
+    /**
+     * 
+     *
+     * @param string|null $confirmedByUserId
+     *
+     * @return self
+     */
+    public function setConfirmedByUserId(?string $confirmedByUserId): self
     {
         $this->initialized['confirmedByUserId'] = true;
         $this->confirmedByUserId = $confirmedByUserId;
-
         return $this;
     }
-
-    public function getConfirmedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getConfirmedDate(): ?int
     {
         return $this->confirmedDate;
     }
-
-    public function setConfirmedDate(int $confirmedDate): self
+    /**
+     * 
+     *
+     * @param int|null $confirmedDate
+     *
+     * @return self
+     */
+    public function setConfirmedDate(?int $confirmedDate): self
     {
         $this->initialized['confirmedDate'] = true;
         $this->confirmedDate = $confirmedDate;
-
         return $this;
     }
-
-    public function getInternalTransportReferenceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getInternalTransportReferenceId(): ?string
     {
         return $this->internalTransportReferenceId;
     }
-
-    public function setInternalTransportReferenceId(string $internalTransportReferenceId): self
+    /**
+     * 
+     *
+     * @param string|null $internalTransportReferenceId
+     *
+     * @return self
+     */
+    public function setInternalTransportReferenceId(?string $internalTransportReferenceId): self
     {
         $this->initialized['internalTransportReferenceId'] = true;
         $this->internalTransportReferenceId = $internalTransportReferenceId;
-
         return $this;
     }
-
-    public function getQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getQuantity(): ?string
     {
         return $this->quantity;
     }
-
-    public function setQuantity(string $quantity): self
+    /**
+     * 
+     *
+     * @param string|null $quantity
+     *
+     * @return self
+     */
+    public function setQuantity(?string $quantity): self
     {
         $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getSerialNumbers(): array
+    public function getSerialNumbers(): ?array
     {
         return $this->serialNumbers;
     }
-
     /**
-     * @param  list<string>  $serialNumbers
+     * 
+     *
+     * @param list<string>|null $serialNumbers
+     *
+     * @return self
      */
-    public function setSerialNumbers(array $serialNumbers): self
+    public function setSerialNumbers(?array $serialNumbers): self
     {
         $this->initialized['serialNumbers'] = true;
         $this->serialNumbers = $serialNumbers;
-
         return $this;
     }
-
-    public function getStoragePlaceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getStoragePlaceId(): ?string
     {
         return $this->storagePlaceId;
     }
-
-    public function setStoragePlaceId(string $storagePlaceId): self
+    /**
+     * 
+     *
+     * @param string|null $storagePlaceId
+     *
+     * @return self
+     */
+    public function setStoragePlaceId(?string $storagePlaceId): self
     {
         $this->initialized['storagePlaceId'] = true;
         $this->storagePlaceId = $storagePlaceId;
-
         return $this;
     }
-
-    public function getBookedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getBookedDate(): ?int
     {
         return $this->bookedDate;
     }
-
-    public function setBookedDate(int $bookedDate): self
+    /**
+     * 
+     *
+     * @param int|null $bookedDate
+     *
+     * @return self
+     */
+    public function setBookedDate(?int $bookedDate): self
     {
         $this->initialized['bookedDate'] = true;
         $this->bookedDate = $bookedDate;
-
         return $this;
     }
-
-    public function getOrderItemId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getOrderItemId(): ?string
     {
         return $this->orderItemId;
     }
-
-    public function setOrderItemId(string $orderItemId): self
+    /**
+     * 
+     *
+     * @param string|null $orderItemId
+     *
+     * @return self
+     */
+    public function setOrderItemId(?string $orderItemId): self
     {
         $this->initialized['orderItemId'] = true;
         $this->orderItemId = $orderItemId;
-
         return $this;
     }
-
-    public function getSourceInternalTransportReferenceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSourceInternalTransportReferenceId(): ?string
     {
         return $this->sourceInternalTransportReferenceId;
     }
-
-    public function setSourceInternalTransportReferenceId(string $sourceInternalTransportReferenceId): self
+    /**
+     * 
+     *
+     * @param string|null $sourceInternalTransportReferenceId
+     *
+     * @return self
+     */
+    public function setSourceInternalTransportReferenceId(?string $sourceInternalTransportReferenceId): self
     {
         $this->initialized['sourceInternalTransportReferenceId'] = true;
         $this->sourceInternalTransportReferenceId = $sourceInternalTransportReferenceId;
-
         return $this;
     }
-
-    public function getSourceStoragePlaceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSourceStoragePlaceId(): ?string
     {
         return $this->sourceStoragePlaceId;
     }
-
-    public function setSourceStoragePlaceId(string $sourceStoragePlaceId): self
+    /**
+     * 
+     *
+     * @param string|null $sourceStoragePlaceId
+     *
+     * @return self
+     */
+    public function setSourceStoragePlaceId(?string $sourceStoragePlaceId): self
     {
         $this->initialized['sourceStoragePlaceId'] = true;
         $this->sourceStoragePlaceId = $sourceStoragePlaceId;
-
         return $this;
     }
-
-    public function getPackagingUnitBaseArticleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPackagingUnitBaseArticleId(): ?string
     {
         return $this->packagingUnitBaseArticleId;
     }
-
-    public function setPackagingUnitBaseArticleId(string $packagingUnitBaseArticleId): self
+    /**
+     * 
+     *
+     * @param string|null $packagingUnitBaseArticleId
+     *
+     * @return self
+     */
+    public function setPackagingUnitBaseArticleId(?string $packagingUnitBaseArticleId): self
     {
         $this->initialized['packagingUnitBaseArticleId'] = true;
         $this->packagingUnitBaseArticleId = $packagingUnitBaseArticleId;
-
         return $this;
     }
-
-    public function getPositionNumber(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getPositionNumber(): ?int
     {
         return $this->positionNumber;
     }
-
-    public function setPositionNumber(int $positionNumber): self
+    /**
+     * 
+     *
+     * @param int|null $positionNumber
+     *
+     * @return self
+     */
+    public function setPositionNumber(?int $positionNumber): self
     {
         $this->initialized['positionNumber'] = true;
         $this->positionNumber = $positionNumber;
-
         return $this;
     }
-
-    public function getProductionOrderItemId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getProductionOrderItemId(): ?string
     {
         return $this->productionOrderItemId;
     }
-
-    public function setProductionOrderItemId(string $productionOrderItemId): self
+    /**
+     * 
+     *
+     * @param string|null $productionOrderItemId
+     *
+     * @return self
+     */
+    public function setProductionOrderItemId(?string $productionOrderItemId): self
     {
         $this->initialized['productionOrderItemId'] = true;
         $this->productionOrderItemId = $productionOrderItemId;
-
         return $this;
     }
-
-    public function getSalesOrderItemId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSalesOrderItemId(): ?string
     {
         return $this->salesOrderItemId;
     }
-
-    public function setSalesOrderItemId(string $salesOrderItemId): self
+    /**
+     * 
+     *
+     * @param string|null $salesOrderItemId
+     *
+     * @return self
+     */
+    public function setSalesOrderItemId(?string $salesOrderItemId): self
     {
         $this->initialized['salesOrderItemId'] = true;
         $this->salesOrderItemId = $salesOrderItemId;
-
         return $this;
     }
-
-    public function getShipmentItemId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getShipmentItemId(): ?string
     {
         return $this->shipmentItemId;
     }
-
-    public function setShipmentItemId(string $shipmentItemId): self
+    /**
+     * 
+     *
+     * @param string|null $shipmentItemId
+     *
+     * @return self
+     */
+    public function setShipmentItemId(?string $shipmentItemId): self
     {
         $this->initialized['shipmentItemId'] = true;
         $this->shipmentItemId = $shipmentItemId;
-
         return $this;
     }
-
-    public function getTransportationOrderId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTransportationOrderId(): ?string
     {
         return $this->transportationOrderId;
     }
-
-    public function setTransportationOrderId(string $transportationOrderId): self
+    /**
+     * 
+     *
+     * @param string|null $transportationOrderId
+     *
+     * @return self
+     */
+    public function setTransportationOrderId(?string $transportationOrderId): self
     {
         $this->initialized['transportationOrderId'] = true;
         $this->transportationOrderId = $transportationOrderId;
-
         return $this;
     }
 }

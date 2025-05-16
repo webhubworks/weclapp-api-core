@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class SalesOpenItemIdIdUpdatePaymentStatePostBodyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class SalesOpenItemIdIdUpdatePaymentStatePostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SalesOpenItemIdIdUpdatePaymentStatePostBody::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SalesOpenItemIdIdUpdatePaymentStatePostBody::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,31 +33,35 @@ class SalesOpenItemIdIdUpdatePaymentStatePostBodyNormalizer implements Denormali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SalesOpenItemIdIdUpdatePaymentStatePostBody;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\SalesOpenItemIdIdUpdatePaymentStatePostBody();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('datePaid', $data)) {
+        if (\array_key_exists('datePaid', $data) && $data['datePaid'] !== null) {
             $object->setDatePaid($data['datePaid']);
             unset($data['datePaid']);
         }
-        if (\array_key_exists('paymentState', $data)) {
+        elseif (\array_key_exists('datePaid', $data) && $data['datePaid'] === null) {
+            $object->setDatePaid(null);
+        }
+        if (\array_key_exists('paymentState', $data) && $data['paymentState'] !== null) {
             $object->setPaymentState($data['paymentState']);
             unset($data['paymentState']);
+        }
+        elseif (\array_key_exists('paymentState', $data) && $data['paymentState'] === null) {
+            $object->setPaymentState(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('datePaid') && $data->getDatePaid() !== null) {
+        if ($data->isInitialized('datePaid') && null !== $data->getDatePaid()) {
             $dataArray['datePaid'] = $data->getDatePaid();
         }
         $dataArray['paymentState'] = $data->getPaymentState();
@@ -70,10 +70,8 @@ class SalesOpenItemIdIdUpdatePaymentStatePostBodyNormalizer implements Denormali
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SalesOpenItemIdIdUpdatePaymentStatePostBody::class => false];

@@ -8,375 +8,568 @@ class Warehouse extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var list<mixed>
+     * 
+     *
+     * @var list<mixed>|null
      */
     protected $customAttributes;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $active;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $defaultConsolidationStoragePlaceId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $defaultProductionStoragePlaceId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $defaultReturnsStoragePlaceId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $defaultStoragePlaceId;
-
     /**
-     * @var Address
+     * 
+     *
+     * @var Address|null
      */
     protected $deliveryAddress;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $directBookingInternalTransportReferenceId;
-
     /**
-     * @var Address
+     * 
+     *
+     * @var Address|null
      */
     protected $invoiceAddress;
-
     /**
-     * @var MinimalStoragePlace
+     * 
+     *
+     * @var MinimalStoragePlace|null
      */
     protected $loadingEquipmentStoragePlace;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $name;
-
     /**
-     * @var Address
+     * 
+     *
+     * @var Address|null
      */
     protected $primaryAddress;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $shortIdentifier;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $standard;
-
     /**
-     * @var MinimalStoragePlace
+     * 
+     *
+     * @var MinimalStoragePlace|null
      */
     protected $transitStoragePlace;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $warehouseType;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
     /**
-     * @return list<mixed>
+     * 
+     *
+     * @return list<mixed>|null
      */
-    public function getCustomAttributes(): array
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
-
     /**
-     * @param  list<mixed>  $customAttributes
+     * 
+     *
+     * @param list<mixed>|null $customAttributes
+     *
+     * @return self
      */
-    public function setCustomAttributes(array $customAttributes): self
+    public function setCustomAttributes(?array $customAttributes): self
     {
         $this->initialized['customAttributes'] = true;
         $this->customAttributes = $customAttributes;
-
         return $this;
     }
-
-    public function getActive(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getActive(): ?bool
     {
         return $this->active;
     }
-
-    public function setActive(bool $active): self
+    /**
+     * 
+     *
+     * @param bool|null $active
+     *
+     * @return self
+     */
+    public function setActive(?bool $active): self
     {
         $this->initialized['active'] = true;
         $this->active = $active;
-
         return $this;
     }
-
-    public function getDefaultConsolidationStoragePlaceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDefaultConsolidationStoragePlaceId(): ?string
     {
         return $this->defaultConsolidationStoragePlaceId;
     }
-
-    public function setDefaultConsolidationStoragePlaceId(string $defaultConsolidationStoragePlaceId): self
+    /**
+     * 
+     *
+     * @param string|null $defaultConsolidationStoragePlaceId
+     *
+     * @return self
+     */
+    public function setDefaultConsolidationStoragePlaceId(?string $defaultConsolidationStoragePlaceId): self
     {
         $this->initialized['defaultConsolidationStoragePlaceId'] = true;
         $this->defaultConsolidationStoragePlaceId = $defaultConsolidationStoragePlaceId;
-
         return $this;
     }
-
-    public function getDefaultProductionStoragePlaceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDefaultProductionStoragePlaceId(): ?string
     {
         return $this->defaultProductionStoragePlaceId;
     }
-
-    public function setDefaultProductionStoragePlaceId(string $defaultProductionStoragePlaceId): self
+    /**
+     * 
+     *
+     * @param string|null $defaultProductionStoragePlaceId
+     *
+     * @return self
+     */
+    public function setDefaultProductionStoragePlaceId(?string $defaultProductionStoragePlaceId): self
     {
         $this->initialized['defaultProductionStoragePlaceId'] = true;
         $this->defaultProductionStoragePlaceId = $defaultProductionStoragePlaceId;
-
         return $this;
     }
-
-    public function getDefaultReturnsStoragePlaceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDefaultReturnsStoragePlaceId(): ?string
     {
         return $this->defaultReturnsStoragePlaceId;
     }
-
-    public function setDefaultReturnsStoragePlaceId(string $defaultReturnsStoragePlaceId): self
+    /**
+     * 
+     *
+     * @param string|null $defaultReturnsStoragePlaceId
+     *
+     * @return self
+     */
+    public function setDefaultReturnsStoragePlaceId(?string $defaultReturnsStoragePlaceId): self
     {
         $this->initialized['defaultReturnsStoragePlaceId'] = true;
         $this->defaultReturnsStoragePlaceId = $defaultReturnsStoragePlaceId;
-
         return $this;
     }
-
-    public function getDefaultStoragePlaceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDefaultStoragePlaceId(): ?string
     {
         return $this->defaultStoragePlaceId;
     }
-
-    public function setDefaultStoragePlaceId(string $defaultStoragePlaceId): self
+    /**
+     * 
+     *
+     * @param string|null $defaultStoragePlaceId
+     *
+     * @return self
+     */
+    public function setDefaultStoragePlaceId(?string $defaultStoragePlaceId): self
     {
         $this->initialized['defaultStoragePlaceId'] = true;
         $this->defaultStoragePlaceId = $defaultStoragePlaceId;
-
         return $this;
     }
-
-    public function getDeliveryAddress(): Address
+    /**
+     * 
+     *
+     * @return Address|null
+     */
+    public function getDeliveryAddress(): ?Address
     {
         return $this->deliveryAddress;
     }
-
-    public function setDeliveryAddress(Address $deliveryAddress): self
+    /**
+     * 
+     *
+     * @param Address|null $deliveryAddress
+     *
+     * @return self
+     */
+    public function setDeliveryAddress(?Address $deliveryAddress): self
     {
         $this->initialized['deliveryAddress'] = true;
         $this->deliveryAddress = $deliveryAddress;
-
         return $this;
     }
-
-    public function getDirectBookingInternalTransportReferenceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDirectBookingInternalTransportReferenceId(): ?string
     {
         return $this->directBookingInternalTransportReferenceId;
     }
-
-    public function setDirectBookingInternalTransportReferenceId(string $directBookingInternalTransportReferenceId): self
+    /**
+     * 
+     *
+     * @param string|null $directBookingInternalTransportReferenceId
+     *
+     * @return self
+     */
+    public function setDirectBookingInternalTransportReferenceId(?string $directBookingInternalTransportReferenceId): self
     {
         $this->initialized['directBookingInternalTransportReferenceId'] = true;
         $this->directBookingInternalTransportReferenceId = $directBookingInternalTransportReferenceId;
-
         return $this;
     }
-
-    public function getInvoiceAddress(): Address
+    /**
+     * 
+     *
+     * @return Address|null
+     */
+    public function getInvoiceAddress(): ?Address
     {
         return $this->invoiceAddress;
     }
-
-    public function setInvoiceAddress(Address $invoiceAddress): self
+    /**
+     * 
+     *
+     * @param Address|null $invoiceAddress
+     *
+     * @return self
+     */
+    public function setInvoiceAddress(?Address $invoiceAddress): self
     {
         $this->initialized['invoiceAddress'] = true;
         $this->invoiceAddress = $invoiceAddress;
-
         return $this;
     }
-
-    public function getLoadingEquipmentStoragePlace(): MinimalStoragePlace
+    /**
+     * 
+     *
+     * @return MinimalStoragePlace|null
+     */
+    public function getLoadingEquipmentStoragePlace(): ?MinimalStoragePlace
     {
         return $this->loadingEquipmentStoragePlace;
     }
-
-    public function setLoadingEquipmentStoragePlace(MinimalStoragePlace $loadingEquipmentStoragePlace): self
+    /**
+     * 
+     *
+     * @param MinimalStoragePlace|null $loadingEquipmentStoragePlace
+     *
+     * @return self
+     */
+    public function setLoadingEquipmentStoragePlace(?MinimalStoragePlace $loadingEquipmentStoragePlace): self
     {
         $this->initialized['loadingEquipmentStoragePlace'] = true;
         $this->loadingEquipmentStoragePlace = $loadingEquipmentStoragePlace;
-
         return $this;
     }
-
-    public function getName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    /**
+     * 
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
         return $this;
     }
-
-    public function getPrimaryAddress(): Address
+    /**
+     * 
+     *
+     * @return Address|null
+     */
+    public function getPrimaryAddress(): ?Address
     {
         return $this->primaryAddress;
     }
-
-    public function setPrimaryAddress(Address $primaryAddress): self
+    /**
+     * 
+     *
+     * @param Address|null $primaryAddress
+     *
+     * @return self
+     */
+    public function setPrimaryAddress(?Address $primaryAddress): self
     {
         $this->initialized['primaryAddress'] = true;
         $this->primaryAddress = $primaryAddress;
-
         return $this;
     }
-
-    public function getShortIdentifier(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getShortIdentifier(): ?string
     {
         return $this->shortIdentifier;
     }
-
-    public function setShortIdentifier(string $shortIdentifier): self
+    /**
+     * 
+     *
+     * @param string|null $shortIdentifier
+     *
+     * @return self
+     */
+    public function setShortIdentifier(?string $shortIdentifier): self
     {
         $this->initialized['shortIdentifier'] = true;
         $this->shortIdentifier = $shortIdentifier;
-
         return $this;
     }
-
-    public function getStandard(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getStandard(): ?bool
     {
         return $this->standard;
     }
-
-    public function setStandard(bool $standard): self
+    /**
+     * 
+     *
+     * @param bool|null $standard
+     *
+     * @return self
+     */
+    public function setStandard(?bool $standard): self
     {
         $this->initialized['standard'] = true;
         $this->standard = $standard;
-
         return $this;
     }
-
-    public function getTransitStoragePlace(): MinimalStoragePlace
+    /**
+     * 
+     *
+     * @return MinimalStoragePlace|null
+     */
+    public function getTransitStoragePlace(): ?MinimalStoragePlace
     {
         return $this->transitStoragePlace;
     }
-
-    public function setTransitStoragePlace(MinimalStoragePlace $transitStoragePlace): self
+    /**
+     * 
+     *
+     * @param MinimalStoragePlace|null $transitStoragePlace
+     *
+     * @return self
+     */
+    public function setTransitStoragePlace(?MinimalStoragePlace $transitStoragePlace): self
     {
         $this->initialized['transitStoragePlace'] = true;
         $this->transitStoragePlace = $transitStoragePlace;
-
         return $this;
     }
-
-    public function getWarehouseType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getWarehouseType(): ?string
     {
         return $this->warehouseType;
     }
-
-    public function setWarehouseType(string $warehouseType): self
+    /**
+     * 
+     *
+     * @param string|null $warehouseType
+     *
+     * @return self
+     */
+    public function setWarehouseType(?string $warehouseType): self
     {
         $this->initialized['warehouseType'] = true;
         $this->warehouseType = $warehouseType;
-
         return $this;
     }
 }

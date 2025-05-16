@@ -8,27 +8,36 @@ class PurchaseOrderIdIdProcessDropshippingPostBodyProcessPurchaseOrderItemsItem 
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $purchaseOrderItemId;
-
-    public function getPurchaseOrderItemId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPurchaseOrderItemId(): ?string
     {
         return $this->purchaseOrderItemId;
     }
-
-    public function setPurchaseOrderItemId(string $purchaseOrderItemId): self
+    /**
+     * 
+     *
+     * @param string|null $purchaseOrderItemId
+     *
+     * @return self
+     */
+    public function setPurchaseOrderItemId(?string $purchaseOrderItemId): self
     {
         $this->initialized['purchaseOrderItemId'] = true;
         $this->purchaseOrderItemId = $purchaseOrderItemId;
-
         return $this;
     }
 }

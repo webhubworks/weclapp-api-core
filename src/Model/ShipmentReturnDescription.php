@@ -8,153 +8,232 @@ class ShipmentReturnDescription extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $customerReturn;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $name;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $position;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $supplierReturn;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getCustomerReturn(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getCustomerReturn(): ?bool
     {
         return $this->customerReturn;
     }
-
-    public function setCustomerReturn(bool $customerReturn): self
+    /**
+     * 
+     *
+     * @param bool|null $customerReturn
+     *
+     * @return self
+     */
+    public function setCustomerReturn(?bool $customerReturn): self
     {
         $this->initialized['customerReturn'] = true;
         $this->customerReturn = $customerReturn;
-
         return $this;
     }
-
-    public function getName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    /**
+     * 
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
         return $this;
     }
-
-    public function getPosition(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getPosition(): ?int
     {
         return $this->position;
     }
-
-    public function setPosition(int $position): self
+    /**
+     * 
+     *
+     * @param int|null $position
+     *
+     * @return self
+     */
+    public function setPosition(?int $position): self
     {
         $this->initialized['position'] = true;
         $this->position = $position;
-
         return $this;
     }
-
-    public function getSupplierReturn(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getSupplierReturn(): ?bool
     {
         return $this->supplierReturn;
     }
-
-    public function setSupplierReturn(bool $supplierReturn): self
+    /**
+     * 
+     *
+     * @param bool|null $supplierReturn
+     *
+     * @return self
+     */
+    public function setSupplierReturn(?bool $supplierReturn): self
     {
         $this->initialized['supplierReturn'] = true;
         $this->supplierReturn = $supplierReturn;
-
         return $this;
     }
 }

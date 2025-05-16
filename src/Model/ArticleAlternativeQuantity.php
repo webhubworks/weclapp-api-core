@@ -8,179 +8,266 @@ class ArticleAlternativeQuantity extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $minimumOrderQuantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $minimumStockQuantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $targetStockQuantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $warehouseId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $warehouseName;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getMinimumOrderQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMinimumOrderQuantity(): ?string
     {
         return $this->minimumOrderQuantity;
     }
-
-    public function setMinimumOrderQuantity(string $minimumOrderQuantity): self
+    /**
+     * 
+     *
+     * @param string|null $minimumOrderQuantity
+     *
+     * @return self
+     */
+    public function setMinimumOrderQuantity(?string $minimumOrderQuantity): self
     {
         $this->initialized['minimumOrderQuantity'] = true;
         $this->minimumOrderQuantity = $minimumOrderQuantity;
-
         return $this;
     }
-
-    public function getMinimumStockQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMinimumStockQuantity(): ?string
     {
         return $this->minimumStockQuantity;
     }
-
-    public function setMinimumStockQuantity(string $minimumStockQuantity): self
+    /**
+     * 
+     *
+     * @param string|null $minimumStockQuantity
+     *
+     * @return self
+     */
+    public function setMinimumStockQuantity(?string $minimumStockQuantity): self
     {
         $this->initialized['minimumStockQuantity'] = true;
         $this->minimumStockQuantity = $minimumStockQuantity;
-
         return $this;
     }
-
-    public function getTargetStockQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTargetStockQuantity(): ?string
     {
         return $this->targetStockQuantity;
     }
-
-    public function setTargetStockQuantity(string $targetStockQuantity): self
+    /**
+     * 
+     *
+     * @param string|null $targetStockQuantity
+     *
+     * @return self
+     */
+    public function setTargetStockQuantity(?string $targetStockQuantity): self
     {
         $this->initialized['targetStockQuantity'] = true;
         $this->targetStockQuantity = $targetStockQuantity;
-
         return $this;
     }
-
-    public function getWarehouseId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getWarehouseId(): ?string
     {
         return $this->warehouseId;
     }
-
-    public function setWarehouseId(string $warehouseId): self
+    /**
+     * 
+     *
+     * @param string|null $warehouseId
+     *
+     * @return self
+     */
+    public function setWarehouseId(?string $warehouseId): self
     {
         $this->initialized['warehouseId'] = true;
         $this->warehouseId = $warehouseId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getWarehouseName(): string
+    public function getWarehouseName(): ?string
     {
         return $this->warehouseName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $warehouseName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setWarehouseName(string $warehouseName): self
+    public function setWarehouseName(?string $warehouseName): self
     {
         $this->initialized['warehouseName'] = true;
         $this->warehouseName = $warehouseName;
-
         return $this;
     }
 }

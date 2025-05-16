@@ -8,207 +8,316 @@ class RemotePrintJob extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $documentId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $printStatus;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $printerName;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $quantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $userId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $weclappOsHardwareId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $weclappOsId;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getDocumentId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDocumentId(): ?string
     {
         return $this->documentId;
     }
-
-    public function setDocumentId(string $documentId): self
+    /**
+     * 
+     *
+     * @param string|null $documentId
+     *
+     * @return self
+     */
+    public function setDocumentId(?string $documentId): self
     {
         $this->initialized['documentId'] = true;
         $this->documentId = $documentId;
-
         return $this;
     }
-
-    public function getPrintStatus(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPrintStatus(): ?string
     {
         return $this->printStatus;
     }
-
-    public function setPrintStatus(string $printStatus): self
+    /**
+     * 
+     *
+     * @param string|null $printStatus
+     *
+     * @return self
+     */
+    public function setPrintStatus(?string $printStatus): self
     {
         $this->initialized['printStatus'] = true;
         $this->printStatus = $printStatus;
-
         return $this;
     }
-
-    public function getPrinterName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPrinterName(): ?string
     {
         return $this->printerName;
     }
-
-    public function setPrinterName(string $printerName): self
+    /**
+     * 
+     *
+     * @param string|null $printerName
+     *
+     * @return self
+     */
+    public function setPrinterName(?string $printerName): self
     {
         $this->initialized['printerName'] = true;
         $this->printerName = $printerName;
-
         return $this;
     }
-
-    public function getQuantity(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
-
-    public function setQuantity(int $quantity): self
+    /**
+     * 
+     *
+     * @param int|null $quantity
+     *
+     * @return self
+     */
+    public function setQuantity(?int $quantity): self
     {
         $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
-
         return $this;
     }
-
-    public function getUserId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getUserId(): ?string
     {
         return $this->userId;
     }
-
-    public function setUserId(string $userId): self
+    /**
+     * 
+     *
+     * @param string|null $userId
+     *
+     * @return self
+     */
+    public function setUserId(?string $userId): self
     {
         $this->initialized['userId'] = true;
         $this->userId = $userId;
-
         return $this;
     }
-
-    public function getWeclappOsHardwareId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getWeclappOsHardwareId(): ?string
     {
         return $this->weclappOsHardwareId;
     }
-
-    public function setWeclappOsHardwareId(string $weclappOsHardwareId): self
+    /**
+     * 
+     *
+     * @param string|null $weclappOsHardwareId
+     *
+     * @return self
+     */
+    public function setWeclappOsHardwareId(?string $weclappOsHardwareId): self
     {
         $this->initialized['weclappOsHardwareId'] = true;
         $this->weclappOsHardwareId = $weclappOsHardwareId;
-
         return $this;
     }
-
-    public function getWeclappOsId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getWeclappOsId(): ?string
     {
         return $this->weclappOsId;
     }
-
-    public function setWeclappOsId(string $weclappOsId): self
+    /**
+     * 
+     *
+     * @param string|null $weclappOsId
+     *
+     * @return self
+     */
+    public function setWeclappOsId(?string $weclappOsId): self
     {
         $this->initialized['weclappOsId'] = true;
         $this->weclappOsId = $weclappOsId;
-
         return $this;
     }
 }

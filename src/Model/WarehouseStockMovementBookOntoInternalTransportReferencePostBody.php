@@ -8,255 +8,372 @@ class WarehouseStockMovementBookOntoInternalTransportReferencePostBody extends \
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $articleId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $baseArticleQuantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $batchNumber;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $bookFromLoadingEquipmentPlace;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $bookLoadingEquipmentOnDissolveOfPreferred;
-
     /**
-     * @var list<WarehouseStockMovementBookOntoInternalTransportReferencePostBodyCustomAttributesItem>
+     * 
+     *
+     * @var list<WarehouseStockMovementBookOntoInternalTransportReferencePostBodyCustomAttributesItem>|null
      */
     protected $customAttributes;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $loadingEquipmentArticleId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $loadingEquipmentIdentifierId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $movementNote;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $serialNumbers;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $sourceInternalTransportReferenceId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $sourceStoragePlaceId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $targetInternalTransportReferenceId;
-
-    public function getArticleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getArticleId(): ?string
     {
         return $this->articleId;
     }
-
-    public function setArticleId(string $articleId): self
+    /**
+     * 
+     *
+     * @param string|null $articleId
+     *
+     * @return self
+     */
+    public function setArticleId(?string $articleId): self
     {
         $this->initialized['articleId'] = true;
         $this->articleId = $articleId;
-
         return $this;
     }
-
-    public function getBaseArticleQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getBaseArticleQuantity(): ?string
     {
         return $this->baseArticleQuantity;
     }
-
-    public function setBaseArticleQuantity(string $baseArticleQuantity): self
+    /**
+     * 
+     *
+     * @param string|null $baseArticleQuantity
+     *
+     * @return self
+     */
+    public function setBaseArticleQuantity(?string $baseArticleQuantity): self
     {
         $this->initialized['baseArticleQuantity'] = true;
         $this->baseArticleQuantity = $baseArticleQuantity;
-
         return $this;
     }
-
-    public function getBatchNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getBatchNumber(): ?string
     {
         return $this->batchNumber;
     }
-
-    public function setBatchNumber(string $batchNumber): self
+    /**
+     * 
+     *
+     * @param string|null $batchNumber
+     *
+     * @return self
+     */
+    public function setBatchNumber(?string $batchNumber): self
     {
         $this->initialized['batchNumber'] = true;
         $this->batchNumber = $batchNumber;
-
         return $this;
     }
-
-    public function getBookFromLoadingEquipmentPlace(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getBookFromLoadingEquipmentPlace(): ?bool
     {
         return $this->bookFromLoadingEquipmentPlace;
     }
-
-    public function setBookFromLoadingEquipmentPlace(bool $bookFromLoadingEquipmentPlace): self
+    /**
+     * 
+     *
+     * @param bool|null $bookFromLoadingEquipmentPlace
+     *
+     * @return self
+     */
+    public function setBookFromLoadingEquipmentPlace(?bool $bookFromLoadingEquipmentPlace): self
     {
         $this->initialized['bookFromLoadingEquipmentPlace'] = true;
         $this->bookFromLoadingEquipmentPlace = $bookFromLoadingEquipmentPlace;
-
         return $this;
     }
-
-    public function getBookLoadingEquipmentOnDissolveOfPreferred(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getBookLoadingEquipmentOnDissolveOfPreferred(): ?bool
     {
         return $this->bookLoadingEquipmentOnDissolveOfPreferred;
     }
-
-    public function setBookLoadingEquipmentOnDissolveOfPreferred(bool $bookLoadingEquipmentOnDissolveOfPreferred): self
+    /**
+     * 
+     *
+     * @param bool|null $bookLoadingEquipmentOnDissolveOfPreferred
+     *
+     * @return self
+     */
+    public function setBookLoadingEquipmentOnDissolveOfPreferred(?bool $bookLoadingEquipmentOnDissolveOfPreferred): self
     {
         $this->initialized['bookLoadingEquipmentOnDissolveOfPreferred'] = true;
         $this->bookLoadingEquipmentOnDissolveOfPreferred = $bookLoadingEquipmentOnDissolveOfPreferred;
-
         return $this;
     }
-
     /**
-     * @return list<WarehouseStockMovementBookOntoInternalTransportReferencePostBodyCustomAttributesItem>
+     * 
+     *
+     * @return list<WarehouseStockMovementBookOntoInternalTransportReferencePostBodyCustomAttributesItem>|null
      */
-    public function getCustomAttributes(): array
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
-
     /**
-     * @param  list<WarehouseStockMovementBookOntoInternalTransportReferencePostBodyCustomAttributesItem>  $customAttributes
+     * 
+     *
+     * @param list<WarehouseStockMovementBookOntoInternalTransportReferencePostBodyCustomAttributesItem>|null $customAttributes
+     *
+     * @return self
      */
-    public function setCustomAttributes(array $customAttributes): self
+    public function setCustomAttributes(?array $customAttributes): self
     {
         $this->initialized['customAttributes'] = true;
         $this->customAttributes = $customAttributes;
-
         return $this;
     }
-
-    public function getLoadingEquipmentArticleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLoadingEquipmentArticleId(): ?string
     {
         return $this->loadingEquipmentArticleId;
     }
-
-    public function setLoadingEquipmentArticleId(string $loadingEquipmentArticleId): self
+    /**
+     * 
+     *
+     * @param string|null $loadingEquipmentArticleId
+     *
+     * @return self
+     */
+    public function setLoadingEquipmentArticleId(?string $loadingEquipmentArticleId): self
     {
         $this->initialized['loadingEquipmentArticleId'] = true;
         $this->loadingEquipmentArticleId = $loadingEquipmentArticleId;
-
         return $this;
     }
-
-    public function getLoadingEquipmentIdentifierId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLoadingEquipmentIdentifierId(): ?string
     {
         return $this->loadingEquipmentIdentifierId;
     }
-
-    public function setLoadingEquipmentIdentifierId(string $loadingEquipmentIdentifierId): self
+    /**
+     * 
+     *
+     * @param string|null $loadingEquipmentIdentifierId
+     *
+     * @return self
+     */
+    public function setLoadingEquipmentIdentifierId(?string $loadingEquipmentIdentifierId): self
     {
         $this->initialized['loadingEquipmentIdentifierId'] = true;
         $this->loadingEquipmentIdentifierId = $loadingEquipmentIdentifierId;
-
         return $this;
     }
-
-    public function getMovementNote(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMovementNote(): ?string
     {
         return $this->movementNote;
     }
-
-    public function setMovementNote(string $movementNote): self
+    /**
+     * 
+     *
+     * @param string|null $movementNote
+     *
+     * @return self
+     */
+    public function setMovementNote(?string $movementNote): self
     {
         $this->initialized['movementNote'] = true;
         $this->movementNote = $movementNote;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getSerialNumbers(): array
+    public function getSerialNumbers(): ?array
     {
         return $this->serialNumbers;
     }
-
     /**
-     * @param  list<string>  $serialNumbers
+     * 
+     *
+     * @param list<string>|null $serialNumbers
+     *
+     * @return self
      */
-    public function setSerialNumbers(array $serialNumbers): self
+    public function setSerialNumbers(?array $serialNumbers): self
     {
         $this->initialized['serialNumbers'] = true;
         $this->serialNumbers = $serialNumbers;
-
         return $this;
     }
-
-    public function getSourceInternalTransportReferenceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSourceInternalTransportReferenceId(): ?string
     {
         return $this->sourceInternalTransportReferenceId;
     }
-
-    public function setSourceInternalTransportReferenceId(string $sourceInternalTransportReferenceId): self
+    /**
+     * 
+     *
+     * @param string|null $sourceInternalTransportReferenceId
+     *
+     * @return self
+     */
+    public function setSourceInternalTransportReferenceId(?string $sourceInternalTransportReferenceId): self
     {
         $this->initialized['sourceInternalTransportReferenceId'] = true;
         $this->sourceInternalTransportReferenceId = $sourceInternalTransportReferenceId;
-
         return $this;
     }
-
-    public function getSourceStoragePlaceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSourceStoragePlaceId(): ?string
     {
         return $this->sourceStoragePlaceId;
     }
-
-    public function setSourceStoragePlaceId(string $sourceStoragePlaceId): self
+    /**
+     * 
+     *
+     * @param string|null $sourceStoragePlaceId
+     *
+     * @return self
+     */
+    public function setSourceStoragePlaceId(?string $sourceStoragePlaceId): self
     {
         $this->initialized['sourceStoragePlaceId'] = true;
         $this->sourceStoragePlaceId = $sourceStoragePlaceId;
-
         return $this;
     }
-
-    public function getTargetInternalTransportReferenceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTargetInternalTransportReferenceId(): ?string
     {
         return $this->targetInternalTransportReferenceId;
     }
-
-    public function setTargetInternalTransportReferenceId(string $targetInternalTransportReferenceId): self
+    /**
+     * 
+     *
+     * @param string|null $targetInternalTransportReferenceId
+     *
+     * @return self
+     */
+    public function setTargetInternalTransportReferenceId(?string $targetInternalTransportReferenceId): self
     {
         $this->initialized['targetInternalTransportReferenceId'] = true;
         $this->targetInternalTransportReferenceId = $targetInternalTransportReferenceId;
-
         return $this;
     }
 }

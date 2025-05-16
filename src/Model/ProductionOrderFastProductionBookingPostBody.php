@@ -8,45 +8,64 @@ class ProductionOrderFastProductionBookingPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $productionOrderNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $quantity;
-
-    public function getProductionOrderNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getProductionOrderNumber(): ?string
     {
         return $this->productionOrderNumber;
     }
-
-    public function setProductionOrderNumber(string $productionOrderNumber): self
+    /**
+     * 
+     *
+     * @param string|null $productionOrderNumber
+     *
+     * @return self
+     */
+    public function setProductionOrderNumber(?string $productionOrderNumber): self
     {
         $this->initialized['productionOrderNumber'] = true;
         $this->productionOrderNumber = $productionOrderNumber;
-
         return $this;
     }
-
-    public function getQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getQuantity(): ?string
     {
         return $this->quantity;
     }
-
-    public function setQuantity(string $quantity): self
+    /**
+     * 
+     *
+     * @param string|null $quantity
+     *
+     * @return self
+     */
+    public function setQuantity(?string $quantity): self
     {
         $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
-
         return $this;
     }
 }

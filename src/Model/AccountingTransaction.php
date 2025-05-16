@@ -8,365 +8,546 @@ class AccountingTransaction extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $accountingImportDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $conversionRate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $conversionRateDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $currencyId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $currencyName;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $draft;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $externalRecordNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $internalRecordNumber;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $reverseTransaction;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $status;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $transactionDate;
-
     /**
-     * @var list<AccountingTransactionDetail>
+     * 
+     *
+     * @var list<AccountingTransactionDetail>|null
      */
     protected $transactionDetails;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $transactionEstablishDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $transactionNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $type;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getAccountingImportDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getAccountingImportDate(): ?int
     {
         return $this->accountingImportDate;
     }
-
-    public function setAccountingImportDate(int $accountingImportDate): self
+    /**
+     * 
+     *
+     * @param int|null $accountingImportDate
+     *
+     * @return self
+     */
+    public function setAccountingImportDate(?int $accountingImportDate): self
     {
         $this->initialized['accountingImportDate'] = true;
         $this->accountingImportDate = $accountingImportDate;
-
         return $this;
     }
-
-    public function getConversionRate(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getConversionRate(): ?string
     {
         return $this->conversionRate;
     }
-
-    public function setConversionRate(string $conversionRate): self
+    /**
+     * 
+     *
+     * @param string|null $conversionRate
+     *
+     * @return self
+     */
+    public function setConversionRate(?string $conversionRate): self
     {
         $this->initialized['conversionRate'] = true;
         $this->conversionRate = $conversionRate;
-
         return $this;
     }
-
-    public function getConversionRateDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getConversionRateDate(): ?int
     {
         return $this->conversionRateDate;
     }
-
-    public function setConversionRateDate(int $conversionRateDate): self
+    /**
+     * 
+     *
+     * @param int|null $conversionRateDate
+     *
+     * @return self
+     */
+    public function setConversionRateDate(?int $conversionRateDate): self
     {
         $this->initialized['conversionRateDate'] = true;
         $this->conversionRateDate = $conversionRateDate;
-
         return $this;
     }
-
-    public function getCurrencyId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCurrencyId(): ?string
     {
         return $this->currencyId;
     }
-
-    public function setCurrencyId(string $currencyId): self
+    /**
+     * 
+     *
+     * @param string|null $currencyId
+     *
+     * @return self
+     */
+    public function setCurrencyId(?string $currencyId): self
     {
         $this->initialized['currencyId'] = true;
         $this->currencyId = $currencyId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getCurrencyName(): string
+    public function getCurrencyName(): ?string
     {
         return $this->currencyName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $currencyName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setCurrencyName(string $currencyName): self
+    public function setCurrencyName(?string $currencyName): self
     {
         $this->initialized['currencyName'] = true;
         $this->currencyName = $currencyName;
-
         return $this;
     }
-
-    public function getDraft(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getDraft(): ?bool
     {
         return $this->draft;
     }
-
-    public function setDraft(bool $draft): self
+    /**
+     * 
+     *
+     * @param bool|null $draft
+     *
+     * @return self
+     */
+    public function setDraft(?bool $draft): self
     {
         $this->initialized['draft'] = true;
         $this->draft = $draft;
-
         return $this;
     }
-
-    public function getExternalRecordNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getExternalRecordNumber(): ?string
     {
         return $this->externalRecordNumber;
     }
-
-    public function setExternalRecordNumber(string $externalRecordNumber): self
+    /**
+     * 
+     *
+     * @param string|null $externalRecordNumber
+     *
+     * @return self
+     */
+    public function setExternalRecordNumber(?string $externalRecordNumber): self
     {
         $this->initialized['externalRecordNumber'] = true;
         $this->externalRecordNumber = $externalRecordNumber;
-
         return $this;
     }
-
-    public function getInternalRecordNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getInternalRecordNumber(): ?string
     {
         return $this->internalRecordNumber;
     }
-
-    public function setInternalRecordNumber(string $internalRecordNumber): self
+    /**
+     * 
+     *
+     * @param string|null $internalRecordNumber
+     *
+     * @return self
+     */
+    public function setInternalRecordNumber(?string $internalRecordNumber): self
     {
         $this->initialized['internalRecordNumber'] = true;
         $this->internalRecordNumber = $internalRecordNumber;
-
         return $this;
     }
-
-    public function getReverseTransaction(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getReverseTransaction(): ?bool
     {
         return $this->reverseTransaction;
     }
-
-    public function setReverseTransaction(bool $reverseTransaction): self
+    /**
+     * 
+     *
+     * @param bool|null $reverseTransaction
+     *
+     * @return self
+     */
+    public function setReverseTransaction(?bool $reverseTransaction): self
     {
         $this->initialized['reverseTransaction'] = true;
         $this->reverseTransaction = $reverseTransaction;
-
         return $this;
     }
-
-    public function getStatus(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getStatus(): ?string
     {
         return $this->status;
     }
-
-    public function setStatus(string $status): self
+    /**
+     * 
+     *
+     * @param string|null $status
+     *
+     * @return self
+     */
+    public function setStatus(?string $status): self
     {
         $this->initialized['status'] = true;
         $this->status = $status;
-
         return $this;
     }
-
-    public function getTransactionDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getTransactionDate(): ?int
     {
         return $this->transactionDate;
     }
-
-    public function setTransactionDate(int $transactionDate): self
+    /**
+     * 
+     *
+     * @param int|null $transactionDate
+     *
+     * @return self
+     */
+    public function setTransactionDate(?int $transactionDate): self
     {
         $this->initialized['transactionDate'] = true;
         $this->transactionDate = $transactionDate;
-
         return $this;
     }
-
     /**
-     * @return list<AccountingTransactionDetail>
+     * 
+     *
+     * @return list<AccountingTransactionDetail>|null
      */
-    public function getTransactionDetails(): array
+    public function getTransactionDetails(): ?array
     {
         return $this->transactionDetails;
     }
-
     /**
-     * @param  list<AccountingTransactionDetail>  $transactionDetails
+     * 
+     *
+     * @param list<AccountingTransactionDetail>|null $transactionDetails
+     *
+     * @return self
      */
-    public function setTransactionDetails(array $transactionDetails): self
+    public function setTransactionDetails(?array $transactionDetails): self
     {
         $this->initialized['transactionDetails'] = true;
         $this->transactionDetails = $transactionDetails;
-
         return $this;
     }
-
-    public function getTransactionEstablishDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getTransactionEstablishDate(): ?int
     {
         return $this->transactionEstablishDate;
     }
-
-    public function setTransactionEstablishDate(int $transactionEstablishDate): self
+    /**
+     * 
+     *
+     * @param int|null $transactionEstablishDate
+     *
+     * @return self
+     */
+    public function setTransactionEstablishDate(?int $transactionEstablishDate): self
     {
         $this->initialized['transactionEstablishDate'] = true;
         $this->transactionEstablishDate = $transactionEstablishDate;
-
         return $this;
     }
-
-    public function getTransactionNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTransactionNumber(): ?string
     {
         return $this->transactionNumber;
     }
-
-    public function setTransactionNumber(string $transactionNumber): self
+    /**
+     * 
+     *
+     * @param string|null $transactionNumber
+     *
+     * @return self
+     */
+    public function setTransactionNumber(?string $transactionNumber): self
     {
         $this->initialized['transactionNumber'] = true;
         $this->transactionNumber = $transactionNumber;
-
         return $this;
     }
-
-    public function getType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getType(): ?string
     {
         return $this->type;
     }
-
-    public function setType(string $type): self
+    /**
+     * 
+     *
+     * @param string|null $type
+     *
+     * @return self
+     */
+    public function setType(?string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
-
         return $this;
     }
 }

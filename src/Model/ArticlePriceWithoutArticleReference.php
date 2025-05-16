@@ -8,311 +8,462 @@ class ArticlePriceWithoutArticleReference extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $currencyId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $currencyName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $customerId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $endDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $lastModifiedByUserId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $price;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $priceScaleType;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $priceScaleValue;
-
     /**
-     * @var list<ReductionAddition>
+     * 
+     *
+     * @var list<ReductionAddition>|null
      */
     protected $reductionAdditions;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $startDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $salesChannel;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getCurrencyId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCurrencyId(): ?string
     {
         return $this->currencyId;
     }
-
-    public function setCurrencyId(string $currencyId): self
+    /**
+     * 
+     *
+     * @param string|null $currencyId
+     *
+     * @return self
+     */
+    public function setCurrencyId(?string $currencyId): self
     {
         $this->initialized['currencyId'] = true;
         $this->currencyId = $currencyId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getCurrencyName(): string
+    public function getCurrencyName(): ?string
     {
         return $this->currencyName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $currencyName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setCurrencyName(string $currencyName): self
+    public function setCurrencyName(?string $currencyName): self
     {
         $this->initialized['currencyName'] = true;
         $this->currencyName = $currencyName;
-
         return $this;
     }
-
-    public function getCustomerId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCustomerId(): ?string
     {
         return $this->customerId;
     }
-
-    public function setCustomerId(string $customerId): self
+    /**
+     * 
+     *
+     * @param string|null $customerId
+     *
+     * @return self
+     */
+    public function setCustomerId(?string $customerId): self
     {
         $this->initialized['customerId'] = true;
         $this->customerId = $customerId;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
-    public function getEndDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getEndDate(): ?int
     {
         return $this->endDate;
     }
-
-    public function setEndDate(int $endDate): self
+    /**
+     * 
+     *
+     * @param int|null $endDate
+     *
+     * @return self
+     */
+    public function setEndDate(?int $endDate): self
     {
         $this->initialized['endDate'] = true;
         $this->endDate = $endDate;
-
         return $this;
     }
-
-    public function getLastModifiedByUserId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLastModifiedByUserId(): ?string
     {
         return $this->lastModifiedByUserId;
     }
-
-    public function setLastModifiedByUserId(string $lastModifiedByUserId): self
+    /**
+     * 
+     *
+     * @param string|null $lastModifiedByUserId
+     *
+     * @return self
+     */
+    public function setLastModifiedByUserId(?string $lastModifiedByUserId): self
     {
         $this->initialized['lastModifiedByUserId'] = true;
         $this->lastModifiedByUserId = $lastModifiedByUserId;
-
         return $this;
     }
-
-    public function getPrice(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPrice(): ?string
     {
         return $this->price;
     }
-
-    public function setPrice(string $price): self
+    /**
+     * 
+     *
+     * @param string|null $price
+     *
+     * @return self
+     */
+    public function setPrice(?string $price): self
     {
         $this->initialized['price'] = true;
         $this->price = $price;
-
         return $this;
     }
-
-    public function getPriceScaleType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPriceScaleType(): ?string
     {
         return $this->priceScaleType;
     }
-
-    public function setPriceScaleType(string $priceScaleType): self
+    /**
+     * 
+     *
+     * @param string|null $priceScaleType
+     *
+     * @return self
+     */
+    public function setPriceScaleType(?string $priceScaleType): self
     {
         $this->initialized['priceScaleType'] = true;
         $this->priceScaleType = $priceScaleType;
-
         return $this;
     }
-
-    public function getPriceScaleValue(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPriceScaleValue(): ?string
     {
         return $this->priceScaleValue;
     }
-
-    public function setPriceScaleValue(string $priceScaleValue): self
+    /**
+     * 
+     *
+     * @param string|null $priceScaleValue
+     *
+     * @return self
+     */
+    public function setPriceScaleValue(?string $priceScaleValue): self
     {
         $this->initialized['priceScaleValue'] = true;
         $this->priceScaleValue = $priceScaleValue;
-
         return $this;
     }
-
     /**
-     * @return list<ReductionAddition>
+     * 
+     *
+     * @return list<ReductionAddition>|null
      */
-    public function getReductionAdditions(): array
+    public function getReductionAdditions(): ?array
     {
         return $this->reductionAdditions;
     }
-
     /**
-     * @param  list<ReductionAddition>  $reductionAdditions
+     * 
+     *
+     * @param list<ReductionAddition>|null $reductionAdditions
+     *
+     * @return self
      */
-    public function setReductionAdditions(array $reductionAdditions): self
+    public function setReductionAdditions(?array $reductionAdditions): self
     {
         $this->initialized['reductionAdditions'] = true;
         $this->reductionAdditions = $reductionAdditions;
-
         return $this;
     }
-
-    public function getStartDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getStartDate(): ?int
     {
         return $this->startDate;
     }
-
-    public function setStartDate(int $startDate): self
+    /**
+     * 
+     *
+     * @param int|null $startDate
+     *
+     * @return self
+     */
+    public function setStartDate(?int $startDate): self
     {
         $this->initialized['startDate'] = true;
         $this->startDate = $startDate;
-
         return $this;
     }
-
-    public function getSalesChannel(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSalesChannel(): ?string
     {
         return $this->salesChannel;
     }
-
-    public function setSalesChannel(string $salesChannel): self
+    /**
+     * 
+     *
+     * @param string|null $salesChannel
+     *
+     * @return self
+     */
+    public function setSalesChannel(?string $salesChannel): self
     {
         $this->initialized['salesChannel'] = true;
         $this->salesChannel = $salesChannel;
-
         return $this;
     }
 }

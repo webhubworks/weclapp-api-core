@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class OnlineAccountNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class OnlineAccountNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\OnlineAccount::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\OnlineAccount::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,60 +33,79 @@ class OnlineAccountNormalizer implements DenormalizerAwareInterface, Denormalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\OnlineAccount;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\OnlineAccount();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('createdDate', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
         }
-        if (\array_key_exists('lastModifiedDate', $data)) {
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+            $object->setCreatedDate(null);
+        }
+        if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
         }
-        if (\array_key_exists('version', $data)) {
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+            $object->setLastModifiedDate(null);
+        }
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
         }
-        if (\array_key_exists('accountName', $data)) {
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
+        }
+        if (\array_key_exists('accountName', $data) && $data['accountName'] !== null) {
             $object->setAccountName($data['accountName']);
             unset($data['accountName']);
         }
-        if (\array_key_exists('accountType', $data)) {
+        elseif (\array_key_exists('accountName', $data) && $data['accountName'] === null) {
+            $object->setAccountName(null);
+        }
+        if (\array_key_exists('accountType', $data) && $data['accountType'] !== null) {
             $object->setAccountType($data['accountType']);
             unset($data['accountType']);
         }
-        if (\array_key_exists('url', $data)) {
+        elseif (\array_key_exists('accountType', $data) && $data['accountType'] === null) {
+            $object->setAccountType(null);
+        }
+        if (\array_key_exists('url', $data) && $data['url'] !== null) {
             $object->setUrl($data['url']);
             unset($data['url']);
+        }
+        elseif (\array_key_exists('url', $data) && $data['url'] === null) {
+            $object->setUrl(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('accountName') && $data->getAccountName() !== null) {
+        if ($data->isInitialized('accountName') && null !== $data->getAccountName()) {
             $dataArray['accountName'] = $data->getAccountName();
         }
-        if ($data->isInitialized('accountType') && $data->getAccountType() !== null) {
+        if ($data->isInitialized('accountType') && null !== $data->getAccountType()) {
             $dataArray['accountType'] = $data->getAccountType();
         }
-        if ($data->isInitialized('url') && $data->getUrl() !== null) {
+        if ($data->isInitialized('url') && null !== $data->getUrl()) {
             $dataArray['url'] = $data->getUrl();
         }
         foreach ($data as $key => $value) {
@@ -98,10 +113,8 @@ class OnlineAccountNormalizer implements DenormalizerAwareInterface, Denormalize
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\OnlineAccount::class => false];

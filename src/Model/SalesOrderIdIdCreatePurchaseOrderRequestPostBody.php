@@ -8,129 +8,176 @@ class SalesOrderIdIdCreatePurchaseOrderRequestPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $mergeItems;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $orderItemIds;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $requestType;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $supplierIds;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $useItemQuantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $warehouseId;
-
-    public function getMergeItems(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getMergeItems(): ?bool
     {
         return $this->mergeItems;
     }
-
-    public function setMergeItems(bool $mergeItems): self
+    /**
+     * 
+     *
+     * @param bool|null $mergeItems
+     *
+     * @return self
+     */
+    public function setMergeItems(?bool $mergeItems): self
     {
         $this->initialized['mergeItems'] = true;
         $this->mergeItems = $mergeItems;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getOrderItemIds(): array
+    public function getOrderItemIds(): ?array
     {
         return $this->orderItemIds;
     }
-
     /**
-     * @param  list<string>  $orderItemIds
+     * 
+     *
+     * @param list<string>|null $orderItemIds
+     *
+     * @return self
      */
-    public function setOrderItemIds(array $orderItemIds): self
+    public function setOrderItemIds(?array $orderItemIds): self
     {
         $this->initialized['orderItemIds'] = true;
         $this->orderItemIds = $orderItemIds;
-
         return $this;
     }
-
-    public function getRequestType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRequestType(): ?string
     {
         return $this->requestType;
     }
-
-    public function setRequestType(string $requestType): self
+    /**
+     * 
+     *
+     * @param string|null $requestType
+     *
+     * @return self
+     */
+    public function setRequestType(?string $requestType): self
     {
         $this->initialized['requestType'] = true;
         $this->requestType = $requestType;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getSupplierIds(): array
+    public function getSupplierIds(): ?array
     {
         return $this->supplierIds;
     }
-
     /**
-     * @param  list<string>  $supplierIds
+     * 
+     *
+     * @param list<string>|null $supplierIds
+     *
+     * @return self
      */
-    public function setSupplierIds(array $supplierIds): self
+    public function setSupplierIds(?array $supplierIds): self
     {
         $this->initialized['supplierIds'] = true;
         $this->supplierIds = $supplierIds;
-
         return $this;
     }
-
-    public function getUseItemQuantity(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getUseItemQuantity(): ?bool
     {
         return $this->useItemQuantity;
     }
-
-    public function setUseItemQuantity(bool $useItemQuantity): self
+    /**
+     * 
+     *
+     * @param bool|null $useItemQuantity
+     *
+     * @return self
+     */
+    public function setUseItemQuantity(?bool $useItemQuantity): self
     {
         $this->initialized['useItemQuantity'] = true;
         $this->useItemQuantity = $useItemQuantity;
-
         return $this;
     }
-
-    public function getWarehouseId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getWarehouseId(): ?string
     {
         return $this->warehouseId;
     }
-
-    public function setWarehouseId(string $warehouseId): self
+    /**
+     * 
+     *
+     * @param string|null $warehouseId
+     *
+     * @return self
+     */
+    public function setWarehouseId(?string $warehouseId): self
     {
         $this->initialized['warehouseId'] = true;
         $this->warehouseId = $warehouseId;
-
         return $this;
     }
 }

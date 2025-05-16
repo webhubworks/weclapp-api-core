@@ -8,387 +8,596 @@ class ContractCostItem extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $articleId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $descriptionFixed;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $discountPercentage;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $interval;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $intervalType;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $manualUnitPrice;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $netAmount;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $netAmountInCompanyCurrency;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $note;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $quantity;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $servicePeriodFrom;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $servicePeriodTo;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $title;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $unitId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $unitPrice;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $unitPriceInCompanyCurrency;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getArticleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getArticleId(): ?string
     {
         return $this->articleId;
     }
-
-    public function setArticleId(string $articleId): self
+    /**
+     * 
+     *
+     * @param string|null $articleId
+     *
+     * @return self
+     */
+    public function setArticleId(?string $articleId): self
     {
         $this->initialized['articleId'] = true;
         $this->articleId = $articleId;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
-    public function getDescriptionFixed(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getDescriptionFixed(): ?bool
     {
         return $this->descriptionFixed;
     }
-
-    public function setDescriptionFixed(bool $descriptionFixed): self
+    /**
+     * 
+     *
+     * @param bool|null $descriptionFixed
+     *
+     * @return self
+     */
+    public function setDescriptionFixed(?bool $descriptionFixed): self
     {
         $this->initialized['descriptionFixed'] = true;
         $this->descriptionFixed = $descriptionFixed;
-
         return $this;
     }
-
-    public function getDiscountPercentage(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDiscountPercentage(): ?string
     {
         return $this->discountPercentage;
     }
-
-    public function setDiscountPercentage(string $discountPercentage): self
+    /**
+     * 
+     *
+     * @param string|null $discountPercentage
+     *
+     * @return self
+     */
+    public function setDiscountPercentage(?string $discountPercentage): self
     {
         $this->initialized['discountPercentage'] = true;
         $this->discountPercentage = $discountPercentage;
-
         return $this;
     }
-
-    public function getInterval(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getInterval(): ?string
     {
         return $this->interval;
     }
-
-    public function setInterval(string $interval): self
+    /**
+     * 
+     *
+     * @param string|null $interval
+     *
+     * @return self
+     */
+    public function setInterval(?string $interval): self
     {
         $this->initialized['interval'] = true;
         $this->interval = $interval;
-
         return $this;
     }
-
-    public function getIntervalType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getIntervalType(): ?string
     {
         return $this->intervalType;
     }
-
-    public function setIntervalType(string $intervalType): self
+    /**
+     * 
+     *
+     * @param string|null $intervalType
+     *
+     * @return self
+     */
+    public function setIntervalType(?string $intervalType): self
     {
         $this->initialized['intervalType'] = true;
         $this->intervalType = $intervalType;
-
         return $this;
     }
-
-    public function getManualUnitPrice(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getManualUnitPrice(): ?bool
     {
         return $this->manualUnitPrice;
     }
-
-    public function setManualUnitPrice(bool $manualUnitPrice): self
+    /**
+     * 
+     *
+     * @param bool|null $manualUnitPrice
+     *
+     * @return self
+     */
+    public function setManualUnitPrice(?bool $manualUnitPrice): self
     {
         $this->initialized['manualUnitPrice'] = true;
         $this->manualUnitPrice = $manualUnitPrice;
-
         return $this;
     }
-
-    public function getNetAmount(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getNetAmount(): ?string
     {
         return $this->netAmount;
     }
-
-    public function setNetAmount(string $netAmount): self
+    /**
+     * 
+     *
+     * @param string|null $netAmount
+     *
+     * @return self
+     */
+    public function setNetAmount(?string $netAmount): self
     {
         $this->initialized['netAmount'] = true;
         $this->netAmount = $netAmount;
-
         return $this;
     }
-
-    public function getNetAmountInCompanyCurrency(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getNetAmountInCompanyCurrency(): ?string
     {
         return $this->netAmountInCompanyCurrency;
     }
-
-    public function setNetAmountInCompanyCurrency(string $netAmountInCompanyCurrency): self
+    /**
+     * 
+     *
+     * @param string|null $netAmountInCompanyCurrency
+     *
+     * @return self
+     */
+    public function setNetAmountInCompanyCurrency(?string $netAmountInCompanyCurrency): self
     {
         $this->initialized['netAmountInCompanyCurrency'] = true;
         $this->netAmountInCompanyCurrency = $netAmountInCompanyCurrency;
-
         return $this;
     }
-
-    public function getNote(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getNote(): ?string
     {
         return $this->note;
     }
-
-    public function setNote(string $note): self
+    /**
+     * 
+     *
+     * @param string|null $note
+     *
+     * @return self
+     */
+    public function setNote(?string $note): self
     {
         $this->initialized['note'] = true;
         $this->note = $note;
-
         return $this;
     }
-
-    public function getQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getQuantity(): ?string
     {
         return $this->quantity;
     }
-
-    public function setQuantity(string $quantity): self
+    /**
+     * 
+     *
+     * @param string|null $quantity
+     *
+     * @return self
+     */
+    public function setQuantity(?string $quantity): self
     {
         $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
-
         return $this;
     }
-
-    public function getServicePeriodFrom(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getServicePeriodFrom(): ?int
     {
         return $this->servicePeriodFrom;
     }
-
-    public function setServicePeriodFrom(int $servicePeriodFrom): self
+    /**
+     * 
+     *
+     * @param int|null $servicePeriodFrom
+     *
+     * @return self
+     */
+    public function setServicePeriodFrom(?int $servicePeriodFrom): self
     {
         $this->initialized['servicePeriodFrom'] = true;
         $this->servicePeriodFrom = $servicePeriodFrom;
-
         return $this;
     }
-
-    public function getServicePeriodTo(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getServicePeriodTo(): ?int
     {
         return $this->servicePeriodTo;
     }
-
-    public function setServicePeriodTo(int $servicePeriodTo): self
+    /**
+     * 
+     *
+     * @param int|null $servicePeriodTo
+     *
+     * @return self
+     */
+    public function setServicePeriodTo(?int $servicePeriodTo): self
     {
         $this->initialized['servicePeriodTo'] = true;
         $this->servicePeriodTo = $servicePeriodTo;
-
         return $this;
     }
-
-    public function getTitle(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTitle(): ?string
     {
         return $this->title;
     }
-
-    public function setTitle(string $title): self
+    /**
+     * 
+     *
+     * @param string|null $title
+     *
+     * @return self
+     */
+    public function setTitle(?string $title): self
     {
         $this->initialized['title'] = true;
         $this->title = $title;
-
         return $this;
     }
-
-    public function getUnitId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getUnitId(): ?string
     {
         return $this->unitId;
     }
-
-    public function setUnitId(string $unitId): self
+    /**
+     * 
+     *
+     * @param string|null $unitId
+     *
+     * @return self
+     */
+    public function setUnitId(?string $unitId): self
     {
         $this->initialized['unitId'] = true;
         $this->unitId = $unitId;
-
         return $this;
     }
-
-    public function getUnitPrice(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getUnitPrice(): ?string
     {
         return $this->unitPrice;
     }
-
-    public function setUnitPrice(string $unitPrice): self
+    /**
+     * 
+     *
+     * @param string|null $unitPrice
+     *
+     * @return self
+     */
+    public function setUnitPrice(?string $unitPrice): self
     {
         $this->initialized['unitPrice'] = true;
         $this->unitPrice = $unitPrice;
-
         return $this;
     }
-
-    public function getUnitPriceInCompanyCurrency(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getUnitPriceInCompanyCurrency(): ?string
     {
         return $this->unitPriceInCompanyCurrency;
     }
-
-    public function setUnitPriceInCompanyCurrency(string $unitPriceInCompanyCurrency): self
+    /**
+     * 
+     *
+     * @param string|null $unitPriceInCompanyCurrency
+     *
+     * @return self
+     */
+    public function setUnitPriceInCompanyCurrency(?string $unitPriceInCompanyCurrency): self
     {
         $this->initialized['unitPriceInCompanyCurrency'] = true;
         $this->unitPriceInCompanyCurrency = $unitPriceInCompanyCurrency;
-
         return $this;
     }
 }

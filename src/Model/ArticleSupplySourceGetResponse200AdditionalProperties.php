@@ -8,81 +8,92 @@ class ArticleSupplySourceGetResponse200AdditionalProperties extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var list<PriceData>
+     * 
+     *
+     * @var list<PriceData>|null
      */
     protected $currentPurchasePrice;
-
     /**
-     * @var list<Amount>
+     * 
+     *
+     * @var list<Amount>|null
      */
     protected $currentPurchasePriceInCompanyCurrency;
-
     /**
-     * @var list<int>
+     * 
+     *
+     * @var list<int>|null
      */
     protected $lastPurchaseOrderDate;
-
     /**
-     * @return list<PriceData>
+     * 
+     *
+     * @return list<PriceData>|null
      */
-    public function getCurrentPurchasePrice(): array
+    public function getCurrentPurchasePrice(): ?array
     {
         return $this->currentPurchasePrice;
     }
-
     /**
-     * @param  list<PriceData>  $currentPurchasePrice
+     * 
+     *
+     * @param list<PriceData>|null $currentPurchasePrice
+     *
+     * @return self
      */
-    public function setCurrentPurchasePrice(array $currentPurchasePrice): self
+    public function setCurrentPurchasePrice(?array $currentPurchasePrice): self
     {
         $this->initialized['currentPurchasePrice'] = true;
         $this->currentPurchasePrice = $currentPurchasePrice;
-
         return $this;
     }
-
     /**
-     * @return list<Amount>
+     * 
+     *
+     * @return list<Amount>|null
      */
-    public function getCurrentPurchasePriceInCompanyCurrency(): array
+    public function getCurrentPurchasePriceInCompanyCurrency(): ?array
     {
         return $this->currentPurchasePriceInCompanyCurrency;
     }
-
     /**
-     * @param  list<Amount>  $currentPurchasePriceInCompanyCurrency
+     * 
+     *
+     * @param list<Amount>|null $currentPurchasePriceInCompanyCurrency
+     *
+     * @return self
      */
-    public function setCurrentPurchasePriceInCompanyCurrency(array $currentPurchasePriceInCompanyCurrency): self
+    public function setCurrentPurchasePriceInCompanyCurrency(?array $currentPurchasePriceInCompanyCurrency): self
     {
         $this->initialized['currentPurchasePriceInCompanyCurrency'] = true;
         $this->currentPurchasePriceInCompanyCurrency = $currentPurchasePriceInCompanyCurrency;
-
         return $this;
     }
-
     /**
-     * @return list<int>
+     * 
+     *
+     * @return list<int>|null
      */
-    public function getLastPurchaseOrderDate(): array
+    public function getLastPurchaseOrderDate(): ?array
     {
         return $this->lastPurchaseOrderDate;
     }
-
     /**
-     * @param  list<int>  $lastPurchaseOrderDate
+     * 
+     *
+     * @param list<int>|null $lastPurchaseOrderDate
+     *
+     * @return self
      */
-    public function setLastPurchaseOrderDate(array $lastPurchaseOrderDate): self
+    public function setLastPurchaseOrderDate(?array $lastPurchaseOrderDate): self
     {
         $this->initialized['lastPurchaseOrderDate'] = true;
         $this->lastPurchaseOrderDate = $lastPurchaseOrderDate;
-
         return $this;
     }
 }

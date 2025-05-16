@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class CustomAttributeDefinitionListValueNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class CustomAttributeDefinitionListValueNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\CustomAttributeDefinitionListValue::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\CustomAttributeDefinitionListValue::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,73 +33,95 @@ class CustomAttributeDefinitionListValueNormalizer implements DenormalizerAwareI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\CustomAttributeDefinitionListValue;
+        $object = new \Webhubworks\WeclappApiCore\Model\CustomAttributeDefinitionListValue();
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
         if (\array_key_exists('defaultValue', $data) && \is_int($data['defaultValue'])) {
             $data['defaultValue'] = (bool) $data['defaultValue'];
         }
-        if ($data === null || \is_array($data) === false) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('createdDate', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
         }
-        if (\array_key_exists('lastModifiedDate', $data)) {
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+            $object->setCreatedDate(null);
+        }
+        if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
         }
-        if (\array_key_exists('version', $data)) {
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+            $object->setLastModifiedDate(null);
+        }
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
         }
-        if (\array_key_exists('active', $data)) {
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
+        }
+        if (\array_key_exists('active', $data) && $data['active'] !== null) {
             $object->setActive($data['active']);
             unset($data['active']);
         }
-        if (\array_key_exists('defaultValue', $data)) {
+        elseif (\array_key_exists('active', $data) && $data['active'] === null) {
+            $object->setActive(null);
+        }
+        if (\array_key_exists('defaultValue', $data) && $data['defaultValue'] !== null) {
             $object->setDefaultValue($data['defaultValue']);
             unset($data['defaultValue']);
         }
-        if (\array_key_exists('positionNumber', $data)) {
+        elseif (\array_key_exists('defaultValue', $data) && $data['defaultValue'] === null) {
+            $object->setDefaultValue(null);
+        }
+        if (\array_key_exists('positionNumber', $data) && $data['positionNumber'] !== null) {
             $object->setPositionNumber($data['positionNumber']);
             unset($data['positionNumber']);
         }
-        if (\array_key_exists('value', $data)) {
+        elseif (\array_key_exists('positionNumber', $data) && $data['positionNumber'] === null) {
+            $object->setPositionNumber(null);
+        }
+        if (\array_key_exists('value', $data) && $data['value'] !== null) {
             $object->setValue($data['value']);
             unset($data['value']);
+        }
+        elseif (\array_key_exists('value', $data) && $data['value'] === null) {
+            $object->setValue(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('active') && $data->getActive() !== null) {
+        if ($data->isInitialized('active') && null !== $data->getActive()) {
             $dataArray['active'] = $data->getActive();
         }
-        if ($data->isInitialized('defaultValue') && $data->getDefaultValue() !== null) {
+        if ($data->isInitialized('defaultValue') && null !== $data->getDefaultValue()) {
             $dataArray['defaultValue'] = $data->getDefaultValue();
         }
-        if ($data->isInitialized('positionNumber') && $data->getPositionNumber() !== null) {
+        if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
             $dataArray['positionNumber'] = $data->getPositionNumber();
         }
-        if ($data->isInitialized('value') && $data->getValue() !== null) {
+        if ($data->isInitialized('value') && null !== $data->getValue()) {
             $dataArray['value'] = $data->getValue();
         }
         foreach ($data as $key => $value) {
@@ -111,10 +129,8 @@ class CustomAttributeDefinitionListValueNormalizer implements DenormalizerAwareI
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\CustomAttributeDefinitionListValue::class => false];

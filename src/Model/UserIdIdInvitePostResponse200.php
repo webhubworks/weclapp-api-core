@@ -8,27 +8,36 @@ class UserIdIdInvitePostResponse200 extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var User
+     * 
+     *
+     * @var User|null
      */
     protected $result;
-
-    public function getResult(): User
+    /**
+     * 
+     *
+     * @return User|null
+     */
+    public function getResult(): ?User
     {
         return $this->result;
     }
-
-    public function setResult(User $result): self
+    /**
+     * 
+     *
+     * @param User|null $result
+     *
+     * @return self
+     */
+    public function setResult(?User $result): self
     {
         $this->initialized['result'] = true;
         $this->result = $result;
-
         return $this;
     }
 }

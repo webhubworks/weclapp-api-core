@@ -8,63 +8,92 @@ class PackagingUnit extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $articleId;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $baseArticleQuantity;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $packagingUnitQuantity;
-
-    public function getArticleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getArticleId(): ?string
     {
         return $this->articleId;
     }
-
-    public function setArticleId(string $articleId): self
+    /**
+     * 
+     *
+     * @param string|null $articleId
+     *
+     * @return self
+     */
+    public function setArticleId(?string $articleId): self
     {
         $this->initialized['articleId'] = true;
         $this->articleId = $articleId;
-
         return $this;
     }
-
-    public function getBaseArticleQuantity(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getBaseArticleQuantity(): ?int
     {
         return $this->baseArticleQuantity;
     }
-
-    public function setBaseArticleQuantity(int $baseArticleQuantity): self
+    /**
+     * 
+     *
+     * @param int|null $baseArticleQuantity
+     *
+     * @return self
+     */
+    public function setBaseArticleQuantity(?int $baseArticleQuantity): self
     {
         $this->initialized['baseArticleQuantity'] = true;
         $this->baseArticleQuantity = $baseArticleQuantity;
-
         return $this;
     }
-
-    public function getPackagingUnitQuantity(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getPackagingUnitQuantity(): ?int
     {
         return $this->packagingUnitQuantity;
     }
-
-    public function setPackagingUnitQuantity(int $packagingUnitQuantity): self
+    /**
+     * 
+     *
+     * @param int|null $packagingUnitQuantity
+     *
+     * @return self
+     */
+    public function setPackagingUnitQuantity(?int $packagingUnitQuantity): self
     {
         $this->initialized['packagingUnitQuantity'] = true;
         $this->packagingUnitQuantity = $packagingUnitQuantity;
-
         return $this;
     }
 }

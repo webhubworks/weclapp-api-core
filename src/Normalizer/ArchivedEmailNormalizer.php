@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class ArchivedEmailNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class ArchivedEmailNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\ArchivedEmail::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ArchivedEmail::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,27 +33,39 @@ class ArchivedEmailNormalizer implements DenormalizerAwareInterface, Denormalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\ArchivedEmail;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\ArchivedEmail();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('createdDate', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
         }
-        if (\array_key_exists('lastModifiedDate', $data)) {
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+            $object->setCreatedDate(null);
+        }
+        if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
         }
-        if (\array_key_exists('version', $data)) {
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+            $object->setLastModifiedDate(null);
+        }
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
         }
-        if (\array_key_exists('bccAddresses', $data)) {
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
+        }
+        if (\array_key_exists('bccAddresses', $data) && $data['bccAddresses'] !== null) {
             $values = [];
             foreach ($data['bccAddresses'] as $value) {
                 $values[] = $value;
@@ -65,11 +73,17 @@ class ArchivedEmailNormalizer implements DenormalizerAwareInterface, Denormalize
             $object->setBccAddresses($values);
             unset($data['bccAddresses']);
         }
-        if (\array_key_exists('body', $data)) {
+        elseif (\array_key_exists('bccAddresses', $data) && $data['bccAddresses'] === null) {
+            $object->setBccAddresses(null);
+        }
+        if (\array_key_exists('body', $data) && $data['body'] !== null) {
             $object->setBody($data['body']);
             unset($data['body']);
         }
-        if (\array_key_exists('ccAddresses', $data)) {
+        elseif (\array_key_exists('body', $data) && $data['body'] === null) {
+            $object->setBody(null);
+        }
+        if (\array_key_exists('ccAddresses', $data) && $data['ccAddresses'] !== null) {
             $values_1 = [];
             foreach ($data['ccAddresses'] as $value_1) {
                 $values_1[] = $value_1;
@@ -77,19 +91,31 @@ class ArchivedEmailNormalizer implements DenormalizerAwareInterface, Denormalize
             $object->setCcAddresses($values_1);
             unset($data['ccAddresses']);
         }
-        if (\array_key_exists('fromAddress', $data)) {
+        elseif (\array_key_exists('ccAddresses', $data) && $data['ccAddresses'] === null) {
+            $object->setCcAddresses(null);
+        }
+        if (\array_key_exists('fromAddress', $data) && $data['fromAddress'] !== null) {
             $object->setFromAddress($data['fromAddress']);
             unset($data['fromAddress']);
         }
-        if (\array_key_exists('messageIdentifier', $data)) {
+        elseif (\array_key_exists('fromAddress', $data) && $data['fromAddress'] === null) {
+            $object->setFromAddress(null);
+        }
+        if (\array_key_exists('messageIdentifier', $data) && $data['messageIdentifier'] !== null) {
             $object->setMessageIdentifier($data['messageIdentifier']);
             unset($data['messageIdentifier']);
         }
-        if (\array_key_exists('receivedDate', $data)) {
+        elseif (\array_key_exists('messageIdentifier', $data) && $data['messageIdentifier'] === null) {
+            $object->setMessageIdentifier(null);
+        }
+        if (\array_key_exists('receivedDate', $data) && $data['receivedDate'] !== null) {
             $object->setReceivedDate($data['receivedDate']);
             unset($data['receivedDate']);
         }
-        if (\array_key_exists('replyToAddress', $data)) {
+        elseif (\array_key_exists('receivedDate', $data) && $data['receivedDate'] === null) {
+            $object->setReceivedDate(null);
+        }
+        if (\array_key_exists('replyToAddress', $data) && $data['replyToAddress'] !== null) {
             $values_2 = [];
             foreach ($data['replyToAddress'] as $value_2) {
                 $values_2[] = $value_2;
@@ -97,11 +123,17 @@ class ArchivedEmailNormalizer implements DenormalizerAwareInterface, Denormalize
             $object->setReplyToAddress($values_2);
             unset($data['replyToAddress']);
         }
-        if (\array_key_exists('subject', $data)) {
+        elseif (\array_key_exists('replyToAddress', $data) && $data['replyToAddress'] === null) {
+            $object->setReplyToAddress(null);
+        }
+        if (\array_key_exists('subject', $data) && $data['subject'] !== null) {
             $object->setSubject($data['subject']);
             unset($data['subject']);
         }
-        if (\array_key_exists('toAddresses', $data)) {
+        elseif (\array_key_exists('subject', $data) && $data['subject'] === null) {
+            $object->setSubject(null);
+        }
+        if (\array_key_exists('toAddresses', $data) && $data['toAddresses'] !== null) {
             $values_3 = [];
             foreach ($data['toAddresses'] as $value_3) {
                 $values_3[] = $value_3;
@@ -109,58 +141,59 @@ class ArchivedEmailNormalizer implements DenormalizerAwareInterface, Denormalize
             $object->setToAddresses($values_3);
             unset($data['toAddresses']);
         }
+        elseif (\array_key_exists('toAddresses', $data) && $data['toAddresses'] === null) {
+            $object->setToAddresses(null);
+        }
         foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_4;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('bccAddresses') && $data->getBccAddresses() !== null) {
+        if ($data->isInitialized('bccAddresses') && null !== $data->getBccAddresses()) {
             $values = [];
             foreach ($data->getBccAddresses() as $value) {
                 $values[] = $value;
             }
             $dataArray['bccAddresses'] = $values;
         }
-        if ($data->isInitialized('body') && $data->getBody() !== null) {
+        if ($data->isInitialized('body') && null !== $data->getBody()) {
             $dataArray['body'] = $data->getBody();
         }
-        if ($data->isInitialized('ccAddresses') && $data->getCcAddresses() !== null) {
+        if ($data->isInitialized('ccAddresses') && null !== $data->getCcAddresses()) {
             $values_1 = [];
             foreach ($data->getCcAddresses() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['ccAddresses'] = $values_1;
         }
-        if ($data->isInitialized('fromAddress') && $data->getFromAddress() !== null) {
+        if ($data->isInitialized('fromAddress') && null !== $data->getFromAddress()) {
             $dataArray['fromAddress'] = $data->getFromAddress();
         }
-        if ($data->isInitialized('messageIdentifier') && $data->getMessageIdentifier() !== null) {
+        if ($data->isInitialized('messageIdentifier') && null !== $data->getMessageIdentifier()) {
             $dataArray['messageIdentifier'] = $data->getMessageIdentifier();
         }
-        if ($data->isInitialized('receivedDate') && $data->getReceivedDate() !== null) {
+        if ($data->isInitialized('receivedDate') && null !== $data->getReceivedDate()) {
             $dataArray['receivedDate'] = $data->getReceivedDate();
         }
-        if ($data->isInitialized('replyToAddress') && $data->getReplyToAddress() !== null) {
+        if ($data->isInitialized('replyToAddress') && null !== $data->getReplyToAddress()) {
             $values_2 = [];
             foreach ($data->getReplyToAddress() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['replyToAddress'] = $values_2;
         }
-        if ($data->isInitialized('subject') && $data->getSubject() !== null) {
+        if ($data->isInitialized('subject') && null !== $data->getSubject()) {
             $dataArray['subject'] = $data->getSubject();
         }
-        if ($data->isInitialized('toAddresses') && $data->getToAddresses() !== null) {
+        if ($data->isInitialized('toAddresses') && null !== $data->getToAddresses()) {
             $values_3 = [];
             foreach ($data->getToAddresses() as $value_3) {
                 $values_3[] = $value_3;
@@ -172,10 +205,8 @@ class ArchivedEmailNormalizer implements DenormalizerAwareInterface, Denormalize
                 $dataArray[$key] = $value_4;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\ArchivedEmail::class => false];

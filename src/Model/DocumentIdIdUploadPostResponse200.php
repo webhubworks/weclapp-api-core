@@ -8,27 +8,36 @@ class DocumentIdIdUploadPostResponse200 extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var Document
+     * 
+     *
+     * @var Document|null
      */
     protected $result;
-
-    public function getResult(): Document
+    /**
+     * 
+     *
+     * @return Document|null
+     */
+    public function getResult(): ?Document
     {
         return $this->result;
     }
-
-    public function setResult(Document $result): self
+    /**
+     * 
+     *
+     * @param Document|null $result
+     *
+     * @return self
+     */
+    public function setResult(?Document $result): self
     {
         $this->initialized['result'] = true;
         $this->result = $result;
-
         return $this;
     }
 }

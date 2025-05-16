@@ -8,215 +8,322 @@ class CashAccount extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $accountId;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $active;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $currencyId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $currencyName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $openingBalance;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $treasurerId;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getAccountId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAccountId(): ?string
     {
         return $this->accountId;
     }
-
-    public function setAccountId(string $accountId): self
+    /**
+     * 
+     *
+     * @param string|null $accountId
+     *
+     * @return self
+     */
+    public function setAccountId(?string $accountId): self
     {
         $this->initialized['accountId'] = true;
         $this->accountId = $accountId;
-
         return $this;
     }
-
-    public function getActive(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getActive(): ?bool
     {
         return $this->active;
     }
-
-    public function setActive(bool $active): self
+    /**
+     * 
+     *
+     * @param bool|null $active
+     *
+     * @return self
+     */
+    public function setActive(?bool $active): self
     {
         $this->initialized['active'] = true;
         $this->active = $active;
-
         return $this;
     }
-
-    public function getCurrencyId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCurrencyId(): ?string
     {
         return $this->currencyId;
     }
-
-    public function setCurrencyId(string $currencyId): self
+    /**
+     * 
+     *
+     * @param string|null $currencyId
+     *
+     * @return self
+     */
+    public function setCurrencyId(?string $currencyId): self
     {
         $this->initialized['currencyId'] = true;
         $this->currencyId = $currencyId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getCurrencyName(): string
+    public function getCurrencyName(): ?string
     {
         return $this->currencyName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $currencyName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setCurrencyName(string $currencyName): self
+    public function setCurrencyName(?string $currencyName): self
     {
         $this->initialized['currencyName'] = true;
         $this->currencyName = $currencyName;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
-    public function getOpeningBalance(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getOpeningBalance(): ?string
     {
         return $this->openingBalance;
     }
-
-    public function setOpeningBalance(string $openingBalance): self
+    /**
+     * 
+     *
+     * @param string|null $openingBalance
+     *
+     * @return self
+     */
+    public function setOpeningBalance(?string $openingBalance): self
     {
         $this->initialized['openingBalance'] = true;
         $this->openingBalance = $openingBalance;
-
         return $this;
     }
-
-    public function getTreasurerId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTreasurerId(): ?string
     {
         return $this->treasurerId;
     }
-
-    public function setTreasurerId(string $treasurerId): self
+    /**
+     * 
+     *
+     * @param string|null $treasurerId
+     *
+     * @return self
+     */
+    public function setTreasurerId(?string $treasurerId): self
     {
         $this->initialized['treasurerId'] = true;
         $this->treasurerId = $treasurerId;
-
         return $this;
     }
 }

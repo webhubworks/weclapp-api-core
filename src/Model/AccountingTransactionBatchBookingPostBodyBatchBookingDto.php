@@ -8,123 +8,176 @@ class AccountingTransactionBatchBookingPostBodyBatchBookingDto extends \ArrayObj
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var list<BatchBookingRecord>
+     * 
+     *
+     * @var list<BatchBookingRecord>|null
      */
     protected $batchBookingRecords;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $bookingText;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $costCenterId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $currencyId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $externalRecordNumber;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $transactionDate;
-
     /**
-     * @return list<BatchBookingRecord>
+     * 
+     *
+     * @return list<BatchBookingRecord>|null
      */
-    public function getBatchBookingRecords(): array
+    public function getBatchBookingRecords(): ?array
     {
         return $this->batchBookingRecords;
     }
-
     /**
-     * @param  list<BatchBookingRecord>  $batchBookingRecords
+     * 
+     *
+     * @param list<BatchBookingRecord>|null $batchBookingRecords
+     *
+     * @return self
      */
-    public function setBatchBookingRecords(array $batchBookingRecords): self
+    public function setBatchBookingRecords(?array $batchBookingRecords): self
     {
         $this->initialized['batchBookingRecords'] = true;
         $this->batchBookingRecords = $batchBookingRecords;
-
         return $this;
     }
-
-    public function getBookingText(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getBookingText(): ?string
     {
         return $this->bookingText;
     }
-
-    public function setBookingText(string $bookingText): self
+    /**
+     * 
+     *
+     * @param string|null $bookingText
+     *
+     * @return self
+     */
+    public function setBookingText(?string $bookingText): self
     {
         $this->initialized['bookingText'] = true;
         $this->bookingText = $bookingText;
-
         return $this;
     }
-
-    public function getCostCenterId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCostCenterId(): ?string
     {
         return $this->costCenterId;
     }
-
-    public function setCostCenterId(string $costCenterId): self
+    /**
+     * 
+     *
+     * @param string|null $costCenterId
+     *
+     * @return self
+     */
+    public function setCostCenterId(?string $costCenterId): self
     {
         $this->initialized['costCenterId'] = true;
         $this->costCenterId = $costCenterId;
-
         return $this;
     }
-
-    public function getCurrencyId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCurrencyId(): ?string
     {
         return $this->currencyId;
     }
-
-    public function setCurrencyId(string $currencyId): self
+    /**
+     * 
+     *
+     * @param string|null $currencyId
+     *
+     * @return self
+     */
+    public function setCurrencyId(?string $currencyId): self
     {
         $this->initialized['currencyId'] = true;
         $this->currencyId = $currencyId;
-
         return $this;
     }
-
-    public function getExternalRecordNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getExternalRecordNumber(): ?string
     {
         return $this->externalRecordNumber;
     }
-
-    public function setExternalRecordNumber(string $externalRecordNumber): self
+    /**
+     * 
+     *
+     * @param string|null $externalRecordNumber
+     *
+     * @return self
+     */
+    public function setExternalRecordNumber(?string $externalRecordNumber): self
     {
         $this->initialized['externalRecordNumber'] = true;
         $this->externalRecordNumber = $externalRecordNumber;
-
         return $this;
     }
-
-    public function getTransactionDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getTransactionDate(): ?int
     {
         return $this->transactionDate;
     }
-
-    public function setTransactionDate(int $transactionDate): self
+    /**
+     * 
+     *
+     * @param int|null $transactionDate
+     *
+     * @return self
+     */
+    public function setTransactionDate(?int $transactionDate): self
     {
         $this->initialized['transactionDate'] = true;
         $this->transactionDate = $transactionDate;
-
         return $this;
     }
 }

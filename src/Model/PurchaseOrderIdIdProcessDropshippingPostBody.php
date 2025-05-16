@@ -8,51 +8,64 @@ class PurchaseOrderIdIdProcessDropshippingPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var list<PurchaseOrderIdIdProcessDropshippingPostBodyProcessPurchaseOrderItemsItem>
+     * 
+     *
+     * @var list<PurchaseOrderIdIdProcessDropshippingPostBodyProcessPurchaseOrderItemsItem>|null
      */
     protected $processPurchaseOrderItems;
-
     /**
-     * @var PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters
+     * 
+     *
+     * @var PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters|null
      */
     protected $shipmentParameters;
-
     /**
-     * @return list<PurchaseOrderIdIdProcessDropshippingPostBodyProcessPurchaseOrderItemsItem>
+     * 
+     *
+     * @return list<PurchaseOrderIdIdProcessDropshippingPostBodyProcessPurchaseOrderItemsItem>|null
      */
-    public function getProcessPurchaseOrderItems(): array
+    public function getProcessPurchaseOrderItems(): ?array
     {
         return $this->processPurchaseOrderItems;
     }
-
     /**
-     * @param  list<PurchaseOrderIdIdProcessDropshippingPostBodyProcessPurchaseOrderItemsItem>  $processPurchaseOrderItems
+     * 
+     *
+     * @param list<PurchaseOrderIdIdProcessDropshippingPostBodyProcessPurchaseOrderItemsItem>|null $processPurchaseOrderItems
+     *
+     * @return self
      */
-    public function setProcessPurchaseOrderItems(array $processPurchaseOrderItems): self
+    public function setProcessPurchaseOrderItems(?array $processPurchaseOrderItems): self
     {
         $this->initialized['processPurchaseOrderItems'] = true;
         $this->processPurchaseOrderItems = $processPurchaseOrderItems;
-
         return $this;
     }
-
-    public function getShipmentParameters(): PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters
+    /**
+     * 
+     *
+     * @return PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters|null
+     */
+    public function getShipmentParameters(): ?PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters
     {
         return $this->shipmentParameters;
     }
-
-    public function setShipmentParameters(PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters $shipmentParameters): self
+    /**
+     * 
+     *
+     * @param PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters|null $shipmentParameters
+     *
+     * @return self
+     */
+    public function setShipmentParameters(?PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters $shipmentParameters): self
     {
         $this->initialized['shipmentParameters'] = true;
         $this->shipmentParameters = $shipmentParameters;
-
         return $this;
     }
 }

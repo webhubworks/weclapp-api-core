@@ -8,285 +8,400 @@ class TicketServiceLevelAgreement extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $active;
-
     /**
-     * @var list<OnlyId>
+     * 
+     *
+     * @var list<OnlyId>|null
      */
     protected $categories;
-
     /**
-     * @var list<OnlyId>
+     * 
+     *
+     * @var list<OnlyId>|null
      */
     protected $customers;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $degreeOfPerformance;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $includeNoTicketType;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $name;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $ratingId;
-
     /**
-     * @var list<TicketServiceLevelAgreementTarget>
+     * 
+     *
+     * @var list<TicketServiceLevelAgreementTarget>|null
      */
     protected $targets;
-
     /**
-     * @var list<OnlyId>
+     * 
+     *
+     * @var list<OnlyId>|null
      */
     protected $types;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $visible;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getActive(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getActive(): ?bool
     {
         return $this->active;
     }
-
-    public function setActive(bool $active): self
+    /**
+     * 
+     *
+     * @param bool|null $active
+     *
+     * @return self
+     */
+    public function setActive(?bool $active): self
     {
         $this->initialized['active'] = true;
         $this->active = $active;
-
         return $this;
     }
-
     /**
-     * @return list<OnlyId>
+     * 
+     *
+     * @return list<OnlyId>|null
      */
-    public function getCategories(): array
+    public function getCategories(): ?array
     {
         return $this->categories;
     }
-
     /**
-     * @param  list<OnlyId>  $categories
+     * 
+     *
+     * @param list<OnlyId>|null $categories
+     *
+     * @return self
      */
-    public function setCategories(array $categories): self
+    public function setCategories(?array $categories): self
     {
         $this->initialized['categories'] = true;
         $this->categories = $categories;
-
         return $this;
     }
-
     /**
-     * @return list<OnlyId>
+     * 
+     *
+     * @return list<OnlyId>|null
      */
-    public function getCustomers(): array
+    public function getCustomers(): ?array
     {
         return $this->customers;
     }
-
     /**
-     * @param  list<OnlyId>  $customers
+     * 
+     *
+     * @param list<OnlyId>|null $customers
+     *
+     * @return self
      */
-    public function setCustomers(array $customers): self
+    public function setCustomers(?array $customers): self
     {
         $this->initialized['customers'] = true;
         $this->customers = $customers;
-
         return $this;
     }
-
-    public function getDegreeOfPerformance(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getDegreeOfPerformance(): ?int
     {
         return $this->degreeOfPerformance;
     }
-
-    public function setDegreeOfPerformance(int $degreeOfPerformance): self
+    /**
+     * 
+     *
+     * @param int|null $degreeOfPerformance
+     *
+     * @return self
+     */
+    public function setDegreeOfPerformance(?int $degreeOfPerformance): self
     {
         $this->initialized['degreeOfPerformance'] = true;
         $this->degreeOfPerformance = $degreeOfPerformance;
-
         return $this;
     }
-
-    public function getIncludeNoTicketType(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getIncludeNoTicketType(): ?bool
     {
         return $this->includeNoTicketType;
     }
-
-    public function setIncludeNoTicketType(bool $includeNoTicketType): self
+    /**
+     * 
+     *
+     * @param bool|null $includeNoTicketType
+     *
+     * @return self
+     */
+    public function setIncludeNoTicketType(?bool $includeNoTicketType): self
     {
         $this->initialized['includeNoTicketType'] = true;
         $this->includeNoTicketType = $includeNoTicketType;
-
         return $this;
     }
-
-    public function getName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    /**
+     * 
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
         return $this;
     }
-
-    public function getRatingId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRatingId(): ?string
     {
         return $this->ratingId;
     }
-
-    public function setRatingId(string $ratingId): self
+    /**
+     * 
+     *
+     * @param string|null $ratingId
+     *
+     * @return self
+     */
+    public function setRatingId(?string $ratingId): self
     {
         $this->initialized['ratingId'] = true;
         $this->ratingId = $ratingId;
-
         return $this;
     }
-
     /**
-     * @return list<TicketServiceLevelAgreementTarget>
+     * 
+     *
+     * @return list<TicketServiceLevelAgreementTarget>|null
      */
-    public function getTargets(): array
+    public function getTargets(): ?array
     {
         return $this->targets;
     }
-
     /**
-     * @param  list<TicketServiceLevelAgreementTarget>  $targets
+     * 
+     *
+     * @param list<TicketServiceLevelAgreementTarget>|null $targets
+     *
+     * @return self
      */
-    public function setTargets(array $targets): self
+    public function setTargets(?array $targets): self
     {
         $this->initialized['targets'] = true;
         $this->targets = $targets;
-
         return $this;
     }
-
     /**
-     * @return list<OnlyId>
+     * 
+     *
+     * @return list<OnlyId>|null
      */
-    public function getTypes(): array
+    public function getTypes(): ?array
     {
         return $this->types;
     }
-
     /**
-     * @param  list<OnlyId>  $types
+     * 
+     *
+     * @param list<OnlyId>|null $types
+     *
+     * @return self
      */
-    public function setTypes(array $types): self
+    public function setTypes(?array $types): self
     {
         $this->initialized['types'] = true;
         $this->types = $types;
-
         return $this;
     }
-
-    public function getVisible(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getVisible(): ?bool
     {
         return $this->visible;
     }
-
-    public function setVisible(bool $visible): self
+    /**
+     * 
+     *
+     * @param bool|null $visible
+     *
+     * @return self
+     */
+    public function setVisible(?bool $visible): self
     {
         $this->initialized['visible'] = true;
         $this->visible = $visible;
-
         return $this;
     }
 }

@@ -8,45 +8,64 @@ class CustomAttributeDefinitionTranslation extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $labelText;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $locale;
-
-    public function getLabelText(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLabelText(): ?string
     {
         return $this->labelText;
     }
-
-    public function setLabelText(string $labelText): self
+    /**
+     * 
+     *
+     * @param string|null $labelText
+     *
+     * @return self
+     */
+    public function setLabelText(?string $labelText): self
     {
         $this->initialized['labelText'] = true;
         $this->labelText = $labelText;
-
         return $this;
     }
-
-    public function getLocale(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLocale(): ?string
     {
         return $this->locale;
     }
-
-    public function setLocale(string $locale): self
+    /**
+     * 
+     *
+     * @param string|null $locale
+     *
+     * @return self
+     */
+    public function setLocale(?string $locale): self
     {
         $this->initialized['locale'] = true;
         $this->locale = $locale;
-
         return $this;
     }
 }

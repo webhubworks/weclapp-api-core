@@ -8,117 +8,176 @@ class CommercialLanguage extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $countryCode;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $languageCode;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getCountryCode(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
-
-    public function setCountryCode(string $countryCode): self
+    /**
+     * 
+     *
+     * @param string|null $countryCode
+     *
+     * @return self
+     */
+    public function setCountryCode(?string $countryCode): self
     {
         $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
-
         return $this;
     }
-
-    public function getLanguageCode(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLanguageCode(): ?string
     {
         return $this->languageCode;
     }
-
-    public function setLanguageCode(string $languageCode): self
+    /**
+     * 
+     *
+     * @param string|null $languageCode
+     *
+     * @return self
+     */
+    public function setLanguageCode(?string $languageCode): self
     {
         $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
-
         return $this;
     }
 }

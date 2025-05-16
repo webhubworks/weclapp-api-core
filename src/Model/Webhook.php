@@ -8,225 +8,344 @@ class Webhook extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $atCreate;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $atDelete;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $atUpdate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $deactivatedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $entityName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $errorMessage;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $requestMethod;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $url;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getAtCreate(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getAtCreate(): ?bool
     {
         return $this->atCreate;
     }
-
-    public function setAtCreate(bool $atCreate): self
+    /**
+     * 
+     *
+     * @param bool|null $atCreate
+     *
+     * @return self
+     */
+    public function setAtCreate(?bool $atCreate): self
     {
         $this->initialized['atCreate'] = true;
         $this->atCreate = $atCreate;
-
         return $this;
     }
-
-    public function getAtDelete(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getAtDelete(): ?bool
     {
         return $this->atDelete;
     }
-
-    public function setAtDelete(bool $atDelete): self
+    /**
+     * 
+     *
+     * @param bool|null $atDelete
+     *
+     * @return self
+     */
+    public function setAtDelete(?bool $atDelete): self
     {
         $this->initialized['atDelete'] = true;
         $this->atDelete = $atDelete;
-
         return $this;
     }
-
-    public function getAtUpdate(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getAtUpdate(): ?bool
     {
         return $this->atUpdate;
     }
-
-    public function setAtUpdate(bool $atUpdate): self
+    /**
+     * 
+     *
+     * @param bool|null $atUpdate
+     *
+     * @return self
+     */
+    public function setAtUpdate(?bool $atUpdate): self
     {
         $this->initialized['atUpdate'] = true;
         $this->atUpdate = $atUpdate;
-
         return $this;
     }
-
-    public function getDeactivatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getDeactivatedDate(): ?int
     {
         return $this->deactivatedDate;
     }
-
-    public function setDeactivatedDate(int $deactivatedDate): self
+    /**
+     * 
+     *
+     * @param int|null $deactivatedDate
+     *
+     * @return self
+     */
+    public function setDeactivatedDate(?int $deactivatedDate): self
     {
         $this->initialized['deactivatedDate'] = true;
         $this->deactivatedDate = $deactivatedDate;
-
         return $this;
     }
-
-    public function getEntityName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getEntityName(): ?string
     {
         return $this->entityName;
     }
-
-    public function setEntityName(string $entityName): self
+    /**
+     * 
+     *
+     * @param string|null $entityName
+     *
+     * @return self
+     */
+    public function setEntityName(?string $entityName): self
     {
         $this->initialized['entityName'] = true;
         $this->entityName = $entityName;
-
         return $this;
     }
-
-    public function getErrorMessage(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getErrorMessage(): ?string
     {
         return $this->errorMessage;
     }
-
-    public function setErrorMessage(string $errorMessage): self
+    /**
+     * 
+     *
+     * @param string|null $errorMessage
+     *
+     * @return self
+     */
+    public function setErrorMessage(?string $errorMessage): self
     {
         $this->initialized['errorMessage'] = true;
         $this->errorMessage = $errorMessage;
-
         return $this;
     }
-
-    public function getRequestMethod(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRequestMethod(): ?string
     {
         return $this->requestMethod;
     }
-
-    public function setRequestMethod(string $requestMethod): self
+    /**
+     * 
+     *
+     * @param string|null $requestMethod
+     *
+     * @return self
+     */
+    public function setRequestMethod(?string $requestMethod): self
     {
         $this->initialized['requestMethod'] = true;
         $this->requestMethod = $requestMethod;
-
         return $this;
     }
-
-    public function getUrl(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getUrl(): ?string
     {
         return $this->url;
     }
-
-    public function setUrl(string $url): self
+    /**
+     * 
+     *
+     * @param string|null $url
+     *
+     * @return self
+     */
+    public function setUrl(?string $url): self
     {
         $this->initialized['url'] = true;
         $this->url = $url;
-
         return $this;
     }
 }

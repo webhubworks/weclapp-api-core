@@ -8,281 +8,406 @@ class BaseRecord extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var list<CustomAttribute>
+     * 
+     *
+     * @var list<CustomAttribute>|null
      */
     protected $customAttributes;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $commercialLanguage;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $creatorId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var bool
+     * @var bool|null
      */
     protected $disableEmailTemplate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $recordComment;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $recordFreeText;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $recordOpening;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $sentToRecipient;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $tags;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
     /**
-     * @return list<CustomAttribute>
+     * 
+     *
+     * @return list<CustomAttribute>|null
      */
-    public function getCustomAttributes(): array
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
-
     /**
-     * @param  list<CustomAttribute>  $customAttributes
+     * 
+     *
+     * @param list<CustomAttribute>|null $customAttributes
+     *
+     * @return self
      */
-    public function setCustomAttributes(array $customAttributes): self
+    public function setCustomAttributes(?array $customAttributes): self
     {
         $this->initialized['customAttributes'] = true;
         $this->customAttributes = $customAttributes;
-
         return $this;
     }
-
-    public function getCommercialLanguage(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCommercialLanguage(): ?string
     {
         return $this->commercialLanguage;
     }
-
-    public function setCommercialLanguage(string $commercialLanguage): self
+    /**
+     * 
+     *
+     * @param string|null $commercialLanguage
+     *
+     * @return self
+     */
+    public function setCommercialLanguage(?string $commercialLanguage): self
     {
         $this->initialized['commercialLanguage'] = true;
         $this->commercialLanguage = $commercialLanguage;
-
         return $this;
     }
-
-    public function getCreatorId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCreatorId(): ?string
     {
         return $this->creatorId;
     }
-
-    public function setCreatorId(string $creatorId): self
+    /**
+     * 
+     *
+     * @param string|null $creatorId
+     *
+     * @return self
+     */
+    public function setCreatorId(?string $creatorId): self
     {
         $this->initialized['creatorId'] = true;
         $this->creatorId = $creatorId;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return bool|null
      */
-    public function getDisableEmailTemplate(): bool
+    public function getDisableEmailTemplate(): ?bool
     {
         return $this->disableEmailTemplate;
     }
-
     /**
+     * 
+     *
+     * @param bool|null $disableEmailTemplate
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setDisableEmailTemplate(bool $disableEmailTemplate): self
+    public function setDisableEmailTemplate(?bool $disableEmailTemplate): self
     {
         $this->initialized['disableEmailTemplate'] = true;
         $this->disableEmailTemplate = $disableEmailTemplate;
-
         return $this;
     }
-
-    public function getRecordComment(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRecordComment(): ?string
     {
         return $this->recordComment;
     }
-
-    public function setRecordComment(string $recordComment): self
+    /**
+     * 
+     *
+     * @param string|null $recordComment
+     *
+     * @return self
+     */
+    public function setRecordComment(?string $recordComment): self
     {
         $this->initialized['recordComment'] = true;
         $this->recordComment = $recordComment;
-
         return $this;
     }
-
-    public function getRecordFreeText(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRecordFreeText(): ?string
     {
         return $this->recordFreeText;
     }
-
-    public function setRecordFreeText(string $recordFreeText): self
+    /**
+     * 
+     *
+     * @param string|null $recordFreeText
+     *
+     * @return self
+     */
+    public function setRecordFreeText(?string $recordFreeText): self
     {
         $this->initialized['recordFreeText'] = true;
         $this->recordFreeText = $recordFreeText;
-
         return $this;
     }
-
-    public function getRecordOpening(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRecordOpening(): ?string
     {
         return $this->recordOpening;
     }
-
-    public function setRecordOpening(string $recordOpening): self
+    /**
+     * 
+     *
+     * @param string|null $recordOpening
+     *
+     * @return self
+     */
+    public function setRecordOpening(?string $recordOpening): self
     {
         $this->initialized['recordOpening'] = true;
         $this->recordOpening = $recordOpening;
-
         return $this;
     }
-
-    public function getSentToRecipient(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getSentToRecipient(): ?bool
     {
         return $this->sentToRecipient;
     }
-
-    public function setSentToRecipient(bool $sentToRecipient): self
+    /**
+     * 
+     *
+     * @param bool|null $sentToRecipient
+     *
+     * @return self
+     */
+    public function setSentToRecipient(?bool $sentToRecipient): self
     {
         $this->initialized['sentToRecipient'] = true;
         $this->sentToRecipient = $sentToRecipient;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getTags(): array
+    public function getTags(): ?array
     {
         return $this->tags;
     }
-
     /**
-     * @param  list<string>  $tags
+     * 
+     *
+     * @param list<string>|null $tags
+     *
+     * @return self
      */
-    public function setTags(array $tags): self
+    public function setTags(?array $tags): self
     {
         $this->initialized['tags'] = true;
         $this->tags = $tags;
-
         return $this;
     }
 }

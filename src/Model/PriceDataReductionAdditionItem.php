@@ -8,117 +8,176 @@ class PriceDataReductionAdditionItem extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $position;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $source;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $specialPriceReduction;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $title;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $type;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $value;
-
-    public function getPosition(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getPosition(): ?int
     {
         return $this->position;
     }
-
-    public function setPosition(int $position): self
+    /**
+     * 
+     *
+     * @param int|null $position
+     *
+     * @return self
+     */
+    public function setPosition(?int $position): self
     {
         $this->initialized['position'] = true;
         $this->position = $position;
-
         return $this;
     }
-
-    public function getSource(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSource(): ?string
     {
         return $this->source;
     }
-
-    public function setSource(string $source): self
+    /**
+     * 
+     *
+     * @param string|null $source
+     *
+     * @return self
+     */
+    public function setSource(?string $source): self
     {
         $this->initialized['source'] = true;
         $this->source = $source;
-
         return $this;
     }
-
-    public function getSpecialPriceReduction(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getSpecialPriceReduction(): ?bool
     {
         return $this->specialPriceReduction;
     }
-
-    public function setSpecialPriceReduction(bool $specialPriceReduction): self
+    /**
+     * 
+     *
+     * @param bool|null $specialPriceReduction
+     *
+     * @return self
+     */
+    public function setSpecialPriceReduction(?bool $specialPriceReduction): self
     {
         $this->initialized['specialPriceReduction'] = true;
         $this->specialPriceReduction = $specialPriceReduction;
-
         return $this;
     }
-
-    public function getTitle(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTitle(): ?string
     {
         return $this->title;
     }
-
-    public function setTitle(string $title): self
+    /**
+     * 
+     *
+     * @param string|null $title
+     *
+     * @return self
+     */
+    public function setTitle(?string $title): self
     {
         $this->initialized['title'] = true;
         $this->title = $title;
-
         return $this;
     }
-
-    public function getType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getType(): ?string
     {
         return $this->type;
     }
-
-    public function setType(string $type): self
+    /**
+     * 
+     *
+     * @param string|null $type
+     *
+     * @return self
+     */
+    public function setType(?string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
-
         return $this;
     }
-
-    public function getValue(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getValue(): ?string
     {
         return $this->value;
     }
-
-    public function setValue(string $value): self
+    /**
+     * 
+     *
+     * @param string|null $value
+     *
+     * @return self
+     */
+    public function setValue(?string $value): self
     {
         $this->initialized['value'] = true;
         $this->value = $value;
-
         return $this;
     }
 }

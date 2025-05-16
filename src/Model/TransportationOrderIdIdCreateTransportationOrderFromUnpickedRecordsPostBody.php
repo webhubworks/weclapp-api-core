@@ -8,45 +8,64 @@ class TransportationOrderIdIdCreateTransportationOrderFromUnpickedRecordsPostBod
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $loadingEquipmentArticleId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $loadingEquipmentIdentifierId;
-
-    public function getLoadingEquipmentArticleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLoadingEquipmentArticleId(): ?string
     {
         return $this->loadingEquipmentArticleId;
     }
-
-    public function setLoadingEquipmentArticleId(string $loadingEquipmentArticleId): self
+    /**
+     * 
+     *
+     * @param string|null $loadingEquipmentArticleId
+     *
+     * @return self
+     */
+    public function setLoadingEquipmentArticleId(?string $loadingEquipmentArticleId): self
     {
         $this->initialized['loadingEquipmentArticleId'] = true;
         $this->loadingEquipmentArticleId = $loadingEquipmentArticleId;
-
         return $this;
     }
-
-    public function getLoadingEquipmentIdentifierId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLoadingEquipmentIdentifierId(): ?string
     {
         return $this->loadingEquipmentIdentifierId;
     }
-
-    public function setLoadingEquipmentIdentifierId(string $loadingEquipmentIdentifierId): self
+    /**
+     * 
+     *
+     * @param string|null $loadingEquipmentIdentifierId
+     *
+     * @return self
+     */
+    public function setLoadingEquipmentIdentifierId(?string $loadingEquipmentIdentifierId): self
     {
         $this->initialized['loadingEquipmentIdentifierId'] = true;
         $this->loadingEquipmentIdentifierId = $loadingEquipmentIdentifierId;
-
         return $this;
     }
 }

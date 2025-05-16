@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class SalesBillOfMaterialArticleItemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class SalesBillOfMaterialArticleItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SalesBillOfMaterialArticleItem::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SalesBillOfMaterialArticleItem::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,67 +33,89 @@ class SalesBillOfMaterialArticleItemNormalizer implements DenormalizerAwareInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SalesBillOfMaterialArticleItem;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\SalesBillOfMaterialArticleItem();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('createdDate', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
         }
-        if (\array_key_exists('lastModifiedDate', $data)) {
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+            $object->setCreatedDate(null);
+        }
+        if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
         }
-        if (\array_key_exists('version', $data)) {
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+            $object->setLastModifiedDate(null);
+        }
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
         }
-        if (\array_key_exists('articleId', $data)) {
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
+        }
+        if (\array_key_exists('articleId', $data) && $data['articleId'] !== null) {
             $object->setArticleId($data['articleId']);
             unset($data['articleId']);
         }
-        if (\array_key_exists('articleNumber', $data)) {
+        elseif (\array_key_exists('articleId', $data) && $data['articleId'] === null) {
+            $object->setArticleId(null);
+        }
+        if (\array_key_exists('articleNumber', $data) && $data['articleNumber'] !== null) {
             $object->setArticleNumber($data['articleNumber']);
             unset($data['articleNumber']);
         }
-        if (\array_key_exists('positionNumber', $data)) {
+        elseif (\array_key_exists('articleNumber', $data) && $data['articleNumber'] === null) {
+            $object->setArticleNumber(null);
+        }
+        if (\array_key_exists('positionNumber', $data) && $data['positionNumber'] !== null) {
             $object->setPositionNumber($data['positionNumber']);
             unset($data['positionNumber']);
         }
-        if (\array_key_exists('quantity', $data)) {
+        elseif (\array_key_exists('positionNumber', $data) && $data['positionNumber'] === null) {
+            $object->setPositionNumber(null);
+        }
+        if (\array_key_exists('quantity', $data) && $data['quantity'] !== null) {
             $object->setQuantity($data['quantity']);
             unset($data['quantity']);
+        }
+        elseif (\array_key_exists('quantity', $data) && $data['quantity'] === null) {
+            $object->setQuantity(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('articleId') && $data->getArticleId() !== null) {
+        if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
             $dataArray['articleId'] = $data->getArticleId();
         }
-        if ($data->isInitialized('articleNumber') && $data->getArticleNumber() !== null) {
+        if ($data->isInitialized('articleNumber') && null !== $data->getArticleNumber()) {
             $dataArray['articleNumber'] = $data->getArticleNumber();
         }
-        if ($data->isInitialized('positionNumber') && $data->getPositionNumber() !== null) {
+        if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
             $dataArray['positionNumber'] = $data->getPositionNumber();
         }
-        if ($data->isInitialized('quantity') && $data->getQuantity() !== null) {
+        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
             $dataArray['quantity'] = $data->getQuantity();
         }
         foreach ($data as $key => $value) {
@@ -105,10 +123,8 @@ class SalesBillOfMaterialArticleItemNormalizer implements DenormalizerAwareInter
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SalesBillOfMaterialArticleItem::class => false];

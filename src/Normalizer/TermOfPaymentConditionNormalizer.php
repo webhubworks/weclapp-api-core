@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class TermOfPaymentConditionNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class TermOfPaymentConditionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\TermOfPaymentCondition::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\TermOfPaymentCondition::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,60 +33,79 @@ class TermOfPaymentConditionNormalizer implements DenormalizerAwareInterface, De
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\TermOfPaymentCondition;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\TermOfPaymentCondition();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('createdDate', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
         }
-        if (\array_key_exists('lastModifiedDate', $data)) {
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+            $object->setCreatedDate(null);
+        }
+        if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
         }
-        if (\array_key_exists('version', $data)) {
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+            $object->setLastModifiedDate(null);
+        }
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
         }
-        if (\array_key_exists('discountPercentage', $data)) {
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
+        }
+        if (\array_key_exists('discountPercentage', $data) && $data['discountPercentage'] !== null) {
             $object->setDiscountPercentage($data['discountPercentage']);
             unset($data['discountPercentage']);
         }
-        if (\array_key_exists('name', $data)) {
+        elseif (\array_key_exists('discountPercentage', $data) && $data['discountPercentage'] === null) {
+            $object->setDiscountPercentage(null);
+        }
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('numberOfDays', $data)) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('numberOfDays', $data) && $data['numberOfDays'] !== null) {
             $object->setNumberOfDays($data['numberOfDays']);
             unset($data['numberOfDays']);
+        }
+        elseif (\array_key_exists('numberOfDays', $data) && $data['numberOfDays'] === null) {
+            $object->setNumberOfDays(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('discountPercentage') && $data->getDiscountPercentage() !== null) {
+        if ($data->isInitialized('discountPercentage') && null !== $data->getDiscountPercentage()) {
             $dataArray['discountPercentage'] = $data->getDiscountPercentage();
         }
-        if ($data->isInitialized('name') && $data->getName() !== null) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('numberOfDays') && $data->getNumberOfDays() !== null) {
+        if ($data->isInitialized('numberOfDays') && null !== $data->getNumberOfDays()) {
             $dataArray['numberOfDays'] = $data->getNumberOfDays();
         }
         foreach ($data as $key => $value) {
@@ -98,10 +113,8 @@ class TermOfPaymentConditionNormalizer implements DenormalizerAwareInterface, De
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\TermOfPaymentCondition::class => false];

@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class PartyBankAccountNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class PartyBankAccountNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\PartyBankAccount::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\PartyBankAccount::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,84 +33,112 @@ class PartyBankAccountNormalizer implements DenormalizerAwareInterface, Denormal
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\PartyBankAccount;
+        $object = new \Webhubworks\WeclappApiCore\Model\PartyBankAccount();
         if (\array_key_exists('primary', $data) && \is_int($data['primary'])) {
             $data['primary'] = (bool) $data['primary'];
         }
-        if ($data === null || \is_array($data) === false) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('createdDate', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
         }
-        if (\array_key_exists('lastModifiedDate', $data)) {
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+            $object->setCreatedDate(null);
+        }
+        if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
         }
-        if (\array_key_exists('version', $data)) {
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+            $object->setLastModifiedDate(null);
+        }
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
         }
-        if (\array_key_exists('accountHolder', $data)) {
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
+        }
+        if (\array_key_exists('accountHolder', $data) && $data['accountHolder'] !== null) {
             $object->setAccountHolder($data['accountHolder']);
             unset($data['accountHolder']);
         }
-        if (\array_key_exists('accountNumber', $data)) {
+        elseif (\array_key_exists('accountHolder', $data) && $data['accountHolder'] === null) {
+            $object->setAccountHolder(null);
+        }
+        if (\array_key_exists('accountNumber', $data) && $data['accountNumber'] !== null) {
             $object->setAccountNumber($data['accountNumber']);
             unset($data['accountNumber']);
         }
-        if (\array_key_exists('bankCode', $data)) {
+        elseif (\array_key_exists('accountNumber', $data) && $data['accountNumber'] === null) {
+            $object->setAccountNumber(null);
+        }
+        if (\array_key_exists('bankCode', $data) && $data['bankCode'] !== null) {
             $object->setBankCode($data['bankCode']);
             unset($data['bankCode']);
         }
-        if (\array_key_exists('creditInstitute', $data)) {
+        elseif (\array_key_exists('bankCode', $data) && $data['bankCode'] === null) {
+            $object->setBankCode(null);
+        }
+        if (\array_key_exists('creditInstitute', $data) && $data['creditInstitute'] !== null) {
             $object->setCreditInstitute($data['creditInstitute']);
             unset($data['creditInstitute']);
         }
-        if (\array_key_exists('partyId', $data)) {
+        elseif (\array_key_exists('creditInstitute', $data) && $data['creditInstitute'] === null) {
+            $object->setCreditInstitute(null);
+        }
+        if (\array_key_exists('partyId', $data) && $data['partyId'] !== null) {
             $object->setPartyId($data['partyId']);
             unset($data['partyId']);
         }
-        if (\array_key_exists('primary', $data)) {
+        elseif (\array_key_exists('partyId', $data) && $data['partyId'] === null) {
+            $object->setPartyId(null);
+        }
+        if (\array_key_exists('primary', $data) && $data['primary'] !== null) {
             $object->setPrimary($data['primary']);
             unset($data['primary']);
+        }
+        elseif (\array_key_exists('primary', $data) && $data['primary'] === null) {
+            $object->setPrimary(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('accountHolder') && $data->getAccountHolder() !== null) {
+        if ($data->isInitialized('accountHolder') && null !== $data->getAccountHolder()) {
             $dataArray['accountHolder'] = $data->getAccountHolder();
         }
-        if ($data->isInitialized('accountNumber') && $data->getAccountNumber() !== null) {
+        if ($data->isInitialized('accountNumber') && null !== $data->getAccountNumber()) {
             $dataArray['accountNumber'] = $data->getAccountNumber();
         }
-        if ($data->isInitialized('bankCode') && $data->getBankCode() !== null) {
+        if ($data->isInitialized('bankCode') && null !== $data->getBankCode()) {
             $dataArray['bankCode'] = $data->getBankCode();
         }
-        if ($data->isInitialized('creditInstitute') && $data->getCreditInstitute() !== null) {
+        if ($data->isInitialized('creditInstitute') && null !== $data->getCreditInstitute()) {
             $dataArray['creditInstitute'] = $data->getCreditInstitute();
         }
-        if ($data->isInitialized('partyId') && $data->getPartyId() !== null) {
+        if ($data->isInitialized('partyId') && null !== $data->getPartyId()) {
             $dataArray['partyId'] = $data->getPartyId();
         }
-        if ($data->isInitialized('primary') && $data->getPrimary() !== null) {
+        if ($data->isInitialized('primary') && null !== $data->getPrimary()) {
             $dataArray['primary'] = $data->getPrimary();
         }
         foreach ($data as $key => $value) {
@@ -122,10 +146,8 @@ class PartyBankAccountNormalizer implements DenormalizerAwareInterface, Denormal
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\PartyBankAccount::class => false];

@@ -8,185 +8,266 @@ class BatchNumber extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var list<CustomAttribute>
+     * 
+     *
+     * @var list<CustomAttribute>|null
      */
     protected $customAttributes;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $articleId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $articleNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $batchNumber;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $expirationDate;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
     /**
-     * @return list<CustomAttribute>
+     * 
+     *
+     * @return list<CustomAttribute>|null
      */
-    public function getCustomAttributes(): array
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
-
     /**
-     * @param  list<CustomAttribute>  $customAttributes
+     * 
+     *
+     * @param list<CustomAttribute>|null $customAttributes
+     *
+     * @return self
      */
-    public function setCustomAttributes(array $customAttributes): self
+    public function setCustomAttributes(?array $customAttributes): self
     {
         $this->initialized['customAttributes'] = true;
         $this->customAttributes = $customAttributes;
-
         return $this;
     }
-
-    public function getArticleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getArticleId(): ?string
     {
         return $this->articleId;
     }
-
-    public function setArticleId(string $articleId): self
+    /**
+     * 
+     *
+     * @param string|null $articleId
+     *
+     * @return self
+     */
+    public function setArticleId(?string $articleId): self
     {
         $this->initialized['articleId'] = true;
         $this->articleId = $articleId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getArticleNumber(): string
+    public function getArticleNumber(): ?string
     {
         return $this->articleNumber;
     }
-
     /**
+     * 
+     *
+     * @param string|null $articleNumber
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setArticleNumber(string $articleNumber): self
+    public function setArticleNumber(?string $articleNumber): self
     {
         $this->initialized['articleNumber'] = true;
         $this->articleNumber = $articleNumber;
-
         return $this;
     }
-
-    public function getBatchNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getBatchNumber(): ?string
     {
         return $this->batchNumber;
     }
-
-    public function setBatchNumber(string $batchNumber): self
+    /**
+     * 
+     *
+     * @param string|null $batchNumber
+     *
+     * @return self
+     */
+    public function setBatchNumber(?string $batchNumber): self
     {
         $this->initialized['batchNumber'] = true;
         $this->batchNumber = $batchNumber;
-
         return $this;
     }
-
-    public function getExpirationDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getExpirationDate(): ?int
     {
         return $this->expirationDate;
     }
-
-    public function setExpirationDate(int $expirationDate): self
+    /**
+     * 
+     *
+     * @param int|null $expirationDate
+     *
+     * @return self
+     */
+    public function setExpirationDate(?int $expirationDate): self
     {
         $this->initialized['expirationDate'] = true;
         $this->expirationDate = $expirationDate;
-
         return $this;
     }
 }

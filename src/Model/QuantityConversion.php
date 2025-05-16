@@ -8,171 +8,260 @@ class QuantityConversion extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $conversionQuantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $createdUserId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $lastEditedUserId;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $oppositeDirection;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $unitId;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getConversionQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getConversionQuantity(): ?string
     {
         return $this->conversionQuantity;
     }
-
-    public function setConversionQuantity(string $conversionQuantity): self
+    /**
+     * 
+     *
+     * @param string|null $conversionQuantity
+     *
+     * @return self
+     */
+    public function setConversionQuantity(?string $conversionQuantity): self
     {
         $this->initialized['conversionQuantity'] = true;
         $this->conversionQuantity = $conversionQuantity;
-
         return $this;
     }
-
-    public function getCreatedUserId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCreatedUserId(): ?string
     {
         return $this->createdUserId;
     }
-
-    public function setCreatedUserId(string $createdUserId): self
+    /**
+     * 
+     *
+     * @param string|null $createdUserId
+     *
+     * @return self
+     */
+    public function setCreatedUserId(?string $createdUserId): self
     {
         $this->initialized['createdUserId'] = true;
         $this->createdUserId = $createdUserId;
-
         return $this;
     }
-
-    public function getLastEditedUserId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLastEditedUserId(): ?string
     {
         return $this->lastEditedUserId;
     }
-
-    public function setLastEditedUserId(string $lastEditedUserId): self
+    /**
+     * 
+     *
+     * @param string|null $lastEditedUserId
+     *
+     * @return self
+     */
+    public function setLastEditedUserId(?string $lastEditedUserId): self
     {
         $this->initialized['lastEditedUserId'] = true;
         $this->lastEditedUserId = $lastEditedUserId;
-
         return $this;
     }
-
-    public function getOppositeDirection(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getOppositeDirection(): ?bool
     {
         return $this->oppositeDirection;
     }
-
-    public function setOppositeDirection(bool $oppositeDirection): self
+    /**
+     * 
+     *
+     * @param bool|null $oppositeDirection
+     *
+     * @return self
+     */
+    public function setOppositeDirection(?bool $oppositeDirection): self
     {
         $this->initialized['oppositeDirection'] = true;
         $this->oppositeDirection = $oppositeDirection;
-
         return $this;
     }
-
-    public function getUnitId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getUnitId(): ?string
     {
         return $this->unitId;
     }
-
-    public function setUnitId(string $unitId): self
+    /**
+     * 
+     *
+     * @param string|null $unitId
+     *
+     * @return self
+     */
+    public function setUnitId(?string $unitId): self
     {
         $this->initialized['unitId'] = true;
         $this->unitId = $unitId;
-
         return $this;
     }
 }

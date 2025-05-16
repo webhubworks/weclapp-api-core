@@ -8,365 +8,546 @@ class BaseArticle extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var list<CustomAttribute>
+     * 
+     *
+     * @var list<CustomAttribute>|null
      */
     protected $customAttributes;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $articleNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $ean;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $fixedPurchaseQuantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $internalNote;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $manufacturerPartNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $matchCode;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $minimumPurchaseQuantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $name;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $shortDescription1;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $shortDescription2;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $taxRateType;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $unitId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $unitName;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
     /**
-     * @return list<CustomAttribute>
+     * 
+     *
+     * @return list<CustomAttribute>|null
      */
-    public function getCustomAttributes(): array
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
-
     /**
-     * @param  list<CustomAttribute>  $customAttributes
+     * 
+     *
+     * @param list<CustomAttribute>|null $customAttributes
+     *
+     * @return self
      */
-    public function setCustomAttributes(array $customAttributes): self
+    public function setCustomAttributes(?array $customAttributes): self
     {
         $this->initialized['customAttributes'] = true;
         $this->customAttributes = $customAttributes;
-
         return $this;
     }
-
-    public function getArticleNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getArticleNumber(): ?string
     {
         return $this->articleNumber;
     }
-
-    public function setArticleNumber(string $articleNumber): self
+    /**
+     * 
+     *
+     * @param string|null $articleNumber
+     *
+     * @return self
+     */
+    public function setArticleNumber(?string $articleNumber): self
     {
         $this->initialized['articleNumber'] = true;
         $this->articleNumber = $articleNumber;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
-    public function getEan(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getEan(): ?string
     {
         return $this->ean;
     }
-
-    public function setEan(string $ean): self
+    /**
+     * 
+     *
+     * @param string|null $ean
+     *
+     * @return self
+     */
+    public function setEan(?string $ean): self
     {
         $this->initialized['ean'] = true;
         $this->ean = $ean;
-
         return $this;
     }
-
-    public function getFixedPurchaseQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getFixedPurchaseQuantity(): ?string
     {
         return $this->fixedPurchaseQuantity;
     }
-
-    public function setFixedPurchaseQuantity(string $fixedPurchaseQuantity): self
+    /**
+     * 
+     *
+     * @param string|null $fixedPurchaseQuantity
+     *
+     * @return self
+     */
+    public function setFixedPurchaseQuantity(?string $fixedPurchaseQuantity): self
     {
         $this->initialized['fixedPurchaseQuantity'] = true;
         $this->fixedPurchaseQuantity = $fixedPurchaseQuantity;
-
         return $this;
     }
-
-    public function getInternalNote(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getInternalNote(): ?string
     {
         return $this->internalNote;
     }
-
-    public function setInternalNote(string $internalNote): self
+    /**
+     * 
+     *
+     * @param string|null $internalNote
+     *
+     * @return self
+     */
+    public function setInternalNote(?string $internalNote): self
     {
         $this->initialized['internalNote'] = true;
         $this->internalNote = $internalNote;
-
         return $this;
     }
-
-    public function getManufacturerPartNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getManufacturerPartNumber(): ?string
     {
         return $this->manufacturerPartNumber;
     }
-
-    public function setManufacturerPartNumber(string $manufacturerPartNumber): self
+    /**
+     * 
+     *
+     * @param string|null $manufacturerPartNumber
+     *
+     * @return self
+     */
+    public function setManufacturerPartNumber(?string $manufacturerPartNumber): self
     {
         $this->initialized['manufacturerPartNumber'] = true;
         $this->manufacturerPartNumber = $manufacturerPartNumber;
-
         return $this;
     }
-
-    public function getMatchCode(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMatchCode(): ?string
     {
         return $this->matchCode;
     }
-
-    public function setMatchCode(string $matchCode): self
+    /**
+     * 
+     *
+     * @param string|null $matchCode
+     *
+     * @return self
+     */
+    public function setMatchCode(?string $matchCode): self
     {
         $this->initialized['matchCode'] = true;
         $this->matchCode = $matchCode;
-
         return $this;
     }
-
-    public function getMinimumPurchaseQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMinimumPurchaseQuantity(): ?string
     {
         return $this->minimumPurchaseQuantity;
     }
-
-    public function setMinimumPurchaseQuantity(string $minimumPurchaseQuantity): self
+    /**
+     * 
+     *
+     * @param string|null $minimumPurchaseQuantity
+     *
+     * @return self
+     */
+    public function setMinimumPurchaseQuantity(?string $minimumPurchaseQuantity): self
     {
         $this->initialized['minimumPurchaseQuantity'] = true;
         $this->minimumPurchaseQuantity = $minimumPurchaseQuantity;
-
         return $this;
     }
-
-    public function getName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    /**
+     * 
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
         return $this;
     }
-
-    public function getShortDescription1(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getShortDescription1(): ?string
     {
         return $this->shortDescription1;
     }
-
-    public function setShortDescription1(string $shortDescription1): self
+    /**
+     * 
+     *
+     * @param string|null $shortDescription1
+     *
+     * @return self
+     */
+    public function setShortDescription1(?string $shortDescription1): self
     {
         $this->initialized['shortDescription1'] = true;
         $this->shortDescription1 = $shortDescription1;
-
         return $this;
     }
-
-    public function getShortDescription2(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getShortDescription2(): ?string
     {
         return $this->shortDescription2;
     }
-
-    public function setShortDescription2(string $shortDescription2): self
+    /**
+     * 
+     *
+     * @param string|null $shortDescription2
+     *
+     * @return self
+     */
+    public function setShortDescription2(?string $shortDescription2): self
     {
         $this->initialized['shortDescription2'] = true;
         $this->shortDescription2 = $shortDescription2;
-
         return $this;
     }
-
-    public function getTaxRateType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTaxRateType(): ?string
     {
         return $this->taxRateType;
     }
-
-    public function setTaxRateType(string $taxRateType): self
+    /**
+     * 
+     *
+     * @param string|null $taxRateType
+     *
+     * @return self
+     */
+    public function setTaxRateType(?string $taxRateType): self
     {
         $this->initialized['taxRateType'] = true;
         $this->taxRateType = $taxRateType;
-
         return $this;
     }
-
-    public function getUnitId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getUnitId(): ?string
     {
         return $this->unitId;
     }
-
-    public function setUnitId(string $unitId): self
+    /**
+     * 
+     *
+     * @param string|null $unitId
+     *
+     * @return self
+     */
+    public function setUnitId(?string $unitId): self
     {
         $this->initialized['unitId'] = true;
         $this->unitId = $unitId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getUnitName(): string
+    public function getUnitName(): ?string
     {
         return $this->unitName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $unitName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setUnitName(string $unitName): self
+    public function setUnitName(?string $unitName): self
     {
         $this->initialized['unitName'] = true;
         $this->unitName = $unitName;
-
         return $this;
     }
 }

@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class BaseShipmentNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class BaseShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\BaseShipment::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\BaseShipment::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,33 +33,45 @@ class BaseShipmentNormalizer implements DenormalizerAwareInterface, Denormalizer
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\BaseShipment;
+        $object = new \Webhubworks\WeclappApiCore\Model\BaseShipment();
         if (\array_key_exists('disableEmailTemplate', $data) && \is_int($data['disableEmailTemplate'])) {
             $data['disableEmailTemplate'] = (bool) $data['disableEmailTemplate'];
         }
         if (\array_key_exists('sentToRecipient', $data) && \is_int($data['sentToRecipient'])) {
             $data['sentToRecipient'] = (bool) $data['sentToRecipient'];
         }
-        if ($data === null || \is_array($data) === false) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('createdDate', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
         }
-        if (\array_key_exists('lastModifiedDate', $data)) {
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+            $object->setCreatedDate(null);
+        }
+        if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
         }
-        if (\array_key_exists('version', $data)) {
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+            $object->setLastModifiedDate(null);
+        }
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
         }
-        if (\array_key_exists('customAttributes', $data)) {
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
+        }
+        if (\array_key_exists('customAttributes', $data) && $data['customAttributes'] !== null) {
             $values = [];
             foreach ($data['customAttributes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Webhubworks\WeclappApiCore\Model\CustomAttribute::class, 'json', $context);
@@ -71,39 +79,66 @@ class BaseShipmentNormalizer implements DenormalizerAwareInterface, Denormalizer
             $object->setCustomAttributes($values);
             unset($data['customAttributes']);
         }
-        if (\array_key_exists('commercialLanguage', $data)) {
+        elseif (\array_key_exists('customAttributes', $data) && $data['customAttributes'] === null) {
+            $object->setCustomAttributes(null);
+        }
+        if (\array_key_exists('commercialLanguage', $data) && $data['commercialLanguage'] !== null) {
             $object->setCommercialLanguage($data['commercialLanguage']);
             unset($data['commercialLanguage']);
         }
-        if (\array_key_exists('creatorId', $data)) {
+        elseif (\array_key_exists('commercialLanguage', $data) && $data['commercialLanguage'] === null) {
+            $object->setCommercialLanguage(null);
+        }
+        if (\array_key_exists('creatorId', $data) && $data['creatorId'] !== null) {
             $object->setCreatorId($data['creatorId']);
             unset($data['creatorId']);
         }
-        if (\array_key_exists('description', $data)) {
+        elseif (\array_key_exists('creatorId', $data) && $data['creatorId'] === null) {
+            $object->setCreatorId(null);
+        }
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
             unset($data['description']);
         }
-        if (\array_key_exists('disableEmailTemplate', $data)) {
+        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
+        }
+        if (\array_key_exists('disableEmailTemplate', $data) && $data['disableEmailTemplate'] !== null) {
             $object->setDisableEmailTemplate($data['disableEmailTemplate']);
             unset($data['disableEmailTemplate']);
         }
-        if (\array_key_exists('recordComment', $data)) {
+        elseif (\array_key_exists('disableEmailTemplate', $data) && $data['disableEmailTemplate'] === null) {
+            $object->setDisableEmailTemplate(null);
+        }
+        if (\array_key_exists('recordComment', $data) && $data['recordComment'] !== null) {
             $object->setRecordComment($data['recordComment']);
             unset($data['recordComment']);
         }
-        if (\array_key_exists('recordFreeText', $data)) {
+        elseif (\array_key_exists('recordComment', $data) && $data['recordComment'] === null) {
+            $object->setRecordComment(null);
+        }
+        if (\array_key_exists('recordFreeText', $data) && $data['recordFreeText'] !== null) {
             $object->setRecordFreeText($data['recordFreeText']);
             unset($data['recordFreeText']);
         }
-        if (\array_key_exists('recordOpening', $data)) {
+        elseif (\array_key_exists('recordFreeText', $data) && $data['recordFreeText'] === null) {
+            $object->setRecordFreeText(null);
+        }
+        if (\array_key_exists('recordOpening', $data) && $data['recordOpening'] !== null) {
             $object->setRecordOpening($data['recordOpening']);
             unset($data['recordOpening']);
         }
-        if (\array_key_exists('sentToRecipient', $data)) {
+        elseif (\array_key_exists('recordOpening', $data) && $data['recordOpening'] === null) {
+            $object->setRecordOpening(null);
+        }
+        if (\array_key_exists('sentToRecipient', $data) && $data['sentToRecipient'] !== null) {
             $object->setSentToRecipient($data['sentToRecipient']);
             unset($data['sentToRecipient']);
         }
-        if (\array_key_exists('tags', $data)) {
+        elseif (\array_key_exists('sentToRecipient', $data) && $data['sentToRecipient'] === null) {
+            $object->setSentToRecipient(null);
+        }
+        if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
             $values_1 = [];
             foreach ($data['tags'] as $value_1) {
                 $values_1[] = $value_1;
@@ -111,23 +146,38 @@ class BaseShipmentNormalizer implements DenormalizerAwareInterface, Denormalizer
             $object->setTags($values_1);
             unset($data['tags']);
         }
-        if (\array_key_exists('invoiceAddress', $data)) {
+        elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
+            $object->setTags(null);
+        }
+        if (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] !== null) {
             $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], \Webhubworks\WeclappApiCore\Model\RecordAddress::class, 'json', $context));
             unset($data['invoiceAddress']);
         }
-        if (\array_key_exists('recipientAddress', $data)) {
+        elseif (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] === null) {
+            $object->setInvoiceAddress(null);
+        }
+        if (\array_key_exists('recipientAddress', $data) && $data['recipientAddress'] !== null) {
             $object->setRecipientAddress($this->denormalizer->denormalize($data['recipientAddress'], \Webhubworks\WeclappApiCore\Model\RecordAddress::class, 'json', $context));
             unset($data['recipientAddress']);
         }
-        if (\array_key_exists('salesOrderId', $data)) {
+        elseif (\array_key_exists('recipientAddress', $data) && $data['recipientAddress'] === null) {
+            $object->setRecipientAddress(null);
+        }
+        if (\array_key_exists('salesOrderId', $data) && $data['salesOrderId'] !== null) {
             $object->setSalesOrderId($data['salesOrderId']);
             unset($data['salesOrderId']);
         }
-        if (\array_key_exists('salesOrderNumber', $data)) {
+        elseif (\array_key_exists('salesOrderId', $data) && $data['salesOrderId'] === null) {
+            $object->setSalesOrderId(null);
+        }
+        if (\array_key_exists('salesOrderNumber', $data) && $data['salesOrderNumber'] !== null) {
             $object->setSalesOrderNumber($data['salesOrderNumber']);
             unset($data['salesOrderNumber']);
         }
-        if (\array_key_exists('salesOrders', $data)) {
+        elseif (\array_key_exists('salesOrderNumber', $data) && $data['salesOrderNumber'] === null) {
+            $object->setSalesOrderNumber(null);
+        }
+        if (\array_key_exists('salesOrders', $data) && $data['salesOrders'] !== null) {
             $values_2 = [];
             foreach ($data['salesOrders'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Webhubworks\WeclappApiCore\Model\OnlyId::class, 'json', $context);
@@ -135,11 +185,17 @@ class BaseShipmentNormalizer implements DenormalizerAwareInterface, Denormalizer
             $object->setSalesOrders($values_2);
             unset($data['salesOrders']);
         }
-        if (\array_key_exists('status', $data)) {
+        elseif (\array_key_exists('salesOrders', $data) && $data['salesOrders'] === null) {
+            $object->setSalesOrders(null);
+        }
+        if (\array_key_exists('status', $data) && $data['status'] !== null) {
             $object->setStatus($data['status']);
             unset($data['status']);
         }
-        if (\array_key_exists('statusHistory', $data)) {
+        elseif (\array_key_exists('status', $data) && $data['status'] === null) {
+            $object->setStatus(null);
+        }
+        if (\array_key_exists('statusHistory', $data) && $data['statusHistory'] !== null) {
             $values_3 = [];
             foreach ($data['statusHistory'] as $value_3) {
                 $values_3[] = $this->denormalizer->denormalize($value_3, \Webhubworks\WeclappApiCore\Model\ShipmentStatus::class, 'json', $context);
@@ -147,82 +203,83 @@ class BaseShipmentNormalizer implements DenormalizerAwareInterface, Denormalizer
             $object->setStatusHistory($values_3);
             unset($data['statusHistory']);
         }
+        elseif (\array_key_exists('statusHistory', $data) && $data['statusHistory'] === null) {
+            $object->setStatusHistory(null);
+        }
         foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_4;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
+        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('commercialLanguage') && $data->getCommercialLanguage() !== null) {
+        if ($data->isInitialized('commercialLanguage') && null !== $data->getCommercialLanguage()) {
             $dataArray['commercialLanguage'] = $data->getCommercialLanguage();
         }
-        if ($data->isInitialized('creatorId') && $data->getCreatorId() !== null) {
+        if ($data->isInitialized('creatorId') && null !== $data->getCreatorId()) {
             $dataArray['creatorId'] = $data->getCreatorId();
         }
-        if ($data->isInitialized('description') && $data->getDescription() !== null) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('disableEmailTemplate') && $data->getDisableEmailTemplate() !== null) {
+        if ($data->isInitialized('disableEmailTemplate') && null !== $data->getDisableEmailTemplate()) {
             $dataArray['disableEmailTemplate'] = $data->getDisableEmailTemplate();
         }
-        if ($data->isInitialized('recordComment') && $data->getRecordComment() !== null) {
+        if ($data->isInitialized('recordComment') && null !== $data->getRecordComment()) {
             $dataArray['recordComment'] = $data->getRecordComment();
         }
-        if ($data->isInitialized('recordFreeText') && $data->getRecordFreeText() !== null) {
+        if ($data->isInitialized('recordFreeText') && null !== $data->getRecordFreeText()) {
             $dataArray['recordFreeText'] = $data->getRecordFreeText();
         }
-        if ($data->isInitialized('recordOpening') && $data->getRecordOpening() !== null) {
+        if ($data->isInitialized('recordOpening') && null !== $data->getRecordOpening()) {
             $dataArray['recordOpening'] = $data->getRecordOpening();
         }
-        if ($data->isInitialized('sentToRecipient') && $data->getSentToRecipient() !== null) {
+        if ($data->isInitialized('sentToRecipient') && null !== $data->getSentToRecipient()) {
             $dataArray['sentToRecipient'] = $data->getSentToRecipient();
         }
-        if ($data->isInitialized('tags') && $data->getTags() !== null) {
+        if ($data->isInitialized('tags') && null !== $data->getTags()) {
             $values_1 = [];
             foreach ($data->getTags() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['tags'] = $values_1;
         }
-        if ($data->isInitialized('invoiceAddress') && $data->getInvoiceAddress() !== null) {
+        if ($data->isInitialized('invoiceAddress') && null !== $data->getInvoiceAddress()) {
             $dataArray['invoiceAddress'] = $this->normalizer->normalize($data->getInvoiceAddress(), 'json', $context);
         }
-        if ($data->isInitialized('recipientAddress') && $data->getRecipientAddress() !== null) {
+        if ($data->isInitialized('recipientAddress') && null !== $data->getRecipientAddress()) {
             $dataArray['recipientAddress'] = $this->normalizer->normalize($data->getRecipientAddress(), 'json', $context);
         }
-        if ($data->isInitialized('salesOrderId') && $data->getSalesOrderId() !== null) {
+        if ($data->isInitialized('salesOrderId') && null !== $data->getSalesOrderId()) {
             $dataArray['salesOrderId'] = $data->getSalesOrderId();
         }
-        if ($data->isInitialized('salesOrderNumber') && $data->getSalesOrderNumber() !== null) {
+        if ($data->isInitialized('salesOrderNumber') && null !== $data->getSalesOrderNumber()) {
             $dataArray['salesOrderNumber'] = $data->getSalesOrderNumber();
         }
-        if ($data->isInitialized('salesOrders') && $data->getSalesOrders() !== null) {
+        if ($data->isInitialized('salesOrders') && null !== $data->getSalesOrders()) {
             $values_2 = [];
             foreach ($data->getSalesOrders() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['salesOrders'] = $values_2;
         }
-        if ($data->isInitialized('status') && $data->getStatus() !== null) {
+        if ($data->isInitialized('status') && null !== $data->getStatus()) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('statusHistory') && $data->getStatusHistory() !== null) {
+        if ($data->isInitialized('statusHistory') && null !== $data->getStatusHistory()) {
             $values_3 = [];
             foreach ($data->getStatusHistory() as $value_3) {
                 $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
@@ -234,10 +291,8 @@ class BaseShipmentNormalizer implements DenormalizerAwareInterface, Denormalizer
                 $dataArray[$key] = $value_4;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\BaseShipment::class => false];

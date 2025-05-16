@@ -8,243 +8,372 @@ class SepaDirectDebitMandate extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $bankAccountId;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $cancellationDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $firstDebit;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $mandateReference;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $partyBankAccountId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $runtime;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $signatureDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $type;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getBankAccountId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getBankAccountId(): ?string
     {
         return $this->bankAccountId;
     }
-
-    public function setBankAccountId(string $bankAccountId): self
+    /**
+     * 
+     *
+     * @param string|null $bankAccountId
+     *
+     * @return self
+     */
+    public function setBankAccountId(?string $bankAccountId): self
     {
         $this->initialized['bankAccountId'] = true;
         $this->bankAccountId = $bankAccountId;
-
         return $this;
     }
-
-    public function getCancellationDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCancellationDate(): ?int
     {
         return $this->cancellationDate;
     }
-
-    public function setCancellationDate(int $cancellationDate): self
+    /**
+     * 
+     *
+     * @param int|null $cancellationDate
+     *
+     * @return self
+     */
+    public function setCancellationDate(?int $cancellationDate): self
     {
         $this->initialized['cancellationDate'] = true;
         $this->cancellationDate = $cancellationDate;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
-    public function getFirstDebit(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getFirstDebit(): ?bool
     {
         return $this->firstDebit;
     }
-
-    public function setFirstDebit(bool $firstDebit): self
+    /**
+     * 
+     *
+     * @param bool|null $firstDebit
+     *
+     * @return self
+     */
+    public function setFirstDebit(?bool $firstDebit): self
     {
         $this->initialized['firstDebit'] = true;
         $this->firstDebit = $firstDebit;
-
         return $this;
     }
-
-    public function getMandateReference(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMandateReference(): ?string
     {
         return $this->mandateReference;
     }
-
-    public function setMandateReference(string $mandateReference): self
+    /**
+     * 
+     *
+     * @param string|null $mandateReference
+     *
+     * @return self
+     */
+    public function setMandateReference(?string $mandateReference): self
     {
         $this->initialized['mandateReference'] = true;
         $this->mandateReference = $mandateReference;
-
         return $this;
     }
-
-    public function getPartyBankAccountId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPartyBankAccountId(): ?string
     {
         return $this->partyBankAccountId;
     }
-
-    public function setPartyBankAccountId(string $partyBankAccountId): self
+    /**
+     * 
+     *
+     * @param string|null $partyBankAccountId
+     *
+     * @return self
+     */
+    public function setPartyBankAccountId(?string $partyBankAccountId): self
     {
         $this->initialized['partyBankAccountId'] = true;
         $this->partyBankAccountId = $partyBankAccountId;
-
         return $this;
     }
-
-    public function getRuntime(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRuntime(): ?string
     {
         return $this->runtime;
     }
-
-    public function setRuntime(string $runtime): self
+    /**
+     * 
+     *
+     * @param string|null $runtime
+     *
+     * @return self
+     */
+    public function setRuntime(?string $runtime): self
     {
         $this->initialized['runtime'] = true;
         $this->runtime = $runtime;
-
         return $this;
     }
-
-    public function getSignatureDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getSignatureDate(): ?int
     {
         return $this->signatureDate;
     }
-
-    public function setSignatureDate(int $signatureDate): self
+    /**
+     * 
+     *
+     * @param int|null $signatureDate
+     *
+     * @return self
+     */
+    public function setSignatureDate(?int $signatureDate): self
     {
         $this->initialized['signatureDate'] = true;
         $this->signatureDate = $signatureDate;
-
         return $this;
     }
-
-    public function getType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getType(): ?string
     {
         return $this->type;
     }
-
-    public function setType(string $type): self
+    /**
+     * 
+     *
+     * @param string|null $type
+     *
+     * @return self
+     */
+    public function setType(?string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
-
         return $this;
     }
 }

@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class WarehouseStockMovementBookToLoadingEquipmentPlacePostBodyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class WarehouseStockMovementBookToLoadingEquipmentPlacePostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookToLoadingEquipmentPlacePostBody::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookToLoadingEquipmentPlacePostBody::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,11 +33,11 @@ class WarehouseStockMovementBookToLoadingEquipmentPlacePostBodyNormalizer implem
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookToLoadingEquipmentPlacePostBody;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookToLoadingEquipmentPlacePostBody();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('customAttributes', $data)) {
+        if (\array_key_exists('customAttributes', $data) && $data['customAttributes'] !== null) {
             $values = [];
             foreach ($data['customAttributes'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookToLoadingEquipmentPlacePostBodyCustomAttributesItem::class, 'json', $context);
@@ -49,39 +45,55 @@ class WarehouseStockMovementBookToLoadingEquipmentPlacePostBodyNormalizer implem
             $object->setCustomAttributes($values);
             unset($data['customAttributes']);
         }
-        if (\array_key_exists('loadingEquipmentArticleId', $data)) {
+        elseif (\array_key_exists('customAttributes', $data) && $data['customAttributes'] === null) {
+            $object->setCustomAttributes(null);
+        }
+        if (\array_key_exists('loadingEquipmentArticleId', $data) && $data['loadingEquipmentArticleId'] !== null) {
             $object->setLoadingEquipmentArticleId($data['loadingEquipmentArticleId']);
             unset($data['loadingEquipmentArticleId']);
         }
-        if (\array_key_exists('movementNote', $data)) {
+        elseif (\array_key_exists('loadingEquipmentArticleId', $data) && $data['loadingEquipmentArticleId'] === null) {
+            $object->setLoadingEquipmentArticleId(null);
+        }
+        if (\array_key_exists('movementNote', $data) && $data['movementNote'] !== null) {
             $object->setMovementNote($data['movementNote']);
             unset($data['movementNote']);
         }
-        if (\array_key_exists('quantity', $data)) {
+        elseif (\array_key_exists('movementNote', $data) && $data['movementNote'] === null) {
+            $object->setMovementNote(null);
+        }
+        if (\array_key_exists('quantity', $data) && $data['quantity'] !== null) {
             $object->setQuantity($data['quantity']);
             unset($data['quantity']);
         }
-        if (\array_key_exists('sourceInternalTransportReferenceId', $data)) {
+        elseif (\array_key_exists('quantity', $data) && $data['quantity'] === null) {
+            $object->setQuantity(null);
+        }
+        if (\array_key_exists('sourceInternalTransportReferenceId', $data) && $data['sourceInternalTransportReferenceId'] !== null) {
             $object->setSourceInternalTransportReferenceId($data['sourceInternalTransportReferenceId']);
             unset($data['sourceInternalTransportReferenceId']);
         }
-        if (\array_key_exists('sourceStoragePlaceId', $data)) {
+        elseif (\array_key_exists('sourceInternalTransportReferenceId', $data) && $data['sourceInternalTransportReferenceId'] === null) {
+            $object->setSourceInternalTransportReferenceId(null);
+        }
+        if (\array_key_exists('sourceStoragePlaceId', $data) && $data['sourceStoragePlaceId'] !== null) {
             $object->setSourceStoragePlaceId($data['sourceStoragePlaceId']);
             unset($data['sourceStoragePlaceId']);
+        }
+        elseif (\array_key_exists('sourceStoragePlaceId', $data) && $data['sourceStoragePlaceId'] === null) {
+            $object->setSourceStoragePlaceId(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
+        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -89,14 +101,14 @@ class WarehouseStockMovementBookToLoadingEquipmentPlacePostBodyNormalizer implem
             $dataArray['customAttributes'] = $values;
         }
         $dataArray['loadingEquipmentArticleId'] = $data->getLoadingEquipmentArticleId();
-        if ($data->isInitialized('movementNote') && $data->getMovementNote() !== null) {
+        if ($data->isInitialized('movementNote') && null !== $data->getMovementNote()) {
             $dataArray['movementNote'] = $data->getMovementNote();
         }
         $dataArray['quantity'] = $data->getQuantity();
-        if ($data->isInitialized('sourceInternalTransportReferenceId') && $data->getSourceInternalTransportReferenceId() !== null) {
+        if ($data->isInitialized('sourceInternalTransportReferenceId') && null !== $data->getSourceInternalTransportReferenceId()) {
             $dataArray['sourceInternalTransportReferenceId'] = $data->getSourceInternalTransportReferenceId();
         }
-        if ($data->isInitialized('sourceStoragePlaceId') && $data->getSourceStoragePlaceId() !== null) {
+        if ($data->isInitialized('sourceStoragePlaceId') && null !== $data->getSourceStoragePlaceId()) {
             $dataArray['sourceStoragePlaceId'] = $data->getSourceStoragePlaceId();
         }
         foreach ($data as $key => $value_1) {
@@ -104,10 +116,8 @@ class WarehouseStockMovementBookToLoadingEquipmentPlacePostBodyNormalizer implem
                 $dataArray[$key] = $value_1;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\WarehouseStockMovementBookToLoadingEquipmentPlacePostBody::class => false];

@@ -8,45 +8,64 @@ class FastProductionBookingResult extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $message;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $success;
-
-    public function getMessage(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMessage(): ?string
     {
         return $this->message;
     }
-
-    public function setMessage(string $message): self
+    /**
+     * 
+     *
+     * @param string|null $message
+     *
+     * @return self
+     */
+    public function setMessage(?string $message): self
     {
         $this->initialized['message'] = true;
         $this->message = $message;
-
         return $this;
     }
-
-    public function getSuccess(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getSuccess(): ?bool
     {
         return $this->success;
     }
-
-    public function setSuccess(bool $success): self
+    /**
+     * 
+     *
+     * @param bool|null $success
+     *
+     * @return self
+     */
+    public function setSuccess(?bool $success): self
     {
         $this->initialized['success'] = true;
         $this->success = $success;
-
         return $this;
     }
 }

@@ -8,165 +8,232 @@ class TicketPoolingGroup extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $name;
-
     /**
-     * @var list<OnlyId>
+     * 
+     *
+     * @var list<OnlyId>|null
      */
     protected $ticketCategories;
-
     /**
-     * @var list<TicketPoolingGroupMember>
+     * 
+     *
+     * @var list<TicketPoolingGroupMember>|null
      */
     protected $ticketPoolingGroupMembers;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
-    public function getName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    /**
+     * 
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
         return $this;
     }
-
     /**
-     * @return list<OnlyId>
+     * 
+     *
+     * @return list<OnlyId>|null
      */
-    public function getTicketCategories(): array
+    public function getTicketCategories(): ?array
     {
         return $this->ticketCategories;
     }
-
     /**
-     * @param  list<OnlyId>  $ticketCategories
+     * 
+     *
+     * @param list<OnlyId>|null $ticketCategories
+     *
+     * @return self
      */
-    public function setTicketCategories(array $ticketCategories): self
+    public function setTicketCategories(?array $ticketCategories): self
     {
         $this->initialized['ticketCategories'] = true;
         $this->ticketCategories = $ticketCategories;
-
         return $this;
     }
-
     /**
-     * @return list<TicketPoolingGroupMember>
+     * 
+     *
+     * @return list<TicketPoolingGroupMember>|null
      */
-    public function getTicketPoolingGroupMembers(): array
+    public function getTicketPoolingGroupMembers(): ?array
     {
         return $this->ticketPoolingGroupMembers;
     }
-
     /**
-     * @param  list<TicketPoolingGroupMember>  $ticketPoolingGroupMembers
+     * 
+     *
+     * @param list<TicketPoolingGroupMember>|null $ticketPoolingGroupMembers
+     *
+     * @return self
      */
-    public function setTicketPoolingGroupMembers(array $ticketPoolingGroupMembers): self
+    public function setTicketPoolingGroupMembers(?array $ticketPoolingGroupMembers): self
     {
         $this->initialized['ticketPoolingGroupMembers'] = true;
         $this->ticketPoolingGroupMembers = $ticketPoolingGroupMembers;
-
         return $this;
     }
 }

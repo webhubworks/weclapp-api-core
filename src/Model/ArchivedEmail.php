@@ -8,267 +8,372 @@ class ArchivedEmail extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $bccAddresses;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $body;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $ccAddresses;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $fromAddress;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $messageIdentifier;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $receivedDate;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $replyToAddress;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $subject;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $toAddresses;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getBccAddresses(): array
+    public function getBccAddresses(): ?array
     {
         return $this->bccAddresses;
     }
-
     /**
-     * @param  list<string>  $bccAddresses
+     * 
+     *
+     * @param list<string>|null $bccAddresses
+     *
+     * @return self
      */
-    public function setBccAddresses(array $bccAddresses): self
+    public function setBccAddresses(?array $bccAddresses): self
     {
         $this->initialized['bccAddresses'] = true;
         $this->bccAddresses = $bccAddresses;
-
         return $this;
     }
-
-    public function getBody(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getBody(): ?string
     {
         return $this->body;
     }
-
-    public function setBody(string $body): self
+    /**
+     * 
+     *
+     * @param string|null $body
+     *
+     * @return self
+     */
+    public function setBody(?string $body): self
     {
         $this->initialized['body'] = true;
         $this->body = $body;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getCcAddresses(): array
+    public function getCcAddresses(): ?array
     {
         return $this->ccAddresses;
     }
-
     /**
-     * @param  list<string>  $ccAddresses
+     * 
+     *
+     * @param list<string>|null $ccAddresses
+     *
+     * @return self
      */
-    public function setCcAddresses(array $ccAddresses): self
+    public function setCcAddresses(?array $ccAddresses): self
     {
         $this->initialized['ccAddresses'] = true;
         $this->ccAddresses = $ccAddresses;
-
         return $this;
     }
-
-    public function getFromAddress(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getFromAddress(): ?string
     {
         return $this->fromAddress;
     }
-
-    public function setFromAddress(string $fromAddress): self
+    /**
+     * 
+     *
+     * @param string|null $fromAddress
+     *
+     * @return self
+     */
+    public function setFromAddress(?string $fromAddress): self
     {
         $this->initialized['fromAddress'] = true;
         $this->fromAddress = $fromAddress;
-
         return $this;
     }
-
-    public function getMessageIdentifier(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMessageIdentifier(): ?string
     {
         return $this->messageIdentifier;
     }
-
-    public function setMessageIdentifier(string $messageIdentifier): self
+    /**
+     * 
+     *
+     * @param string|null $messageIdentifier
+     *
+     * @return self
+     */
+    public function setMessageIdentifier(?string $messageIdentifier): self
     {
         $this->initialized['messageIdentifier'] = true;
         $this->messageIdentifier = $messageIdentifier;
-
         return $this;
     }
-
-    public function getReceivedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getReceivedDate(): ?int
     {
         return $this->receivedDate;
     }
-
-    public function setReceivedDate(int $receivedDate): self
+    /**
+     * 
+     *
+     * @param int|null $receivedDate
+     *
+     * @return self
+     */
+    public function setReceivedDate(?int $receivedDate): self
     {
         $this->initialized['receivedDate'] = true;
         $this->receivedDate = $receivedDate;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getReplyToAddress(): array
+    public function getReplyToAddress(): ?array
     {
         return $this->replyToAddress;
     }
-
     /**
-     * @param  list<string>  $replyToAddress
+     * 
+     *
+     * @param list<string>|null $replyToAddress
+     *
+     * @return self
      */
-    public function setReplyToAddress(array $replyToAddress): self
+    public function setReplyToAddress(?array $replyToAddress): self
     {
         $this->initialized['replyToAddress'] = true;
         $this->replyToAddress = $replyToAddress;
-
         return $this;
     }
-
-    public function getSubject(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSubject(): ?string
     {
         return $this->subject;
     }
-
-    public function setSubject(string $subject): self
+    /**
+     * 
+     *
+     * @param string|null $subject
+     *
+     * @return self
+     */
+    public function setSubject(?string $subject): self
     {
         $this->initialized['subject'] = true;
         $this->subject = $subject;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getToAddresses(): array
+    public function getToAddresses(): ?array
     {
         return $this->toAddresses;
     }
-
     /**
-     * @param  list<string>  $toAddresses
+     * 
+     *
+     * @param list<string>|null $toAddresses
+     *
+     * @return self
      */
-    public function setToAddresses(array $toAddresses): self
+    public function setToAddresses(?array $toAddresses): self
     {
         $this->initialized['toAddresses'] = true;
         $this->toAddresses = $toAddresses;
-
         return $this;
     }
 }

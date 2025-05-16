@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class AccountingTransactionBatchBookingPostBodyBatchBookingDtoNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class AccountingTransactionBatchBookingPostBodyBatchBookingDtoNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\AccountingTransactionBatchBookingPostBodyBatchBookingDto::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\AccountingTransactionBatchBookingPostBodyBatchBookingDto::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,11 +33,11 @@ class AccountingTransactionBatchBookingPostBodyBatchBookingDtoNormalizer impleme
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\AccountingTransactionBatchBookingPostBodyBatchBookingDto;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\AccountingTransactionBatchBookingPostBodyBatchBookingDto();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('batchBookingRecords', $data)) {
+        if (\array_key_exists('batchBookingRecords', $data) && $data['batchBookingRecords'] !== null) {
             $values = [];
             foreach ($data['batchBookingRecords'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Webhubworks\WeclappApiCore\Model\BatchBookingRecord::class, 'json', $context);
@@ -49,58 +45,74 @@ class AccountingTransactionBatchBookingPostBodyBatchBookingDtoNormalizer impleme
             $object->setBatchBookingRecords($values);
             unset($data['batchBookingRecords']);
         }
-        if (\array_key_exists('bookingText', $data)) {
+        elseif (\array_key_exists('batchBookingRecords', $data) && $data['batchBookingRecords'] === null) {
+            $object->setBatchBookingRecords(null);
+        }
+        if (\array_key_exists('bookingText', $data) && $data['bookingText'] !== null) {
             $object->setBookingText($data['bookingText']);
             unset($data['bookingText']);
         }
-        if (\array_key_exists('costCenterId', $data)) {
+        elseif (\array_key_exists('bookingText', $data) && $data['bookingText'] === null) {
+            $object->setBookingText(null);
+        }
+        if (\array_key_exists('costCenterId', $data) && $data['costCenterId'] !== null) {
             $object->setCostCenterId($data['costCenterId']);
             unset($data['costCenterId']);
         }
-        if (\array_key_exists('currencyId', $data)) {
+        elseif (\array_key_exists('costCenterId', $data) && $data['costCenterId'] === null) {
+            $object->setCostCenterId(null);
+        }
+        if (\array_key_exists('currencyId', $data) && $data['currencyId'] !== null) {
             $object->setCurrencyId($data['currencyId']);
             unset($data['currencyId']);
         }
-        if (\array_key_exists('externalRecordNumber', $data)) {
+        elseif (\array_key_exists('currencyId', $data) && $data['currencyId'] === null) {
+            $object->setCurrencyId(null);
+        }
+        if (\array_key_exists('externalRecordNumber', $data) && $data['externalRecordNumber'] !== null) {
             $object->setExternalRecordNumber($data['externalRecordNumber']);
             unset($data['externalRecordNumber']);
         }
-        if (\array_key_exists('transactionDate', $data)) {
+        elseif (\array_key_exists('externalRecordNumber', $data) && $data['externalRecordNumber'] === null) {
+            $object->setExternalRecordNumber(null);
+        }
+        if (\array_key_exists('transactionDate', $data) && $data['transactionDate'] !== null) {
             $object->setTransactionDate($data['transactionDate']);
             unset($data['transactionDate']);
+        }
+        elseif (\array_key_exists('transactionDate', $data) && $data['transactionDate'] === null) {
+            $object->setTransactionDate(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('batchBookingRecords') && $data->getBatchBookingRecords() !== null) {
+        if ($data->isInitialized('batchBookingRecords') && null !== $data->getBatchBookingRecords()) {
             $values = [];
             foreach ($data->getBatchBookingRecords() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['batchBookingRecords'] = $values;
         }
-        if ($data->isInitialized('bookingText') && $data->getBookingText() !== null) {
+        if ($data->isInitialized('bookingText') && null !== $data->getBookingText()) {
             $dataArray['bookingText'] = $data->getBookingText();
         }
-        if ($data->isInitialized('costCenterId') && $data->getCostCenterId() !== null) {
+        if ($data->isInitialized('costCenterId') && null !== $data->getCostCenterId()) {
             $dataArray['costCenterId'] = $data->getCostCenterId();
         }
-        if ($data->isInitialized('currencyId') && $data->getCurrencyId() !== null) {
+        if ($data->isInitialized('currencyId') && null !== $data->getCurrencyId()) {
             $dataArray['currencyId'] = $data->getCurrencyId();
         }
-        if ($data->isInitialized('externalRecordNumber') && $data->getExternalRecordNumber() !== null) {
+        if ($data->isInitialized('externalRecordNumber') && null !== $data->getExternalRecordNumber()) {
             $dataArray['externalRecordNumber'] = $data->getExternalRecordNumber();
         }
-        if ($data->isInitialized('transactionDate') && $data->getTransactionDate() !== null) {
+        if ($data->isInitialized('transactionDate') && null !== $data->getTransactionDate()) {
             $dataArray['transactionDate'] = $data->getTransactionDate();
         }
         foreach ($data as $key => $value_1) {
@@ -108,10 +120,8 @@ class AccountingTransactionBatchBookingPostBodyBatchBookingDtoNormalizer impleme
                 $dataArray[$key] = $value_1;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\AccountingTransactionBatchBookingPostBodyBatchBookingDto::class => false];

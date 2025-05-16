@@ -8,183 +8,260 @@ class WarehouseStockMovementBookFromLoadingEquipmentPlacePostBodyCustomAttribute
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $attributeDefinitionId;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $booleanValue;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $dateValue;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $entityId;
-
     /**
-     * @var list<EntityReference>
+     * 
+     *
+     * @var list<EntityReference>|null
      */
     protected $entityReferences;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $numberValue;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $selectedValueId;
-
     /**
-     * @var list<OnlyId>
+     * 
+     *
+     * @var list<OnlyId>|null
      */
     protected $selectedValues;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $stringValue;
-
-    public function getAttributeDefinitionId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAttributeDefinitionId(): ?string
     {
         return $this->attributeDefinitionId;
     }
-
-    public function setAttributeDefinitionId(string $attributeDefinitionId): self
+    /**
+     * 
+     *
+     * @param string|null $attributeDefinitionId
+     *
+     * @return self
+     */
+    public function setAttributeDefinitionId(?string $attributeDefinitionId): self
     {
         $this->initialized['attributeDefinitionId'] = true;
         $this->attributeDefinitionId = $attributeDefinitionId;
-
         return $this;
     }
-
-    public function getBooleanValue(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getBooleanValue(): ?bool
     {
         return $this->booleanValue;
     }
-
-    public function setBooleanValue(bool $booleanValue): self
+    /**
+     * 
+     *
+     * @param bool|null $booleanValue
+     *
+     * @return self
+     */
+    public function setBooleanValue(?bool $booleanValue): self
     {
         $this->initialized['booleanValue'] = true;
         $this->booleanValue = $booleanValue;
-
         return $this;
     }
-
-    public function getDateValue(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getDateValue(): ?int
     {
         return $this->dateValue;
     }
-
-    public function setDateValue(int $dateValue): self
+    /**
+     * 
+     *
+     * @param int|null $dateValue
+     *
+     * @return self
+     */
+    public function setDateValue(?int $dateValue): self
     {
         $this->initialized['dateValue'] = true;
         $this->dateValue = $dateValue;
-
         return $this;
     }
-
-    public function getEntityId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getEntityId(): ?string
     {
         return $this->entityId;
     }
-
-    public function setEntityId(string $entityId): self
+    /**
+     * 
+     *
+     * @param string|null $entityId
+     *
+     * @return self
+     */
+    public function setEntityId(?string $entityId): self
     {
         $this->initialized['entityId'] = true;
         $this->entityId = $entityId;
-
         return $this;
     }
-
     /**
-     * @return list<EntityReference>
+     * 
+     *
+     * @return list<EntityReference>|null
      */
-    public function getEntityReferences(): array
+    public function getEntityReferences(): ?array
     {
         return $this->entityReferences;
     }
-
     /**
-     * @param  list<EntityReference>  $entityReferences
+     * 
+     *
+     * @param list<EntityReference>|null $entityReferences
+     *
+     * @return self
      */
-    public function setEntityReferences(array $entityReferences): self
+    public function setEntityReferences(?array $entityReferences): self
     {
         $this->initialized['entityReferences'] = true;
         $this->entityReferences = $entityReferences;
-
         return $this;
     }
-
-    public function getNumberValue(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getNumberValue(): ?string
     {
         return $this->numberValue;
     }
-
-    public function setNumberValue(string $numberValue): self
+    /**
+     * 
+     *
+     * @param string|null $numberValue
+     *
+     * @return self
+     */
+    public function setNumberValue(?string $numberValue): self
     {
         $this->initialized['numberValue'] = true;
         $this->numberValue = $numberValue;
-
         return $this;
     }
-
-    public function getSelectedValueId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSelectedValueId(): ?string
     {
         return $this->selectedValueId;
     }
-
-    public function setSelectedValueId(string $selectedValueId): self
+    /**
+     * 
+     *
+     * @param string|null $selectedValueId
+     *
+     * @return self
+     */
+    public function setSelectedValueId(?string $selectedValueId): self
     {
         $this->initialized['selectedValueId'] = true;
         $this->selectedValueId = $selectedValueId;
-
         return $this;
     }
-
     /**
-     * @return list<OnlyId>
+     * 
+     *
+     * @return list<OnlyId>|null
      */
-    public function getSelectedValues(): array
+    public function getSelectedValues(): ?array
     {
         return $this->selectedValues;
     }
-
     /**
-     * @param  list<OnlyId>  $selectedValues
+     * 
+     *
+     * @param list<OnlyId>|null $selectedValues
+     *
+     * @return self
      */
-    public function setSelectedValues(array $selectedValues): self
+    public function setSelectedValues(?array $selectedValues): self
     {
         $this->initialized['selectedValues'] = true;
         $this->selectedValues = $selectedValues;
-
         return $this;
     }
-
-    public function getStringValue(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getStringValue(): ?string
     {
         return $this->stringValue;
     }
-
-    public function setStringValue(string $stringValue): self
+    /**
+     * 
+     *
+     * @param string|null $stringValue
+     *
+     * @return self
+     */
+    public function setStringValue(?string $stringValue): self
     {
         $this->initialized['stringValue'] = true;
         $this->stringValue = $stringValue;
-
         return $this;
     }
 }

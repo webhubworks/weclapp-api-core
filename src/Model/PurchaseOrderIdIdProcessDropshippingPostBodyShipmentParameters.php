@@ -8,63 +8,92 @@ class PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters extends \Ar
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $deliveryDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $deliveryNoteNumber;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $shippingDate;
-
-    public function getDeliveryDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getDeliveryDate(): ?int
     {
         return $this->deliveryDate;
     }
-
-    public function setDeliveryDate(int $deliveryDate): self
+    /**
+     * 
+     *
+     * @param int|null $deliveryDate
+     *
+     * @return self
+     */
+    public function setDeliveryDate(?int $deliveryDate): self
     {
         $this->initialized['deliveryDate'] = true;
         $this->deliveryDate = $deliveryDate;
-
         return $this;
     }
-
-    public function getDeliveryNoteNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDeliveryNoteNumber(): ?string
     {
         return $this->deliveryNoteNumber;
     }
-
-    public function setDeliveryNoteNumber(string $deliveryNoteNumber): self
+    /**
+     * 
+     *
+     * @param string|null $deliveryNoteNumber
+     *
+     * @return self
+     */
+    public function setDeliveryNoteNumber(?string $deliveryNoteNumber): self
     {
         $this->initialized['deliveryNoteNumber'] = true;
         $this->deliveryNoteNumber = $deliveryNoteNumber;
-
         return $this;
     }
-
-    public function getShippingDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getShippingDate(): ?int
     {
         return $this->shippingDate;
     }
-
-    public function setShippingDate(int $shippingDate): self
+    /**
+     * 
+     *
+     * @param int|null $shippingDate
+     *
+     * @return self
+     */
+    public function setShippingDate(?int $shippingDate): self
     {
         $this->initialized['shippingDate'] = true;
         $this->shippingDate = $shippingDate;
-
         return $this;
     }
 }

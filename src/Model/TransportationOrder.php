@@ -8,333 +8,484 @@ class TransportationOrder extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var list<mixed>
+     * 
+     *
+     * @var list<mixed>|null
      */
     protected $customAttributes;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $assignedUserId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $destinationStoragePlaceId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $internalTransportReferenceId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $loadingEquipmentArticleId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $loadingEquipmentIdentifierId;
-
     /**
-     * @var list<TransportPick>
+     * 
+     *
+     * @var list<TransportPick>|null
      */
     protected $picks;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $productionOrderId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $shipmentId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $status;
-
     /**
-     * @var list<TransportationOrderStatusHistory>
+     * 
+     *
+     * @var list<TransportationOrderStatusHistory>|null
      */
     protected $statusHistory;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $transportationOrderNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $transportationOrderType;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
     /**
-     * @return list<mixed>
+     * 
+     *
+     * @return list<mixed>|null
      */
-    public function getCustomAttributes(): array
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
-
     /**
-     * @param  list<mixed>  $customAttributes
+     * 
+     *
+     * @param list<mixed>|null $customAttributes
+     *
+     * @return self
      */
-    public function setCustomAttributes(array $customAttributes): self
+    public function setCustomAttributes(?array $customAttributes): self
     {
         $this->initialized['customAttributes'] = true;
         $this->customAttributes = $customAttributes;
-
         return $this;
     }
-
-    public function getAssignedUserId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAssignedUserId(): ?string
     {
         return $this->assignedUserId;
     }
-
-    public function setAssignedUserId(string $assignedUserId): self
+    /**
+     * 
+     *
+     * @param string|null $assignedUserId
+     *
+     * @return self
+     */
+    public function setAssignedUserId(?string $assignedUserId): self
     {
         $this->initialized['assignedUserId'] = true;
         $this->assignedUserId = $assignedUserId;
-
         return $this;
     }
-
-    public function getDestinationStoragePlaceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDestinationStoragePlaceId(): ?string
     {
         return $this->destinationStoragePlaceId;
     }
-
-    public function setDestinationStoragePlaceId(string $destinationStoragePlaceId): self
+    /**
+     * 
+     *
+     * @param string|null $destinationStoragePlaceId
+     *
+     * @return self
+     */
+    public function setDestinationStoragePlaceId(?string $destinationStoragePlaceId): self
     {
         $this->initialized['destinationStoragePlaceId'] = true;
         $this->destinationStoragePlaceId = $destinationStoragePlaceId;
-
         return $this;
     }
-
-    public function getInternalTransportReferenceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getInternalTransportReferenceId(): ?string
     {
         return $this->internalTransportReferenceId;
     }
-
-    public function setInternalTransportReferenceId(string $internalTransportReferenceId): self
+    /**
+     * 
+     *
+     * @param string|null $internalTransportReferenceId
+     *
+     * @return self
+     */
+    public function setInternalTransportReferenceId(?string $internalTransportReferenceId): self
     {
         $this->initialized['internalTransportReferenceId'] = true;
         $this->internalTransportReferenceId = $internalTransportReferenceId;
-
         return $this;
     }
-
-    public function getLoadingEquipmentArticleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLoadingEquipmentArticleId(): ?string
     {
         return $this->loadingEquipmentArticleId;
     }
-
-    public function setLoadingEquipmentArticleId(string $loadingEquipmentArticleId): self
+    /**
+     * 
+     *
+     * @param string|null $loadingEquipmentArticleId
+     *
+     * @return self
+     */
+    public function setLoadingEquipmentArticleId(?string $loadingEquipmentArticleId): self
     {
         $this->initialized['loadingEquipmentArticleId'] = true;
         $this->loadingEquipmentArticleId = $loadingEquipmentArticleId;
-
         return $this;
     }
-
-    public function getLoadingEquipmentIdentifierId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLoadingEquipmentIdentifierId(): ?string
     {
         return $this->loadingEquipmentIdentifierId;
     }
-
-    public function setLoadingEquipmentIdentifierId(string $loadingEquipmentIdentifierId): self
+    /**
+     * 
+     *
+     * @param string|null $loadingEquipmentIdentifierId
+     *
+     * @return self
+     */
+    public function setLoadingEquipmentIdentifierId(?string $loadingEquipmentIdentifierId): self
     {
         $this->initialized['loadingEquipmentIdentifierId'] = true;
         $this->loadingEquipmentIdentifierId = $loadingEquipmentIdentifierId;
-
         return $this;
     }
-
     /**
-     * @return list<TransportPick>
+     * 
+     *
+     * @return list<TransportPick>|null
      */
-    public function getPicks(): array
+    public function getPicks(): ?array
     {
         return $this->picks;
     }
-
     /**
-     * @param  list<TransportPick>  $picks
+     * 
+     *
+     * @param list<TransportPick>|null $picks
+     *
+     * @return self
      */
-    public function setPicks(array $picks): self
+    public function setPicks(?array $picks): self
     {
         $this->initialized['picks'] = true;
         $this->picks = $picks;
-
         return $this;
     }
-
-    public function getProductionOrderId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getProductionOrderId(): ?string
     {
         return $this->productionOrderId;
     }
-
-    public function setProductionOrderId(string $productionOrderId): self
+    /**
+     * 
+     *
+     * @param string|null $productionOrderId
+     *
+     * @return self
+     */
+    public function setProductionOrderId(?string $productionOrderId): self
     {
         $this->initialized['productionOrderId'] = true;
         $this->productionOrderId = $productionOrderId;
-
         return $this;
     }
-
-    public function getShipmentId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getShipmentId(): ?string
     {
         return $this->shipmentId;
     }
-
-    public function setShipmentId(string $shipmentId): self
+    /**
+     * 
+     *
+     * @param string|null $shipmentId
+     *
+     * @return self
+     */
+    public function setShipmentId(?string $shipmentId): self
     {
         $this->initialized['shipmentId'] = true;
         $this->shipmentId = $shipmentId;
-
         return $this;
     }
-
-    public function getStatus(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getStatus(): ?string
     {
         return $this->status;
     }
-
-    public function setStatus(string $status): self
+    /**
+     * 
+     *
+     * @param string|null $status
+     *
+     * @return self
+     */
+    public function setStatus(?string $status): self
     {
         $this->initialized['status'] = true;
         $this->status = $status;
-
         return $this;
     }
-
     /**
-     * @return list<TransportationOrderStatusHistory>
+     * 
+     *
+     * @return list<TransportationOrderStatusHistory>|null
      */
-    public function getStatusHistory(): array
+    public function getStatusHistory(): ?array
     {
         return $this->statusHistory;
     }
-
     /**
-     * @param  list<TransportationOrderStatusHistory>  $statusHistory
+     * 
+     *
+     * @param list<TransportationOrderStatusHistory>|null $statusHistory
+     *
+     * @return self
      */
-    public function setStatusHistory(array $statusHistory): self
+    public function setStatusHistory(?array $statusHistory): self
     {
         $this->initialized['statusHistory'] = true;
         $this->statusHistory = $statusHistory;
-
         return $this;
     }
-
-    public function getTransportationOrderNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTransportationOrderNumber(): ?string
     {
         return $this->transportationOrderNumber;
     }
-
-    public function setTransportationOrderNumber(string $transportationOrderNumber): self
+    /**
+     * 
+     *
+     * @param string|null $transportationOrderNumber
+     *
+     * @return self
+     */
+    public function setTransportationOrderNumber(?string $transportationOrderNumber): self
     {
         $this->initialized['transportationOrderNumber'] = true;
         $this->transportationOrderNumber = $transportationOrderNumber;
-
         return $this;
     }
-
-    public function getTransportationOrderType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTransportationOrderType(): ?string
     {
         return $this->transportationOrderType;
     }
-
-    public function setTransportationOrderType(string $transportationOrderType): self
+    /**
+     * 
+     *
+     * @param string|null $transportationOrderType
+     *
+     * @return self
+     */
+    public function setTransportationOrderType(?string $transportationOrderType): self
     {
         $this->initialized['transportationOrderType'] = true;
         $this->transportationOrderType = $transportationOrderType;
-
         return $this;
     }
 }

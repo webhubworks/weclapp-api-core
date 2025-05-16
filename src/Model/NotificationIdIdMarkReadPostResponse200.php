@@ -8,27 +8,36 @@ class NotificationIdIdMarkReadPostResponse200 extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var Notification
+     * 
+     *
+     * @var Notification|null
      */
     protected $result;
-
-    public function getResult(): Notification
+    /**
+     * 
+     *
+     * @return Notification|null
+     */
+    public function getResult(): ?Notification
     {
         return $this->result;
     }
-
-    public function setResult(Notification $result): self
+    /**
+     * 
+     *
+     * @param Notification|null $result
+     *
+     * @return self
+     */
+    public function setResult(?Notification $result): self
     {
         $this->initialized['result'] = true;
         $this->result = $result;
-
         return $this;
     }
 }

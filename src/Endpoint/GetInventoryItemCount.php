@@ -7,38 +7,31 @@ class GetInventoryItemCount extends \Webhubworks\WeclappApiCore\Runtime\Client\B
     /**
      * count inventoryItem
      *
-     * @param  array  $queryParameters  {
-     *
-     * @var string $filter
-     *             }
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
-
     use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
-
     public function getMethod(): string
     {
         return 'GET';
     }
-
     public function getUri(): string
     {
         return '/inventoryItem/count';
     }
-
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
-
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
-
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -46,10 +39,8 @@ class GetInventoryItemCount extends \Webhubworks\WeclappApiCore\Runtime\Client\B
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('filter', ['string']);
-
         return $optionsResolver;
     }
-
     /**
      * {@inheritdoc}
      *
@@ -60,14 +51,13 @@ class GetInventoryItemCount extends \Webhubworks\WeclappApiCore\Runtime\Client\B
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && ($status === 200 && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\InventoryItemCountGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ApiProblem', 'json');
         }
     }
-
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

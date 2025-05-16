@@ -8,267 +8,400 @@ class Calendar extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $caldavAccountId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $calendarColor;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $calendarKey;
-
     /**
-     * @var list<CalendarSharingPermissions>
+     * 
+     *
+     * @var list<CalendarSharingPermissions>|null
      */
     protected $calendarSharingPermissions;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $lastEventsSyncToken;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $mailAccountId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $name;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $ownerId;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $sharePrivateEvents;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $synchronize;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getCaldavAccountId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCaldavAccountId(): ?string
     {
         return $this->caldavAccountId;
     }
-
-    public function setCaldavAccountId(string $caldavAccountId): self
+    /**
+     * 
+     *
+     * @param string|null $caldavAccountId
+     *
+     * @return self
+     */
+    public function setCaldavAccountId(?string $caldavAccountId): self
     {
         $this->initialized['caldavAccountId'] = true;
         $this->caldavAccountId = $caldavAccountId;
-
         return $this;
     }
-
-    public function getCalendarColor(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCalendarColor(): ?string
     {
         return $this->calendarColor;
     }
-
-    public function setCalendarColor(string $calendarColor): self
+    /**
+     * 
+     *
+     * @param string|null $calendarColor
+     *
+     * @return self
+     */
+    public function setCalendarColor(?string $calendarColor): self
     {
         $this->initialized['calendarColor'] = true;
         $this->calendarColor = $calendarColor;
-
         return $this;
     }
-
-    public function getCalendarKey(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCalendarKey(): ?string
     {
         return $this->calendarKey;
     }
-
-    public function setCalendarKey(string $calendarKey): self
+    /**
+     * 
+     *
+     * @param string|null $calendarKey
+     *
+     * @return self
+     */
+    public function setCalendarKey(?string $calendarKey): self
     {
         $this->initialized['calendarKey'] = true;
         $this->calendarKey = $calendarKey;
-
         return $this;
     }
-
     /**
-     * @return list<CalendarSharingPermissions>
+     * 
+     *
+     * @return list<CalendarSharingPermissions>|null
      */
-    public function getCalendarSharingPermissions(): array
+    public function getCalendarSharingPermissions(): ?array
     {
         return $this->calendarSharingPermissions;
     }
-
     /**
-     * @param  list<CalendarSharingPermissions>  $calendarSharingPermissions
+     * 
+     *
+     * @param list<CalendarSharingPermissions>|null $calendarSharingPermissions
+     *
+     * @return self
      */
-    public function setCalendarSharingPermissions(array $calendarSharingPermissions): self
+    public function setCalendarSharingPermissions(?array $calendarSharingPermissions): self
     {
         $this->initialized['calendarSharingPermissions'] = true;
         $this->calendarSharingPermissions = $calendarSharingPermissions;
-
         return $this;
     }
-
-    public function getLastEventsSyncToken(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLastEventsSyncToken(): ?string
     {
         return $this->lastEventsSyncToken;
     }
-
-    public function setLastEventsSyncToken(string $lastEventsSyncToken): self
+    /**
+     * 
+     *
+     * @param string|null $lastEventsSyncToken
+     *
+     * @return self
+     */
+    public function setLastEventsSyncToken(?string $lastEventsSyncToken): self
     {
         $this->initialized['lastEventsSyncToken'] = true;
         $this->lastEventsSyncToken = $lastEventsSyncToken;
-
         return $this;
     }
-
-    public function getMailAccountId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMailAccountId(): ?string
     {
         return $this->mailAccountId;
     }
-
-    public function setMailAccountId(string $mailAccountId): self
+    /**
+     * 
+     *
+     * @param string|null $mailAccountId
+     *
+     * @return self
+     */
+    public function setMailAccountId(?string $mailAccountId): self
     {
         $this->initialized['mailAccountId'] = true;
         $this->mailAccountId = $mailAccountId;
-
         return $this;
     }
-
-    public function getName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    /**
+     * 
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
         return $this;
     }
-
-    public function getOwnerId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getOwnerId(): ?string
     {
         return $this->ownerId;
     }
-
-    public function setOwnerId(string $ownerId): self
+    /**
+     * 
+     *
+     * @param string|null $ownerId
+     *
+     * @return self
+     */
+    public function setOwnerId(?string $ownerId): self
     {
         $this->initialized['ownerId'] = true;
         $this->ownerId = $ownerId;
-
         return $this;
     }
-
-    public function getSharePrivateEvents(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getSharePrivateEvents(): ?bool
     {
         return $this->sharePrivateEvents;
     }
-
-    public function setSharePrivateEvents(bool $sharePrivateEvents): self
+    /**
+     * 
+     *
+     * @param bool|null $sharePrivateEvents
+     *
+     * @return self
+     */
+    public function setSharePrivateEvents(?bool $sharePrivateEvents): self
     {
         $this->initialized['sharePrivateEvents'] = true;
         $this->sharePrivateEvents = $sharePrivateEvents;
-
         return $this;
     }
-
-    public function getSynchronize(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getSynchronize(): ?bool
     {
         return $this->synchronize;
     }
-
-    public function setSynchronize(bool $synchronize): self
+    /**
+     * 
+     *
+     * @param bool|null $synchronize
+     *
+     * @return self
+     */
+    public function setSynchronize(?bool $synchronize): self
     {
         $this->initialized['synchronize'] = true;
         $this->synchronize = $synchronize;
-
         return $this;
     }
 }

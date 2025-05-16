@@ -8,27 +8,36 @@ class Amount extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $amountInCompanyCurrency;
-
-    public function getAmountInCompanyCurrency(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAmountInCompanyCurrency(): ?string
     {
         return $this->amountInCompanyCurrency;
     }
-
-    public function setAmountInCompanyCurrency(string $amountInCompanyCurrency): self
+    /**
+     * 
+     *
+     * @param string|null $amountInCompanyCurrency
+     *
+     * @return self
+     */
+    public function setAmountInCompanyCurrency(?string $amountInCompanyCurrency): self
     {
         $this->initialized['amountInCompanyCurrency'] = true;
         $this->amountInCompanyCurrency = $amountInCompanyCurrency;
-
         return $this;
     }
 }

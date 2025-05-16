@@ -8,207 +8,316 @@ class PriceCalculationParameterV1 extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $fixSurcharge;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $fromScale;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $lowerPurchasePriceBound;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $margin;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $percentSurcharge;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $profit;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $salesChannel;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getFixSurcharge(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getFixSurcharge(): ?string
     {
         return $this->fixSurcharge;
     }
-
-    public function setFixSurcharge(string $fixSurcharge): self
+    /**
+     * 
+     *
+     * @param string|null $fixSurcharge
+     *
+     * @return self
+     */
+    public function setFixSurcharge(?string $fixSurcharge): self
     {
         $this->initialized['fixSurcharge'] = true;
         $this->fixSurcharge = $fixSurcharge;
-
         return $this;
     }
-
-    public function getFromScale(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getFromScale(): ?string
     {
         return $this->fromScale;
     }
-
-    public function setFromScale(string $fromScale): self
+    /**
+     * 
+     *
+     * @param string|null $fromScale
+     *
+     * @return self
+     */
+    public function setFromScale(?string $fromScale): self
     {
         $this->initialized['fromScale'] = true;
         $this->fromScale = $fromScale;
-
         return $this;
     }
-
-    public function getLowerPurchasePriceBound(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLowerPurchasePriceBound(): ?string
     {
         return $this->lowerPurchasePriceBound;
     }
-
-    public function setLowerPurchasePriceBound(string $lowerPurchasePriceBound): self
+    /**
+     * 
+     *
+     * @param string|null $lowerPurchasePriceBound
+     *
+     * @return self
+     */
+    public function setLowerPurchasePriceBound(?string $lowerPurchasePriceBound): self
     {
         $this->initialized['lowerPurchasePriceBound'] = true;
         $this->lowerPurchasePriceBound = $lowerPurchasePriceBound;
-
         return $this;
     }
-
-    public function getMargin(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMargin(): ?string
     {
         return $this->margin;
     }
-
-    public function setMargin(string $margin): self
+    /**
+     * 
+     *
+     * @param string|null $margin
+     *
+     * @return self
+     */
+    public function setMargin(?string $margin): self
     {
         $this->initialized['margin'] = true;
         $this->margin = $margin;
-
         return $this;
     }
-
-    public function getPercentSurcharge(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPercentSurcharge(): ?string
     {
         return $this->percentSurcharge;
     }
-
-    public function setPercentSurcharge(string $percentSurcharge): self
+    /**
+     * 
+     *
+     * @param string|null $percentSurcharge
+     *
+     * @return self
+     */
+    public function setPercentSurcharge(?string $percentSurcharge): self
     {
         $this->initialized['percentSurcharge'] = true;
         $this->percentSurcharge = $percentSurcharge;
-
         return $this;
     }
-
-    public function getProfit(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getProfit(): ?string
     {
         return $this->profit;
     }
-
-    public function setProfit(string $profit): self
+    /**
+     * 
+     *
+     * @param string|null $profit
+     *
+     * @return self
+     */
+    public function setProfit(?string $profit): self
     {
         $this->initialized['profit'] = true;
         $this->profit = $profit;
-
         return $this;
     }
-
-    public function getSalesChannel(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSalesChannel(): ?string
     {
         return $this->salesChannel;
     }
-
-    public function setSalesChannel(string $salesChannel): self
+    /**
+     * 
+     *
+     * @param string|null $salesChannel
+     *
+     * @return self
+     */
+    public function setSalesChannel(?string $salesChannel): self
     {
         $this->initialized['salesChannel'] = true;
         $this->salesChannel = $salesChannel;
-
         return $this;
     }
 }

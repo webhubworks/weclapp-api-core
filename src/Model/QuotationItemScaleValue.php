@@ -8,105 +8,148 @@ class QuotationItemScaleValue extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $discountPercentage;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $fromSalesPrice;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $price;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $quantity;
-
     /**
-     * @var list<PriceDataReductionAdditionItem>
+     * 
+     *
+     * @var list<PriceDataReductionAdditionItem>|null
      */
     protected $reductionAdditionItems;
-
-    public function getDiscountPercentage(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDiscountPercentage(): ?string
     {
         return $this->discountPercentage;
     }
-
-    public function setDiscountPercentage(string $discountPercentage): self
+    /**
+     * 
+     *
+     * @param string|null $discountPercentage
+     *
+     * @return self
+     */
+    public function setDiscountPercentage(?string $discountPercentage): self
     {
         $this->initialized['discountPercentage'] = true;
         $this->discountPercentage = $discountPercentage;
-
         return $this;
     }
-
-    public function getFromSalesPrice(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getFromSalesPrice(): ?bool
     {
         return $this->fromSalesPrice;
     }
-
-    public function setFromSalesPrice(bool $fromSalesPrice): self
+    /**
+     * 
+     *
+     * @param bool|null $fromSalesPrice
+     *
+     * @return self
+     */
+    public function setFromSalesPrice(?bool $fromSalesPrice): self
     {
         $this->initialized['fromSalesPrice'] = true;
         $this->fromSalesPrice = $fromSalesPrice;
-
         return $this;
     }
-
-    public function getPrice(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPrice(): ?string
     {
         return $this->price;
     }
-
-    public function setPrice(string $price): self
+    /**
+     * 
+     *
+     * @param string|null $price
+     *
+     * @return self
+     */
+    public function setPrice(?string $price): self
     {
         $this->initialized['price'] = true;
         $this->price = $price;
-
         return $this;
     }
-
-    public function getQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getQuantity(): ?string
     {
         return $this->quantity;
     }
-
-    public function setQuantity(string $quantity): self
+    /**
+     * 
+     *
+     * @param string|null $quantity
+     *
+     * @return self
+     */
+    public function setQuantity(?string $quantity): self
     {
         $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
-
         return $this;
     }
-
     /**
-     * @return list<PriceDataReductionAdditionItem>
+     * 
+     *
+     * @return list<PriceDataReductionAdditionItem>|null
      */
-    public function getReductionAdditionItems(): array
+    public function getReductionAdditionItems(): ?array
     {
         return $this->reductionAdditionItems;
     }
-
     /**
-     * @param  list<PriceDataReductionAdditionItem>  $reductionAdditionItems
+     * 
+     *
+     * @param list<PriceDataReductionAdditionItem>|null $reductionAdditionItems
+     *
+     * @return self
      */
-    public function setReductionAdditionItems(array $reductionAdditionItems): self
+    public function setReductionAdditionItems(?array $reductionAdditionItems): self
     {
         $this->initialized['reductionAdditionItems'] = true;
         $this->reductionAdditionItems = $reductionAdditionItems;
-
         return $this;
     }
 }

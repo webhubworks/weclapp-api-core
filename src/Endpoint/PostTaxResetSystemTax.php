@@ -4,37 +4,35 @@ namespace Webhubworks\WeclappApiCore\Endpoint;
 
 class PostTaxResetSystemTax extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoint implements \Webhubworks\WeclappApiCore\Runtime\Client\Endpoint
 {
-    public function __construct(\Webhubworks\WeclappApiCore\Model\TaxResetSystemTaxesPostBody $requestBody)
+    /**
+     * 
+     *
+     * @param null|\Webhubworks\WeclappApiCore\Model\TaxResetSystemTaxesPostBody $requestBody 
+     */
+    public function __construct(?\Webhubworks\WeclappApiCore\Model\TaxResetSystemTaxesPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
-
     use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
-
     public function getMethod(): string
     {
         return 'POST';
     }
-
     public function getUri(): string
     {
         return '/tax/resetSystemTaxes';
     }
-
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \Webhubworks\WeclappApiCore\Model\TaxResetSystemTaxesPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-
         return [[], null];
     }
-
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
-
     /**
      * {@inheritdoc}
      *
@@ -45,14 +43,13 @@ class PostTaxResetSystemTax extends \Webhubworks\WeclappApiCore\Runtime\Client\B
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && ($status === 200 && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\TaxResetSystemTaxesPostResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ApiProblem', 'json');
         }
     }
-
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

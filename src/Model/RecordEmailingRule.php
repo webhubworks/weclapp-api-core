@@ -8,429 +8,624 @@ class RecordEmailingRule extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $active;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $attachPurchaseOrderRequestCsvFile;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $attachRecordDocument;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $attachReturnLabel;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $attachShippingLabel;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $bccRecipients;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $ccRecipients;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $event;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $mailAccountId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $name;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $otherRecipients;
-
     /**
-     * @var list<OnlyId>
+     * 
+     *
+     * @var list<OnlyId>|null
      */
     protected $paymentMethodTypes;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $recipientType;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $salesChannels;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $salesInvoiceOrigin;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $salesInvoiceTypes;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $shipmentOutTypes;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $templateId;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getActive(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getActive(): ?bool
     {
         return $this->active;
     }
-
-    public function setActive(bool $active): self
+    /**
+     * 
+     *
+     * @param bool|null $active
+     *
+     * @return self
+     */
+    public function setActive(?bool $active): self
     {
         $this->initialized['active'] = true;
         $this->active = $active;
-
         return $this;
     }
-
-    public function getAttachPurchaseOrderRequestCsvFile(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getAttachPurchaseOrderRequestCsvFile(): ?bool
     {
         return $this->attachPurchaseOrderRequestCsvFile;
     }
-
-    public function setAttachPurchaseOrderRequestCsvFile(bool $attachPurchaseOrderRequestCsvFile): self
+    /**
+     * 
+     *
+     * @param bool|null $attachPurchaseOrderRequestCsvFile
+     *
+     * @return self
+     */
+    public function setAttachPurchaseOrderRequestCsvFile(?bool $attachPurchaseOrderRequestCsvFile): self
     {
         $this->initialized['attachPurchaseOrderRequestCsvFile'] = true;
         $this->attachPurchaseOrderRequestCsvFile = $attachPurchaseOrderRequestCsvFile;
-
         return $this;
     }
-
-    public function getAttachRecordDocument(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getAttachRecordDocument(): ?bool
     {
         return $this->attachRecordDocument;
     }
-
-    public function setAttachRecordDocument(bool $attachRecordDocument): self
+    /**
+     * 
+     *
+     * @param bool|null $attachRecordDocument
+     *
+     * @return self
+     */
+    public function setAttachRecordDocument(?bool $attachRecordDocument): self
     {
         $this->initialized['attachRecordDocument'] = true;
         $this->attachRecordDocument = $attachRecordDocument;
-
         return $this;
     }
-
-    public function getAttachReturnLabel(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getAttachReturnLabel(): ?bool
     {
         return $this->attachReturnLabel;
     }
-
-    public function setAttachReturnLabel(bool $attachReturnLabel): self
+    /**
+     * 
+     *
+     * @param bool|null $attachReturnLabel
+     *
+     * @return self
+     */
+    public function setAttachReturnLabel(?bool $attachReturnLabel): self
     {
         $this->initialized['attachReturnLabel'] = true;
         $this->attachReturnLabel = $attachReturnLabel;
-
         return $this;
     }
-
-    public function getAttachShippingLabel(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getAttachShippingLabel(): ?bool
     {
         return $this->attachShippingLabel;
     }
-
-    public function setAttachShippingLabel(bool $attachShippingLabel): self
+    /**
+     * 
+     *
+     * @param bool|null $attachShippingLabel
+     *
+     * @return self
+     */
+    public function setAttachShippingLabel(?bool $attachShippingLabel): self
     {
         $this->initialized['attachShippingLabel'] = true;
         $this->attachShippingLabel = $attachShippingLabel;
-
         return $this;
     }
-
-    public function getBccRecipients(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getBccRecipients(): ?string
     {
         return $this->bccRecipients;
     }
-
-    public function setBccRecipients(string $bccRecipients): self
+    /**
+     * 
+     *
+     * @param string|null $bccRecipients
+     *
+     * @return self
+     */
+    public function setBccRecipients(?string $bccRecipients): self
     {
         $this->initialized['bccRecipients'] = true;
         $this->bccRecipients = $bccRecipients;
-
         return $this;
     }
-
-    public function getCcRecipients(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCcRecipients(): ?string
     {
         return $this->ccRecipients;
     }
-
-    public function setCcRecipients(string $ccRecipients): self
+    /**
+     * 
+     *
+     * @param string|null $ccRecipients
+     *
+     * @return self
+     */
+    public function setCcRecipients(?string $ccRecipients): self
     {
         $this->initialized['ccRecipients'] = true;
         $this->ccRecipients = $ccRecipients;
-
         return $this;
     }
-
-    public function getEvent(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getEvent(): ?string
     {
         return $this->event;
     }
-
-    public function setEvent(string $event): self
+    /**
+     * 
+     *
+     * @param string|null $event
+     *
+     * @return self
+     */
+    public function setEvent(?string $event): self
     {
         $this->initialized['event'] = true;
         $this->event = $event;
-
         return $this;
     }
-
-    public function getMailAccountId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMailAccountId(): ?string
     {
         return $this->mailAccountId;
     }
-
-    public function setMailAccountId(string $mailAccountId): self
+    /**
+     * 
+     *
+     * @param string|null $mailAccountId
+     *
+     * @return self
+     */
+    public function setMailAccountId(?string $mailAccountId): self
     {
         $this->initialized['mailAccountId'] = true;
         $this->mailAccountId = $mailAccountId;
-
         return $this;
     }
-
-    public function getName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    /**
+     * 
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
         return $this;
     }
-
-    public function getOtherRecipients(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getOtherRecipients(): ?string
     {
         return $this->otherRecipients;
     }
-
-    public function setOtherRecipients(string $otherRecipients): self
+    /**
+     * 
+     *
+     * @param string|null $otherRecipients
+     *
+     * @return self
+     */
+    public function setOtherRecipients(?string $otherRecipients): self
     {
         $this->initialized['otherRecipients'] = true;
         $this->otherRecipients = $otherRecipients;
-
         return $this;
     }
-
     /**
-     * @return list<OnlyId>
+     * 
+     *
+     * @return list<OnlyId>|null
      */
-    public function getPaymentMethodTypes(): array
+    public function getPaymentMethodTypes(): ?array
     {
         return $this->paymentMethodTypes;
     }
-
     /**
-     * @param  list<OnlyId>  $paymentMethodTypes
+     * 
+     *
+     * @param list<OnlyId>|null $paymentMethodTypes
+     *
+     * @return self
      */
-    public function setPaymentMethodTypes(array $paymentMethodTypes): self
+    public function setPaymentMethodTypes(?array $paymentMethodTypes): self
     {
         $this->initialized['paymentMethodTypes'] = true;
         $this->paymentMethodTypes = $paymentMethodTypes;
-
         return $this;
     }
-
-    public function getRecipientType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRecipientType(): ?string
     {
         return $this->recipientType;
     }
-
-    public function setRecipientType(string $recipientType): self
+    /**
+     * 
+     *
+     * @param string|null $recipientType
+     *
+     * @return self
+     */
+    public function setRecipientType(?string $recipientType): self
     {
         $this->initialized['recipientType'] = true;
         $this->recipientType = $recipientType;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getSalesChannels(): array
+    public function getSalesChannels(): ?array
     {
         return $this->salesChannels;
     }
-
     /**
-     * @param  list<string>  $salesChannels
+     * 
+     *
+     * @param list<string>|null $salesChannels
+     *
+     * @return self
      */
-    public function setSalesChannels(array $salesChannels): self
+    public function setSalesChannels(?array $salesChannels): self
     {
         $this->initialized['salesChannels'] = true;
         $this->salesChannels = $salesChannels;
-
         return $this;
     }
-
-    public function getSalesInvoiceOrigin(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSalesInvoiceOrigin(): ?string
     {
         return $this->salesInvoiceOrigin;
     }
-
-    public function setSalesInvoiceOrigin(string $salesInvoiceOrigin): self
+    /**
+     * 
+     *
+     * @param string|null $salesInvoiceOrigin
+     *
+     * @return self
+     */
+    public function setSalesInvoiceOrigin(?string $salesInvoiceOrigin): self
     {
         $this->initialized['salesInvoiceOrigin'] = true;
         $this->salesInvoiceOrigin = $salesInvoiceOrigin;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getSalesInvoiceTypes(): array
+    public function getSalesInvoiceTypes(): ?array
     {
         return $this->salesInvoiceTypes;
     }
-
     /**
-     * @param  list<string>  $salesInvoiceTypes
+     * 
+     *
+     * @param list<string>|null $salesInvoiceTypes
+     *
+     * @return self
      */
-    public function setSalesInvoiceTypes(array $salesInvoiceTypes): self
+    public function setSalesInvoiceTypes(?array $salesInvoiceTypes): self
     {
         $this->initialized['salesInvoiceTypes'] = true;
         $this->salesInvoiceTypes = $salesInvoiceTypes;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getShipmentOutTypes(): array
+    public function getShipmentOutTypes(): ?array
     {
         return $this->shipmentOutTypes;
     }
-
     /**
-     * @param  list<string>  $shipmentOutTypes
+     * 
+     *
+     * @param list<string>|null $shipmentOutTypes
+     *
+     * @return self
      */
-    public function setShipmentOutTypes(array $shipmentOutTypes): self
+    public function setShipmentOutTypes(?array $shipmentOutTypes): self
     {
         $this->initialized['shipmentOutTypes'] = true;
         $this->shipmentOutTypes = $shipmentOutTypes;
-
         return $this;
     }
-
-    public function getTemplateId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTemplateId(): ?string
     {
         return $this->templateId;
     }
-
-    public function setTemplateId(string $templateId): self
+    /**
+     * 
+     *
+     * @param string|null $templateId
+     *
+     * @return self
+     */
+    public function setTemplateId(?string $templateId): self
     {
         $this->initialized['templateId'] = true;
         $this->templateId = $templateId;
-
         return $this;
     }
 }

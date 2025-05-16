@@ -8,45 +8,64 @@ class IncomingGoodsIdIdCreateSupplierReturnPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $purchaseOrderId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $supplierId;
-
-    public function getPurchaseOrderId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPurchaseOrderId(): ?string
     {
         return $this->purchaseOrderId;
     }
-
-    public function setPurchaseOrderId(string $purchaseOrderId): self
+    /**
+     * 
+     *
+     * @param string|null $purchaseOrderId
+     *
+     * @return self
+     */
+    public function setPurchaseOrderId(?string $purchaseOrderId): self
     {
         $this->initialized['purchaseOrderId'] = true;
         $this->purchaseOrderId = $purchaseOrderId;
-
         return $this;
     }
-
-    public function getSupplierId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSupplierId(): ?string
     {
         return $this->supplierId;
     }
-
-    public function setSupplierId(string $supplierId): self
+    /**
+     * 
+     *
+     * @param string|null $supplierId
+     *
+     * @return self
+     */
+    public function setSupplierId(?string $supplierId): self
     {
         $this->initialized['supplierId'] = true;
         $this->supplierId = $supplierId;
-
         return $this;
     }
 }

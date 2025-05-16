@@ -4,7 +4,6 @@ namespace Webhubworks\WeclappApiCore\Runtime\Normalizer;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Validation;
-
 trait ValidatorTrait
 {
     protected function validate(array $data, Constraint $constraint): void

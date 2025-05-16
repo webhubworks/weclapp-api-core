@@ -8,105 +8,148 @@ class TransportationOrderIdIdPickPickPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $bookLoadingEquipmentOnDissolveOfPreferred;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $inputQuantity;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $inputSerialNumbers;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $pickId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $preferredPackagingUnitId;
-
-    public function getBookLoadingEquipmentOnDissolveOfPreferred(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getBookLoadingEquipmentOnDissolveOfPreferred(): ?bool
     {
         return $this->bookLoadingEquipmentOnDissolveOfPreferred;
     }
-
-    public function setBookLoadingEquipmentOnDissolveOfPreferred(bool $bookLoadingEquipmentOnDissolveOfPreferred): self
+    /**
+     * 
+     *
+     * @param bool|null $bookLoadingEquipmentOnDissolveOfPreferred
+     *
+     * @return self
+     */
+    public function setBookLoadingEquipmentOnDissolveOfPreferred(?bool $bookLoadingEquipmentOnDissolveOfPreferred): self
     {
         $this->initialized['bookLoadingEquipmentOnDissolveOfPreferred'] = true;
         $this->bookLoadingEquipmentOnDissolveOfPreferred = $bookLoadingEquipmentOnDissolveOfPreferred;
-
         return $this;
     }
-
-    public function getInputQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getInputQuantity(): ?string
     {
         return $this->inputQuantity;
     }
-
-    public function setInputQuantity(string $inputQuantity): self
+    /**
+     * 
+     *
+     * @param string|null $inputQuantity
+     *
+     * @return self
+     */
+    public function setInputQuantity(?string $inputQuantity): self
     {
         $this->initialized['inputQuantity'] = true;
         $this->inputQuantity = $inputQuantity;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getInputSerialNumbers(): array
+    public function getInputSerialNumbers(): ?array
     {
         return $this->inputSerialNumbers;
     }
-
     /**
-     * @param  list<string>  $inputSerialNumbers
+     * 
+     *
+     * @param list<string>|null $inputSerialNumbers
+     *
+     * @return self
      */
-    public function setInputSerialNumbers(array $inputSerialNumbers): self
+    public function setInputSerialNumbers(?array $inputSerialNumbers): self
     {
         $this->initialized['inputSerialNumbers'] = true;
         $this->inputSerialNumbers = $inputSerialNumbers;
-
         return $this;
     }
-
-    public function getPickId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPickId(): ?string
     {
         return $this->pickId;
     }
-
-    public function setPickId(string $pickId): self
+    /**
+     * 
+     *
+     * @param string|null $pickId
+     *
+     * @return self
+     */
+    public function setPickId(?string $pickId): self
     {
         $this->initialized['pickId'] = true;
         $this->pickId = $pickId;
-
         return $this;
     }
-
-    public function getPreferredPackagingUnitId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPreferredPackagingUnitId(): ?string
     {
         return $this->preferredPackagingUnitId;
     }
-
-    public function setPreferredPackagingUnitId(string $preferredPackagingUnitId): self
+    /**
+     * 
+     *
+     * @param string|null $preferredPackagingUnitId
+     *
+     * @return self
+     */
+    public function setPreferredPackagingUnitId(?string $preferredPackagingUnitId): self
     {
         $this->initialized['preferredPackagingUnitId'] = true;
         $this->preferredPackagingUnitId = $preferredPackagingUnitId;
-
         return $this;
     }
 }

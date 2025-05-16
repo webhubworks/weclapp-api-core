@@ -8,69 +8,92 @@ class SalesOrderIdIdCalculateSalesPricesPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $calculationMode;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $orderItemIds;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $percentage;
-
-    public function getCalculationMode(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCalculationMode(): ?string
     {
         return $this->calculationMode;
     }
-
-    public function setCalculationMode(string $calculationMode): self
+    /**
+     * 
+     *
+     * @param string|null $calculationMode
+     *
+     * @return self
+     */
+    public function setCalculationMode(?string $calculationMode): self
     {
         $this->initialized['calculationMode'] = true;
         $this->calculationMode = $calculationMode;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getOrderItemIds(): array
+    public function getOrderItemIds(): ?array
     {
         return $this->orderItemIds;
     }
-
     /**
-     * @param  list<string>  $orderItemIds
+     * 
+     *
+     * @param list<string>|null $orderItemIds
+     *
+     * @return self
      */
-    public function setOrderItemIds(array $orderItemIds): self
+    public function setOrderItemIds(?array $orderItemIds): self
     {
         $this->initialized['orderItemIds'] = true;
         $this->orderItemIds = $orderItemIds;
-
         return $this;
     }
-
-    public function getPercentage(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPercentage(): ?string
     {
         return $this->percentage;
     }
-
-    public function setPercentage(string $percentage): self
+    /**
+     * 
+     *
+     * @param string|null $percentage
+     *
+     * @return self
+     */
+    public function setPercentage(?string $percentage): self
     {
         $this->initialized['percentage'] = true;
         $this->percentage = $percentage;
-
         return $this;
     }
 }

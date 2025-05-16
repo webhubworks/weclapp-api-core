@@ -8,303 +8,456 @@ class InventoryCreatePostBodyInventory extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $counter;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $endDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $inventoryGroupId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $inventoryNumber;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $levelOfDetail;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $managerId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $recorder;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $startDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $status;
-
     /**
-     * @var list<InventoryStatusHistory>
+     * 
+     *
+     * @var list<InventoryStatusHistory>|null
      */
     protected $statusHistory;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $warehouseId;
-
-    public function getCounter(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCounter(): ?string
     {
         return $this->counter;
     }
-
-    public function setCounter(string $counter): self
+    /**
+     * 
+     *
+     * @param string|null $counter
+     *
+     * @return self
+     */
+    public function setCounter(?string $counter): self
     {
         $this->initialized['counter'] = true;
         $this->counter = $counter;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
-    public function getEndDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getEndDate(): ?int
     {
         return $this->endDate;
     }
-
-    public function setEndDate(int $endDate): self
+    /**
+     * 
+     *
+     * @param int|null $endDate
+     *
+     * @return self
+     */
+    public function setEndDate(?int $endDate): self
     {
         $this->initialized['endDate'] = true;
         $this->endDate = $endDate;
-
         return $this;
     }
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getInventoryGroupId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getInventoryGroupId(): ?string
     {
         return $this->inventoryGroupId;
     }
-
-    public function setInventoryGroupId(string $inventoryGroupId): self
+    /**
+     * 
+     *
+     * @param string|null $inventoryGroupId
+     *
+     * @return self
+     */
+    public function setInventoryGroupId(?string $inventoryGroupId): self
     {
         $this->initialized['inventoryGroupId'] = true;
         $this->inventoryGroupId = $inventoryGroupId;
-
         return $this;
     }
-
-    public function getInventoryNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getInventoryNumber(): ?string
     {
         return $this->inventoryNumber;
     }
-
-    public function setInventoryNumber(string $inventoryNumber): self
+    /**
+     * 
+     *
+     * @param string|null $inventoryNumber
+     *
+     * @return self
+     */
+    public function setInventoryNumber(?string $inventoryNumber): self
     {
         $this->initialized['inventoryNumber'] = true;
         $this->inventoryNumber = $inventoryNumber;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getLevelOfDetail(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLevelOfDetail(): ?string
     {
         return $this->levelOfDetail;
     }
-
-    public function setLevelOfDetail(string $levelOfDetail): self
+    /**
+     * 
+     *
+     * @param string|null $levelOfDetail
+     *
+     * @return self
+     */
+    public function setLevelOfDetail(?string $levelOfDetail): self
     {
         $this->initialized['levelOfDetail'] = true;
         $this->levelOfDetail = $levelOfDetail;
-
         return $this;
     }
-
-    public function getManagerId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getManagerId(): ?string
     {
         return $this->managerId;
     }
-
-    public function setManagerId(string $managerId): self
+    /**
+     * 
+     *
+     * @param string|null $managerId
+     *
+     * @return self
+     */
+    public function setManagerId(?string $managerId): self
     {
         $this->initialized['managerId'] = true;
         $this->managerId = $managerId;
-
         return $this;
     }
-
-    public function getRecorder(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRecorder(): ?string
     {
         return $this->recorder;
     }
-
-    public function setRecorder(string $recorder): self
+    /**
+     * 
+     *
+     * @param string|null $recorder
+     *
+     * @return self
+     */
+    public function setRecorder(?string $recorder): self
     {
         $this->initialized['recorder'] = true;
         $this->recorder = $recorder;
-
         return $this;
     }
-
-    public function getStartDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getStartDate(): ?int
     {
         return $this->startDate;
     }
-
-    public function setStartDate(int $startDate): self
+    /**
+     * 
+     *
+     * @param int|null $startDate
+     *
+     * @return self
+     */
+    public function setStartDate(?int $startDate): self
     {
         $this->initialized['startDate'] = true;
         $this->startDate = $startDate;
-
         return $this;
     }
-
-    public function getStatus(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getStatus(): ?string
     {
         return $this->status;
     }
-
-    public function setStatus(string $status): self
+    /**
+     * 
+     *
+     * @param string|null $status
+     *
+     * @return self
+     */
+    public function setStatus(?string $status): self
     {
         $this->initialized['status'] = true;
         $this->status = $status;
-
         return $this;
     }
-
     /**
-     * @return list<InventoryStatusHistory>
+     * 
+     *
+     * @return list<InventoryStatusHistory>|null
      */
-    public function getStatusHistory(): array
+    public function getStatusHistory(): ?array
     {
         return $this->statusHistory;
     }
-
     /**
-     * @param  list<InventoryStatusHistory>  $statusHistory
+     * 
+     *
+     * @param list<InventoryStatusHistory>|null $statusHistory
+     *
+     * @return self
      */
-    public function setStatusHistory(array $statusHistory): self
+    public function setStatusHistory(?array $statusHistory): self
     {
         $this->initialized['statusHistory'] = true;
         $this->statusHistory = $statusHistory;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getWarehouseId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getWarehouseId(): ?string
     {
         return $this->warehouseId;
     }
-
-    public function setWarehouseId(string $warehouseId): self
+    /**
+     * 
+     *
+     * @param string|null $warehouseId
+     *
+     * @return self
+     */
+    public function setWarehouseId(?string $warehouseId): self
     {
         $this->initialized['warehouseId'] = true;
         $this->warehouseId = $warehouseId;
-
         return $this;
     }
 }

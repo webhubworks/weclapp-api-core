@@ -8,69 +8,92 @@ class PropertyTranslationUpdatePropertyTranslationsPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $entityId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $entityName;
-
     /**
-     * @var list<PropertyTranslationUpdatePropertyTranslationsPostBodyPropertyTranslationsItem>
+     * 
+     *
+     * @var list<PropertyTranslationUpdatePropertyTranslationsPostBodyPropertyTranslationsItem>|null
      */
     protected $propertyTranslations;
-
-    public function getEntityId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getEntityId(): ?string
     {
         return $this->entityId;
     }
-
-    public function setEntityId(string $entityId): self
+    /**
+     * 
+     *
+     * @param string|null $entityId
+     *
+     * @return self
+     */
+    public function setEntityId(?string $entityId): self
     {
         $this->initialized['entityId'] = true;
         $this->entityId = $entityId;
-
         return $this;
     }
-
-    public function getEntityName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getEntityName(): ?string
     {
         return $this->entityName;
     }
-
-    public function setEntityName(string $entityName): self
+    /**
+     * 
+     *
+     * @param string|null $entityName
+     *
+     * @return self
+     */
+    public function setEntityName(?string $entityName): self
     {
         $this->initialized['entityName'] = true;
         $this->entityName = $entityName;
-
         return $this;
     }
-
     /**
-     * @return list<PropertyTranslationUpdatePropertyTranslationsPostBodyPropertyTranslationsItem>
+     * 
+     *
+     * @return list<PropertyTranslationUpdatePropertyTranslationsPostBodyPropertyTranslationsItem>|null
      */
-    public function getPropertyTranslations(): array
+    public function getPropertyTranslations(): ?array
     {
         return $this->propertyTranslations;
     }
-
     /**
-     * @param  list<PropertyTranslationUpdatePropertyTranslationsPostBodyPropertyTranslationsItem>  $propertyTranslations
+     * 
+     *
+     * @param list<PropertyTranslationUpdatePropertyTranslationsPostBodyPropertyTranslationsItem>|null $propertyTranslations
+     *
+     * @return self
      */
-    public function setPropertyTranslations(array $propertyTranslations): self
+    public function setPropertyTranslations(?array $propertyTranslations): self
     {
         $this->initialized['propertyTranslations'] = true;
         $this->propertyTranslations = $propertyTranslations;
-
         return $this;
     }
 }

@@ -8,267 +8,400 @@ class TermOfPayment extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var list<TermOfPaymentCondition>
+     * 
+     *
+     * @var list<TermOfPaymentCondition>|null
      */
     protected $conditions;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $datevTermOfPaymentNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $dueDateOption;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $fixedDay;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $name;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $numberOfDays;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $reference;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $validFrom;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $validTo;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
     /**
-     * @return list<TermOfPaymentCondition>
+     * 
+     *
+     * @return list<TermOfPaymentCondition>|null
      */
-    public function getConditions(): array
+    public function getConditions(): ?array
     {
         return $this->conditions;
     }
-
     /**
-     * @param  list<TermOfPaymentCondition>  $conditions
+     * 
+     *
+     * @param list<TermOfPaymentCondition>|null $conditions
+     *
+     * @return self
      */
-    public function setConditions(array $conditions): self
+    public function setConditions(?array $conditions): self
     {
         $this->initialized['conditions'] = true;
         $this->conditions = $conditions;
-
         return $this;
     }
-
-    public function getDatevTermOfPaymentNumber(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getDatevTermOfPaymentNumber(): ?int
     {
         return $this->datevTermOfPaymentNumber;
     }
-
-    public function setDatevTermOfPaymentNumber(int $datevTermOfPaymentNumber): self
+    /**
+     * 
+     *
+     * @param int|null $datevTermOfPaymentNumber
+     *
+     * @return self
+     */
+    public function setDatevTermOfPaymentNumber(?int $datevTermOfPaymentNumber): self
     {
         $this->initialized['datevTermOfPaymentNumber'] = true;
         $this->datevTermOfPaymentNumber = $datevTermOfPaymentNumber;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
-    public function getDueDateOption(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDueDateOption(): ?string
     {
         return $this->dueDateOption;
     }
-
-    public function setDueDateOption(string $dueDateOption): self
+    /**
+     * 
+     *
+     * @param string|null $dueDateOption
+     *
+     * @return self
+     */
+    public function setDueDateOption(?string $dueDateOption): self
     {
         $this->initialized['dueDateOption'] = true;
         $this->dueDateOption = $dueDateOption;
-
         return $this;
     }
-
-    public function getFixedDay(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getFixedDay(): ?int
     {
         return $this->fixedDay;
     }
-
-    public function setFixedDay(int $fixedDay): self
+    /**
+     * 
+     *
+     * @param int|null $fixedDay
+     *
+     * @return self
+     */
+    public function setFixedDay(?int $fixedDay): self
     {
         $this->initialized['fixedDay'] = true;
         $this->fixedDay = $fixedDay;
-
         return $this;
     }
-
-    public function getName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    /**
+     * 
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
         return $this;
     }
-
-    public function getNumberOfDays(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getNumberOfDays(): ?int
     {
         return $this->numberOfDays;
     }
-
-    public function setNumberOfDays(int $numberOfDays): self
+    /**
+     * 
+     *
+     * @param int|null $numberOfDays
+     *
+     * @return self
+     */
+    public function setNumberOfDays(?int $numberOfDays): self
     {
         $this->initialized['numberOfDays'] = true;
         $this->numberOfDays = $numberOfDays;
-
         return $this;
     }
-
-    public function getReference(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getReference(): ?string
     {
         return $this->reference;
     }
-
-    public function setReference(string $reference): self
+    /**
+     * 
+     *
+     * @param string|null $reference
+     *
+     * @return self
+     */
+    public function setReference(?string $reference): self
     {
         $this->initialized['reference'] = true;
         $this->reference = $reference;
-
         return $this;
     }
-
-    public function getValidFrom(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getValidFrom(): ?int
     {
         return $this->validFrom;
     }
-
-    public function setValidFrom(int $validFrom): self
+    /**
+     * 
+     *
+     * @param int|null $validFrom
+     *
+     * @return self
+     */
+    public function setValidFrom(?int $validFrom): self
     {
         $this->initialized['validFrom'] = true;
         $this->validFrom = $validFrom;
-
         return $this;
     }
-
-    public function getValidTo(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getValidTo(): ?int
     {
         return $this->validTo;
     }
-
-    public function setValidTo(int $validTo): self
+    /**
+     * 
+     *
+     * @param int|null $validTo
+     *
+     * @return self
+     */
+    public function setValidTo(?int $validTo): self
     {
         $this->initialized['validTo'] = true;
         $this->validTo = $validTo;
-
         return $this;
     }
 }

@@ -8,1751 +8,2556 @@ class Customer extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var list<mixed>
+     * 
+     *
+     * @var list<mixed>|null
      */
     protected $customAttributes;
-
     /**
-     * @var list<Address>
+     * 
+     *
+     * @var list<Address>|null
      */
     protected $addresses;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $birthDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $company;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $company2;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $deliveryAddressId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $email;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $fax;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $firstName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $invoiceAddressId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $lastName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $middleName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $mobilePhone1;
-
     /**
-     * @var list<OnlineAccount>
+     * 
+     *
+     * @var list<OnlineAccount>|null
      */
     protected $onlineAccounts;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $partyType;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $personCompany;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $personDepartmentId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $personRoleId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $phone;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $primaryAddressId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $salutation;
-
     /**
-     * @var list<string>
+     * 
+     *
+     * @var list<string>|null
      */
     protected $tags;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $title;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $titleId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $website;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $commercialLanguageId;
-
     /**
-     * @var list<Contact>
+     * 
+     *
+     * @var list<Contact>|null
      */
     protected $contacts;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $currencyId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $currencyName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $primaryContactId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $sectorId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $sectorName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $annualRevenue;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $companySizeId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $companySizeName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $customerCategoryId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $customerCategoryName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $parentPartyId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $paymentMethodId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $paymentMethodName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $responsibleUserId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $responsibleUserUsername;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $shipmentMethodId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $shipmentMethodName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $termOfPaymentId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $termOfPaymentName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $vatRegistrationNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $amountInsured;
-
     /**
-     * @var list<PartyBankAccount>
+     * 
+     *
+     * @var list<PartyBankAccount>|null
      */
     protected $bankAccounts;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $blockNotice;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $blocked;
-
     /**
-     * @var list<CommissionSalesPartner>
+     * 
+     *
+     * @var list<CommissionSalesPartner>|null
      */
     protected $commissionSalesPartners;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $creditLimit;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $customerNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $customerRatingId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $customerRatingName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $customerSupplierNumber;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var list<Entity>
+     * @var list<Entity>|null
      */
     protected $customerTopics;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $defaultHeaderDiscount;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $defaultHeaderSurcharge;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $deliveryBlock;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $insolvent;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $insured;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $invoiceBlock;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $invoiceRecipientId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $leadSourceId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $leadSourceName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $lossDescription;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $lossReasonId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $lossReasonName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $nonStandardTaxId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $oldCustomerNumber;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $optIn;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $optInLetter;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $optInPhone;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $optInSms;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $referenceNumber;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $responsibleUserFixed;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $salesChannel;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $salesStageId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $salesStageName;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $satisfaction;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $useCustomsTariffNumber;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
     /**
-     * @return list<mixed>
+     * 
+     *
+     * @return list<mixed>|null
      */
-    public function getCustomAttributes(): array
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
-
     /**
-     * @param  list<mixed>  $customAttributes
+     * 
+     *
+     * @param list<mixed>|null $customAttributes
+     *
+     * @return self
      */
-    public function setCustomAttributes(array $customAttributes): self
+    public function setCustomAttributes(?array $customAttributes): self
     {
         $this->initialized['customAttributes'] = true;
         $this->customAttributes = $customAttributes;
-
         return $this;
     }
-
     /**
-     * @return list<Address>
+     * 
+     *
+     * @return list<Address>|null
      */
-    public function getAddresses(): array
+    public function getAddresses(): ?array
     {
         return $this->addresses;
     }
-
     /**
-     * @param  list<Address>  $addresses
+     * 
+     *
+     * @param list<Address>|null $addresses
+     *
+     * @return self
      */
-    public function setAddresses(array $addresses): self
+    public function setAddresses(?array $addresses): self
     {
         $this->initialized['addresses'] = true;
         $this->addresses = $addresses;
-
         return $this;
     }
-
-    public function getBirthDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getBirthDate(): ?int
     {
         return $this->birthDate;
     }
-
-    public function setBirthDate(int $birthDate): self
+    /**
+     * 
+     *
+     * @param int|null $birthDate
+     *
+     * @return self
+     */
+    public function setBirthDate(?int $birthDate): self
     {
         $this->initialized['birthDate'] = true;
         $this->birthDate = $birthDate;
-
         return $this;
     }
-
-    public function getCompany(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCompany(): ?string
     {
         return $this->company;
     }
-
-    public function setCompany(string $company): self
+    /**
+     * 
+     *
+     * @param string|null $company
+     *
+     * @return self
+     */
+    public function setCompany(?string $company): self
     {
         $this->initialized['company'] = true;
         $this->company = $company;
-
         return $this;
     }
-
-    public function getCompany2(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCompany2(): ?string
     {
         return $this->company2;
     }
-
-    public function setCompany2(string $company2): self
+    /**
+     * 
+     *
+     * @param string|null $company2
+     *
+     * @return self
+     */
+    public function setCompany2(?string $company2): self
     {
         $this->initialized['company2'] = true;
         $this->company2 = $company2;
-
         return $this;
     }
-
-    public function getDeliveryAddressId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDeliveryAddressId(): ?string
     {
         return $this->deliveryAddressId;
     }
-
-    public function setDeliveryAddressId(string $deliveryAddressId): self
+    /**
+     * 
+     *
+     * @param string|null $deliveryAddressId
+     *
+     * @return self
+     */
+    public function setDeliveryAddressId(?string $deliveryAddressId): self
     {
         $this->initialized['deliveryAddressId'] = true;
         $this->deliveryAddressId = $deliveryAddressId;
-
         return $this;
     }
-
-    public function getEmail(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getEmail(): ?string
     {
         return $this->email;
     }
-
-    public function setEmail(string $email): self
+    /**
+     * 
+     *
+     * @param string|null $email
+     *
+     * @return self
+     */
+    public function setEmail(?string $email): self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
-
         return $this;
     }
-
-    public function getFax(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getFax(): ?string
     {
         return $this->fax;
     }
-
-    public function setFax(string $fax): self
+    /**
+     * 
+     *
+     * @param string|null $fax
+     *
+     * @return self
+     */
+    public function setFax(?string $fax): self
     {
         $this->initialized['fax'] = true;
         $this->fax = $fax;
-
         return $this;
     }
-
-    public function getFirstName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
-
-    public function setFirstName(string $firstName): self
+    /**
+     * 
+     *
+     * @param string|null $firstName
+     *
+     * @return self
+     */
+    public function setFirstName(?string $firstName): self
     {
         $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
-
         return $this;
     }
-
-    public function getInvoiceAddressId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getInvoiceAddressId(): ?string
     {
         return $this->invoiceAddressId;
     }
-
-    public function setInvoiceAddressId(string $invoiceAddressId): self
+    /**
+     * 
+     *
+     * @param string|null $invoiceAddressId
+     *
+     * @return self
+     */
+    public function setInvoiceAddressId(?string $invoiceAddressId): self
     {
         $this->initialized['invoiceAddressId'] = true;
         $this->invoiceAddressId = $invoiceAddressId;
-
         return $this;
     }
-
-    public function getLastName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
-
-    public function setLastName(string $lastName): self
+    /**
+     * 
+     *
+     * @param string|null $lastName
+     *
+     * @return self
+     */
+    public function setLastName(?string $lastName): self
     {
         $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
-
         return $this;
     }
-
-    public function getMiddleName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMiddleName(): ?string
     {
         return $this->middleName;
     }
-
-    public function setMiddleName(string $middleName): self
+    /**
+     * 
+     *
+     * @param string|null $middleName
+     *
+     * @return self
+     */
+    public function setMiddleName(?string $middleName): self
     {
         $this->initialized['middleName'] = true;
         $this->middleName = $middleName;
-
         return $this;
     }
-
-    public function getMobilePhone1(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getMobilePhone1(): ?string
     {
         return $this->mobilePhone1;
     }
-
-    public function setMobilePhone1(string $mobilePhone1): self
+    /**
+     * 
+     *
+     * @param string|null $mobilePhone1
+     *
+     * @return self
+     */
+    public function setMobilePhone1(?string $mobilePhone1): self
     {
         $this->initialized['mobilePhone1'] = true;
         $this->mobilePhone1 = $mobilePhone1;
-
         return $this;
     }
-
     /**
-     * @return list<OnlineAccount>
+     * 
+     *
+     * @return list<OnlineAccount>|null
      */
-    public function getOnlineAccounts(): array
+    public function getOnlineAccounts(): ?array
     {
         return $this->onlineAccounts;
     }
-
     /**
-     * @param  list<OnlineAccount>  $onlineAccounts
+     * 
+     *
+     * @param list<OnlineAccount>|null $onlineAccounts
+     *
+     * @return self
      */
-    public function setOnlineAccounts(array $onlineAccounts): self
+    public function setOnlineAccounts(?array $onlineAccounts): self
     {
         $this->initialized['onlineAccounts'] = true;
         $this->onlineAccounts = $onlineAccounts;
-
         return $this;
     }
-
-    public function getPartyType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPartyType(): ?string
     {
         return $this->partyType;
     }
-
-    public function setPartyType(string $partyType): self
+    /**
+     * 
+     *
+     * @param string|null $partyType
+     *
+     * @return self
+     */
+    public function setPartyType(?string $partyType): self
     {
         $this->initialized['partyType'] = true;
         $this->partyType = $partyType;
-
         return $this;
     }
-
-    public function getPersonCompany(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPersonCompany(): ?string
     {
         return $this->personCompany;
     }
-
-    public function setPersonCompany(string $personCompany): self
+    /**
+     * 
+     *
+     * @param string|null $personCompany
+     *
+     * @return self
+     */
+    public function setPersonCompany(?string $personCompany): self
     {
         $this->initialized['personCompany'] = true;
         $this->personCompany = $personCompany;
-
         return $this;
     }
-
-    public function getPersonDepartmentId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPersonDepartmentId(): ?string
     {
         return $this->personDepartmentId;
     }
-
-    public function setPersonDepartmentId(string $personDepartmentId): self
+    /**
+     * 
+     *
+     * @param string|null $personDepartmentId
+     *
+     * @return self
+     */
+    public function setPersonDepartmentId(?string $personDepartmentId): self
     {
         $this->initialized['personDepartmentId'] = true;
         $this->personDepartmentId = $personDepartmentId;
-
         return $this;
     }
-
-    public function getPersonRoleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPersonRoleId(): ?string
     {
         return $this->personRoleId;
     }
-
-    public function setPersonRoleId(string $personRoleId): self
+    /**
+     * 
+     *
+     * @param string|null $personRoleId
+     *
+     * @return self
+     */
+    public function setPersonRoleId(?string $personRoleId): self
     {
         $this->initialized['personRoleId'] = true;
         $this->personRoleId = $personRoleId;
-
         return $this;
     }
-
-    public function getPhone(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
-
-    public function setPhone(string $phone): self
+    /**
+     * 
+     *
+     * @param string|null $phone
+     *
+     * @return self
+     */
+    public function setPhone(?string $phone): self
     {
         $this->initialized['phone'] = true;
         $this->phone = $phone;
-
         return $this;
     }
-
-    public function getPrimaryAddressId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPrimaryAddressId(): ?string
     {
         return $this->primaryAddressId;
     }
-
-    public function setPrimaryAddressId(string $primaryAddressId): self
+    /**
+     * 
+     *
+     * @param string|null $primaryAddressId
+     *
+     * @return self
+     */
+    public function setPrimaryAddressId(?string $primaryAddressId): self
     {
         $this->initialized['primaryAddressId'] = true;
         $this->primaryAddressId = $primaryAddressId;
-
         return $this;
     }
-
-    public function getSalutation(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSalutation(): ?string
     {
         return $this->salutation;
     }
-
-    public function setSalutation(string $salutation): self
+    /**
+     * 
+     *
+     * @param string|null $salutation
+     *
+     * @return self
+     */
+    public function setSalutation(?string $salutation): self
     {
         $this->initialized['salutation'] = true;
         $this->salutation = $salutation;
-
         return $this;
     }
-
     /**
-     * @return list<string>
+     * 
+     *
+     * @return list<string>|null
      */
-    public function getTags(): array
+    public function getTags(): ?array
     {
         return $this->tags;
     }
-
     /**
-     * @param  list<string>  $tags
+     * 
+     *
+     * @param list<string>|null $tags
+     *
+     * @return self
      */
-    public function setTags(array $tags): self
+    public function setTags(?array $tags): self
     {
         $this->initialized['tags'] = true;
         $this->tags = $tags;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
-
     /**
+     * 
+     *
+     * @param string|null $title
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->initialized['title'] = true;
         $this->title = $title;
-
         return $this;
     }
-
-    public function getTitleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTitleId(): ?string
     {
         return $this->titleId;
     }
-
-    public function setTitleId(string $titleId): self
+    /**
+     * 
+     *
+     * @param string|null $titleId
+     *
+     * @return self
+     */
+    public function setTitleId(?string $titleId): self
     {
         $this->initialized['titleId'] = true;
         $this->titleId = $titleId;
-
         return $this;
     }
-
-    public function getWebsite(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getWebsite(): ?string
     {
         return $this->website;
     }
-
-    public function setWebsite(string $website): self
+    /**
+     * 
+     *
+     * @param string|null $website
+     *
+     * @return self
+     */
+    public function setWebsite(?string $website): self
     {
         $this->initialized['website'] = true;
         $this->website = $website;
-
         return $this;
     }
-
-    public function getCommercialLanguageId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCommercialLanguageId(): ?string
     {
         return $this->commercialLanguageId;
     }
-
-    public function setCommercialLanguageId(string $commercialLanguageId): self
+    /**
+     * 
+     *
+     * @param string|null $commercialLanguageId
+     *
+     * @return self
+     */
+    public function setCommercialLanguageId(?string $commercialLanguageId): self
     {
         $this->initialized['commercialLanguageId'] = true;
         $this->commercialLanguageId = $commercialLanguageId;
-
         return $this;
     }
-
     /**
-     * @return list<Contact>
+     * 
+     *
+     * @return list<Contact>|null
      */
-    public function getContacts(): array
+    public function getContacts(): ?array
     {
         return $this->contacts;
     }
-
     /**
-     * @param  list<Contact>  $contacts
+     * 
+     *
+     * @param list<Contact>|null $contacts
+     *
+     * @return self
      */
-    public function setContacts(array $contacts): self
+    public function setContacts(?array $contacts): self
     {
         $this->initialized['contacts'] = true;
         $this->contacts = $contacts;
-
         return $this;
     }
-
-    public function getCurrencyId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCurrencyId(): ?string
     {
         return $this->currencyId;
     }
-
-    public function setCurrencyId(string $currencyId): self
+    /**
+     * 
+     *
+     * @param string|null $currencyId
+     *
+     * @return self
+     */
+    public function setCurrencyId(?string $currencyId): self
     {
         $this->initialized['currencyId'] = true;
         $this->currencyId = $currencyId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getCurrencyName(): string
+    public function getCurrencyName(): ?string
     {
         return $this->currencyName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $currencyName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setCurrencyName(string $currencyName): self
+    public function setCurrencyName(?string $currencyName): self
     {
         $this->initialized['currencyName'] = true;
         $this->currencyName = $currencyName;
-
         return $this;
     }
-
-    public function getPrimaryContactId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPrimaryContactId(): ?string
     {
         return $this->primaryContactId;
     }
-
-    public function setPrimaryContactId(string $primaryContactId): self
+    /**
+     * 
+     *
+     * @param string|null $primaryContactId
+     *
+     * @return self
+     */
+    public function setPrimaryContactId(?string $primaryContactId): self
     {
         $this->initialized['primaryContactId'] = true;
         $this->primaryContactId = $primaryContactId;
-
         return $this;
     }
-
-    public function getSectorId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSectorId(): ?string
     {
         return $this->sectorId;
     }
-
-    public function setSectorId(string $sectorId): self
+    /**
+     * 
+     *
+     * @param string|null $sectorId
+     *
+     * @return self
+     */
+    public function setSectorId(?string $sectorId): self
     {
         $this->initialized['sectorId'] = true;
         $this->sectorId = $sectorId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getSectorName(): string
+    public function getSectorName(): ?string
     {
         return $this->sectorName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $sectorName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setSectorName(string $sectorName): self
+    public function setSectorName(?string $sectorName): self
     {
         $this->initialized['sectorName'] = true;
         $this->sectorName = $sectorName;
-
         return $this;
     }
-
-    public function getAnnualRevenue(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAnnualRevenue(): ?string
     {
         return $this->annualRevenue;
     }
-
-    public function setAnnualRevenue(string $annualRevenue): self
+    /**
+     * 
+     *
+     * @param string|null $annualRevenue
+     *
+     * @return self
+     */
+    public function setAnnualRevenue(?string $annualRevenue): self
     {
         $this->initialized['annualRevenue'] = true;
         $this->annualRevenue = $annualRevenue;
-
         return $this;
     }
-
-    public function getCompanySizeId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCompanySizeId(): ?string
     {
         return $this->companySizeId;
     }
-
-    public function setCompanySizeId(string $companySizeId): self
+    /**
+     * 
+     *
+     * @param string|null $companySizeId
+     *
+     * @return self
+     */
+    public function setCompanySizeId(?string $companySizeId): self
     {
         $this->initialized['companySizeId'] = true;
         $this->companySizeId = $companySizeId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getCompanySizeName(): string
+    public function getCompanySizeName(): ?string
     {
         return $this->companySizeName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $companySizeName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setCompanySizeName(string $companySizeName): self
+    public function setCompanySizeName(?string $companySizeName): self
     {
         $this->initialized['companySizeName'] = true;
         $this->companySizeName = $companySizeName;
-
         return $this;
     }
-
-    public function getCustomerCategoryId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCustomerCategoryId(): ?string
     {
         return $this->customerCategoryId;
     }
-
-    public function setCustomerCategoryId(string $customerCategoryId): self
+    /**
+     * 
+     *
+     * @param string|null $customerCategoryId
+     *
+     * @return self
+     */
+    public function setCustomerCategoryId(?string $customerCategoryId): self
     {
         $this->initialized['customerCategoryId'] = true;
         $this->customerCategoryId = $customerCategoryId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getCustomerCategoryName(): string
+    public function getCustomerCategoryName(): ?string
     {
         return $this->customerCategoryName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $customerCategoryName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setCustomerCategoryName(string $customerCategoryName): self
+    public function setCustomerCategoryName(?string $customerCategoryName): self
     {
         $this->initialized['customerCategoryName'] = true;
         $this->customerCategoryName = $customerCategoryName;
-
         return $this;
     }
-
-    public function getParentPartyId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getParentPartyId(): ?string
     {
         return $this->parentPartyId;
     }
-
-    public function setParentPartyId(string $parentPartyId): self
+    /**
+     * 
+     *
+     * @param string|null $parentPartyId
+     *
+     * @return self
+     */
+    public function setParentPartyId(?string $parentPartyId): self
     {
         $this->initialized['parentPartyId'] = true;
         $this->parentPartyId = $parentPartyId;
-
         return $this;
     }
-
-    public function getPaymentMethodId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPaymentMethodId(): ?string
     {
         return $this->paymentMethodId;
     }
-
-    public function setPaymentMethodId(string $paymentMethodId): self
+    /**
+     * 
+     *
+     * @param string|null $paymentMethodId
+     *
+     * @return self
+     */
+    public function setPaymentMethodId(?string $paymentMethodId): self
     {
         $this->initialized['paymentMethodId'] = true;
         $this->paymentMethodId = $paymentMethodId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getPaymentMethodName(): string
+    public function getPaymentMethodName(): ?string
     {
         return $this->paymentMethodName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $paymentMethodName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setPaymentMethodName(string $paymentMethodName): self
+    public function setPaymentMethodName(?string $paymentMethodName): self
     {
         $this->initialized['paymentMethodName'] = true;
         $this->paymentMethodName = $paymentMethodName;
-
         return $this;
     }
-
-    public function getResponsibleUserId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getResponsibleUserId(): ?string
     {
         return $this->responsibleUserId;
     }
-
-    public function setResponsibleUserId(string $responsibleUserId): self
+    /**
+     * 
+     *
+     * @param string|null $responsibleUserId
+     *
+     * @return self
+     */
+    public function setResponsibleUserId(?string $responsibleUserId): self
     {
         $this->initialized['responsibleUserId'] = true;
         $this->responsibleUserId = $responsibleUserId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getResponsibleUserUsername(): string
+    public function getResponsibleUserUsername(): ?string
     {
         return $this->responsibleUserUsername;
     }
-
     /**
+     * 
+     *
+     * @param string|null $responsibleUserUsername
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setResponsibleUserUsername(string $responsibleUserUsername): self
+    public function setResponsibleUserUsername(?string $responsibleUserUsername): self
     {
         $this->initialized['responsibleUserUsername'] = true;
         $this->responsibleUserUsername = $responsibleUserUsername;
-
         return $this;
     }
-
-    public function getShipmentMethodId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getShipmentMethodId(): ?string
     {
         return $this->shipmentMethodId;
     }
-
-    public function setShipmentMethodId(string $shipmentMethodId): self
+    /**
+     * 
+     *
+     * @param string|null $shipmentMethodId
+     *
+     * @return self
+     */
+    public function setShipmentMethodId(?string $shipmentMethodId): self
     {
         $this->initialized['shipmentMethodId'] = true;
         $this->shipmentMethodId = $shipmentMethodId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getShipmentMethodName(): string
+    public function getShipmentMethodName(): ?string
     {
         return $this->shipmentMethodName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $shipmentMethodName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setShipmentMethodName(string $shipmentMethodName): self
+    public function setShipmentMethodName(?string $shipmentMethodName): self
     {
         $this->initialized['shipmentMethodName'] = true;
         $this->shipmentMethodName = $shipmentMethodName;
-
         return $this;
     }
-
-    public function getTermOfPaymentId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTermOfPaymentId(): ?string
     {
         return $this->termOfPaymentId;
     }
-
-    public function setTermOfPaymentId(string $termOfPaymentId): self
+    /**
+     * 
+     *
+     * @param string|null $termOfPaymentId
+     *
+     * @return self
+     */
+    public function setTermOfPaymentId(?string $termOfPaymentId): self
     {
         $this->initialized['termOfPaymentId'] = true;
         $this->termOfPaymentId = $termOfPaymentId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getTermOfPaymentName(): string
+    public function getTermOfPaymentName(): ?string
     {
         return $this->termOfPaymentName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $termOfPaymentName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setTermOfPaymentName(string $termOfPaymentName): self
+    public function setTermOfPaymentName(?string $termOfPaymentName): self
     {
         $this->initialized['termOfPaymentName'] = true;
         $this->termOfPaymentName = $termOfPaymentName;
-
         return $this;
     }
-
-    public function getVatRegistrationNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVatRegistrationNumber(): ?string
     {
         return $this->vatRegistrationNumber;
     }
-
-    public function setVatRegistrationNumber(string $vatRegistrationNumber): self
+    /**
+     * 
+     *
+     * @param string|null $vatRegistrationNumber
+     *
+     * @return self
+     */
+    public function setVatRegistrationNumber(?string $vatRegistrationNumber): self
     {
         $this->initialized['vatRegistrationNumber'] = true;
         $this->vatRegistrationNumber = $vatRegistrationNumber;
-
         return $this;
     }
-
-    public function getAmountInsured(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAmountInsured(): ?string
     {
         return $this->amountInsured;
     }
-
-    public function setAmountInsured(string $amountInsured): self
+    /**
+     * 
+     *
+     * @param string|null $amountInsured
+     *
+     * @return self
+     */
+    public function setAmountInsured(?string $amountInsured): self
     {
         $this->initialized['amountInsured'] = true;
         $this->amountInsured = $amountInsured;
-
         return $this;
     }
-
     /**
-     * @return list<PartyBankAccount>
+     * 
+     *
+     * @return list<PartyBankAccount>|null
      */
-    public function getBankAccounts(): array
+    public function getBankAccounts(): ?array
     {
         return $this->bankAccounts;
     }
-
     /**
-     * @param  list<PartyBankAccount>  $bankAccounts
+     * 
+     *
+     * @param list<PartyBankAccount>|null $bankAccounts
+     *
+     * @return self
      */
-    public function setBankAccounts(array $bankAccounts): self
+    public function setBankAccounts(?array $bankAccounts): self
     {
         $this->initialized['bankAccounts'] = true;
         $this->bankAccounts = $bankAccounts;
-
         return $this;
     }
-
-    public function getBlockNotice(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getBlockNotice(): ?string
     {
         return $this->blockNotice;
     }
-
-    public function setBlockNotice(string $blockNotice): self
+    /**
+     * 
+     *
+     * @param string|null $blockNotice
+     *
+     * @return self
+     */
+    public function setBlockNotice(?string $blockNotice): self
     {
         $this->initialized['blockNotice'] = true;
         $this->blockNotice = $blockNotice;
-
         return $this;
     }
-
-    public function getBlocked(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getBlocked(): ?bool
     {
         return $this->blocked;
     }
-
-    public function setBlocked(bool $blocked): self
+    /**
+     * 
+     *
+     * @param bool|null $blocked
+     *
+     * @return self
+     */
+    public function setBlocked(?bool $blocked): self
     {
         $this->initialized['blocked'] = true;
         $this->blocked = $blocked;
-
         return $this;
     }
-
     /**
-     * @return list<CommissionSalesPartner>
+     * 
+     *
+     * @return list<CommissionSalesPartner>|null
      */
-    public function getCommissionSalesPartners(): array
+    public function getCommissionSalesPartners(): ?array
     {
         return $this->commissionSalesPartners;
     }
-
     /**
-     * @param  list<CommissionSalesPartner>  $commissionSalesPartners
+     * 
+     *
+     * @param list<CommissionSalesPartner>|null $commissionSalesPartners
+     *
+     * @return self
      */
-    public function setCommissionSalesPartners(array $commissionSalesPartners): self
+    public function setCommissionSalesPartners(?array $commissionSalesPartners): self
     {
         $this->initialized['commissionSalesPartners'] = true;
         $this->commissionSalesPartners = $commissionSalesPartners;
-
         return $this;
     }
-
-    public function getCreditLimit(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCreditLimit(): ?string
     {
         return $this->creditLimit;
     }
-
-    public function setCreditLimit(string $creditLimit): self
+    /**
+     * 
+     *
+     * @param string|null $creditLimit
+     *
+     * @return self
+     */
+    public function setCreditLimit(?string $creditLimit): self
     {
         $this->initialized['creditLimit'] = true;
         $this->creditLimit = $creditLimit;
-
         return $this;
     }
-
-    public function getCustomerNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCustomerNumber(): ?string
     {
         return $this->customerNumber;
     }
-
-    public function setCustomerNumber(string $customerNumber): self
+    /**
+     * 
+     *
+     * @param string|null $customerNumber
+     *
+     * @return self
+     */
+    public function setCustomerNumber(?string $customerNumber): self
     {
         $this->initialized['customerNumber'] = true;
         $this->customerNumber = $customerNumber;
-
         return $this;
     }
-
-    public function getCustomerRatingId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCustomerRatingId(): ?string
     {
         return $this->customerRatingId;
     }
-
-    public function setCustomerRatingId(string $customerRatingId): self
+    /**
+     * 
+     *
+     * @param string|null $customerRatingId
+     *
+     * @return self
+     */
+    public function setCustomerRatingId(?string $customerRatingId): self
     {
         $this->initialized['customerRatingId'] = true;
         $this->customerRatingId = $customerRatingId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getCustomerRatingName(): string
+    public function getCustomerRatingName(): ?string
     {
         return $this->customerRatingName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $customerRatingName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setCustomerRatingName(string $customerRatingName): self
+    public function setCustomerRatingName(?string $customerRatingName): self
     {
         $this->initialized['customerRatingName'] = true;
         $this->customerRatingName = $customerRatingName;
-
         return $this;
     }
-
-    public function getCustomerSupplierNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCustomerSupplierNumber(): ?string
     {
         return $this->customerSupplierNumber;
     }
-
-    public function setCustomerSupplierNumber(string $customerSupplierNumber): self
+    /**
+     * 
+     *
+     * @param string|null $customerSupplierNumber
+     *
+     * @return self
+     */
+    public function setCustomerSupplierNumber(?string $customerSupplierNumber): self
     {
         $this->initialized['customerSupplierNumber'] = true;
         $this->customerSupplierNumber = $customerSupplierNumber;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @return list<Entity>
+     * @return list<Entity>|null
      */
-    public function getCustomerTopics(): array
+    public function getCustomerTopics(): ?array
     {
         return $this->customerTopics;
     }
-
     /**
-     * @param  list<Entity>  $customerTopics
+     * 
+     *
+     * @param list<Entity>|null $customerTopics
      *
      * @deprecated
+     *
+     * @return self
      */
-    public function setCustomerTopics(array $customerTopics): self
+    public function setCustomerTopics(?array $customerTopics): self
     {
         $this->initialized['customerTopics'] = true;
         $this->customerTopics = $customerTopics;
-
         return $this;
     }
-
-    public function getDefaultHeaderDiscount(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDefaultHeaderDiscount(): ?string
     {
         return $this->defaultHeaderDiscount;
     }
-
-    public function setDefaultHeaderDiscount(string $defaultHeaderDiscount): self
+    /**
+     * 
+     *
+     * @param string|null $defaultHeaderDiscount
+     *
+     * @return self
+     */
+    public function setDefaultHeaderDiscount(?string $defaultHeaderDiscount): self
     {
         $this->initialized['defaultHeaderDiscount'] = true;
         $this->defaultHeaderDiscount = $defaultHeaderDiscount;
-
         return $this;
     }
-
-    public function getDefaultHeaderSurcharge(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDefaultHeaderSurcharge(): ?string
     {
         return $this->defaultHeaderSurcharge;
     }
-
-    public function setDefaultHeaderSurcharge(string $defaultHeaderSurcharge): self
+    /**
+     * 
+     *
+     * @param string|null $defaultHeaderSurcharge
+     *
+     * @return self
+     */
+    public function setDefaultHeaderSurcharge(?string $defaultHeaderSurcharge): self
     {
         $this->initialized['defaultHeaderSurcharge'] = true;
         $this->defaultHeaderSurcharge = $defaultHeaderSurcharge;
-
         return $this;
     }
-
-    public function getDeliveryBlock(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getDeliveryBlock(): ?bool
     {
         return $this->deliveryBlock;
     }
-
-    public function setDeliveryBlock(bool $deliveryBlock): self
+    /**
+     * 
+     *
+     * @param bool|null $deliveryBlock
+     *
+     * @return self
+     */
+    public function setDeliveryBlock(?bool $deliveryBlock): self
     {
         $this->initialized['deliveryBlock'] = true;
         $this->deliveryBlock = $deliveryBlock;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
-    public function getInsolvent(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getInsolvent(): ?bool
     {
         return $this->insolvent;
     }
-
-    public function setInsolvent(bool $insolvent): self
+    /**
+     * 
+     *
+     * @param bool|null $insolvent
+     *
+     * @return self
+     */
+    public function setInsolvent(?bool $insolvent): self
     {
         $this->initialized['insolvent'] = true;
         $this->insolvent = $insolvent;
-
         return $this;
     }
-
-    public function getInsured(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getInsured(): ?bool
     {
         return $this->insured;
     }
-
-    public function setInsured(bool $insured): self
+    /**
+     * 
+     *
+     * @param bool|null $insured
+     *
+     * @return self
+     */
+    public function setInsured(?bool $insured): self
     {
         $this->initialized['insured'] = true;
         $this->insured = $insured;
-
         return $this;
     }
-
-    public function getInvoiceBlock(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getInvoiceBlock(): ?bool
     {
         return $this->invoiceBlock;
     }
-
-    public function setInvoiceBlock(bool $invoiceBlock): self
+    /**
+     * 
+     *
+     * @param bool|null $invoiceBlock
+     *
+     * @return self
+     */
+    public function setInvoiceBlock(?bool $invoiceBlock): self
     {
         $this->initialized['invoiceBlock'] = true;
         $this->invoiceBlock = $invoiceBlock;
-
         return $this;
     }
-
-    public function getInvoiceRecipientId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getInvoiceRecipientId(): ?string
     {
         return $this->invoiceRecipientId;
     }
-
-    public function setInvoiceRecipientId(string $invoiceRecipientId): self
+    /**
+     * 
+     *
+     * @param string|null $invoiceRecipientId
+     *
+     * @return self
+     */
+    public function setInvoiceRecipientId(?string $invoiceRecipientId): self
     {
         $this->initialized['invoiceRecipientId'] = true;
         $this->invoiceRecipientId = $invoiceRecipientId;
-
         return $this;
     }
-
-    public function getLeadSourceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLeadSourceId(): ?string
     {
         return $this->leadSourceId;
     }
-
-    public function setLeadSourceId(string $leadSourceId): self
+    /**
+     * 
+     *
+     * @param string|null $leadSourceId
+     *
+     * @return self
+     */
+    public function setLeadSourceId(?string $leadSourceId): self
     {
         $this->initialized['leadSourceId'] = true;
         $this->leadSourceId = $leadSourceId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getLeadSourceName(): string
+    public function getLeadSourceName(): ?string
     {
         return $this->leadSourceName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $leadSourceName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setLeadSourceName(string $leadSourceName): self
+    public function setLeadSourceName(?string $leadSourceName): self
     {
         $this->initialized['leadSourceName'] = true;
         $this->leadSourceName = $leadSourceName;
-
         return $this;
     }
-
-    public function getLossDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLossDescription(): ?string
     {
         return $this->lossDescription;
     }
-
-    public function setLossDescription(string $lossDescription): self
+    /**
+     * 
+     *
+     * @param string|null $lossDescription
+     *
+     * @return self
+     */
+    public function setLossDescription(?string $lossDescription): self
     {
         $this->initialized['lossDescription'] = true;
         $this->lossDescription = $lossDescription;
-
         return $this;
     }
-
-    public function getLossReasonId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getLossReasonId(): ?string
     {
         return $this->lossReasonId;
     }
-
-    public function setLossReasonId(string $lossReasonId): self
+    /**
+     * 
+     *
+     * @param string|null $lossReasonId
+     *
+     * @return self
+     */
+    public function setLossReasonId(?string $lossReasonId): self
     {
         $this->initialized['lossReasonId'] = true;
         $this->lossReasonId = $lossReasonId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getLossReasonName(): string
+    public function getLossReasonName(): ?string
     {
         return $this->lossReasonName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $lossReasonName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setLossReasonName(string $lossReasonName): self
+    public function setLossReasonName(?string $lossReasonName): self
     {
         $this->initialized['lossReasonName'] = true;
         $this->lossReasonName = $lossReasonName;
-
         return $this;
     }
-
-    public function getNonStandardTaxId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getNonStandardTaxId(): ?string
     {
         return $this->nonStandardTaxId;
     }
-
-    public function setNonStandardTaxId(string $nonStandardTaxId): self
+    /**
+     * 
+     *
+     * @param string|null $nonStandardTaxId
+     *
+     * @return self
+     */
+    public function setNonStandardTaxId(?string $nonStandardTaxId): self
     {
         $this->initialized['nonStandardTaxId'] = true;
         $this->nonStandardTaxId = $nonStandardTaxId;
-
         return $this;
     }
-
-    public function getOldCustomerNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getOldCustomerNumber(): ?string
     {
         return $this->oldCustomerNumber;
     }
-
-    public function setOldCustomerNumber(string $oldCustomerNumber): self
+    /**
+     * 
+     *
+     * @param string|null $oldCustomerNumber
+     *
+     * @return self
+     */
+    public function setOldCustomerNumber(?string $oldCustomerNumber): self
     {
         $this->initialized['oldCustomerNumber'] = true;
         $this->oldCustomerNumber = $oldCustomerNumber;
-
         return $this;
     }
-
-    public function getOptIn(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getOptIn(): ?bool
     {
         return $this->optIn;
     }
-
-    public function setOptIn(bool $optIn): self
+    /**
+     * 
+     *
+     * @param bool|null $optIn
+     *
+     * @return self
+     */
+    public function setOptIn(?bool $optIn): self
     {
         $this->initialized['optIn'] = true;
         $this->optIn = $optIn;
-
         return $this;
     }
-
-    public function getOptInLetter(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getOptInLetter(): ?bool
     {
         return $this->optInLetter;
     }
-
-    public function setOptInLetter(bool $optInLetter): self
+    /**
+     * 
+     *
+     * @param bool|null $optInLetter
+     *
+     * @return self
+     */
+    public function setOptInLetter(?bool $optInLetter): self
     {
         $this->initialized['optInLetter'] = true;
         $this->optInLetter = $optInLetter;
-
         return $this;
     }
-
-    public function getOptInPhone(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getOptInPhone(): ?bool
     {
         return $this->optInPhone;
     }
-
-    public function setOptInPhone(bool $optInPhone): self
+    /**
+     * 
+     *
+     * @param bool|null $optInPhone
+     *
+     * @return self
+     */
+    public function setOptInPhone(?bool $optInPhone): self
     {
         $this->initialized['optInPhone'] = true;
         $this->optInPhone = $optInPhone;
-
         return $this;
     }
-
-    public function getOptInSms(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getOptInSms(): ?bool
     {
         return $this->optInSms;
     }
-
-    public function setOptInSms(bool $optInSms): self
+    /**
+     * 
+     *
+     * @param bool|null $optInSms
+     *
+     * @return self
+     */
+    public function setOptInSms(?bool $optInSms): self
     {
         $this->initialized['optInSms'] = true;
         $this->optInSms = $optInSms;
-
         return $this;
     }
-
-    public function getReferenceNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getReferenceNumber(): ?string
     {
         return $this->referenceNumber;
     }
-
-    public function setReferenceNumber(string $referenceNumber): self
+    /**
+     * 
+     *
+     * @param string|null $referenceNumber
+     *
+     * @return self
+     */
+    public function setReferenceNumber(?string $referenceNumber): self
     {
         $this->initialized['referenceNumber'] = true;
         $this->referenceNumber = $referenceNumber;
-
         return $this;
     }
-
-    public function getResponsibleUserFixed(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getResponsibleUserFixed(): ?bool
     {
         return $this->responsibleUserFixed;
     }
-
-    public function setResponsibleUserFixed(bool $responsibleUserFixed): self
+    /**
+     * 
+     *
+     * @param bool|null $responsibleUserFixed
+     *
+     * @return self
+     */
+    public function setResponsibleUserFixed(?bool $responsibleUserFixed): self
     {
         $this->initialized['responsibleUserFixed'] = true;
         $this->responsibleUserFixed = $responsibleUserFixed;
-
         return $this;
     }
-
-    public function getSalesChannel(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSalesChannel(): ?string
     {
         return $this->salesChannel;
     }
-
-    public function setSalesChannel(string $salesChannel): self
+    /**
+     * 
+     *
+     * @param string|null $salesChannel
+     *
+     * @return self
+     */
+    public function setSalesChannel(?string $salesChannel): self
     {
         $this->initialized['salesChannel'] = true;
         $this->salesChannel = $salesChannel;
-
         return $this;
     }
-
-    public function getSalesStageId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSalesStageId(): ?string
     {
         return $this->salesStageId;
     }
-
-    public function setSalesStageId(string $salesStageId): self
+    /**
+     * 
+     *
+     * @param string|null $salesStageId
+     *
+     * @return self
+     */
+    public function setSalesStageId(?string $salesStageId): self
     {
         $this->initialized['salesStageId'] = true;
         $this->salesStageId = $salesStageId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getSalesStageName(): string
+    public function getSalesStageName(): ?string
     {
         return $this->salesStageName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $salesStageName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setSalesStageName(string $salesStageName): self
+    public function setSalesStageName(?string $salesStageName): self
     {
         $this->initialized['salesStageName'] = true;
         $this->salesStageName = $salesStageName;
-
         return $this;
     }
-
-    public function getSatisfaction(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSatisfaction(): ?string
     {
         return $this->satisfaction;
     }
-
-    public function setSatisfaction(string $satisfaction): self
+    /**
+     * 
+     *
+     * @param string|null $satisfaction
+     *
+     * @return self
+     */
+    public function setSatisfaction(?string $satisfaction): self
     {
         $this->initialized['satisfaction'] = true;
         $this->satisfaction = $satisfaction;
-
         return $this;
     }
-
-    public function getUseCustomsTariffNumber(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getUseCustomsTariffNumber(): ?bool
     {
         return $this->useCustomsTariffNumber;
     }
-
-    public function setUseCustomsTariffNumber(bool $useCustomsTariffNumber): self
+    /**
+     * 
+     *
+     * @param bool|null $useCustomsTariffNumber
+     *
+     * @return self
+     */
+    public function setUseCustomsTariffNumber(?bool $useCustomsTariffNumber): self
     {
         $this->initialized['useCustomsTariffNumber'] = true;
         $this->useCustomsTariffNumber = $useCustomsTariffNumber;
-
         return $this;
     }
 }

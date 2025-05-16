@@ -8,117 +8,176 @@ class PurchaseOrderRequestIdIdCreatePurchaseOrderPostBodyOfferItemToUpdateSuppli
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $createOrUpdateArticleSupplySource;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $offerItemId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $quantity;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $salesOrderItemId;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $updateInformation;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $updatePurchasePrice;
-
-    public function getCreateOrUpdateArticleSupplySource(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getCreateOrUpdateArticleSupplySource(): ?bool
     {
         return $this->createOrUpdateArticleSupplySource;
     }
-
-    public function setCreateOrUpdateArticleSupplySource(bool $createOrUpdateArticleSupplySource): self
+    /**
+     * 
+     *
+     * @param bool|null $createOrUpdateArticleSupplySource
+     *
+     * @return self
+     */
+    public function setCreateOrUpdateArticleSupplySource(?bool $createOrUpdateArticleSupplySource): self
     {
         $this->initialized['createOrUpdateArticleSupplySource'] = true;
         $this->createOrUpdateArticleSupplySource = $createOrUpdateArticleSupplySource;
-
         return $this;
     }
-
-    public function getOfferItemId(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getOfferItemId(): ?int
     {
         return $this->offerItemId;
     }
-
-    public function setOfferItemId(int $offerItemId): self
+    /**
+     * 
+     *
+     * @param int|null $offerItemId
+     *
+     * @return self
+     */
+    public function setOfferItemId(?int $offerItemId): self
     {
         $this->initialized['offerItemId'] = true;
         $this->offerItemId = $offerItemId;
-
         return $this;
     }
-
-    public function getQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getQuantity(): ?string
     {
         return $this->quantity;
     }
-
-    public function setQuantity(string $quantity): self
+    /**
+     * 
+     *
+     * @param string|null $quantity
+     *
+     * @return self
+     */
+    public function setQuantity(?string $quantity): self
     {
         $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
-
         return $this;
     }
-
-    public function getSalesOrderItemId(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getSalesOrderItemId(): ?int
     {
         return $this->salesOrderItemId;
     }
-
-    public function setSalesOrderItemId(int $salesOrderItemId): self
+    /**
+     * 
+     *
+     * @param int|null $salesOrderItemId
+     *
+     * @return self
+     */
+    public function setSalesOrderItemId(?int $salesOrderItemId): self
     {
         $this->initialized['salesOrderItemId'] = true;
         $this->salesOrderItemId = $salesOrderItemId;
-
         return $this;
     }
-
-    public function getUpdateInformation(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getUpdateInformation(): ?bool
     {
         return $this->updateInformation;
     }
-
-    public function setUpdateInformation(bool $updateInformation): self
+    /**
+     * 
+     *
+     * @param bool|null $updateInformation
+     *
+     * @return self
+     */
+    public function setUpdateInformation(?bool $updateInformation): self
     {
         $this->initialized['updateInformation'] = true;
         $this->updateInformation = $updateInformation;
-
         return $this;
     }
-
-    public function getUpdatePurchasePrice(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getUpdatePurchasePrice(): ?string
     {
         return $this->updatePurchasePrice;
     }
-
-    public function setUpdatePurchasePrice(string $updatePurchasePrice): self
+    /**
+     * 
+     *
+     * @param string|null $updatePurchasePrice
+     *
+     * @return self
+     */
+    public function setUpdatePurchasePrice(?string $updatePurchasePrice): self
     {
         $this->initialized['updatePurchasePrice'] = true;
         $this->updatePurchasePrice = $updatePurchasePrice;
-
         return $this;
     }
 }

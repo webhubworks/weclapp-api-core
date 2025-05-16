@@ -8,45 +8,64 @@ class SalesChannel extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $key;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $name;
-
-    public function getKey(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getKey(): ?string
     {
         return $this->key;
     }
-
-    public function setKey(string $key): self
+    /**
+     * 
+     *
+     * @param string|null $key
+     *
+     * @return self
+     */
+    public function setKey(?string $key): self
     {
         $this->initialized['key'] = true;
         $this->key = $key;
-
         return $this;
     }
-
-    public function getName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    /**
+     * 
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
         return $this;
     }
 }

@@ -8,189 +8,288 @@ class PartyBankAccount extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $accountHolder;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $accountNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $bankCode;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $creditInstitute;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $partyId;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $primary;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getAccountHolder(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAccountHolder(): ?string
     {
         return $this->accountHolder;
     }
-
-    public function setAccountHolder(string $accountHolder): self
+    /**
+     * 
+     *
+     * @param string|null $accountHolder
+     *
+     * @return self
+     */
+    public function setAccountHolder(?string $accountHolder): self
     {
         $this->initialized['accountHolder'] = true;
         $this->accountHolder = $accountHolder;
-
         return $this;
     }
-
-    public function getAccountNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAccountNumber(): ?string
     {
         return $this->accountNumber;
     }
-
-    public function setAccountNumber(string $accountNumber): self
+    /**
+     * 
+     *
+     * @param string|null $accountNumber
+     *
+     * @return self
+     */
+    public function setAccountNumber(?string $accountNumber): self
     {
         $this->initialized['accountNumber'] = true;
         $this->accountNumber = $accountNumber;
-
         return $this;
     }
-
-    public function getBankCode(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getBankCode(): ?string
     {
         return $this->bankCode;
     }
-
-    public function setBankCode(string $bankCode): self
+    /**
+     * 
+     *
+     * @param string|null $bankCode
+     *
+     * @return self
+     */
+    public function setBankCode(?string $bankCode): self
     {
         $this->initialized['bankCode'] = true;
         $this->bankCode = $bankCode;
-
         return $this;
     }
-
-    public function getCreditInstitute(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCreditInstitute(): ?string
     {
         return $this->creditInstitute;
     }
-
-    public function setCreditInstitute(string $creditInstitute): self
+    /**
+     * 
+     *
+     * @param string|null $creditInstitute
+     *
+     * @return self
+     */
+    public function setCreditInstitute(?string $creditInstitute): self
     {
         $this->initialized['creditInstitute'] = true;
         $this->creditInstitute = $creditInstitute;
-
         return $this;
     }
-
-    public function getPartyId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPartyId(): ?string
     {
         return $this->partyId;
     }
-
-    public function setPartyId(string $partyId): self
+    /**
+     * 
+     *
+     * @param string|null $partyId
+     *
+     * @return self
+     */
+    public function setPartyId(?string $partyId): self
     {
         $this->initialized['partyId'] = true;
         $this->partyId = $partyId;
-
         return $this;
     }
-
-    public function getPrimary(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getPrimary(): ?bool
     {
         return $this->primary;
     }
-
-    public function setPrimary(bool $primary): self
+    /**
+     * 
+     *
+     * @param bool|null $primary
+     *
+     * @return self
+     */
+    public function setPrimary(?bool $primary): self
     {
         $this->initialized['primary'] = true;
         $this->primary = $primary;
-
         return $this;
     }
 }

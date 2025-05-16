@@ -8,33 +8,36 @@ class WarehouseStockGetResponse200 extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var list<WarehouseStock>
+     * 
+     *
+     * @var list<WarehouseStock>|null
      */
     protected $result;
-
     /**
-     * @return list<WarehouseStock>
+     * 
+     *
+     * @return list<WarehouseStock>|null
      */
-    public function getResult(): array
+    public function getResult(): ?array
     {
         return $this->result;
     }
-
     /**
-     * @param  list<WarehouseStock>  $result
+     * 
+     *
+     * @param list<WarehouseStock>|null $result
+     *
+     * @return self
      */
-    public function setResult(array $result): self
+    public function setResult(?array $result): self
     {
         $this->initialized['result'] = true;
         $this->result = $result;
-
         return $this;
     }
 }

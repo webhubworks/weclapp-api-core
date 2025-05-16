@@ -8,243 +8,372 @@ class ArticleCategory extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $articleAccountingCodeId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $articleCategoryClassificationId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $costTypeId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $imageId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $name;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $parentCategoryId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $purchaseCostCenterId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $salesCostCenterId;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getArticleAccountingCodeId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getArticleAccountingCodeId(): ?string
     {
         return $this->articleAccountingCodeId;
     }
-
-    public function setArticleAccountingCodeId(string $articleAccountingCodeId): self
+    /**
+     * 
+     *
+     * @param string|null $articleAccountingCodeId
+     *
+     * @return self
+     */
+    public function setArticleAccountingCodeId(?string $articleAccountingCodeId): self
     {
         $this->initialized['articleAccountingCodeId'] = true;
         $this->articleAccountingCodeId = $articleAccountingCodeId;
-
         return $this;
     }
-
-    public function getArticleCategoryClassificationId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getArticleCategoryClassificationId(): ?string
     {
         return $this->articleCategoryClassificationId;
     }
-
-    public function setArticleCategoryClassificationId(string $articleCategoryClassificationId): self
+    /**
+     * 
+     *
+     * @param string|null $articleCategoryClassificationId
+     *
+     * @return self
+     */
+    public function setArticleCategoryClassificationId(?string $articleCategoryClassificationId): self
     {
         $this->initialized['articleCategoryClassificationId'] = true;
         $this->articleCategoryClassificationId = $articleCategoryClassificationId;
-
         return $this;
     }
-
-    public function getCostTypeId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCostTypeId(): ?string
     {
         return $this->costTypeId;
     }
-
-    public function setCostTypeId(string $costTypeId): self
+    /**
+     * 
+     *
+     * @param string|null $costTypeId
+     *
+     * @return self
+     */
+    public function setCostTypeId(?string $costTypeId): self
     {
         $this->initialized['costTypeId'] = true;
         $this->costTypeId = $costTypeId;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
-    public function getImageId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getImageId(): ?string
     {
         return $this->imageId;
     }
-
-    public function setImageId(string $imageId): self
+    /**
+     * 
+     *
+     * @param string|null $imageId
+     *
+     * @return self
+     */
+    public function setImageId(?string $imageId): self
     {
         $this->initialized['imageId'] = true;
         $this->imageId = $imageId;
-
         return $this;
     }
-
-    public function getName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    /**
+     * 
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
         return $this;
     }
-
-    public function getParentCategoryId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getParentCategoryId(): ?string
     {
         return $this->parentCategoryId;
     }
-
-    public function setParentCategoryId(string $parentCategoryId): self
+    /**
+     * 
+     *
+     * @param string|null $parentCategoryId
+     *
+     * @return self
+     */
+    public function setParentCategoryId(?string $parentCategoryId): self
     {
         $this->initialized['parentCategoryId'] = true;
         $this->parentCategoryId = $parentCategoryId;
-
         return $this;
     }
-
-    public function getPurchaseCostCenterId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPurchaseCostCenterId(): ?string
     {
         return $this->purchaseCostCenterId;
     }
-
-    public function setPurchaseCostCenterId(string $purchaseCostCenterId): self
+    /**
+     * 
+     *
+     * @param string|null $purchaseCostCenterId
+     *
+     * @return self
+     */
+    public function setPurchaseCostCenterId(?string $purchaseCostCenterId): self
     {
         $this->initialized['purchaseCostCenterId'] = true;
         $this->purchaseCostCenterId = $purchaseCostCenterId;
-
         return $this;
     }
-
-    public function getSalesCostCenterId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSalesCostCenterId(): ?string
     {
         return $this->salesCostCenterId;
     }
-
-    public function setSalesCostCenterId(string $salesCostCenterId): self
+    /**
+     * 
+     *
+     * @param string|null $salesCostCenterId
+     *
+     * @return self
+     */
+    public function setSalesCostCenterId(?string $salesCostCenterId): self
     {
         $this->initialized['salesCostCenterId'] = true;
         $this->salesCostCenterId = $salesCostCenterId;
-
         return $this;
     }
 }

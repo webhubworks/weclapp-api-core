@@ -8,63 +8,92 @@ class TransportationOrderIdIdPutDownInternalTransportReferencePostBody extends \
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $targetLoadingEquipmentIdentifierId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $targetStoragePlaceId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $targetTransportReferenceId;
-
-    public function getTargetLoadingEquipmentIdentifierId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTargetLoadingEquipmentIdentifierId(): ?string
     {
         return $this->targetLoadingEquipmentIdentifierId;
     }
-
-    public function setTargetLoadingEquipmentIdentifierId(string $targetLoadingEquipmentIdentifierId): self
+    /**
+     * 
+     *
+     * @param string|null $targetLoadingEquipmentIdentifierId
+     *
+     * @return self
+     */
+    public function setTargetLoadingEquipmentIdentifierId(?string $targetLoadingEquipmentIdentifierId): self
     {
         $this->initialized['targetLoadingEquipmentIdentifierId'] = true;
         $this->targetLoadingEquipmentIdentifierId = $targetLoadingEquipmentIdentifierId;
-
         return $this;
     }
-
-    public function getTargetStoragePlaceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTargetStoragePlaceId(): ?string
     {
         return $this->targetStoragePlaceId;
     }
-
-    public function setTargetStoragePlaceId(string $targetStoragePlaceId): self
+    /**
+     * 
+     *
+     * @param string|null $targetStoragePlaceId
+     *
+     * @return self
+     */
+    public function setTargetStoragePlaceId(?string $targetStoragePlaceId): self
     {
         $this->initialized['targetStoragePlaceId'] = true;
         $this->targetStoragePlaceId = $targetStoragePlaceId;
-
         return $this;
     }
-
-    public function getTargetTransportReferenceId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTargetTransportReferenceId(): ?string
     {
         return $this->targetTransportReferenceId;
     }
-
-    public function setTargetTransportReferenceId(string $targetTransportReferenceId): self
+    /**
+     * 
+     *
+     * @param string|null $targetTransportReferenceId
+     *
+     * @return self
+     */
+    public function setTargetTransportReferenceId(?string $targetTransportReferenceId): self
     {
         $this->initialized['targetTransportReferenceId'] = true;
         $this->targetTransportReferenceId = $targetTransportReferenceId;
-
         return $this;
     }
 }

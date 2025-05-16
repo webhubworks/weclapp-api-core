@@ -8,33 +8,36 @@ class WarehouseStockMovementBookOntoInternalTransportReferencePostResponse200 ex
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var list<WarehouseStockMovement>
+     * 
+     *
+     * @var list<WarehouseStockMovement>|null
      */
     protected $result;
-
     /**
-     * @return list<WarehouseStockMovement>
+     * 
+     *
+     * @return list<WarehouseStockMovement>|null
      */
-    public function getResult(): array
+    public function getResult(): ?array
     {
         return $this->result;
     }
-
     /**
-     * @param  list<WarehouseStockMovement>  $result
+     * 
+     *
+     * @param list<WarehouseStockMovement>|null $result
+     *
+     * @return self
      */
-    public function setResult(array $result): self
+    public function setResult(?array $result): self
     {
         $this->initialized['result'] = true;
         $this->result = $result;
-
         return $this;
     }
 }

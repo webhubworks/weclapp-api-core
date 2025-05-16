@@ -8,27 +8,36 @@ class RemotePrintJobCreatePrintJobWithDocumentPostResponse200 extends \ArrayObje
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var RemotePrintJob
+     * 
+     *
+     * @var RemotePrintJob|null
      */
     protected $result;
-
-    public function getResult(): RemotePrintJob
+    /**
+     * 
+     *
+     * @return RemotePrintJob|null
+     */
+    public function getResult(): ?RemotePrintJob
     {
         return $this->result;
     }
-
-    public function setResult(RemotePrintJob $result): self
+    /**
+     * 
+     *
+     * @param RemotePrintJob|null $result
+     *
+     * @return self
+     */
+    public function setResult(?RemotePrintJob $result): self
     {
         $this->initialized['result'] = true;
         $this->result = $result;
-
         return $this;
     }
 }

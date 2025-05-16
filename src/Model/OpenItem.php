@@ -8,249 +8,372 @@ class OpenItem extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $amount;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $amountDiscount;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $amountOpen;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $amountPaid;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $clearanceDate;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $cleared;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $openItemNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $openItemType;
-
     /**
-     * @var list<PaymentApplication>
+     * 
+     *
+     * @var list<PaymentApplication>|null
      */
     protected $paymentApplications;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getAmount(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAmount(): ?string
     {
         return $this->amount;
     }
-
-    public function setAmount(string $amount): self
+    /**
+     * 
+     *
+     * @param string|null $amount
+     *
+     * @return self
+     */
+    public function setAmount(?string $amount): self
     {
         $this->initialized['amount'] = true;
         $this->amount = $amount;
-
         return $this;
     }
-
-    public function getAmountDiscount(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAmountDiscount(): ?string
     {
         return $this->amountDiscount;
     }
-
-    public function setAmountDiscount(string $amountDiscount): self
+    /**
+     * 
+     *
+     * @param string|null $amountDiscount
+     *
+     * @return self
+     */
+    public function setAmountDiscount(?string $amountDiscount): self
     {
         $this->initialized['amountDiscount'] = true;
         $this->amountDiscount = $amountDiscount;
-
         return $this;
     }
-
-    public function getAmountOpen(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAmountOpen(): ?string
     {
         return $this->amountOpen;
     }
-
-    public function setAmountOpen(string $amountOpen): self
+    /**
+     * 
+     *
+     * @param string|null $amountOpen
+     *
+     * @return self
+     */
+    public function setAmountOpen(?string $amountOpen): self
     {
         $this->initialized['amountOpen'] = true;
         $this->amountOpen = $amountOpen;
-
         return $this;
     }
-
-    public function getAmountPaid(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAmountPaid(): ?string
     {
         return $this->amountPaid;
     }
-
-    public function setAmountPaid(string $amountPaid): self
+    /**
+     * 
+     *
+     * @param string|null $amountPaid
+     *
+     * @return self
+     */
+    public function setAmountPaid(?string $amountPaid): self
     {
         $this->initialized['amountPaid'] = true;
         $this->amountPaid = $amountPaid;
-
         return $this;
     }
-
-    public function getClearanceDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getClearanceDate(): ?int
     {
         return $this->clearanceDate;
     }
-
-    public function setClearanceDate(int $clearanceDate): self
+    /**
+     * 
+     *
+     * @param int|null $clearanceDate
+     *
+     * @return self
+     */
+    public function setClearanceDate(?int $clearanceDate): self
     {
         $this->initialized['clearanceDate'] = true;
         $this->clearanceDate = $clearanceDate;
-
         return $this;
     }
-
-    public function getCleared(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getCleared(): ?bool
     {
         return $this->cleared;
     }
-
-    public function setCleared(bool $cleared): self
+    /**
+     * 
+     *
+     * @param bool|null $cleared
+     *
+     * @return self
+     */
+    public function setCleared(?bool $cleared): self
     {
         $this->initialized['cleared'] = true;
         $this->cleared = $cleared;
-
         return $this;
     }
-
-    public function getOpenItemNumber(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getOpenItemNumber(): ?string
     {
         return $this->openItemNumber;
     }
-
-    public function setOpenItemNumber(string $openItemNumber): self
+    /**
+     * 
+     *
+     * @param string|null $openItemNumber
+     *
+     * @return self
+     */
+    public function setOpenItemNumber(?string $openItemNumber): self
     {
         $this->initialized['openItemNumber'] = true;
         $this->openItemNumber = $openItemNumber;
-
         return $this;
     }
-
-    public function getOpenItemType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getOpenItemType(): ?string
     {
         return $this->openItemType;
     }
-
-    public function setOpenItemType(string $openItemType): self
+    /**
+     * 
+     *
+     * @param string|null $openItemType
+     *
+     * @return self
+     */
+    public function setOpenItemType(?string $openItemType): self
     {
         $this->initialized['openItemType'] = true;
         $this->openItemType = $openItemType;
-
         return $this;
     }
-
     /**
-     * @return list<PaymentApplication>
+     * 
+     *
+     * @return list<PaymentApplication>|null
      */
-    public function getPaymentApplications(): array
+    public function getPaymentApplications(): ?array
     {
         return $this->paymentApplications;
     }
-
     /**
-     * @param  list<PaymentApplication>  $paymentApplications
+     * 
+     *
+     * @param list<PaymentApplication>|null $paymentApplications
+     *
+     * @return self
      */
-    public function setPaymentApplications(array $paymentApplications): self
+    public function setPaymentApplications(?array $paymentApplications): self
     {
         $this->initialized['paymentApplications'] = true;
         $this->paymentApplications = $paymentApplications;
-
         return $this;
     }
 }

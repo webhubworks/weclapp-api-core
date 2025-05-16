@@ -8,211 +8,300 @@ class VariantArticleVariant extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $articleId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $articleNumber;
-
     /**
-     * @var list<OnlyId>
+     * 
+     *
+     * @var list<OnlyId>|null
      */
     protected $attributeOptions;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $positionNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $variantArticleId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $variantArticleNumber;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getArticleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getArticleId(): ?string
     {
         return $this->articleId;
     }
-
-    public function setArticleId(string $articleId): self
+    /**
+     * 
+     *
+     * @param string|null $articleId
+     *
+     * @return self
+     */
+    public function setArticleId(?string $articleId): self
     {
         $this->initialized['articleId'] = true;
         $this->articleId = $articleId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getArticleNumber(): string
+    public function getArticleNumber(): ?string
     {
         return $this->articleNumber;
     }
-
     /**
+     * 
+     *
+     * @param string|null $articleNumber
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setArticleNumber(string $articleNumber): self
+    public function setArticleNumber(?string $articleNumber): self
     {
         $this->initialized['articleNumber'] = true;
         $this->articleNumber = $articleNumber;
-
         return $this;
     }
-
     /**
-     * @return list<OnlyId>
+     * 
+     *
+     * @return list<OnlyId>|null
      */
-    public function getAttributeOptions(): array
+    public function getAttributeOptions(): ?array
     {
         return $this->attributeOptions;
     }
-
     /**
-     * @param  list<OnlyId>  $attributeOptions
+     * 
+     *
+     * @param list<OnlyId>|null $attributeOptions
+     *
+     * @return self
      */
-    public function setAttributeOptions(array $attributeOptions): self
+    public function setAttributeOptions(?array $attributeOptions): self
     {
         $this->initialized['attributeOptions'] = true;
         $this->attributeOptions = $attributeOptions;
-
         return $this;
     }
-
-    public function getPositionNumber(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getPositionNumber(): ?int
     {
         return $this->positionNumber;
     }
-
-    public function setPositionNumber(int $positionNumber): self
+    /**
+     * 
+     *
+     * @param int|null $positionNumber
+     *
+     * @return self
+     */
+    public function setPositionNumber(?int $positionNumber): self
     {
         $this->initialized['positionNumber'] = true;
         $this->positionNumber = $positionNumber;
-
         return $this;
     }
-
-    public function getVariantArticleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVariantArticleId(): ?string
     {
         return $this->variantArticleId;
     }
-
-    public function setVariantArticleId(string $variantArticleId): self
+    /**
+     * 
+     *
+     * @param string|null $variantArticleId
+     *
+     * @return self
+     */
+    public function setVariantArticleId(?string $variantArticleId): self
     {
         $this->initialized['variantArticleId'] = true;
         $this->variantArticleId = $variantArticleId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getVariantArticleNumber(): string
+    public function getVariantArticleNumber(): ?string
     {
         return $this->variantArticleNumber;
     }
-
     /**
+     * 
+     *
+     * @param string|null $variantArticleNumber
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setVariantArticleNumber(string $variantArticleNumber): self
+    public function setVariantArticleNumber(?string $variantArticleNumber): self
     {
         $this->initialized['variantArticleNumber'] = true;
         $this->variantArticleNumber = $variantArticleNumber;
-
         return $this;
     }
 }

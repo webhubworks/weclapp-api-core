@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class DocumentVersionNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class DocumentVersionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\DocumentVersion::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\DocumentVersion::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,67 +33,89 @@ class DocumentVersionNormalizer implements DenormalizerAwareInterface, Denormali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\DocumentVersion;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\DocumentVersion();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('createdDate', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
         }
-        if (\array_key_exists('lastModifiedDate', $data)) {
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+            $object->setCreatedDate(null);
+        }
+        if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
         }
-        if (\array_key_exists('version', $data)) {
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+            $object->setLastModifiedDate(null);
+        }
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
         }
-        if (\array_key_exists('comment', $data)) {
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
+        }
+        if (\array_key_exists('comment', $data) && $data['comment'] !== null) {
             $object->setComment($data['comment']);
             unset($data['comment']);
         }
-        if (\array_key_exists('documentSize', $data)) {
+        elseif (\array_key_exists('comment', $data) && $data['comment'] === null) {
+            $object->setComment(null);
+        }
+        if (\array_key_exists('documentSize', $data) && $data['documentSize'] !== null) {
             $object->setDocumentSize($data['documentSize']);
             unset($data['documentSize']);
         }
-        if (\array_key_exists('documentVersion', $data)) {
+        elseif (\array_key_exists('documentSize', $data) && $data['documentSize'] === null) {
+            $object->setDocumentSize(null);
+        }
+        if (\array_key_exists('documentVersion', $data) && $data['documentVersion'] !== null) {
             $object->setDocumentVersion($data['documentVersion']);
             unset($data['documentVersion']);
         }
-        if (\array_key_exists('userId', $data)) {
+        elseif (\array_key_exists('documentVersion', $data) && $data['documentVersion'] === null) {
+            $object->setDocumentVersion(null);
+        }
+        if (\array_key_exists('userId', $data) && $data['userId'] !== null) {
             $object->setUserId($data['userId']);
             unset($data['userId']);
+        }
+        elseif (\array_key_exists('userId', $data) && $data['userId'] === null) {
+            $object->setUserId(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('comment') && $data->getComment() !== null) {
+        if ($data->isInitialized('comment') && null !== $data->getComment()) {
             $dataArray['comment'] = $data->getComment();
         }
-        if ($data->isInitialized('documentSize') && $data->getDocumentSize() !== null) {
+        if ($data->isInitialized('documentSize') && null !== $data->getDocumentSize()) {
             $dataArray['documentSize'] = $data->getDocumentSize();
         }
-        if ($data->isInitialized('documentVersion') && $data->getDocumentVersion() !== null) {
+        if ($data->isInitialized('documentVersion') && null !== $data->getDocumentVersion()) {
             $dataArray['documentVersion'] = $data->getDocumentVersion();
         }
-        if ($data->isInitialized('userId') && $data->getUserId() !== null) {
+        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
             $dataArray['userId'] = $data->getUserId();
         }
         foreach ($data as $key => $value) {
@@ -105,10 +123,8 @@ class DocumentVersionNormalizer implements DenormalizerAwareInterface, Denormali
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\DocumentVersion::class => false];

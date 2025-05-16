@@ -8,143 +8,210 @@ class CostCenterWithDistributionPercentage extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $costCenterId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $costCenterNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $distributionPercentage;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getCostCenterId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCostCenterId(): ?string
     {
         return $this->costCenterId;
     }
-
-    public function setCostCenterId(string $costCenterId): self
+    /**
+     * 
+     *
+     * @param string|null $costCenterId
+     *
+     * @return self
+     */
+    public function setCostCenterId(?string $costCenterId): self
     {
         $this->initialized['costCenterId'] = true;
         $this->costCenterId = $costCenterId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getCostCenterNumber(): string
+    public function getCostCenterNumber(): ?string
     {
         return $this->costCenterNumber;
     }
-
     /**
+     * 
+     *
+     * @param string|null $costCenterNumber
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setCostCenterNumber(string $costCenterNumber): self
+    public function setCostCenterNumber(?string $costCenterNumber): self
     {
         $this->initialized['costCenterNumber'] = true;
         $this->costCenterNumber = $costCenterNumber;
-
         return $this;
     }
-
-    public function getDistributionPercentage(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDistributionPercentage(): ?string
     {
         return $this->distributionPercentage;
     }
-
-    public function setDistributionPercentage(string $distributionPercentage): self
+    /**
+     * 
+     *
+     * @param string|null $distributionPercentage
+     *
+     * @return self
+     */
+    public function setDistributionPercentage(?string $distributionPercentage): self
     {
         $this->initialized['distributionPercentage'] = true;
         $this->distributionPercentage = $distributionPercentage;
-
         return $this;
     }
 }

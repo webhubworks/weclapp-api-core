@@ -8,207 +8,316 @@ class TicketServiceLevelAgreementTarget extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $assignmentTimeQuantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $assignmentTimeUnit;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $businessHolidaysId;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $businessHoursId;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $firstReplyTimeQuantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $firstReplyTimeUnit;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $notification;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $priorityId;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $sendEscalationEmail;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $solutionTimeQuantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $solutionTimeUnit;
-
-    public function getAssignmentTimeQuantity(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getAssignmentTimeQuantity(): ?int
     {
         return $this->assignmentTimeQuantity;
     }
-
-    public function setAssignmentTimeQuantity(int $assignmentTimeQuantity): self
+    /**
+     * 
+     *
+     * @param int|null $assignmentTimeQuantity
+     *
+     * @return self
+     */
+    public function setAssignmentTimeQuantity(?int $assignmentTimeQuantity): self
     {
         $this->initialized['assignmentTimeQuantity'] = true;
         $this->assignmentTimeQuantity = $assignmentTimeQuantity;
-
         return $this;
     }
-
-    public function getAssignmentTimeUnit(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getAssignmentTimeUnit(): ?string
     {
         return $this->assignmentTimeUnit;
     }
-
-    public function setAssignmentTimeUnit(string $assignmentTimeUnit): self
+    /**
+     * 
+     *
+     * @param string|null $assignmentTimeUnit
+     *
+     * @return self
+     */
+    public function setAssignmentTimeUnit(?string $assignmentTimeUnit): self
     {
         $this->initialized['assignmentTimeUnit'] = true;
         $this->assignmentTimeUnit = $assignmentTimeUnit;
-
         return $this;
     }
-
-    public function getBusinessHolidaysId(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getBusinessHolidaysId(): ?int
     {
         return $this->businessHolidaysId;
     }
-
-    public function setBusinessHolidaysId(int $businessHolidaysId): self
+    /**
+     * 
+     *
+     * @param int|null $businessHolidaysId
+     *
+     * @return self
+     */
+    public function setBusinessHolidaysId(?int $businessHolidaysId): self
     {
         $this->initialized['businessHolidaysId'] = true;
         $this->businessHolidaysId = $businessHolidaysId;
-
         return $this;
     }
-
-    public function getBusinessHoursId(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getBusinessHoursId(): ?int
     {
         return $this->businessHoursId;
     }
-
-    public function setBusinessHoursId(int $businessHoursId): self
+    /**
+     * 
+     *
+     * @param int|null $businessHoursId
+     *
+     * @return self
+     */
+    public function setBusinessHoursId(?int $businessHoursId): self
     {
         $this->initialized['businessHoursId'] = true;
         $this->businessHoursId = $businessHoursId;
-
         return $this;
     }
-
-    public function getFirstReplyTimeQuantity(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getFirstReplyTimeQuantity(): ?int
     {
         return $this->firstReplyTimeQuantity;
     }
-
-    public function setFirstReplyTimeQuantity(int $firstReplyTimeQuantity): self
+    /**
+     * 
+     *
+     * @param int|null $firstReplyTimeQuantity
+     *
+     * @return self
+     */
+    public function setFirstReplyTimeQuantity(?int $firstReplyTimeQuantity): self
     {
         $this->initialized['firstReplyTimeQuantity'] = true;
         $this->firstReplyTimeQuantity = $firstReplyTimeQuantity;
-
         return $this;
     }
-
-    public function getFirstReplyTimeUnit(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getFirstReplyTimeUnit(): ?string
     {
         return $this->firstReplyTimeUnit;
     }
-
-    public function setFirstReplyTimeUnit(string $firstReplyTimeUnit): self
+    /**
+     * 
+     *
+     * @param string|null $firstReplyTimeUnit
+     *
+     * @return self
+     */
+    public function setFirstReplyTimeUnit(?string $firstReplyTimeUnit): self
     {
         $this->initialized['firstReplyTimeUnit'] = true;
         $this->firstReplyTimeUnit = $firstReplyTimeUnit;
-
         return $this;
     }
-
-    public function getNotification(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getNotification(): ?bool
     {
         return $this->notification;
     }
-
-    public function setNotification(bool $notification): self
+    /**
+     * 
+     *
+     * @param bool|null $notification
+     *
+     * @return self
+     */
+    public function setNotification(?bool $notification): self
     {
         $this->initialized['notification'] = true;
         $this->notification = $notification;
-
         return $this;
     }
-
-    public function getPriorityId(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getPriorityId(): ?int
     {
         return $this->priorityId;
     }
-
-    public function setPriorityId(int $priorityId): self
+    /**
+     * 
+     *
+     * @param int|null $priorityId
+     *
+     * @return self
+     */
+    public function setPriorityId(?int $priorityId): self
     {
         $this->initialized['priorityId'] = true;
         $this->priorityId = $priorityId;
-
         return $this;
     }
-
-    public function getSendEscalationEmail(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getSendEscalationEmail(): ?bool
     {
         return $this->sendEscalationEmail;
     }
-
-    public function setSendEscalationEmail(bool $sendEscalationEmail): self
+    /**
+     * 
+     *
+     * @param bool|null $sendEscalationEmail
+     *
+     * @return self
+     */
+    public function setSendEscalationEmail(?bool $sendEscalationEmail): self
     {
         $this->initialized['sendEscalationEmail'] = true;
         $this->sendEscalationEmail = $sendEscalationEmail;
-
         return $this;
     }
-
-    public function getSolutionTimeQuantity(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getSolutionTimeQuantity(): ?int
     {
         return $this->solutionTimeQuantity;
     }
-
-    public function setSolutionTimeQuantity(int $solutionTimeQuantity): self
+    /**
+     * 
+     *
+     * @param int|null $solutionTimeQuantity
+     *
+     * @return self
+     */
+    public function setSolutionTimeQuantity(?int $solutionTimeQuantity): self
     {
         $this->initialized['solutionTimeQuantity'] = true;
         $this->solutionTimeQuantity = $solutionTimeQuantity;
-
         return $this;
     }
-
-    public function getSolutionTimeUnit(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSolutionTimeUnit(): ?string
     {
         return $this->solutionTimeUnit;
     }
-
-    public function setSolutionTimeUnit(string $solutionTimeUnit): self
+    /**
+     * 
+     *
+     * @param string|null $solutionTimeUnit
+     *
+     * @return self
+     */
+    public function setSolutionTimeUnit(?string $solutionTimeUnit): self
     {
         $this->initialized['solutionTimeUnit'] = true;
         $this->solutionTimeUnit = $solutionTimeUnit;
-
         return $this;
     }
 }

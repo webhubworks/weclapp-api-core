@@ -5,28 +5,26 @@ namespace Webhubworks\WeclappApiCore\Endpoint;
 class PostArticleCategoryIdByIdUploadImage extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoint implements \Webhubworks\WeclappApiCore\Runtime\Client\Endpoint
 {
     protected $id;
-
     /**
-     * @param  string|resource|\Psr\Http\Message\StreamInterface  $requestBody
+     * 
+     *
+     * @param string $id 
+     * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody 
      */
-    public function __construct(string $id, $requestBody)
+    public function __construct(string $id, $requestBody = null)
     {
         $this->id = $id;
         $this->body = $requestBody;
     }
-
     use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
-
     public function getMethod(): string
     {
         return 'POST';
     }
-
     public function getUri(): string
     {
         return str_replace(['{id}'], [$this->id], '/articleCategory/id/{id}/uploadImage');
     }
-
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if (is_string($this->body) or is_resource($this->body) or $this->body instanceof \Psr\Http\Message\StreamInterface) {
@@ -41,15 +39,12 @@ class PostArticleCategoryIdByIdUploadImage extends \Webhubworks\WeclappApiCore\R
         if (is_string($this->body) or is_resource($this->body) or $this->body instanceof \Psr\Http\Message\StreamInterface) {
             return [['Content-Type' => ['image/png']], $this->body];
         }
-
         return [[], null];
     }
-
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
-
     /**
      * {@inheritdoc}
      *
@@ -60,14 +55,13 @@ class PostArticleCategoryIdByIdUploadImage extends \Webhubworks\WeclappApiCore\R
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && ($status === 200 && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ArticleCategoryIdIdUploadImagePostResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ApiProblem', 'json');
         }
     }
-
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

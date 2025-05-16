@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class InventoryItemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class InventoryItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\InventoryItem::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\InventoryItem::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,62 +33,98 @@ class InventoryItemNormalizer implements DenormalizerAwareInterface, Denormalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\InventoryItem;
+        $object = new \Webhubworks\WeclappApiCore\Model\InventoryItem();
         if (\array_key_exists('manualPosition', $data) && \is_int($data['manualPosition'])) {
             $data['manualPosition'] = (bool) $data['manualPosition'];
         }
-        if ($data === null || \is_array($data) === false) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('createdDate', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
         }
-        if (\array_key_exists('lastModifiedDate', $data)) {
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+            $object->setCreatedDate(null);
+        }
+        if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
         }
-        if (\array_key_exists('version', $data)) {
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+            $object->setLastModifiedDate(null);
+        }
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
         }
-        if (\array_key_exists('articleId', $data)) {
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
+        }
+        if (\array_key_exists('articleId', $data) && $data['articleId'] !== null) {
             $object->setArticleId($data['articleId']);
             unset($data['articleId']);
         }
-        if (\array_key_exists('batchNumber', $data)) {
+        elseif (\array_key_exists('articleId', $data) && $data['articleId'] === null) {
+            $object->setArticleId(null);
+        }
+        if (\array_key_exists('batchNumber', $data) && $data['batchNumber'] !== null) {
             $object->setBatchNumber($data['batchNumber']);
             unset($data['batchNumber']);
         }
-        if (\array_key_exists('comment', $data)) {
+        elseif (\array_key_exists('batchNumber', $data) && $data['batchNumber'] === null) {
+            $object->setBatchNumber(null);
+        }
+        if (\array_key_exists('comment', $data) && $data['comment'] !== null) {
             $object->setComment($data['comment']);
             unset($data['comment']);
         }
-        if (\array_key_exists('countedQuantity', $data)) {
+        elseif (\array_key_exists('comment', $data) && $data['comment'] === null) {
+            $object->setComment(null);
+        }
+        if (\array_key_exists('countedQuantity', $data) && $data['countedQuantity'] !== null) {
             $object->setCountedQuantity($data['countedQuantity']);
             unset($data['countedQuantity']);
         }
-        if (\array_key_exists('expectedQuantity', $data)) {
+        elseif (\array_key_exists('countedQuantity', $data) && $data['countedQuantity'] === null) {
+            $object->setCountedQuantity(null);
+        }
+        if (\array_key_exists('expectedQuantity', $data) && $data['expectedQuantity'] !== null) {
             $object->setExpectedQuantity($data['expectedQuantity']);
             unset($data['expectedQuantity']);
         }
-        if (\array_key_exists('expirationDate', $data)) {
+        elseif (\array_key_exists('expectedQuantity', $data) && $data['expectedQuantity'] === null) {
+            $object->setExpectedQuantity(null);
+        }
+        if (\array_key_exists('expirationDate', $data) && $data['expirationDate'] !== null) {
             $object->setExpirationDate($data['expirationDate']);
             unset($data['expirationDate']);
         }
-        if (\array_key_exists('inboundDate', $data)) {
+        elseif (\array_key_exists('expirationDate', $data) && $data['expirationDate'] === null) {
+            $object->setExpirationDate(null);
+        }
+        if (\array_key_exists('inboundDate', $data) && $data['inboundDate'] !== null) {
             $object->setInboundDate($data['inboundDate']);
             unset($data['inboundDate']);
         }
-        if (\array_key_exists('inventoryId', $data)) {
+        elseif (\array_key_exists('inboundDate', $data) && $data['inboundDate'] === null) {
+            $object->setInboundDate(null);
+        }
+        if (\array_key_exists('inventoryId', $data) && $data['inventoryId'] !== null) {
             $object->setInventoryId($data['inventoryId']);
             unset($data['inventoryId']);
         }
-        if (\array_key_exists('inventorySerialNumbers', $data)) {
+        elseif (\array_key_exists('inventoryId', $data) && $data['inventoryId'] === null) {
+            $object->setInventoryId(null);
+        }
+        if (\array_key_exists('inventorySerialNumbers', $data) && $data['inventorySerialNumbers'] !== null) {
             $values = [];
             foreach ($data['inventorySerialNumbers'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Webhubworks\WeclappApiCore\Model\InventorySerialNumber::class, 'json', $context);
@@ -100,92 +132,111 @@ class InventoryItemNormalizer implements DenormalizerAwareInterface, Denormalize
             $object->setInventorySerialNumbers($values);
             unset($data['inventorySerialNumbers']);
         }
-        if (\array_key_exists('inventoryTransportReferenceId', $data)) {
+        elseif (\array_key_exists('inventorySerialNumbers', $data) && $data['inventorySerialNumbers'] === null) {
+            $object->setInventorySerialNumbers(null);
+        }
+        if (\array_key_exists('inventoryTransportReferenceId', $data) && $data['inventoryTransportReferenceId'] !== null) {
             $object->setInventoryTransportReferenceId($data['inventoryTransportReferenceId']);
             unset($data['inventoryTransportReferenceId']);
         }
-        if (\array_key_exists('manualPosition', $data)) {
+        elseif (\array_key_exists('inventoryTransportReferenceId', $data) && $data['inventoryTransportReferenceId'] === null) {
+            $object->setInventoryTransportReferenceId(null);
+        }
+        if (\array_key_exists('manualPosition', $data) && $data['manualPosition'] !== null) {
             $object->setManualPosition($data['manualPosition']);
             unset($data['manualPosition']);
         }
-        if (\array_key_exists('orderItemId', $data)) {
+        elseif (\array_key_exists('manualPosition', $data) && $data['manualPosition'] === null) {
+            $object->setManualPosition(null);
+        }
+        if (\array_key_exists('orderItemId', $data) && $data['orderItemId'] !== null) {
             $object->setOrderItemId($data['orderItemId']);
             unset($data['orderItemId']);
         }
-        if (\array_key_exists('positionNumber', $data)) {
+        elseif (\array_key_exists('orderItemId', $data) && $data['orderItemId'] === null) {
+            $object->setOrderItemId(null);
+        }
+        if (\array_key_exists('positionNumber', $data) && $data['positionNumber'] !== null) {
             $object->setPositionNumber($data['positionNumber']);
             unset($data['positionNumber']);
         }
-        if (\array_key_exists('replacementValue', $data)) {
+        elseif (\array_key_exists('positionNumber', $data) && $data['positionNumber'] === null) {
+            $object->setPositionNumber(null);
+        }
+        if (\array_key_exists('replacementValue', $data) && $data['replacementValue'] !== null) {
             $object->setReplacementValue($data['replacementValue']);
             unset($data['replacementValue']);
         }
-        if (\array_key_exists('storagePlaceId', $data)) {
+        elseif (\array_key_exists('replacementValue', $data) && $data['replacementValue'] === null) {
+            $object->setReplacementValue(null);
+        }
+        if (\array_key_exists('storagePlaceId', $data) && $data['storagePlaceId'] !== null) {
             $object->setStoragePlaceId($data['storagePlaceId']);
             unset($data['storagePlaceId']);
+        }
+        elseif (\array_key_exists('storagePlaceId', $data) && $data['storagePlaceId'] === null) {
+            $object->setStoragePlaceId(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('articleId') && $data->getArticleId() !== null) {
+        if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
             $dataArray['articleId'] = $data->getArticleId();
         }
-        if ($data->isInitialized('batchNumber') && $data->getBatchNumber() !== null) {
+        if ($data->isInitialized('batchNumber') && null !== $data->getBatchNumber()) {
             $dataArray['batchNumber'] = $data->getBatchNumber();
         }
-        if ($data->isInitialized('comment') && $data->getComment() !== null) {
+        if ($data->isInitialized('comment') && null !== $data->getComment()) {
             $dataArray['comment'] = $data->getComment();
         }
-        if ($data->isInitialized('countedQuantity') && $data->getCountedQuantity() !== null) {
+        if ($data->isInitialized('countedQuantity') && null !== $data->getCountedQuantity()) {
             $dataArray['countedQuantity'] = $data->getCountedQuantity();
         }
-        if ($data->isInitialized('expectedQuantity') && $data->getExpectedQuantity() !== null) {
+        if ($data->isInitialized('expectedQuantity') && null !== $data->getExpectedQuantity()) {
             $dataArray['expectedQuantity'] = $data->getExpectedQuantity();
         }
-        if ($data->isInitialized('expirationDate') && $data->getExpirationDate() !== null) {
+        if ($data->isInitialized('expirationDate') && null !== $data->getExpirationDate()) {
             $dataArray['expirationDate'] = $data->getExpirationDate();
         }
-        if ($data->isInitialized('inboundDate') && $data->getInboundDate() !== null) {
+        if ($data->isInitialized('inboundDate') && null !== $data->getInboundDate()) {
             $dataArray['inboundDate'] = $data->getInboundDate();
         }
-        if ($data->isInitialized('inventoryId') && $data->getInventoryId() !== null) {
+        if ($data->isInitialized('inventoryId') && null !== $data->getInventoryId()) {
             $dataArray['inventoryId'] = $data->getInventoryId();
         }
-        if ($data->isInitialized('inventorySerialNumbers') && $data->getInventorySerialNumbers() !== null) {
+        if ($data->isInitialized('inventorySerialNumbers') && null !== $data->getInventorySerialNumbers()) {
             $values = [];
             foreach ($data->getInventorySerialNumbers() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['inventorySerialNumbers'] = $values;
         }
-        if ($data->isInitialized('inventoryTransportReferenceId') && $data->getInventoryTransportReferenceId() !== null) {
+        if ($data->isInitialized('inventoryTransportReferenceId') && null !== $data->getInventoryTransportReferenceId()) {
             $dataArray['inventoryTransportReferenceId'] = $data->getInventoryTransportReferenceId();
         }
-        if ($data->isInitialized('manualPosition') && $data->getManualPosition() !== null) {
+        if ($data->isInitialized('manualPosition') && null !== $data->getManualPosition()) {
             $dataArray['manualPosition'] = $data->getManualPosition();
         }
-        if ($data->isInitialized('orderItemId') && $data->getOrderItemId() !== null) {
+        if ($data->isInitialized('orderItemId') && null !== $data->getOrderItemId()) {
             $dataArray['orderItemId'] = $data->getOrderItemId();
         }
-        if ($data->isInitialized('positionNumber') && $data->getPositionNumber() !== null) {
+        if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
             $dataArray['positionNumber'] = $data->getPositionNumber();
         }
-        if ($data->isInitialized('replacementValue') && $data->getReplacementValue() !== null) {
+        if ($data->isInitialized('replacementValue') && null !== $data->getReplacementValue()) {
             $dataArray['replacementValue'] = $data->getReplacementValue();
         }
-        if ($data->isInitialized('storagePlaceId') && $data->getStoragePlaceId() !== null) {
+        if ($data->isInitialized('storagePlaceId') && null !== $data->getStoragePlaceId()) {
             $dataArray['storagePlaceId'] = $data->getStoragePlaceId();
         }
         foreach ($data as $key => $value_1) {
@@ -193,10 +244,8 @@ class InventoryItemNormalizer implements DenormalizerAwareInterface, Denormalize
                 $dataArray[$key] = $value_1;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\InventoryItem::class => false];

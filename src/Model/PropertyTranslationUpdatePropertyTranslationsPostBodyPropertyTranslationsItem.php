@@ -8,51 +8,64 @@ class PropertyTranslationUpdatePropertyTranslationsPostBodyPropertyTranslationsI
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $propertyName;
-
     /**
-     * @var list<PropertyTranslationValue>
+     * 
+     *
+     * @var list<PropertyTranslationValue>|null
      */
     protected $values;
-
-    public function getPropertyName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPropertyName(): ?string
     {
         return $this->propertyName;
     }
-
-    public function setPropertyName(string $propertyName): self
+    /**
+     * 
+     *
+     * @param string|null $propertyName
+     *
+     * @return self
+     */
+    public function setPropertyName(?string $propertyName): self
     {
         $this->initialized['propertyName'] = true;
         $this->propertyName = $propertyName;
-
         return $this;
     }
-
     /**
-     * @return list<PropertyTranslationValue>
+     * 
+     *
+     * @return list<PropertyTranslationValue>|null
      */
-    public function getValues(): array
+    public function getValues(): ?array
     {
         return $this->values;
     }
-
     /**
-     * @param  list<PropertyTranslationValue>  $values
+     * 
+     *
+     * @param list<PropertyTranslationValue>|null $values
+     *
+     * @return self
      */
-    public function setValues(array $values): self
+    public function setValues(?array $values): self
     {
         $this->initialized['values'] = true;
         $this->values = $values;
-
         return $this;
     }
 }

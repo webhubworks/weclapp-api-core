@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class PurchaseRequisitionNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class PurchaseRequisitionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\PurchaseRequisition::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\PurchaseRequisition::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,27 +33,39 @@ class PurchaseRequisitionNormalizer implements DenormalizerAwareInterface, Denor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\PurchaseRequisition;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\PurchaseRequisition();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('createdDate', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
         }
-        if (\array_key_exists('lastModifiedDate', $data)) {
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+            $object->setCreatedDate(null);
+        }
+        if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
         }
-        if (\array_key_exists('version', $data)) {
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+            $object->setLastModifiedDate(null);
+        }
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
         }
-        if (\array_key_exists('customAttributes', $data)) {
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
+        }
+        if (\array_key_exists('customAttributes', $data) && $data['customAttributes'] !== null) {
             $values = [];
             foreach ($data['customAttributes'] as $value) {
                 $values[] = $value;
@@ -65,63 +73,108 @@ class PurchaseRequisitionNormalizer implements DenormalizerAwareInterface, Denor
             $object->setCustomAttributes($values);
             unset($data['customAttributes']);
         }
-        if (\array_key_exists('articleId', $data)) {
+        elseif (\array_key_exists('customAttributes', $data) && $data['customAttributes'] === null) {
+            $object->setCustomAttributes(null);
+        }
+        if (\array_key_exists('articleId', $data) && $data['articleId'] !== null) {
             $object->setArticleId($data['articleId']);
             unset($data['articleId']);
         }
-        if (\array_key_exists('earliestRequiredDate', $data)) {
+        elseif (\array_key_exists('articleId', $data) && $data['articleId'] === null) {
+            $object->setArticleId(null);
+        }
+        if (\array_key_exists('earliestRequiredDate', $data) && $data['earliestRequiredDate'] !== null) {
             $object->setEarliestRequiredDate($data['earliestRequiredDate']);
             unset($data['earliestRequiredDate']);
         }
-        if (\array_key_exists('internalShipmentId', $data)) {
+        elseif (\array_key_exists('earliestRequiredDate', $data) && $data['earliestRequiredDate'] === null) {
+            $object->setEarliestRequiredDate(null);
+        }
+        if (\array_key_exists('internalShipmentId', $data) && $data['internalShipmentId'] !== null) {
             $object->setInternalShipmentId($data['internalShipmentId']);
             unset($data['internalShipmentId']);
         }
-        if (\array_key_exists('latestRequiredDate', $data)) {
+        elseif (\array_key_exists('internalShipmentId', $data) && $data['internalShipmentId'] === null) {
+            $object->setInternalShipmentId(null);
+        }
+        if (\array_key_exists('latestRequiredDate', $data) && $data['latestRequiredDate'] !== null) {
             $object->setLatestRequiredDate($data['latestRequiredDate']);
             unset($data['latestRequiredDate']);
         }
-        if (\array_key_exists('packagingUnitToOrderId', $data)) {
+        elseif (\array_key_exists('latestRequiredDate', $data) && $data['latestRequiredDate'] === null) {
+            $object->setLatestRequiredDate(null);
+        }
+        if (\array_key_exists('packagingUnitToOrderId', $data) && $data['packagingUnitToOrderId'] !== null) {
             $object->setPackagingUnitToOrderId($data['packagingUnitToOrderId']);
             unset($data['packagingUnitToOrderId']);
         }
-        if (\array_key_exists('productionOrderId', $data)) {
+        elseif (\array_key_exists('packagingUnitToOrderId', $data) && $data['packagingUnitToOrderId'] === null) {
+            $object->setPackagingUnitToOrderId(null);
+        }
+        if (\array_key_exists('productionOrderId', $data) && $data['productionOrderId'] !== null) {
             $object->setProductionOrderId($data['productionOrderId']);
             unset($data['productionOrderId']);
         }
-        if (\array_key_exists('productionOrderItemId', $data)) {
+        elseif (\array_key_exists('productionOrderId', $data) && $data['productionOrderId'] === null) {
+            $object->setProductionOrderId(null);
+        }
+        if (\array_key_exists('productionOrderItemId', $data) && $data['productionOrderItemId'] !== null) {
             $object->setProductionOrderItemId($data['productionOrderItemId']);
             unset($data['productionOrderItemId']);
         }
-        if (\array_key_exists('proposedDate', $data)) {
+        elseif (\array_key_exists('productionOrderItemId', $data) && $data['productionOrderItemId'] === null) {
+            $object->setProductionOrderItemId(null);
+        }
+        if (\array_key_exists('proposedDate', $data) && $data['proposedDate'] !== null) {
             $object->setProposedDate($data['proposedDate']);
             unset($data['proposedDate']);
         }
-        if (\array_key_exists('proposedQuantity', $data)) {
+        elseif (\array_key_exists('proposedDate', $data) && $data['proposedDate'] === null) {
+            $object->setProposedDate(null);
+        }
+        if (\array_key_exists('proposedQuantity', $data) && $data['proposedQuantity'] !== null) {
             $object->setProposedQuantity($data['proposedQuantity']);
             unset($data['proposedQuantity']);
         }
-        if (\array_key_exists('purchaseOrderId', $data)) {
+        elseif (\array_key_exists('proposedQuantity', $data) && $data['proposedQuantity'] === null) {
+            $object->setProposedQuantity(null);
+        }
+        if (\array_key_exists('purchaseOrderId', $data) && $data['purchaseOrderId'] !== null) {
             $object->setPurchaseOrderId($data['purchaseOrderId']);
             unset($data['purchaseOrderId']);
         }
-        if (\array_key_exists('requirementQuantity', $data)) {
+        elseif (\array_key_exists('purchaseOrderId', $data) && $data['purchaseOrderId'] === null) {
+            $object->setPurchaseOrderId(null);
+        }
+        if (\array_key_exists('requirementQuantity', $data) && $data['requirementQuantity'] !== null) {
             $object->setRequirementQuantity($data['requirementQuantity']);
             unset($data['requirementQuantity']);
         }
-        if (\array_key_exists('requisitionNumber', $data)) {
+        elseif (\array_key_exists('requirementQuantity', $data) && $data['requirementQuantity'] === null) {
+            $object->setRequirementQuantity(null);
+        }
+        if (\array_key_exists('requisitionNumber', $data) && $data['requisitionNumber'] !== null) {
             $object->setRequisitionNumber($data['requisitionNumber']);
             unset($data['requisitionNumber']);
         }
-        if (\array_key_exists('salesOrderItemId', $data)) {
+        elseif (\array_key_exists('requisitionNumber', $data) && $data['requisitionNumber'] === null) {
+            $object->setRequisitionNumber(null);
+        }
+        if (\array_key_exists('salesOrderItemId', $data) && $data['salesOrderItemId'] !== null) {
             $object->setSalesOrderItemId($data['salesOrderItemId']);
             unset($data['salesOrderItemId']);
         }
-        if (\array_key_exists('status', $data)) {
+        elseif (\array_key_exists('salesOrderItemId', $data) && $data['salesOrderItemId'] === null) {
+            $object->setSalesOrderItemId(null);
+        }
+        if (\array_key_exists('status', $data) && $data['status'] !== null) {
             $object->setStatus($data['status']);
             unset($data['status']);
         }
-        if (\array_key_exists('statusHistory', $data)) {
+        elseif (\array_key_exists('status', $data) && $data['status'] === null) {
+            $object->setStatus(null);
+        }
+        if (\array_key_exists('statusHistory', $data) && $data['statusHistory'] !== null) {
             $values_1 = [];
             foreach ($data['statusHistory'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Webhubworks\WeclappApiCore\Model\PurchaseRequisitionStatusHistory::class, 'json', $context);
@@ -129,89 +182,96 @@ class PurchaseRequisitionNormalizer implements DenormalizerAwareInterface, Denor
             $object->setStatusHistory($values_1);
             unset($data['statusHistory']);
         }
-        if (\array_key_exists('supplierId', $data)) {
+        elseif (\array_key_exists('statusHistory', $data) && $data['statusHistory'] === null) {
+            $object->setStatusHistory(null);
+        }
+        if (\array_key_exists('supplierId', $data) && $data['supplierId'] !== null) {
             $object->setSupplierId($data['supplierId']);
             unset($data['supplierId']);
         }
-        if (\array_key_exists('warehouseId', $data)) {
+        elseif (\array_key_exists('supplierId', $data) && $data['supplierId'] === null) {
+            $object->setSupplierId(null);
+        }
+        if (\array_key_exists('warehouseId', $data) && $data['warehouseId'] !== null) {
             $object->setWarehouseId($data['warehouseId']);
             unset($data['warehouseId']);
+        }
+        elseif (\array_key_exists('warehouseId', $data) && $data['warehouseId'] === null) {
+            $object->setWarehouseId(null);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_2;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
+        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('articleId') && $data->getArticleId() !== null) {
+        if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
             $dataArray['articleId'] = $data->getArticleId();
         }
-        if ($data->isInitialized('earliestRequiredDate') && $data->getEarliestRequiredDate() !== null) {
+        if ($data->isInitialized('earliestRequiredDate') && null !== $data->getEarliestRequiredDate()) {
             $dataArray['earliestRequiredDate'] = $data->getEarliestRequiredDate();
         }
-        if ($data->isInitialized('internalShipmentId') && $data->getInternalShipmentId() !== null) {
+        if ($data->isInitialized('internalShipmentId') && null !== $data->getInternalShipmentId()) {
             $dataArray['internalShipmentId'] = $data->getInternalShipmentId();
         }
-        if ($data->isInitialized('latestRequiredDate') && $data->getLatestRequiredDate() !== null) {
+        if ($data->isInitialized('latestRequiredDate') && null !== $data->getLatestRequiredDate()) {
             $dataArray['latestRequiredDate'] = $data->getLatestRequiredDate();
         }
-        if ($data->isInitialized('packagingUnitToOrderId') && $data->getPackagingUnitToOrderId() !== null) {
+        if ($data->isInitialized('packagingUnitToOrderId') && null !== $data->getPackagingUnitToOrderId()) {
             $dataArray['packagingUnitToOrderId'] = $data->getPackagingUnitToOrderId();
         }
-        if ($data->isInitialized('productionOrderId') && $data->getProductionOrderId() !== null) {
+        if ($data->isInitialized('productionOrderId') && null !== $data->getProductionOrderId()) {
             $dataArray['productionOrderId'] = $data->getProductionOrderId();
         }
-        if ($data->isInitialized('productionOrderItemId') && $data->getProductionOrderItemId() !== null) {
+        if ($data->isInitialized('productionOrderItemId') && null !== $data->getProductionOrderItemId()) {
             $dataArray['productionOrderItemId'] = $data->getProductionOrderItemId();
         }
-        if ($data->isInitialized('proposedDate') && $data->getProposedDate() !== null) {
+        if ($data->isInitialized('proposedDate') && null !== $data->getProposedDate()) {
             $dataArray['proposedDate'] = $data->getProposedDate();
         }
-        if ($data->isInitialized('proposedQuantity') && $data->getProposedQuantity() !== null) {
+        if ($data->isInitialized('proposedQuantity') && null !== $data->getProposedQuantity()) {
             $dataArray['proposedQuantity'] = $data->getProposedQuantity();
         }
-        if ($data->isInitialized('purchaseOrderId') && $data->getPurchaseOrderId() !== null) {
+        if ($data->isInitialized('purchaseOrderId') && null !== $data->getPurchaseOrderId()) {
             $dataArray['purchaseOrderId'] = $data->getPurchaseOrderId();
         }
-        if ($data->isInitialized('requirementQuantity') && $data->getRequirementQuantity() !== null) {
+        if ($data->isInitialized('requirementQuantity') && null !== $data->getRequirementQuantity()) {
             $dataArray['requirementQuantity'] = $data->getRequirementQuantity();
         }
-        if ($data->isInitialized('requisitionNumber') && $data->getRequisitionNumber() !== null) {
+        if ($data->isInitialized('requisitionNumber') && null !== $data->getRequisitionNumber()) {
             $dataArray['requisitionNumber'] = $data->getRequisitionNumber();
         }
-        if ($data->isInitialized('salesOrderItemId') && $data->getSalesOrderItemId() !== null) {
+        if ($data->isInitialized('salesOrderItemId') && null !== $data->getSalesOrderItemId()) {
             $dataArray['salesOrderItemId'] = $data->getSalesOrderItemId();
         }
-        if ($data->isInitialized('status') && $data->getStatus() !== null) {
+        if ($data->isInitialized('status') && null !== $data->getStatus()) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('statusHistory') && $data->getStatusHistory() !== null) {
+        if ($data->isInitialized('statusHistory') && null !== $data->getStatusHistory()) {
             $values_1 = [];
             foreach ($data->getStatusHistory() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['statusHistory'] = $values_1;
         }
-        if ($data->isInitialized('supplierId') && $data->getSupplierId() !== null) {
+        if ($data->isInitialized('supplierId') && null !== $data->getSupplierId()) {
             $dataArray['supplierId'] = $data->getSupplierId();
         }
-        if ($data->isInitialized('warehouseId') && $data->getWarehouseId() !== null) {
+        if ($data->isInitialized('warehouseId') && null !== $data->getWarehouseId()) {
             $dataArray['warehouseId'] = $data->getWarehouseId();
         }
         foreach ($data as $key => $value_2) {
@@ -219,10 +279,8 @@ class PurchaseRequisitionNormalizer implements DenormalizerAwareInterface, Denor
                 $dataArray[$key] = $value_2;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\PurchaseRequisition::class => false];

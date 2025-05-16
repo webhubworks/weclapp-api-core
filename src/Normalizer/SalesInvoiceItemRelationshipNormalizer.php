@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class SalesInvoiceItemRelationshipNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class SalesInvoiceItemRelationshipNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SalesInvoiceItemRelationship::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SalesInvoiceItemRelationship::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,55 +33,68 @@ class SalesInvoiceItemRelationshipNormalizer implements DenormalizerAwareInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SalesInvoiceItemRelationship;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\SalesInvoiceItemRelationship();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('performanceRecordItemId', $data)) {
+        if (\array_key_exists('performanceRecordItemId', $data) && $data['performanceRecordItemId'] !== null) {
             $object->setPerformanceRecordItemId($data['performanceRecordItemId']);
             unset($data['performanceRecordItemId']);
         }
-        if (\array_key_exists('quantity', $data)) {
+        elseif (\array_key_exists('performanceRecordItemId', $data) && $data['performanceRecordItemId'] === null) {
+            $object->setPerformanceRecordItemId(null);
+        }
+        if (\array_key_exists('quantity', $data) && $data['quantity'] !== null) {
             $object->setQuantity($data['quantity']);
             unset($data['quantity']);
         }
-        if (\array_key_exists('salesInvoiceItemId', $data)) {
+        elseif (\array_key_exists('quantity', $data) && $data['quantity'] === null) {
+            $object->setQuantity(null);
+        }
+        if (\array_key_exists('salesInvoiceItemId', $data) && $data['salesInvoiceItemId'] !== null) {
             $object->setSalesInvoiceItemId($data['salesInvoiceItemId']);
             unset($data['salesInvoiceItemId']);
         }
-        if (\array_key_exists('salesOrderItemId', $data)) {
+        elseif (\array_key_exists('salesInvoiceItemId', $data) && $data['salesInvoiceItemId'] === null) {
+            $object->setSalesInvoiceItemId(null);
+        }
+        if (\array_key_exists('salesOrderItemId', $data) && $data['salesOrderItemId'] !== null) {
             $object->setSalesOrderItemId($data['salesOrderItemId']);
             unset($data['salesOrderItemId']);
         }
-        if (\array_key_exists('shipmentItemId', $data)) {
+        elseif (\array_key_exists('salesOrderItemId', $data) && $data['salesOrderItemId'] === null) {
+            $object->setSalesOrderItemId(null);
+        }
+        if (\array_key_exists('shipmentItemId', $data) && $data['shipmentItemId'] !== null) {
             $object->setShipmentItemId($data['shipmentItemId']);
             unset($data['shipmentItemId']);
+        }
+        elseif (\array_key_exists('shipmentItemId', $data) && $data['shipmentItemId'] === null) {
+            $object->setShipmentItemId(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('performanceRecordItemId') && $data->getPerformanceRecordItemId() !== null) {
+        if ($data->isInitialized('performanceRecordItemId') && null !== $data->getPerformanceRecordItemId()) {
             $dataArray['performanceRecordItemId'] = $data->getPerformanceRecordItemId();
         }
-        if ($data->isInitialized('quantity') && $data->getQuantity() !== null) {
+        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
             $dataArray['quantity'] = $data->getQuantity();
         }
-        if ($data->isInitialized('salesInvoiceItemId') && $data->getSalesInvoiceItemId() !== null) {
+        if ($data->isInitialized('salesInvoiceItemId') && null !== $data->getSalesInvoiceItemId()) {
             $dataArray['salesInvoiceItemId'] = $data->getSalesInvoiceItemId();
         }
-        if ($data->isInitialized('salesOrderItemId') && $data->getSalesOrderItemId() !== null) {
+        if ($data->isInitialized('salesOrderItemId') && null !== $data->getSalesOrderItemId()) {
             $dataArray['salesOrderItemId'] = $data->getSalesOrderItemId();
         }
-        if ($data->isInitialized('shipmentItemId') && $data->getShipmentItemId() !== null) {
+        if ($data->isInitialized('shipmentItemId') && null !== $data->getShipmentItemId()) {
             $dataArray['shipmentItemId'] = $data->getShipmentItemId();
         }
         foreach ($data as $key => $value) {
@@ -93,10 +102,8 @@ class SalesInvoiceItemRelationshipNormalizer implements DenormalizerAwareInterfa
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SalesInvoiceItemRelationship::class => false];

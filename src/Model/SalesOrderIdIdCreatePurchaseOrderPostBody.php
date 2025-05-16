@@ -8,63 +8,92 @@ class SalesOrderIdIdCreatePurchaseOrderPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $multiplePurchaseOrders;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $supplierId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $warehouseId;
-
-    public function getMultiplePurchaseOrders(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getMultiplePurchaseOrders(): ?bool
     {
         return $this->multiplePurchaseOrders;
     }
-
-    public function setMultiplePurchaseOrders(bool $multiplePurchaseOrders): self
+    /**
+     * 
+     *
+     * @param bool|null $multiplePurchaseOrders
+     *
+     * @return self
+     */
+    public function setMultiplePurchaseOrders(?bool $multiplePurchaseOrders): self
     {
         $this->initialized['multiplePurchaseOrders'] = true;
         $this->multiplePurchaseOrders = $multiplePurchaseOrders;
-
         return $this;
     }
-
-    public function getSupplierId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSupplierId(): ?string
     {
         return $this->supplierId;
     }
-
-    public function setSupplierId(string $supplierId): self
+    /**
+     * 
+     *
+     * @param string|null $supplierId
+     *
+     * @return self
+     */
+    public function setSupplierId(?string $supplierId): self
     {
         $this->initialized['supplierId'] = true;
         $this->supplierId = $supplierId;
-
         return $this;
     }
-
-    public function getWarehouseId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getWarehouseId(): ?string
     {
         return $this->warehouseId;
     }
-
-    public function setWarehouseId(string $warehouseId): self
+    /**
+     * 
+     *
+     * @param string|null $warehouseId
+     *
+     * @return self
+     */
+    public function setWarehouseId(?string $warehouseId): self
     {
         $this->initialized['warehouseId'] = true;
         $this->warehouseId = $warehouseId;
-
         return $this;
     }
 }

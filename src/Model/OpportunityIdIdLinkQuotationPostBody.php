@@ -8,27 +8,36 @@ class OpportunityIdIdLinkQuotationPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $quotationId;
-
-    public function getQuotationId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getQuotationId(): ?string
     {
         return $this->quotationId;
     }
-
-    public function setQuotationId(string $quotationId): self
+    /**
+     * 
+     *
+     * @param string|null $quotationId
+     *
+     * @return self
+     */
+    public function setQuotationId(?string $quotationId): self
     {
         $this->initialized['quotationId'] = true;
         $this->quotationId = $quotationId;
-
         return $this;
     }
 }

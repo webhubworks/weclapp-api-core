@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class TicketPoolingGroupNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class TicketPoolingGroupNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\TicketPoolingGroup::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\TicketPoolingGroup::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,35 +33,53 @@ class TicketPoolingGroupNormalizer implements DenormalizerAwareInterface, Denorm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\TicketPoolingGroup;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\TicketPoolingGroup();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('id', $data)) {
+        if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
         }
-        if (\array_key_exists('createdDate', $data)) {
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
         }
-        if (\array_key_exists('lastModifiedDate', $data)) {
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+            $object->setCreatedDate(null);
+        }
+        if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
         }
-        if (\array_key_exists('version', $data)) {
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+            $object->setLastModifiedDate(null);
+        }
+        if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
         }
-        if (\array_key_exists('description', $data)) {
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+            $object->setVersion(null);
+        }
+        if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
             unset($data['description']);
         }
-        if (\array_key_exists('name', $data)) {
+        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+            $object->setDescription(null);
+        }
+        if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
         }
-        if (\array_key_exists('ticketCategories', $data)) {
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+            $object->setName(null);
+        }
+        if (\array_key_exists('ticketCategories', $data) && $data['ticketCategories'] !== null) {
             $values = [];
             foreach ($data['ticketCategories'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Webhubworks\WeclappApiCore\Model\OnlyId::class, 'json', $context);
@@ -73,7 +87,10 @@ class TicketPoolingGroupNormalizer implements DenormalizerAwareInterface, Denorm
             $object->setTicketCategories($values);
             unset($data['ticketCategories']);
         }
-        if (\array_key_exists('ticketPoolingGroupMembers', $data)) {
+        elseif (\array_key_exists('ticketCategories', $data) && $data['ticketCategories'] === null) {
+            $object->setTicketCategories(null);
+        }
+        if (\array_key_exists('ticketPoolingGroupMembers', $data) && $data['ticketPoolingGroupMembers'] !== null) {
             $values_1 = [];
             foreach ($data['ticketPoolingGroupMembers'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Webhubworks\WeclappApiCore\Model\TicketPoolingGroupMember::class, 'json', $context);
@@ -81,35 +98,36 @@ class TicketPoolingGroupNormalizer implements DenormalizerAwareInterface, Denorm
             $object->setTicketPoolingGroupMembers($values_1);
             unset($data['ticketPoolingGroupMembers']);
         }
+        elseif (\array_key_exists('ticketPoolingGroupMembers', $data) && $data['ticketPoolingGroupMembers'] === null) {
+            $object->setTicketPoolingGroupMembers(null);
+        }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_2;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('description') && $data->getDescription() !== null) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('name') && $data->getName() !== null) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('ticketCategories') && $data->getTicketCategories() !== null) {
+        if ($data->isInitialized('ticketCategories') && null !== $data->getTicketCategories()) {
             $values = [];
             foreach ($data->getTicketCategories() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['ticketCategories'] = $values;
         }
-        if ($data->isInitialized('ticketPoolingGroupMembers') && $data->getTicketPoolingGroupMembers() !== null) {
+        if ($data->isInitialized('ticketPoolingGroupMembers') && null !== $data->getTicketPoolingGroupMembers()) {
             $values_1 = [];
             foreach ($data->getTicketPoolingGroupMembers() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
@@ -121,10 +139,8 @@ class TicketPoolingGroupNormalizer implements DenormalizerAwareInterface, Denorm
                 $dataArray[$key] = $value_2;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\TicketPoolingGroup::class => false];

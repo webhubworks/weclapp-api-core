@@ -8,141 +8,204 @@ class PriceData extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $articleUnitPrice;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $currencyId;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $endDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $quantity;
-
     /**
-     * @var list<PriceDataReductionAdditionItem>
+     * 
+     *
+     * @var list<PriceDataReductionAdditionItem>|null
      */
     protected $reductionAdditionItems;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $startDate;
-
-    public function getArticleUnitPrice(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getArticleUnitPrice(): ?string
     {
         return $this->articleUnitPrice;
     }
-
-    public function setArticleUnitPrice(string $articleUnitPrice): self
+    /**
+     * 
+     *
+     * @param string|null $articleUnitPrice
+     *
+     * @return self
+     */
+    public function setArticleUnitPrice(?string $articleUnitPrice): self
     {
         $this->initialized['articleUnitPrice'] = true;
         $this->articleUnitPrice = $articleUnitPrice;
-
         return $this;
     }
-
-    public function getCurrencyId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCurrencyId(): ?string
     {
         return $this->currencyId;
     }
-
-    public function setCurrencyId(string $currencyId): self
+    /**
+     * 
+     *
+     * @param string|null $currencyId
+     *
+     * @return self
+     */
+    public function setCurrencyId(?string $currencyId): self
     {
         $this->initialized['currencyId'] = true;
         $this->currencyId = $currencyId;
-
         return $this;
     }
-
-    public function getEndDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getEndDate(): ?int
     {
         return $this->endDate;
     }
-
-    public function setEndDate(int $endDate): self
+    /**
+     * 
+     *
+     * @param int|null $endDate
+     *
+     * @return self
+     */
+    public function setEndDate(?int $endDate): self
     {
         $this->initialized['endDate'] = true;
         $this->endDate = $endDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getQuantity(): ?string
     {
         return $this->quantity;
     }
-
-    public function setQuantity(string $quantity): self
+    /**
+     * 
+     *
+     * @param string|null $quantity
+     *
+     * @return self
+     */
+    public function setQuantity(?string $quantity): self
     {
         $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
-
         return $this;
     }
-
     /**
-     * @return list<PriceDataReductionAdditionItem>
+     * 
+     *
+     * @return list<PriceDataReductionAdditionItem>|null
      */
-    public function getReductionAdditionItems(): array
+    public function getReductionAdditionItems(): ?array
     {
         return $this->reductionAdditionItems;
     }
-
     /**
-     * @param  list<PriceDataReductionAdditionItem>  $reductionAdditionItems
+     * 
+     *
+     * @param list<PriceDataReductionAdditionItem>|null $reductionAdditionItems
+     *
+     * @return self
      */
-    public function setReductionAdditionItems(array $reductionAdditionItems): self
+    public function setReductionAdditionItems(?array $reductionAdditionItems): self
     {
         $this->initialized['reductionAdditionItems'] = true;
         $this->reductionAdditionItems = $reductionAdditionItems;
-
         return $this;
     }
-
-    public function getStartDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getStartDate(): ?int
     {
         return $this->startDate;
     }
-
-    public function setStartDate(int $startDate): self
+    /**
+     * 
+     *
+     * @param int|null $startDate
+     *
+     * @return self
+     */
+    public function setStartDate(?int $startDate): self
     {
         $this->initialized['startDate'] = true;
         $this->startDate = $startDate;
-
         return $this;
     }
 }

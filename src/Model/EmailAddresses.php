@@ -8,63 +8,92 @@ class EmailAddresses extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $bccAddresses;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $ccAddresses;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $toAddresses;
-
-    public function getBccAddresses(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getBccAddresses(): ?string
     {
         return $this->bccAddresses;
     }
-
-    public function setBccAddresses(string $bccAddresses): self
+    /**
+     * 
+     *
+     * @param string|null $bccAddresses
+     *
+     * @return self
+     */
+    public function setBccAddresses(?string $bccAddresses): self
     {
         $this->initialized['bccAddresses'] = true;
         $this->bccAddresses = $bccAddresses;
-
         return $this;
     }
-
-    public function getCcAddresses(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCcAddresses(): ?string
     {
         return $this->ccAddresses;
     }
-
-    public function setCcAddresses(string $ccAddresses): self
+    /**
+     * 
+     *
+     * @param string|null $ccAddresses
+     *
+     * @return self
+     */
+    public function setCcAddresses(?string $ccAddresses): self
     {
         $this->initialized['ccAddresses'] = true;
         $this->ccAddresses = $ccAddresses;
-
         return $this;
     }
-
-    public function getToAddresses(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getToAddresses(): ?string
     {
         return $this->toAddresses;
     }
-
-    public function setToAddresses(string $toAddresses): self
+    /**
+     * 
+     *
+     * @param string|null $toAddresses
+     *
+     * @return self
+     */
+    public function setToAddresses(?string $toAddresses): self
     {
         $this->initialized['toAddresses'] = true;
         $this->toAddresses = $toAddresses;
-
         return $this;
     }
 }

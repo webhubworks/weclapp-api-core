@@ -8,33 +8,36 @@ class IncomingGoodsIdIdUpdateIncomingBookingsPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var list<IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItem>
+     * 
+     *
+     * @var list<IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItem>|null
      */
     protected $incomingBookings;
-
     /**
-     * @return list<IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItem>
+     * 
+     *
+     * @return list<IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItem>|null
      */
-    public function getIncomingBookings(): array
+    public function getIncomingBookings(): ?array
     {
         return $this->incomingBookings;
     }
-
     /**
-     * @param  list<IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItem>  $incomingBookings
+     * 
+     *
+     * @param list<IncomingGoodsIdIdUpdateIncomingBookingsPostBodyIncomingBookingsItem>|null $incomingBookings
+     *
+     * @return self
      */
-    public function setIncomingBookings(array $incomingBookings): self
+    public function setIncomingBookings(?array $incomingBookings): self
     {
         $this->initialized['incomingBookings'] = true;
         $this->incomingBookings = $incomingBookings;
-
         return $this;
     }
 }

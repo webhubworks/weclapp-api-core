@@ -8,69 +8,92 @@ class PurchaseOrderRequestIdIdCreatePurchaseOrderPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $offerId;
-
     /**
-     * @var list<PurchaseOrderRequestIdIdCreatePurchaseOrderPostBodyOfferItemToUpdateSupplierInformationItem>
+     * 
+     *
+     * @var list<PurchaseOrderRequestIdIdCreatePurchaseOrderPostBodyOfferItemToUpdateSupplierInformationItem>|null
      */
     protected $offerItemToUpdateSupplierInformation;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $salesOrderId;
-
-    public function getOfferId(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getOfferId(): ?int
     {
         return $this->offerId;
     }
-
-    public function setOfferId(int $offerId): self
+    /**
+     * 
+     *
+     * @param int|null $offerId
+     *
+     * @return self
+     */
+    public function setOfferId(?int $offerId): self
     {
         $this->initialized['offerId'] = true;
         $this->offerId = $offerId;
-
         return $this;
     }
-
     /**
-     * @return list<PurchaseOrderRequestIdIdCreatePurchaseOrderPostBodyOfferItemToUpdateSupplierInformationItem>
+     * 
+     *
+     * @return list<PurchaseOrderRequestIdIdCreatePurchaseOrderPostBodyOfferItemToUpdateSupplierInformationItem>|null
      */
-    public function getOfferItemToUpdateSupplierInformation(): array
+    public function getOfferItemToUpdateSupplierInformation(): ?array
     {
         return $this->offerItemToUpdateSupplierInformation;
     }
-
     /**
-     * @param  list<PurchaseOrderRequestIdIdCreatePurchaseOrderPostBodyOfferItemToUpdateSupplierInformationItem>  $offerItemToUpdateSupplierInformation
+     * 
+     *
+     * @param list<PurchaseOrderRequestIdIdCreatePurchaseOrderPostBodyOfferItemToUpdateSupplierInformationItem>|null $offerItemToUpdateSupplierInformation
+     *
+     * @return self
      */
-    public function setOfferItemToUpdateSupplierInformation(array $offerItemToUpdateSupplierInformation): self
+    public function setOfferItemToUpdateSupplierInformation(?array $offerItemToUpdateSupplierInformation): self
     {
         $this->initialized['offerItemToUpdateSupplierInformation'] = true;
         $this->offerItemToUpdateSupplierInformation = $offerItemToUpdateSupplierInformation;
-
         return $this;
     }
-
-    public function getSalesOrderId(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getSalesOrderId(): ?int
     {
         return $this->salesOrderId;
     }
-
-    public function setSalesOrderId(int $salesOrderId): self
+    /**
+     * 
+     *
+     * @param int|null $salesOrderId
+     *
+     * @return self
+     */
+    public function setSalesOrderId(?int $salesOrderId): self
     {
         $this->initialized['salesOrderId'] = true;
         $this->salesOrderId = $salesOrderId;
-
         return $this;
     }
 }

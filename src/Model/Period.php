@@ -8,189 +8,288 @@ class Period extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $financialYearId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $name;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $open;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $periodNumber;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $validFrom;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $validTo;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
-    public function getFinancialYearId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getFinancialYearId(): ?string
     {
         return $this->financialYearId;
     }
-
-    public function setFinancialYearId(string $financialYearId): self
+    /**
+     * 
+     *
+     * @param string|null $financialYearId
+     *
+     * @return self
+     */
+    public function setFinancialYearId(?string $financialYearId): self
     {
         $this->initialized['financialYearId'] = true;
         $this->financialYearId = $financialYearId;
-
         return $this;
     }
-
-    public function getName(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
-
-    public function setName(string $name): self
+    /**
+     * 
+     *
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
-
         return $this;
     }
-
-    public function getOpen(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getOpen(): ?bool
     {
         return $this->open;
     }
-
-    public function setOpen(bool $open): self
+    /**
+     * 
+     *
+     * @param bool|null $open
+     *
+     * @return self
+     */
+    public function setOpen(?bool $open): self
     {
         $this->initialized['open'] = true;
         $this->open = $open;
-
         return $this;
     }
-
-    public function getPeriodNumber(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getPeriodNumber(): ?int
     {
         return $this->periodNumber;
     }
-
-    public function setPeriodNumber(int $periodNumber): self
+    /**
+     * 
+     *
+     * @param int|null $periodNumber
+     *
+     * @return self
+     */
+    public function setPeriodNumber(?int $periodNumber): self
     {
         $this->initialized['periodNumber'] = true;
         $this->periodNumber = $periodNumber;
-
         return $this;
     }
-
-    public function getValidFrom(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getValidFrom(): ?int
     {
         return $this->validFrom;
     }
-
-    public function setValidFrom(int $validFrom): self
+    /**
+     * 
+     *
+     * @param int|null $validFrom
+     *
+     * @return self
+     */
+    public function setValidFrom(?int $validFrom): self
     {
         $this->initialized['validFrom'] = true;
         $this->validFrom = $validFrom;
-
         return $this;
     }
-
-    public function getValidTo(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getValidTo(): ?int
     {
         return $this->validTo;
     }
-
-    public function setValidTo(int $validTo): self
+    /**
+     * 
+     *
+     * @param int|null $validTo
+     *
+     * @return self
+     */
+    public function setValidTo(?int $validTo): self
     {
         $this->initialized['validTo'] = true;
         $this->validTo = $validTo;
-
         return $this;
     }
 }

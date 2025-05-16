@@ -8,99 +8,148 @@ class ReminderRecurringEvent extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $endsOnDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $eventInterval;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $eventOccurrenceCount;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $eventType;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $repeatOn;
-
-    public function getEndsOnDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getEndsOnDate(): ?int
     {
         return $this->endsOnDate;
     }
-
-    public function setEndsOnDate(int $endsOnDate): self
+    /**
+     * 
+     *
+     * @param int|null $endsOnDate
+     *
+     * @return self
+     */
+    public function setEndsOnDate(?int $endsOnDate): self
     {
         $this->initialized['endsOnDate'] = true;
         $this->endsOnDate = $endsOnDate;
-
         return $this;
     }
-
-    public function getEventInterval(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getEventInterval(): ?int
     {
         return $this->eventInterval;
     }
-
-    public function setEventInterval(int $eventInterval): self
+    /**
+     * 
+     *
+     * @param int|null $eventInterval
+     *
+     * @return self
+     */
+    public function setEventInterval(?int $eventInterval): self
     {
         $this->initialized['eventInterval'] = true;
         $this->eventInterval = $eventInterval;
-
         return $this;
     }
-
-    public function getEventOccurrenceCount(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getEventOccurrenceCount(): ?int
     {
         return $this->eventOccurrenceCount;
     }
-
-    public function setEventOccurrenceCount(int $eventOccurrenceCount): self
+    /**
+     * 
+     *
+     * @param int|null $eventOccurrenceCount
+     *
+     * @return self
+     */
+    public function setEventOccurrenceCount(?int $eventOccurrenceCount): self
     {
         $this->initialized['eventOccurrenceCount'] = true;
         $this->eventOccurrenceCount = $eventOccurrenceCount;
-
         return $this;
     }
-
-    public function getEventType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getEventType(): ?string
     {
         return $this->eventType;
     }
-
-    public function setEventType(string $eventType): self
+    /**
+     * 
+     *
+     * @param string|null $eventType
+     *
+     * @return self
+     */
+    public function setEventType(?string $eventType): self
     {
         $this->initialized['eventType'] = true;
         $this->eventType = $eventType;
-
         return $this;
     }
-
-    public function getRepeatOn(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getRepeatOn(): ?string
     {
         return $this->repeatOn;
     }
-
-    public function setRepeatOn(string $repeatOn): self
+    /**
+     * 
+     *
+     * @param string|null $repeatOn
+     *
+     * @return self
+     */
+    public function setRepeatOn(?string $repeatOn): self
     {
         $this->initialized['repeatOn'] = true;
         $this->repeatOn = $repeatOn;
-
         return $this;
     }
 }

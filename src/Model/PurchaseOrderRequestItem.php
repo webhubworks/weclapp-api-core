@@ -8,415 +8,608 @@ class PurchaseOrderRequestItem extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $id;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $createdDate;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $lastModifiedDate;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $version;
-
     /**
-     * @var list<mixed>
+     * 
+     *
+     * @var list<mixed>|null
      */
     protected $customAttributes;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $articleId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $articleNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $note;
-
     /**
-     * @var int
+     * 
+     *
+     * @var int|null
      */
     protected $positionNumber;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $quantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $description;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $descriptionFixed;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $itemType;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $manualQuantity;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $parentItemId;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $title;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $unitId;
-
     /**
+     * 
+     *
      * @deprecated
      *
-     * @var string
+     * @var string|null
      */
     protected $unitName;
-
     /**
-     * @var bool
+     * 
+     *
+     * @var bool|null
      */
     protected $deleted;
-
     /**
-     * @var string
+     * 
+     *
+     * @var string|null
      */
     protected $priceScaleType;
-
     /**
-     * @var list<PurchaseOrderRequestItemScaleValue>
+     * 
+     *
+     * @var list<PurchaseOrderRequestItemScaleValue>|null
      */
     protected $scaleValues;
-
-    public function getId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getId(): ?string
     {
         return $this->id;
     }
-
-    public function setId(string $id): self
+    /**
+     * 
+     *
+     * @param string|null $id
+     *
+     * @return self
+     */
+    public function setId(?string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
-
         return $this;
     }
-
-    public function getCreatedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getCreatedDate(): ?int
     {
         return $this->createdDate;
     }
-
-    public function setCreatedDate(int $createdDate): self
+    /**
+     * 
+     *
+     * @param int|null $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(?int $createdDate): self
     {
         $this->initialized['createdDate'] = true;
         $this->createdDate = $createdDate;
-
         return $this;
     }
-
-    public function getLastModifiedDate(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getLastModifiedDate(): ?int
     {
         return $this->lastModifiedDate;
     }
-
-    public function setLastModifiedDate(int $lastModifiedDate): self
+    /**
+     * 
+     *
+     * @param int|null $lastModifiedDate
+     *
+     * @return self
+     */
+    public function setLastModifiedDate(?int $lastModifiedDate): self
     {
         $this->initialized['lastModifiedDate'] = true;
         $this->lastModifiedDate = $lastModifiedDate;
-
         return $this;
     }
-
-    public function getVersion(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getVersion(): ?string
     {
         return $this->version;
     }
-
-    public function setVersion(string $version): self
+    /**
+     * 
+     *
+     * @param string|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?string $version): self
     {
         $this->initialized['version'] = true;
         $this->version = $version;
-
         return $this;
     }
-
     /**
-     * @return list<mixed>
+     * 
+     *
+     * @return list<mixed>|null
      */
-    public function getCustomAttributes(): array
+    public function getCustomAttributes(): ?array
     {
         return $this->customAttributes;
     }
-
     /**
-     * @param  list<mixed>  $customAttributes
+     * 
+     *
+     * @param list<mixed>|null $customAttributes
+     *
+     * @return self
      */
-    public function setCustomAttributes(array $customAttributes): self
+    public function setCustomAttributes(?array $customAttributes): self
     {
         $this->initialized['customAttributes'] = true;
         $this->customAttributes = $customAttributes;
-
         return $this;
     }
-
-    public function getArticleId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getArticleId(): ?string
     {
         return $this->articleId;
     }
-
-    public function setArticleId(string $articleId): self
+    /**
+     * 
+     *
+     * @param string|null $articleId
+     *
+     * @return self
+     */
+    public function setArticleId(?string $articleId): self
     {
         $this->initialized['articleId'] = true;
         $this->articleId = $articleId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getArticleNumber(): string
+    public function getArticleNumber(): ?string
     {
         return $this->articleNumber;
     }
-
     /**
+     * 
+     *
+     * @param string|null $articleNumber
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setArticleNumber(string $articleNumber): self
+    public function setArticleNumber(?string $articleNumber): self
     {
         $this->initialized['articleNumber'] = true;
         $this->articleNumber = $articleNumber;
-
         return $this;
     }
-
-    public function getNote(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getNote(): ?string
     {
         return $this->note;
     }
-
-    public function setNote(string $note): self
+    /**
+     * 
+     *
+     * @param string|null $note
+     *
+     * @return self
+     */
+    public function setNote(?string $note): self
     {
         $this->initialized['note'] = true;
         $this->note = $note;
-
         return $this;
     }
-
-    public function getPositionNumber(): int
+    /**
+     * 
+     *
+     * @return int|null
+     */
+    public function getPositionNumber(): ?int
     {
         return $this->positionNumber;
     }
-
-    public function setPositionNumber(int $positionNumber): self
+    /**
+     * 
+     *
+     * @param int|null $positionNumber
+     *
+     * @return self
+     */
+    public function setPositionNumber(?int $positionNumber): self
     {
         $this->initialized['positionNumber'] = true;
         $this->positionNumber = $positionNumber;
-
         return $this;
     }
-
-    public function getQuantity(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getQuantity(): ?string
     {
         return $this->quantity;
     }
-
-    public function setQuantity(string $quantity): self
+    /**
+     * 
+     *
+     * @param string|null $quantity
+     *
+     * @return self
+     */
+    public function setQuantity(?string $quantity): self
     {
         $this->initialized['quantity'] = true;
         $this->quantity = $quantity;
-
         return $this;
     }
-
-    public function getDescription(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): self
+    /**
+     * 
+     *
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
     {
         $this->initialized['description'] = true;
         $this->description = $description;
-
         return $this;
     }
-
-    public function getDescriptionFixed(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getDescriptionFixed(): ?bool
     {
         return $this->descriptionFixed;
     }
-
-    public function setDescriptionFixed(bool $descriptionFixed): self
+    /**
+     * 
+     *
+     * @param bool|null $descriptionFixed
+     *
+     * @return self
+     */
+    public function setDescriptionFixed(?bool $descriptionFixed): self
     {
         $this->initialized['descriptionFixed'] = true;
         $this->descriptionFixed = $descriptionFixed;
-
         return $this;
     }
-
-    public function getItemType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getItemType(): ?string
     {
         return $this->itemType;
     }
-
-    public function setItemType(string $itemType): self
+    /**
+     * 
+     *
+     * @param string|null $itemType
+     *
+     * @return self
+     */
+    public function setItemType(?string $itemType): self
     {
         $this->initialized['itemType'] = true;
         $this->itemType = $itemType;
-
         return $this;
     }
-
-    public function getManualQuantity(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getManualQuantity(): ?bool
     {
         return $this->manualQuantity;
     }
-
-    public function setManualQuantity(bool $manualQuantity): self
+    /**
+     * 
+     *
+     * @param bool|null $manualQuantity
+     *
+     * @return self
+     */
+    public function setManualQuantity(?bool $manualQuantity): self
     {
         $this->initialized['manualQuantity'] = true;
         $this->manualQuantity = $manualQuantity;
-
         return $this;
     }
-
-    public function getParentItemId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getParentItemId(): ?string
     {
         return $this->parentItemId;
     }
-
-    public function setParentItemId(string $parentItemId): self
+    /**
+     * 
+     *
+     * @param string|null $parentItemId
+     *
+     * @return self
+     */
+    public function setParentItemId(?string $parentItemId): self
     {
         $this->initialized['parentItemId'] = true;
         $this->parentItemId = $parentItemId;
-
         return $this;
     }
-
-    public function getTitle(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTitle(): ?string
     {
         return $this->title;
     }
-
-    public function setTitle(string $title): self
+    /**
+     * 
+     *
+     * @param string|null $title
+     *
+     * @return self
+     */
+    public function setTitle(?string $title): self
     {
         $this->initialized['title'] = true;
         $this->title = $title;
-
         return $this;
     }
-
-    public function getUnitId(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getUnitId(): ?string
     {
         return $this->unitId;
     }
-
-    public function setUnitId(string $unitId): self
+    /**
+     * 
+     *
+     * @param string|null $unitId
+     *
+     * @return self
+     */
+    public function setUnitId(?string $unitId): self
     {
         $this->initialized['unitId'] = true;
         $this->unitId = $unitId;
-
         return $this;
     }
-
     /**
+     * 
+     *
      * @deprecated
+     *
+     * @return string|null
      */
-    public function getUnitName(): string
+    public function getUnitName(): ?string
     {
         return $this->unitName;
     }
-
     /**
+     * 
+     *
+     * @param string|null $unitName
+     *
      * @deprecated
+     *
+     * @return self
      */
-    public function setUnitName(string $unitName): self
+    public function setUnitName(?string $unitName): self
     {
         $this->initialized['unitName'] = true;
         $this->unitName = $unitName;
-
         return $this;
     }
-
-    public function getDeleted(): bool
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getDeleted(): ?bool
     {
         return $this->deleted;
     }
-
-    public function setDeleted(bool $deleted): self
+    /**
+     * 
+     *
+     * @param bool|null $deleted
+     *
+     * @return self
+     */
+    public function setDeleted(?bool $deleted): self
     {
         $this->initialized['deleted'] = true;
         $this->deleted = $deleted;
-
         return $this;
     }
-
-    public function getPriceScaleType(): string
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getPriceScaleType(): ?string
     {
         return $this->priceScaleType;
     }
-
-    public function setPriceScaleType(string $priceScaleType): self
+    /**
+     * 
+     *
+     * @param string|null $priceScaleType
+     *
+     * @return self
+     */
+    public function setPriceScaleType(?string $priceScaleType): self
     {
         $this->initialized['priceScaleType'] = true;
         $this->priceScaleType = $priceScaleType;
-
         return $this;
     }
-
     /**
-     * @return list<PurchaseOrderRequestItemScaleValue>
+     * 
+     *
+     * @return list<PurchaseOrderRequestItemScaleValue>|null
      */
-    public function getScaleValues(): array
+    public function getScaleValues(): ?array
     {
         return $this->scaleValues;
     }
-
     /**
-     * @param  list<PurchaseOrderRequestItemScaleValue>  $scaleValues
+     * 
+     *
+     * @param list<PurchaseOrderRequestItemScaleValue>|null $scaleValues
+     *
+     * @return self
      */
-    public function setScaleValues(array $scaleValues): self
+    public function setScaleValues(?array $scaleValues): self
     {
         $this->initialized['scaleValues'] = true;
         $this->scaleValues = $scaleValues;
-
         return $this;
     }
 }
