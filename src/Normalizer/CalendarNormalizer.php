@@ -1,0 +1,164 @@
+<?php
+
+namespace Webhubworks\WeclappApiCore\Normalizer;
+
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+class CalendarNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+    {
+        return $type === \Webhubworks\WeclappApiCore\Model\Calendar::class;
+    }
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+    {
+        return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\Calendar::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
+        $object = new \Webhubworks\WeclappApiCore\Model\Calendar();
+        if (\array_key_exists('sharePrivateEvents', $data) && \is_int($data['sharePrivateEvents'])) {
+            $data['sharePrivateEvents'] = (bool) $data['sharePrivateEvents'];
+        }
+        if (\array_key_exists('synchronize', $data) && \is_int($data['synchronize'])) {
+            $data['synchronize'] = (bool) $data['synchronize'];
+        }
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('id', $data)) {
+            $object->setId($data['id']);
+            unset($data['id']);
+        }
+        if (\array_key_exists('createdDate', $data)) {
+            $object->setCreatedDate($data['createdDate']);
+            unset($data['createdDate']);
+        }
+        if (\array_key_exists('lastModifiedDate', $data)) {
+            $object->setLastModifiedDate($data['lastModifiedDate']);
+            unset($data['lastModifiedDate']);
+        }
+        if (\array_key_exists('version', $data)) {
+            $object->setVersion($data['version']);
+            unset($data['version']);
+        }
+        if (\array_key_exists('caldavAccountId', $data)) {
+            $object->setCaldavAccountId($data['caldavAccountId']);
+            unset($data['caldavAccountId']);
+        }
+        if (\array_key_exists('calendarColor', $data)) {
+            $object->setCalendarColor($data['calendarColor']);
+            unset($data['calendarColor']);
+        }
+        if (\array_key_exists('calendarKey', $data)) {
+            $object->setCalendarKey($data['calendarKey']);
+            unset($data['calendarKey']);
+        }
+        if (\array_key_exists('calendarSharingPermissions', $data)) {
+            $values = [];
+            foreach ($data['calendarSharingPermissions'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \Webhubworks\WeclappApiCore\Model\CalendarSharingPermissions::class, 'json', $context);
+            }
+            $object->setCalendarSharingPermissions($values);
+            unset($data['calendarSharingPermissions']);
+        }
+        if (\array_key_exists('lastEventsSyncToken', $data)) {
+            $object->setLastEventsSyncToken($data['lastEventsSyncToken']);
+            unset($data['lastEventsSyncToken']);
+        }
+        if (\array_key_exists('mailAccountId', $data)) {
+            $object->setMailAccountId($data['mailAccountId']);
+            unset($data['mailAccountId']);
+        }
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
+            unset($data['name']);
+        }
+        if (\array_key_exists('ownerId', $data)) {
+            $object->setOwnerId($data['ownerId']);
+            unset($data['ownerId']);
+        }
+        if (\array_key_exists('sharePrivateEvents', $data)) {
+            $object->setSharePrivateEvents($data['sharePrivateEvents']);
+            unset($data['sharePrivateEvents']);
+        }
+        if (\array_key_exists('synchronize', $data)) {
+            $object->setSynchronize($data['synchronize']);
+            unset($data['synchronize']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
+            $dataArray['version'] = $data->getVersion();
+        }
+        if ($data->isInitialized('caldavAccountId') && null !== $data->getCaldavAccountId()) {
+            $dataArray['caldavAccountId'] = $data->getCaldavAccountId();
+        }
+        if ($data->isInitialized('calendarColor') && null !== $data->getCalendarColor()) {
+            $dataArray['calendarColor'] = $data->getCalendarColor();
+        }
+        if ($data->isInitialized('calendarKey') && null !== $data->getCalendarKey()) {
+            $dataArray['calendarKey'] = $data->getCalendarKey();
+        }
+        if ($data->isInitialized('calendarSharingPermissions') && null !== $data->getCalendarSharingPermissions()) {
+            $values = [];
+            foreach ($data->getCalendarSharingPermissions() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $dataArray['calendarSharingPermissions'] = $values;
+        }
+        if ($data->isInitialized('lastEventsSyncToken') && null !== $data->getLastEventsSyncToken()) {
+            $dataArray['lastEventsSyncToken'] = $data->getLastEventsSyncToken();
+        }
+        if ($data->isInitialized('mailAccountId') && null !== $data->getMailAccountId()) {
+            $dataArray['mailAccountId'] = $data->getMailAccountId();
+        }
+        if ($data->isInitialized('name') && null !== $data->getName()) {
+            $dataArray['name'] = $data->getName();
+        }
+        if ($data->isInitialized('ownerId') && null !== $data->getOwnerId()) {
+            $dataArray['ownerId'] = $data->getOwnerId();
+        }
+        if ($data->isInitialized('sharePrivateEvents') && null !== $data->getSharePrivateEvents()) {
+            $dataArray['sharePrivateEvents'] = $data->getSharePrivateEvents();
+        }
+        if ($data->isInitialized('synchronize') && null !== $data->getSynchronize()) {
+            $dataArray['synchronize'] = $data->getSynchronize();
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Webhubworks\WeclappApiCore\Model\Calendar::class => false];
+    }
+}

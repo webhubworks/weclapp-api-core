@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class ArticleSupplySourceNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class ArticleSupplySourceNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\ArticleSupplySource::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ArticleSupplySource::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,14 +33,14 @@ class ArticleSupplySourceNormalizer implements DenormalizerAwareInterface, Denor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\ArticleSupplySource;
+        $object = new \Webhubworks\WeclappApiCore\Model\ArticleSupplySource();
         if (\array_key_exists('dropshippingPossible', $data) && \is_int($data['dropshippingPossible'])) {
             $data['dropshippingPossible'] = (bool) $data['dropshippingPossible'];
         }
         if (\array_key_exists('ignoreInDropshippingAutomation', $data) && \is_int($data['ignoreInDropshippingAutomation'])) {
             $data['ignoreInDropshippingAutomation'] = (bool) $data['ignoreInDropshippingAutomation'];
         }
-        if ($data === null || \is_array($data) === false) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -164,88 +160,86 @@ class ArticleSupplySourceNormalizer implements DenormalizerAwareInterface, Denor
                 $object[$key] = $value_2;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
+        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('articleNumber') && $data->getArticleNumber() !== null) {
+        if ($data->isInitialized('articleNumber') && null !== $data->getArticleNumber()) {
             $dataArray['articleNumber'] = $data->getArticleNumber();
         }
-        if ($data->isInitialized('description') && $data->getDescription() !== null) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('ean') && $data->getEan() !== null) {
+        if ($data->isInitialized('ean') && null !== $data->getEan()) {
             $dataArray['ean'] = $data->getEan();
         }
-        if ($data->isInitialized('fixedPurchaseQuantity') && $data->getFixedPurchaseQuantity() !== null) {
+        if ($data->isInitialized('fixedPurchaseQuantity') && null !== $data->getFixedPurchaseQuantity()) {
             $dataArray['fixedPurchaseQuantity'] = $data->getFixedPurchaseQuantity();
         }
-        if ($data->isInitialized('internalNote') && $data->getInternalNote() !== null) {
+        if ($data->isInitialized('internalNote') && null !== $data->getInternalNote()) {
             $dataArray['internalNote'] = $data->getInternalNote();
         }
-        if ($data->isInitialized('manufacturerPartNumber') && $data->getManufacturerPartNumber() !== null) {
+        if ($data->isInitialized('manufacturerPartNumber') && null !== $data->getManufacturerPartNumber()) {
             $dataArray['manufacturerPartNumber'] = $data->getManufacturerPartNumber();
         }
-        if ($data->isInitialized('matchCode') && $data->getMatchCode() !== null) {
+        if ($data->isInitialized('matchCode') && null !== $data->getMatchCode()) {
             $dataArray['matchCode'] = $data->getMatchCode();
         }
-        if ($data->isInitialized('minimumPurchaseQuantity') && $data->getMinimumPurchaseQuantity() !== null) {
+        if ($data->isInitialized('minimumPurchaseQuantity') && null !== $data->getMinimumPurchaseQuantity()) {
             $dataArray['minimumPurchaseQuantity'] = $data->getMinimumPurchaseQuantity();
         }
-        if ($data->isInitialized('name') && $data->getName() !== null) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('shortDescription1') && $data->getShortDescription1() !== null) {
+        if ($data->isInitialized('shortDescription1') && null !== $data->getShortDescription1()) {
             $dataArray['shortDescription1'] = $data->getShortDescription1();
         }
-        if ($data->isInitialized('shortDescription2') && $data->getShortDescription2() !== null) {
+        if ($data->isInitialized('shortDescription2') && null !== $data->getShortDescription2()) {
             $dataArray['shortDescription2'] = $data->getShortDescription2();
         }
-        if ($data->isInitialized('taxRateType') && $data->getTaxRateType() !== null) {
+        if ($data->isInitialized('taxRateType') && null !== $data->getTaxRateType()) {
             $dataArray['taxRateType'] = $data->getTaxRateType();
         }
-        if ($data->isInitialized('unitId') && $data->getUnitId() !== null) {
+        if ($data->isInitialized('unitId') && null !== $data->getUnitId()) {
             $dataArray['unitId'] = $data->getUnitId();
         }
-        if ($data->isInitialized('unitName') && $data->getUnitName() !== null) {
+        if ($data->isInitialized('unitName') && null !== $data->getUnitName()) {
             $dataArray['unitName'] = $data->getUnitName();
         }
-        if ($data->isInitialized('articlePrices') && $data->getArticlePrices() !== null) {
+        if ($data->isInitialized('articlePrices') && null !== $data->getArticlePrices()) {
             $values_1 = [];
             foreach ($data->getArticlePrices() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['articlePrices'] = $values_1;
         }
-        if ($data->isInitialized('dropshippingPossible') && $data->getDropshippingPossible() !== null) {
+        if ($data->isInitialized('dropshippingPossible') && null !== $data->getDropshippingPossible()) {
             $dataArray['dropshippingPossible'] = $data->getDropshippingPossible();
         }
-        if ($data->isInitialized('ignoreInDropshippingAutomation') && $data->getIgnoreInDropshippingAutomation() !== null) {
+        if ($data->isInitialized('ignoreInDropshippingAutomation') && null !== $data->getIgnoreInDropshippingAutomation()) {
             $dataArray['ignoreInDropshippingAutomation'] = $data->getIgnoreInDropshippingAutomation();
         }
-        if ($data->isInitialized('procurementLeadDays') && $data->getProcurementLeadDays() !== null) {
+        if ($data->isInitialized('procurementLeadDays') && null !== $data->getProcurementLeadDays()) {
             $dataArray['procurementLeadDays'] = $data->getProcurementLeadDays();
         }
-        if ($data->isInitialized('supplierId') && $data->getSupplierId() !== null) {
+        if ($data->isInitialized('supplierId') && null !== $data->getSupplierId()) {
             $dataArray['supplierId'] = $data->getSupplierId();
         }
-        if ($data->isInitialized('supplierNumber') && $data->getSupplierNumber() !== null) {
+        if ($data->isInitialized('supplierNumber') && null !== $data->getSupplierNumber()) {
             $dataArray['supplierNumber'] = $data->getSupplierNumber();
         }
-        if ($data->isInitialized('supplierStockQuantity') && $data->getSupplierStockQuantity() !== null) {
+        if ($data->isInitialized('supplierStockQuantity') && null !== $data->getSupplierStockQuantity()) {
             $dataArray['supplierStockQuantity'] = $data->getSupplierStockQuantity();
         }
         foreach ($data as $key => $value_2) {
@@ -253,10 +247,8 @@ class ArticleSupplySourceNormalizer implements DenormalizerAwareInterface, Denor
                 $dataArray[$key] = $value_2;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\ArticleSupplySource::class => false];

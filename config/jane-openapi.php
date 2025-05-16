@@ -6,7 +6,7 @@ return [
     'openapi-file' => __DIR__.'/../schema/weclapp-openapi.json',
     'namespace' => 'Webhubworks\WeclappApiCore',
     'directory' => __DIR__.'/../src',
-    'whitelisted-paths' => [
+    /*'whitelisted-paths' => [
         '\/article',
-    ],
+    ],*/
 ];

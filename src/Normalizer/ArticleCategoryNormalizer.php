@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class ArticleCategoryNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class ArticleCategoryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\ArticleCategory::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\ArticleCategory::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,8 +33,8 @@ class ArticleCategoryNormalizer implements DenormalizerAwareInterface, Denormali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\ArticleCategory;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\ArticleCategory();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data)) {
@@ -98,41 +94,39 @@ class ArticleCategoryNormalizer implements DenormalizerAwareInterface, Denormali
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
+        if ($data->isInitialized('version') && null !== $data->getVersion()) {
             $dataArray['version'] = $data->getVersion();
         }
-        if ($data->isInitialized('articleAccountingCodeId') && $data->getArticleAccountingCodeId() !== null) {
+        if ($data->isInitialized('articleAccountingCodeId') && null !== $data->getArticleAccountingCodeId()) {
             $dataArray['articleAccountingCodeId'] = $data->getArticleAccountingCodeId();
         }
-        if ($data->isInitialized('articleCategoryClassificationId') && $data->getArticleCategoryClassificationId() !== null) {
+        if ($data->isInitialized('articleCategoryClassificationId') && null !== $data->getArticleCategoryClassificationId()) {
             $dataArray['articleCategoryClassificationId'] = $data->getArticleCategoryClassificationId();
         }
-        if ($data->isInitialized('costTypeId') && $data->getCostTypeId() !== null) {
+        if ($data->isInitialized('costTypeId') && null !== $data->getCostTypeId()) {
             $dataArray['costTypeId'] = $data->getCostTypeId();
         }
-        if ($data->isInitialized('description') && $data->getDescription() !== null) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('imageId') && $data->getImageId() !== null) {
+        if ($data->isInitialized('imageId') && null !== $data->getImageId()) {
             $dataArray['imageId'] = $data->getImageId();
         }
-        if ($data->isInitialized('name') && $data->getName() !== null) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('parentCategoryId') && $data->getParentCategoryId() !== null) {
+        if ($data->isInitialized('parentCategoryId') && null !== $data->getParentCategoryId()) {
             $dataArray['parentCategoryId'] = $data->getParentCategoryId();
         }
-        if ($data->isInitialized('purchaseCostCenterId') && $data->getPurchaseCostCenterId() !== null) {
+        if ($data->isInitialized('purchaseCostCenterId') && null !== $data->getPurchaseCostCenterId()) {
             $dataArray['purchaseCostCenterId'] = $data->getPurchaseCostCenterId();
         }
-        if ($data->isInitialized('salesCostCenterId') && $data->getSalesCostCenterId() !== null) {
+        if ($data->isInitialized('salesCostCenterId') && null !== $data->getSalesCostCenterId()) {
             $dataArray['salesCostCenterId'] = $data->getSalesCostCenterId();
         }
         foreach ($data as $key => $value) {
@@ -140,10 +134,8 @@ class ArticleCategoryNormalizer implements DenormalizerAwareInterface, Denormali
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\ArticleCategory::class => false];

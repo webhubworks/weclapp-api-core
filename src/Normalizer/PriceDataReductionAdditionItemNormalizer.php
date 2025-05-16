@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class PriceDataReductionAdditionItemNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class PriceDataReductionAdditionItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\PriceDataReductionAdditionItem::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\PriceDataReductionAdditionItem::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,11 +33,11 @@ class PriceDataReductionAdditionItemNormalizer implements DenormalizerAwareInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\PriceDataReductionAdditionItem;
+        $object = new \Webhubworks\WeclappApiCore\Model\PriceDataReductionAdditionItem();
         if (\array_key_exists('specialPriceReduction', $data) && \is_int($data['specialPriceReduction'])) {
             $data['specialPriceReduction'] = (bool) $data['specialPriceReduction'];
         }
-        if ($data === null || \is_array($data) === false) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('position', $data)) {
@@ -73,29 +69,27 @@ class PriceDataReductionAdditionItemNormalizer implements DenormalizerAwareInter
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('position') && $data->getPosition() !== null) {
+        if ($data->isInitialized('position') && null !== $data->getPosition()) {
             $dataArray['position'] = $data->getPosition();
         }
-        if ($data->isInitialized('source') && $data->getSource() !== null) {
+        if ($data->isInitialized('source') && null !== $data->getSource()) {
             $dataArray['source'] = $data->getSource();
         }
-        if ($data->isInitialized('specialPriceReduction') && $data->getSpecialPriceReduction() !== null) {
+        if ($data->isInitialized('specialPriceReduction') && null !== $data->getSpecialPriceReduction()) {
             $dataArray['specialPriceReduction'] = $data->getSpecialPriceReduction();
         }
-        if ($data->isInitialized('title') && $data->getTitle() !== null) {
+        if ($data->isInitialized('title') && null !== $data->getTitle()) {
             $dataArray['title'] = $data->getTitle();
         }
-        if ($data->isInitialized('type') && $data->getType() !== null) {
+        if ($data->isInitialized('type') && null !== $data->getType()) {
             $dataArray['type'] = $data->getType();
         }
-        if ($data->isInitialized('value') && $data->getValue() !== null) {
+        if ($data->isInitialized('value') && null !== $data->getValue()) {
             $dataArray['value'] = $data->getValue();
         }
         foreach ($data as $key => $value) {
@@ -103,10 +97,8 @@ class PriceDataReductionAdditionItemNormalizer implements DenormalizerAwareInter
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\PriceDataReductionAdditionItem::class => false];

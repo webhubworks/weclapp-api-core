@@ -1,0 +1,101 @@
+<?php
+
+namespace Webhubworks\WeclappApiCore\Normalizer;
+
+use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+class TransportationOrderIdIdPickPickPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use CheckArray;
+    use ValidatorTrait;
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
+    {
+        return $type === \Webhubworks\WeclappApiCore\Model\TransportationOrderIdIdPickPickPostBody::class;
+    }
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
+    {
+        return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\TransportationOrderIdIdPickPickPostBody::class;
+    }
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
+        }
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
+        }
+        $object = new \Webhubworks\WeclappApiCore\Model\TransportationOrderIdIdPickPickPostBody();
+        if (\array_key_exists('bookLoadingEquipmentOnDissolveOfPreferred', $data) && \is_int($data['bookLoadingEquipmentOnDissolveOfPreferred'])) {
+            $data['bookLoadingEquipmentOnDissolveOfPreferred'] = (bool) $data['bookLoadingEquipmentOnDissolveOfPreferred'];
+        }
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('bookLoadingEquipmentOnDissolveOfPreferred', $data)) {
+            $object->setBookLoadingEquipmentOnDissolveOfPreferred($data['bookLoadingEquipmentOnDissolveOfPreferred']);
+            unset($data['bookLoadingEquipmentOnDissolveOfPreferred']);
+        }
+        if (\array_key_exists('inputQuantity', $data)) {
+            $object->setInputQuantity($data['inputQuantity']);
+            unset($data['inputQuantity']);
+        }
+        if (\array_key_exists('inputSerialNumbers', $data)) {
+            $values = [];
+            foreach ($data['inputSerialNumbers'] as $value) {
+                $values[] = $value;
+            }
+            $object->setInputSerialNumbers($values);
+            unset($data['inputSerialNumbers']);
+        }
+        if (\array_key_exists('pickId', $data)) {
+            $object->setPickId($data['pickId']);
+            unset($data['pickId']);
+        }
+        if (\array_key_exists('preferredPackagingUnitId', $data)) {
+            $object->setPreferredPackagingUnitId($data['preferredPackagingUnitId']);
+            unset($data['preferredPackagingUnitId']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
+        }
+        return $object;
+    }
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        $dataArray['bookLoadingEquipmentOnDissolveOfPreferred'] = $data->getBookLoadingEquipmentOnDissolveOfPreferred();
+        $dataArray['inputQuantity'] = $data->getInputQuantity();
+        if ($data->isInitialized('inputSerialNumbers') && null !== $data->getInputSerialNumbers()) {
+            $values = [];
+            foreach ($data->getInputSerialNumbers() as $value) {
+                $values[] = $value;
+            }
+            $dataArray['inputSerialNumbers'] = $values;
+        }
+        $dataArray['pickId'] = $data->getPickId();
+        if ($data->isInitialized('preferredPackagingUnitId') && null !== $data->getPreferredPackagingUnitId()) {
+            $dataArray['preferredPackagingUnitId'] = $data->getPreferredPackagingUnitId();
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $dataArray[$key] = $value_1;
+            }
+        }
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Webhubworks\WeclappApiCore\Model\TransportationOrderIdIdPickPickPostBody::class => false];
+    }
+}

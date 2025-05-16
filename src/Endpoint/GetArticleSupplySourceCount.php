@@ -7,38 +7,31 @@ class GetArticleSupplySourceCount extends \Webhubworks\WeclappApiCore\Runtime\Cl
     /**
      * count articleSupplySource
      *
-     * @param  array  $queryParameters  {
-     *
-     * @var string $filter
-     *             }
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
-
     use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
-
     public function getMethod(): string
     {
         return 'GET';
     }
-
     public function getUri(): string
     {
         return '/articleSupplySource/count';
     }
-
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
-
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
-
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -46,28 +39,25 @@ class GetArticleSupplySourceCount extends \Webhubworks\WeclappApiCore\Runtime\Cl
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('filter', ['string']);
-
         return $optionsResolver;
     }
-
     /**
      * {@inheritdoc}
      *
      *
-     * @return null|\Webhubworks\WeclappApiCore\Model\ArticleSupplySourceCountGetResponse200
+     * @return null|\Webhubworks\WeclappApiCore\Model\ArticleSupplySourceCountGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && ($status === 200 && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ArticleSupplySourceCountGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
-            return json_decode($body);
+            return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ApiProblem', 'json');
         }
     }
-
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];
