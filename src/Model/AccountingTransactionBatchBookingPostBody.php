@@ -8,27 +8,36 @@ class AccountingTransactionBatchBookingPostBody extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
-     * @var AccountingTransactionBatchBookingPostBodyBatchBookingDto|null
+     * 
+     *
+     * @var AccountingTransactionBatchBookingPostBodyBatchBooking|null
      */
-    protected $batchBookingDto;
-
-    public function getBatchBookingDto(): ?AccountingTransactionBatchBookingPostBodyBatchBookingDto
+    protected $batchBooking;
+    /**
+     * 
+     *
+     * @return AccountingTransactionBatchBookingPostBodyBatchBooking|null
+     */
+    public function getBatchBooking(): ?AccountingTransactionBatchBookingPostBodyBatchBooking
     {
-        return $this->batchBookingDto;
+        return $this->batchBooking;
     }
-
-    public function setBatchBookingDto(?AccountingTransactionBatchBookingPostBodyBatchBookingDto $batchBookingDto): self
+    /**
+     * 
+     *
+     * @param AccountingTransactionBatchBookingPostBodyBatchBooking|null $batchBooking
+     *
+     * @return self
+     */
+    public function setBatchBooking(?AccountingTransactionBatchBookingPostBodyBatchBooking $batchBooking): self
     {
-        $this->initialized['batchBookingDto'] = true;
-        $this->batchBookingDto = $batchBookingDto;
-
+        $this->initialized['batchBooking'] = true;
+        $this->batchBooking = $batchBooking;
         return $this;
     }
 }

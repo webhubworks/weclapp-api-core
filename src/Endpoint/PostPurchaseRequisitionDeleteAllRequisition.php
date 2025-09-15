@@ -4,37 +4,35 @@ namespace Webhubworks\WeclappApiCore\Endpoint;
 
 class PostPurchaseRequisitionDeleteAllRequisition extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoint implements \Webhubworks\WeclappApiCore\Runtime\Client\Endpoint
 {
+    /**
+     * 
+     *
+     * @param null|\Webhubworks\WeclappApiCore\Model\PurchaseRequisitionDeleteAllRequisitionsPostBody $requestBody 
+     */
     public function __construct(?\Webhubworks\WeclappApiCore\Model\PurchaseRequisitionDeleteAllRequisitionsPostBody $requestBody = null)
     {
         $this->body = $requestBody;
     }
-
     use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
-
     public function getMethod(): string
     {
         return 'POST';
     }
-
     public function getUri(): string
     {
         return '/purchaseRequisition/deleteAllRequisitions';
     }
-
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         if ($this->body instanceof \Webhubworks\WeclappApiCore\Model\PurchaseRequisitionDeleteAllRequisitionsPostBody) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
-
         return [[], null];
     }
-
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
-
     /**
      * {@inheritdoc}
      *
@@ -45,14 +43,13 @@ class PostPurchaseRequisitionDeleteAllRequisition extends \Webhubworks\WeclappAp
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if ($status === 200) {
+        if (200 === $status) {
             return null;
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ApiProblem', 'json');
         }
     }
-
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

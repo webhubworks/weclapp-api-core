@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParametersNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParametersNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,26 +33,29 @@ class PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParametersNormalizer i
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('deliveryDate', $data) && $data['deliveryDate'] !== null) {
             $object->setDeliveryDate($data['deliveryDate']);
             unset($data['deliveryDate']);
-        } elseif (\array_key_exists('deliveryDate', $data) && $data['deliveryDate'] === null) {
+        }
+        elseif (\array_key_exists('deliveryDate', $data) && $data['deliveryDate'] === null) {
             $object->setDeliveryDate(null);
         }
         if (\array_key_exists('deliveryNoteNumber', $data) && $data['deliveryNoteNumber'] !== null) {
             $object->setDeliveryNoteNumber($data['deliveryNoteNumber']);
             unset($data['deliveryNoteNumber']);
-        } elseif (\array_key_exists('deliveryNoteNumber', $data) && $data['deliveryNoteNumber'] === null) {
+        }
+        elseif (\array_key_exists('deliveryNoteNumber', $data) && $data['deliveryNoteNumber'] === null) {
             $object->setDeliveryNoteNumber(null);
         }
         if (\array_key_exists('shippingDate', $data) && $data['shippingDate'] !== null) {
             $object->setShippingDate($data['shippingDate']);
             unset($data['shippingDate']);
-        } elseif (\array_key_exists('shippingDate', $data) && $data['shippingDate'] === null) {
+        }
+        elseif (\array_key_exists('shippingDate', $data) && $data['shippingDate'] === null) {
             $object->setShippingDate(null);
         }
         foreach ($data as $key => $value) {
@@ -64,20 +63,18 @@ class PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParametersNormalizer i
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('deliveryDate') && $data->getDeliveryDate() !== null) {
+        if ($data->isInitialized('deliveryDate') && null !== $data->getDeliveryDate()) {
             $dataArray['deliveryDate'] = $data->getDeliveryDate();
         }
-        if ($data->isInitialized('deliveryNoteNumber') && $data->getDeliveryNoteNumber() !== null) {
+        if ($data->isInitialized('deliveryNoteNumber') && null !== $data->getDeliveryNoteNumber()) {
             $dataArray['deliveryNoteNumber'] = $data->getDeliveryNoteNumber();
         }
-        if ($data->isInitialized('shippingDate') && $data->getShippingDate() !== null) {
+        if ($data->isInitialized('shippingDate') && null !== $data->getShippingDate()) {
             $dataArray['shippingDate'] = $data->getShippingDate();
         }
         foreach ($data as $key => $value) {
@@ -85,10 +82,8 @@ class PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParametersNormalizer i
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\PurchaseOrderIdIdProcessDropshippingPostBodyShipmentParameters::class => false];

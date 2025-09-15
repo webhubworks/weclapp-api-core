@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class SalesOrderPaymentNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class SalesOrderPaymentNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SalesOrderPayment::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SalesOrderPayment::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,71 +33,81 @@ class SalesOrderPaymentNormalizer implements DenormalizerAwareInterface, Denorma
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SalesOrderPayment;
+        $object = new \Webhubworks\WeclappApiCore\Model\SalesOrderPayment();
         if (\array_key_exists('conditionMet', $data) && \is_int($data['conditionMet'])) {
             $data['conditionMet'] = (bool) $data['conditionMet'];
         }
-        if ($data === null || \is_array($data) === false) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
-        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        }
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
-        } elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+        }
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
             $object->setCreatedDate(null);
         }
         if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
-        } elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+        }
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
             $object->setLastModifiedDate(null);
         }
         if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
-        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+        }
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
             $object->setVersion(null);
         }
         if (\array_key_exists('amount', $data) && $data['amount'] !== null) {
             $object->setAmount($data['amount']);
             unset($data['amount']);
-        } elseif (\array_key_exists('amount', $data) && $data['amount'] === null) {
+        }
+        elseif (\array_key_exists('amount', $data) && $data['amount'] === null) {
             $object->setAmount(null);
         }
         if (\array_key_exists('condition', $data) && $data['condition'] !== null) {
             $object->setCondition($data['condition']);
             unset($data['condition']);
-        } elseif (\array_key_exists('condition', $data) && $data['condition'] === null) {
+        }
+        elseif (\array_key_exists('condition', $data) && $data['condition'] === null) {
             $object->setCondition(null);
         }
         if (\array_key_exists('conditionMet', $data) && $data['conditionMet'] !== null) {
             $object->setConditionMet($data['conditionMet']);
             unset($data['conditionMet']);
-        } elseif (\array_key_exists('conditionMet', $data) && $data['conditionMet'] === null) {
+        }
+        elseif (\array_key_exists('conditionMet', $data) && $data['conditionMet'] === null) {
             $object->setConditionMet(null);
         }
         if (\array_key_exists('dueDate', $data) && $data['dueDate'] !== null) {
             $object->setDueDate($data['dueDate']);
             unset($data['dueDate']);
-        } elseif (\array_key_exists('dueDate', $data) && $data['dueDate'] === null) {
+        }
+        elseif (\array_key_exists('dueDate', $data) && $data['dueDate'] === null) {
             $object->setDueDate(null);
         }
         if (\array_key_exists('positionNumber', $data) && $data['positionNumber'] !== null) {
             $object->setPositionNumber($data['positionNumber']);
             unset($data['positionNumber']);
-        } elseif (\array_key_exists('positionNumber', $data) && $data['positionNumber'] === null) {
+        }
+        elseif (\array_key_exists('positionNumber', $data) && $data['positionNumber'] === null) {
             $object->setPositionNumber(null);
         }
         if (\array_key_exists('salesInvoiceId', $data) && $data['salesInvoiceId'] !== null) {
             $object->setSalesInvoiceId($data['salesInvoiceId']);
             unset($data['salesInvoiceId']);
-        } elseif (\array_key_exists('salesInvoiceId', $data) && $data['salesInvoiceId'] === null) {
+        }
+        elseif (\array_key_exists('salesInvoiceId', $data) && $data['salesInvoiceId'] === null) {
             $object->setSalesInvoiceId(null);
         }
         if (\array_key_exists('salesInvoices', $data) && $data['salesInvoices'] !== null) {
@@ -111,7 +117,8 @@ class SalesOrderPaymentNormalizer implements DenormalizerAwareInterface, Denorma
             }
             $object->setSalesInvoices($values);
             unset($data['salesInvoices']);
-        } elseif (\array_key_exists('salesInvoices', $data) && $data['salesInvoices'] === null) {
+        }
+        elseif (\array_key_exists('salesInvoices', $data) && $data['salesInvoices'] === null) {
             $object->setSalesInvoices(null);
         }
         foreach ($data as $key => $value_1) {
@@ -119,50 +126,30 @@ class SalesOrderPaymentNormalizer implements DenormalizerAwareInterface, Denorma
                 $object[$key] = $value_1;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
-            $dataArray['version'] = $data->getVersion();
-        }
-        if ($data->isInitialized('amount') && $data->getAmount() !== null) {
+        if ($data->isInitialized('amount') && null !== $data->getAmount()) {
             $dataArray['amount'] = $data->getAmount();
         }
-        if ($data->isInitialized('condition') && $data->getCondition() !== null) {
+        if ($data->isInitialized('condition') && null !== $data->getCondition()) {
             $dataArray['condition'] = $data->getCondition();
         }
-        if ($data->isInitialized('conditionMet') && $data->getConditionMet() !== null) {
+        if ($data->isInitialized('conditionMet') && null !== $data->getConditionMet()) {
             $dataArray['conditionMet'] = $data->getConditionMet();
         }
-        if ($data->isInitialized('dueDate') && $data->getDueDate() !== null) {
+        if ($data->isInitialized('dueDate') && null !== $data->getDueDate()) {
             $dataArray['dueDate'] = $data->getDueDate();
         }
-        if ($data->isInitialized('positionNumber') && $data->getPositionNumber() !== null) {
-            $dataArray['positionNumber'] = $data->getPositionNumber();
-        }
-        if ($data->isInitialized('salesInvoiceId') && $data->getSalesInvoiceId() !== null) {
-            $dataArray['salesInvoiceId'] = $data->getSalesInvoiceId();
-        }
-        if ($data->isInitialized('salesInvoices') && $data->getSalesInvoices() !== null) {
-            $values = [];
-            foreach ($data->getSalesInvoices() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $dataArray['salesInvoices'] = $values;
-        }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SalesOrderPayment::class => false];

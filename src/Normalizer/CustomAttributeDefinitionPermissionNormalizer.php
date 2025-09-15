@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class CustomAttributeDefinitionPermissionNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class CustomAttributeDefinitionPermissionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\CustomAttributeDefinitionPermission::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\CustomAttributeDefinitionPermission::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,44 +33,50 @@ class CustomAttributeDefinitionPermissionNormalizer implements DenormalizerAware
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\CustomAttributeDefinitionPermission;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\CustomAttributeDefinitionPermission();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
-        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        }
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
-        } elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+        }
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
             $object->setCreatedDate(null);
         }
         if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
-        } elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+        }
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
             $object->setLastModifiedDate(null);
         }
         if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
-        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+        }
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
             $object->setVersion(null);
         }
         if (\array_key_exists('permissionType', $data) && $data['permissionType'] !== null) {
             $object->setPermissionType($data['permissionType']);
             unset($data['permissionType']);
-        } elseif (\array_key_exists('permissionType', $data) && $data['permissionType'] === null) {
+        }
+        elseif (\array_key_exists('permissionType', $data) && $data['permissionType'] === null) {
             $object->setPermissionType(null);
         }
         if (\array_key_exists('userRoleId', $data) && $data['userRoleId'] !== null) {
             $object->setUserRoleId($data['userRoleId']);
             unset($data['userRoleId']);
-        } elseif (\array_key_exists('userRoleId', $data) && $data['userRoleId'] === null) {
+        }
+        elseif (\array_key_exists('userRoleId', $data) && $data['userRoleId'] === null) {
             $object->setUserRoleId(null);
         }
         foreach ($data as $key => $value) {
@@ -82,20 +84,15 @@ class CustomAttributeDefinitionPermissionNormalizer implements DenormalizerAware
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
-            $dataArray['version'] = $data->getVersion();
-        }
-        if ($data->isInitialized('permissionType') && $data->getPermissionType() !== null) {
+        if ($data->isInitialized('permissionType') && null !== $data->getPermissionType()) {
             $dataArray['permissionType'] = $data->getPermissionType();
         }
-        if ($data->isInitialized('userRoleId') && $data->getUserRoleId() !== null) {
+        if ($data->isInitialized('userRoleId') && null !== $data->getUserRoleId()) {
             $dataArray['userRoleId'] = $data->getUserRoleId();
         }
         foreach ($data as $key => $value) {
@@ -103,10 +100,8 @@ class CustomAttributeDefinitionPermissionNormalizer implements DenormalizerAware
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\CustomAttributeDefinitionPermission::class => false];

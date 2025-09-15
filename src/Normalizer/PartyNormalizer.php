@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class PartyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\Party::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\Party::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,10 +33,7 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\Party;
-        if (\array_key_exists('allowPurchaseOrderCreation', $data) && \is_int($data['allowPurchaseOrderCreation'])) {
-            $data['allowPurchaseOrderCreation'] = (bool) $data['allowPurchaseOrderCreation'];
-        }
+        $object = new \Webhubworks\WeclappApiCore\Model\Party();
         if (\array_key_exists('commissionBlock', $data) && \is_int($data['commissionBlock'])) {
             $data['commissionBlock'] = (bool) $data['commissionBlock'];
         }
@@ -107,34 +100,44 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
         if (\array_key_exists('supplier', $data) && \is_int($data['supplier'])) {
             $data['supplier'] = (bool) $data['supplier'];
         }
+        if (\array_key_exists('supplierActive', $data) && \is_int($data['supplierActive'])) {
+            $data['supplierActive'] = (bool) $data['supplierActive'];
+        }
+        if (\array_key_exists('supplierMergeItemsForOcrInvoiceUpload', $data) && \is_int($data['supplierMergeItemsForOcrInvoiceUpload'])) {
+            $data['supplierMergeItemsForOcrInvoiceUpload'] = (bool) $data['supplierMergeItemsForOcrInvoiceUpload'];
+        }
         if (\array_key_exists('supplierOrderBlock', $data) && \is_int($data['supplierOrderBlock'])) {
             $data['supplierOrderBlock'] = (bool) $data['supplierOrderBlock'];
         }
-        if ($data === null || \is_array($data) === false) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
-        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        }
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
-        } elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+        }
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
             $object->setCreatedDate(null);
         }
         if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
-        } elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+        }
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
             $object->setLastModifiedDate(null);
         }
         if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
-        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+        }
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
             $object->setVersion(null);
         }
         if (\array_key_exists('customAttributes', $data) && $data['customAttributes'] !== null) {
@@ -144,7 +147,8 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
             }
             $object->setCustomAttributes($values);
             unset($data['customAttributes']);
-        } elseif (\array_key_exists('customAttributes', $data) && $data['customAttributes'] === null) {
+        }
+        elseif (\array_key_exists('customAttributes', $data) && $data['customAttributes'] === null) {
             $object->setCustomAttributes(null);
         }
         if (\array_key_exists('addresses', $data) && $data['addresses'] !== null) {
@@ -154,73 +158,85 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
             }
             $object->setAddresses($values_1);
             unset($data['addresses']);
-        } elseif (\array_key_exists('addresses', $data) && $data['addresses'] === null) {
+        }
+        elseif (\array_key_exists('addresses', $data) && $data['addresses'] === null) {
             $object->setAddresses(null);
         }
         if (\array_key_exists('birthDate', $data) && $data['birthDate'] !== null) {
             $object->setBirthDate($data['birthDate']);
             unset($data['birthDate']);
-        } elseif (\array_key_exists('birthDate', $data) && $data['birthDate'] === null) {
+        }
+        elseif (\array_key_exists('birthDate', $data) && $data['birthDate'] === null) {
             $object->setBirthDate(null);
         }
         if (\array_key_exists('company', $data) && $data['company'] !== null) {
             $object->setCompany($data['company']);
             unset($data['company']);
-        } elseif (\array_key_exists('company', $data) && $data['company'] === null) {
+        }
+        elseif (\array_key_exists('company', $data) && $data['company'] === null) {
             $object->setCompany(null);
         }
         if (\array_key_exists('company2', $data) && $data['company2'] !== null) {
             $object->setCompany2($data['company2']);
             unset($data['company2']);
-        } elseif (\array_key_exists('company2', $data) && $data['company2'] === null) {
+        }
+        elseif (\array_key_exists('company2', $data) && $data['company2'] === null) {
             $object->setCompany2(null);
         }
         if (\array_key_exists('deliveryAddressId', $data) && $data['deliveryAddressId'] !== null) {
             $object->setDeliveryAddressId($data['deliveryAddressId']);
             unset($data['deliveryAddressId']);
-        } elseif (\array_key_exists('deliveryAddressId', $data) && $data['deliveryAddressId'] === null) {
+        }
+        elseif (\array_key_exists('deliveryAddressId', $data) && $data['deliveryAddressId'] === null) {
             $object->setDeliveryAddressId(null);
         }
         if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
             unset($data['email']);
-        } elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+        }
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
             $object->setEmail(null);
         }
         if (\array_key_exists('fax', $data) && $data['fax'] !== null) {
             $object->setFax($data['fax']);
             unset($data['fax']);
-        } elseif (\array_key_exists('fax', $data) && $data['fax'] === null) {
+        }
+        elseif (\array_key_exists('fax', $data) && $data['fax'] === null) {
             $object->setFax(null);
         }
         if (\array_key_exists('firstName', $data) && $data['firstName'] !== null) {
             $object->setFirstName($data['firstName']);
             unset($data['firstName']);
-        } elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
+        }
+        elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
             $object->setFirstName(null);
         }
         if (\array_key_exists('invoiceAddressId', $data) && $data['invoiceAddressId'] !== null) {
             $object->setInvoiceAddressId($data['invoiceAddressId']);
             unset($data['invoiceAddressId']);
-        } elseif (\array_key_exists('invoiceAddressId', $data) && $data['invoiceAddressId'] === null) {
+        }
+        elseif (\array_key_exists('invoiceAddressId', $data) && $data['invoiceAddressId'] === null) {
             $object->setInvoiceAddressId(null);
         }
         if (\array_key_exists('lastName', $data) && $data['lastName'] !== null) {
             $object->setLastName($data['lastName']);
             unset($data['lastName']);
-        } elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
+        }
+        elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
             $object->setLastName(null);
         }
         if (\array_key_exists('middleName', $data) && $data['middleName'] !== null) {
             $object->setMiddleName($data['middleName']);
             unset($data['middleName']);
-        } elseif (\array_key_exists('middleName', $data) && $data['middleName'] === null) {
+        }
+        elseif (\array_key_exists('middleName', $data) && $data['middleName'] === null) {
             $object->setMiddleName(null);
         }
         if (\array_key_exists('mobilePhone1', $data) && $data['mobilePhone1'] !== null) {
             $object->setMobilePhone1($data['mobilePhone1']);
             unset($data['mobilePhone1']);
-        } elseif (\array_key_exists('mobilePhone1', $data) && $data['mobilePhone1'] === null) {
+        }
+        elseif (\array_key_exists('mobilePhone1', $data) && $data['mobilePhone1'] === null) {
             $object->setMobilePhone1(null);
         }
         if (\array_key_exists('onlineAccounts', $data) && $data['onlineAccounts'] !== null) {
@@ -230,49 +246,57 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
             }
             $object->setOnlineAccounts($values_2);
             unset($data['onlineAccounts']);
-        } elseif (\array_key_exists('onlineAccounts', $data) && $data['onlineAccounts'] === null) {
+        }
+        elseif (\array_key_exists('onlineAccounts', $data) && $data['onlineAccounts'] === null) {
             $object->setOnlineAccounts(null);
         }
         if (\array_key_exists('partyType', $data) && $data['partyType'] !== null) {
             $object->setPartyType($data['partyType']);
             unset($data['partyType']);
-        } elseif (\array_key_exists('partyType', $data) && $data['partyType'] === null) {
+        }
+        elseif (\array_key_exists('partyType', $data) && $data['partyType'] === null) {
             $object->setPartyType(null);
         }
         if (\array_key_exists('personCompany', $data) && $data['personCompany'] !== null) {
             $object->setPersonCompany($data['personCompany']);
             unset($data['personCompany']);
-        } elseif (\array_key_exists('personCompany', $data) && $data['personCompany'] === null) {
+        }
+        elseif (\array_key_exists('personCompany', $data) && $data['personCompany'] === null) {
             $object->setPersonCompany(null);
         }
         if (\array_key_exists('personDepartmentId', $data) && $data['personDepartmentId'] !== null) {
             $object->setPersonDepartmentId($data['personDepartmentId']);
             unset($data['personDepartmentId']);
-        } elseif (\array_key_exists('personDepartmentId', $data) && $data['personDepartmentId'] === null) {
+        }
+        elseif (\array_key_exists('personDepartmentId', $data) && $data['personDepartmentId'] === null) {
             $object->setPersonDepartmentId(null);
         }
         if (\array_key_exists('personRoleId', $data) && $data['personRoleId'] !== null) {
             $object->setPersonRoleId($data['personRoleId']);
             unset($data['personRoleId']);
-        } elseif (\array_key_exists('personRoleId', $data) && $data['personRoleId'] === null) {
+        }
+        elseif (\array_key_exists('personRoleId', $data) && $data['personRoleId'] === null) {
             $object->setPersonRoleId(null);
         }
         if (\array_key_exists('phone', $data) && $data['phone'] !== null) {
             $object->setPhone($data['phone']);
             unset($data['phone']);
-        } elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
+        }
+        elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
             $object->setPhone(null);
         }
         if (\array_key_exists('primaryAddressId', $data) && $data['primaryAddressId'] !== null) {
             $object->setPrimaryAddressId($data['primaryAddressId']);
             unset($data['primaryAddressId']);
-        } elseif (\array_key_exists('primaryAddressId', $data) && $data['primaryAddressId'] === null) {
+        }
+        elseif (\array_key_exists('primaryAddressId', $data) && $data['primaryAddressId'] === null) {
             $object->setPrimaryAddressId(null);
         }
         if (\array_key_exists('salutation', $data) && $data['salutation'] !== null) {
             $object->setSalutation($data['salutation']);
             unset($data['salutation']);
-        } elseif (\array_key_exists('salutation', $data) && $data['salutation'] === null) {
+        }
+        elseif (\array_key_exists('salutation', $data) && $data['salutation'] === null) {
             $object->setSalutation(null);
         }
         if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
@@ -282,32 +306,23 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
             }
             $object->setTags($values_3);
             unset($data['tags']);
-        } elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
-            $object->setTags(null);
         }
-        if (\array_key_exists('title', $data) && $data['title'] !== null) {
-            $object->setTitle($data['title']);
-            unset($data['title']);
-        } elseif (\array_key_exists('title', $data) && $data['title'] === null) {
-            $object->setTitle(null);
+        elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
+            $object->setTags(null);
         }
         if (\array_key_exists('titleId', $data) && $data['titleId'] !== null) {
             $object->setTitleId($data['titleId']);
             unset($data['titleId']);
-        } elseif (\array_key_exists('titleId', $data) && $data['titleId'] === null) {
+        }
+        elseif (\array_key_exists('titleId', $data) && $data['titleId'] === null) {
             $object->setTitleId(null);
         }
         if (\array_key_exists('website', $data) && $data['website'] !== null) {
             $object->setWebsite($data['website']);
             unset($data['website']);
-        } elseif (\array_key_exists('website', $data) && $data['website'] === null) {
-            $object->setWebsite(null);
         }
-        if (\array_key_exists('allowPurchaseOrderCreation', $data) && $data['allowPurchaseOrderCreation'] !== null) {
-            $object->setAllowPurchaseOrderCreation($data['allowPurchaseOrderCreation']);
-            unset($data['allowPurchaseOrderCreation']);
-        } elseif (\array_key_exists('allowPurchaseOrderCreation', $data) && $data['allowPurchaseOrderCreation'] === null) {
-            $object->setAllowPurchaseOrderCreation(null);
+        elseif (\array_key_exists('website', $data) && $data['website'] === null) {
+            $object->setWebsite(null);
         }
         if (\array_key_exists('bankAccounts', $data) && $data['bankAccounts'] !== null) {
             $values_4 = [];
@@ -316,19 +331,22 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
             }
             $object->setBankAccounts($values_4);
             unset($data['bankAccounts']);
-        } elseif (\array_key_exists('bankAccounts', $data) && $data['bankAccounts'] === null) {
+        }
+        elseif (\array_key_exists('bankAccounts', $data) && $data['bankAccounts'] === null) {
             $object->setBankAccounts(null);
         }
         if (\array_key_exists('commercialLanguageId', $data) && $data['commercialLanguageId'] !== null) {
             $object->setCommercialLanguageId($data['commercialLanguageId']);
             unset($data['commercialLanguageId']);
-        } elseif (\array_key_exists('commercialLanguageId', $data) && $data['commercialLanguageId'] === null) {
+        }
+        elseif (\array_key_exists('commercialLanguageId', $data) && $data['commercialLanguageId'] === null) {
             $object->setCommercialLanguageId(null);
         }
         if (\array_key_exists('commissionBlock', $data) && $data['commissionBlock'] !== null) {
             $object->setCommissionBlock($data['commissionBlock']);
             unset($data['commissionBlock']);
-        } elseif (\array_key_exists('commissionBlock', $data) && $data['commissionBlock'] === null) {
+        }
+        elseif (\array_key_exists('commissionBlock', $data) && $data['commissionBlock'] === null) {
             $object->setCommissionBlock(null);
         }
         if (\array_key_exists('commissionSalesPartners', $data) && $data['commissionSalesPartners'] !== null) {
@@ -338,25 +356,22 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
             }
             $object->setCommissionSalesPartners($values_5);
             unset($data['commissionSalesPartners']);
-        } elseif (\array_key_exists('commissionSalesPartners', $data) && $data['commissionSalesPartners'] === null) {
+        }
+        elseif (\array_key_exists('commissionSalesPartners', $data) && $data['commissionSalesPartners'] === null) {
             $object->setCommissionSalesPartners(null);
         }
         if (\array_key_exists('companySizeId', $data) && $data['companySizeId'] !== null) {
             $object->setCompanySizeId($data['companySizeId']);
             unset($data['companySizeId']);
-        } elseif (\array_key_exists('companySizeId', $data) && $data['companySizeId'] === null) {
-            $object->setCompanySizeId(null);
         }
-        if (\array_key_exists('companySizeName', $data) && $data['companySizeName'] !== null) {
-            $object->setCompanySizeName($data['companySizeName']);
-            unset($data['companySizeName']);
-        } elseif (\array_key_exists('companySizeName', $data) && $data['companySizeName'] === null) {
-            $object->setCompanySizeName(null);
+        elseif (\array_key_exists('companySizeId', $data) && $data['companySizeId'] === null) {
+            $object->setCompanySizeId(null);
         }
         if (\array_key_exists('competitor', $data) && $data['competitor'] !== null) {
             $object->setCompetitor($data['competitor']);
             unset($data['competitor']);
-        } elseif (\array_key_exists('competitor', $data) && $data['competitor'] === null) {
+        }
+        elseif (\array_key_exists('competitor', $data) && $data['competitor'] === null) {
             $object->setCompetitor(null);
         }
         if (\array_key_exists('contacts', $data) && $data['contacts'] !== null) {
@@ -366,217 +381,218 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
             }
             $object->setContacts($values_6);
             unset($data['contacts']);
-        } elseif (\array_key_exists('contacts', $data) && $data['contacts'] === null) {
+        }
+        elseif (\array_key_exists('contacts', $data) && $data['contacts'] === null) {
             $object->setContacts(null);
+        }
+        if (\array_key_exists('convertedOnDate', $data) && $data['convertedOnDate'] !== null) {
+            $object->setConvertedOnDate($data['convertedOnDate']);
+            unset($data['convertedOnDate']);
+        }
+        elseif (\array_key_exists('convertedOnDate', $data) && $data['convertedOnDate'] === null) {
+            $object->setConvertedOnDate(null);
         }
         if (\array_key_exists('currencyId', $data) && $data['currencyId'] !== null) {
             $object->setCurrencyId($data['currencyId']);
             unset($data['currencyId']);
-        } elseif (\array_key_exists('currencyId', $data) && $data['currencyId'] === null) {
-            $object->setCurrencyId(null);
         }
-        if (\array_key_exists('currencyName', $data) && $data['currencyName'] !== null) {
-            $object->setCurrencyName($data['currencyName']);
-            unset($data['currencyName']);
-        } elseif (\array_key_exists('currencyName', $data) && $data['currencyName'] === null) {
-            $object->setCurrencyName(null);
+        elseif (\array_key_exists('currencyId', $data) && $data['currencyId'] === null) {
+            $object->setCurrencyId(null);
         }
         if (\array_key_exists('customer', $data) && $data['customer'] !== null) {
             $object->setCustomer($data['customer']);
             unset($data['customer']);
-        } elseif (\array_key_exists('customer', $data) && $data['customer'] === null) {
+        }
+        elseif (\array_key_exists('customer', $data) && $data['customer'] === null) {
             $object->setCustomer(null);
         }
         if (\array_key_exists('customerAllowDropshippingOrderCreation', $data) && $data['customerAllowDropshippingOrderCreation'] !== null) {
             $object->setCustomerAllowDropshippingOrderCreation($data['customerAllowDropshippingOrderCreation']);
             unset($data['customerAllowDropshippingOrderCreation']);
-        } elseif (\array_key_exists('customerAllowDropshippingOrderCreation', $data) && $data['customerAllowDropshippingOrderCreation'] === null) {
+        }
+        elseif (\array_key_exists('customerAllowDropshippingOrderCreation', $data) && $data['customerAllowDropshippingOrderCreation'] === null) {
             $object->setCustomerAllowDropshippingOrderCreation(null);
         }
         if (\array_key_exists('customerAmountInsured', $data) && $data['customerAmountInsured'] !== null) {
             $object->setCustomerAmountInsured($data['customerAmountInsured']);
             unset($data['customerAmountInsured']);
-        } elseif (\array_key_exists('customerAmountInsured', $data) && $data['customerAmountInsured'] === null) {
+        }
+        elseif (\array_key_exists('customerAmountInsured', $data) && $data['customerAmountInsured'] === null) {
             $object->setCustomerAmountInsured(null);
         }
         if (\array_key_exists('customerAnnualRevenue', $data) && $data['customerAnnualRevenue'] !== null) {
             $object->setCustomerAnnualRevenue($data['customerAnnualRevenue']);
             unset($data['customerAnnualRevenue']);
-        } elseif (\array_key_exists('customerAnnualRevenue', $data) && $data['customerAnnualRevenue'] === null) {
+        }
+        elseif (\array_key_exists('customerAnnualRevenue', $data) && $data['customerAnnualRevenue'] === null) {
             $object->setCustomerAnnualRevenue(null);
         }
         if (\array_key_exists('customerBlockNotice', $data) && $data['customerBlockNotice'] !== null) {
             $object->setCustomerBlockNotice($data['customerBlockNotice']);
             unset($data['customerBlockNotice']);
-        } elseif (\array_key_exists('customerBlockNotice', $data) && $data['customerBlockNotice'] === null) {
+        }
+        elseif (\array_key_exists('customerBlockNotice', $data) && $data['customerBlockNotice'] === null) {
             $object->setCustomerBlockNotice(null);
         }
         if (\array_key_exists('customerBlocked', $data) && $data['customerBlocked'] !== null) {
             $object->setCustomerBlocked($data['customerBlocked']);
             unset($data['customerBlocked']);
-        } elseif (\array_key_exists('customerBlocked', $data) && $data['customerBlocked'] === null) {
+        }
+        elseif (\array_key_exists('customerBlocked', $data) && $data['customerBlocked'] === null) {
             $object->setCustomerBlocked(null);
         }
         if (\array_key_exists('customerBusinessType', $data) && $data['customerBusinessType'] !== null) {
             $object->setCustomerBusinessType($data['customerBusinessType']);
             unset($data['customerBusinessType']);
-        } elseif (\array_key_exists('customerBusinessType', $data) && $data['customerBusinessType'] === null) {
+        }
+        elseif (\array_key_exists('customerBusinessType', $data) && $data['customerBusinessType'] === null) {
             $object->setCustomerBusinessType(null);
         }
         if (\array_key_exists('customerCategoryId', $data) && $data['customerCategoryId'] !== null) {
             $object->setCustomerCategoryId($data['customerCategoryId']);
             unset($data['customerCategoryId']);
-        } elseif (\array_key_exists('customerCategoryId', $data) && $data['customerCategoryId'] === null) {
-            $object->setCustomerCategoryId(null);
         }
-        if (\array_key_exists('customerCategoryName', $data) && $data['customerCategoryName'] !== null) {
-            $object->setCustomerCategoryName($data['customerCategoryName']);
-            unset($data['customerCategoryName']);
-        } elseif (\array_key_exists('customerCategoryName', $data) && $data['customerCategoryName'] === null) {
-            $object->setCustomerCategoryName(null);
+        elseif (\array_key_exists('customerCategoryId', $data) && $data['customerCategoryId'] === null) {
+            $object->setCustomerCategoryId(null);
         }
         if (\array_key_exists('customerCreditLimit', $data) && $data['customerCreditLimit'] !== null) {
             $object->setCustomerCreditLimit($data['customerCreditLimit']);
             unset($data['customerCreditLimit']);
-        } elseif (\array_key_exists('customerCreditLimit', $data) && $data['customerCreditLimit'] === null) {
+        }
+        elseif (\array_key_exists('customerCreditLimit', $data) && $data['customerCreditLimit'] === null) {
             $object->setCustomerCreditLimit(null);
         }
         if (\array_key_exists('customerCurrentSalesStageId', $data) && $data['customerCurrentSalesStageId'] !== null) {
             $object->setCustomerCurrentSalesStageId($data['customerCurrentSalesStageId']);
             unset($data['customerCurrentSalesStageId']);
-        } elseif (\array_key_exists('customerCurrentSalesStageId', $data) && $data['customerCurrentSalesStageId'] === null) {
-            $object->setCustomerCurrentSalesStageId(null);
         }
-        if (\array_key_exists('customerCurrentSalesStageName', $data) && $data['customerCurrentSalesStageName'] !== null) {
-            $object->setCustomerCurrentSalesStageName($data['customerCurrentSalesStageName']);
-            unset($data['customerCurrentSalesStageName']);
-        } elseif (\array_key_exists('customerCurrentSalesStageName', $data) && $data['customerCurrentSalesStageName'] === null) {
-            $object->setCustomerCurrentSalesStageName(null);
+        elseif (\array_key_exists('customerCurrentSalesStageId', $data) && $data['customerCurrentSalesStageId'] === null) {
+            $object->setCustomerCurrentSalesStageId(null);
         }
         if (\array_key_exists('customerDebtorAccountId', $data) && $data['customerDebtorAccountId'] !== null) {
             $object->setCustomerDebtorAccountId($data['customerDebtorAccountId']);
             unset($data['customerDebtorAccountId']);
-        } elseif (\array_key_exists('customerDebtorAccountId', $data) && $data['customerDebtorAccountId'] === null) {
-            $object->setCustomerDebtorAccountId(null);
         }
-        if (\array_key_exists('customerDebtorAccountNumber', $data) && $data['customerDebtorAccountNumber'] !== null) {
-            $object->setCustomerDebtorAccountNumber($data['customerDebtorAccountNumber']);
-            unset($data['customerDebtorAccountNumber']);
-        } elseif (\array_key_exists('customerDebtorAccountNumber', $data) && $data['customerDebtorAccountNumber'] === null) {
-            $object->setCustomerDebtorAccountNumber(null);
+        elseif (\array_key_exists('customerDebtorAccountId', $data) && $data['customerDebtorAccountId'] === null) {
+            $object->setCustomerDebtorAccountId(null);
         }
         if (\array_key_exists('customerDebtorAccountingCodeId', $data) && $data['customerDebtorAccountingCodeId'] !== null) {
             $object->setCustomerDebtorAccountingCodeId($data['customerDebtorAccountingCodeId']);
             unset($data['customerDebtorAccountingCodeId']);
-        } elseif (\array_key_exists('customerDebtorAccountingCodeId', $data) && $data['customerDebtorAccountingCodeId'] === null) {
+        }
+        elseif (\array_key_exists('customerDebtorAccountingCodeId', $data) && $data['customerDebtorAccountingCodeId'] === null) {
             $object->setCustomerDebtorAccountingCodeId(null);
         }
         if (\array_key_exists('customerDefaultHeaderDiscount', $data) && $data['customerDefaultHeaderDiscount'] !== null) {
             $object->setCustomerDefaultHeaderDiscount($data['customerDefaultHeaderDiscount']);
             unset($data['customerDefaultHeaderDiscount']);
-        } elseif (\array_key_exists('customerDefaultHeaderDiscount', $data) && $data['customerDefaultHeaderDiscount'] === null) {
+        }
+        elseif (\array_key_exists('customerDefaultHeaderDiscount', $data) && $data['customerDefaultHeaderDiscount'] === null) {
             $object->setCustomerDefaultHeaderDiscount(null);
         }
         if (\array_key_exists('customerDefaultHeaderSurcharge', $data) && $data['customerDefaultHeaderSurcharge'] !== null) {
             $object->setCustomerDefaultHeaderSurcharge($data['customerDefaultHeaderSurcharge']);
             unset($data['customerDefaultHeaderSurcharge']);
-        } elseif (\array_key_exists('customerDefaultHeaderSurcharge', $data) && $data['customerDefaultHeaderSurcharge'] === null) {
+        }
+        elseif (\array_key_exists('customerDefaultHeaderSurcharge', $data) && $data['customerDefaultHeaderSurcharge'] === null) {
             $object->setCustomerDefaultHeaderSurcharge(null);
         }
         if (\array_key_exists('customerDefaultShippingCarrierId', $data) && $data['customerDefaultShippingCarrierId'] !== null) {
             $object->setCustomerDefaultShippingCarrierId($data['customerDefaultShippingCarrierId']);
             unset($data['customerDefaultShippingCarrierId']);
-        } elseif (\array_key_exists('customerDefaultShippingCarrierId', $data) && $data['customerDefaultShippingCarrierId'] === null) {
+        }
+        elseif (\array_key_exists('customerDefaultShippingCarrierId', $data) && $data['customerDefaultShippingCarrierId'] === null) {
             $object->setCustomerDefaultShippingCarrierId(null);
         }
         if (\array_key_exists('customerDeliveryBlock', $data) && $data['customerDeliveryBlock'] !== null) {
             $object->setCustomerDeliveryBlock($data['customerDeliveryBlock']);
             unset($data['customerDeliveryBlock']);
-        } elseif (\array_key_exists('customerDeliveryBlock', $data) && $data['customerDeliveryBlock'] === null) {
+        }
+        elseif (\array_key_exists('customerDeliveryBlock', $data) && $data['customerDeliveryBlock'] === null) {
             $object->setCustomerDeliveryBlock(null);
         }
         if (\array_key_exists('customerInsolvent', $data) && $data['customerInsolvent'] !== null) {
             $object->setCustomerInsolvent($data['customerInsolvent']);
             unset($data['customerInsolvent']);
-        } elseif (\array_key_exists('customerInsolvent', $data) && $data['customerInsolvent'] === null) {
+        }
+        elseif (\array_key_exists('customerInsolvent', $data) && $data['customerInsolvent'] === null) {
             $object->setCustomerInsolvent(null);
         }
         if (\array_key_exists('customerInsured', $data) && $data['customerInsured'] !== null) {
             $object->setCustomerInsured($data['customerInsured']);
             unset($data['customerInsured']);
-        } elseif (\array_key_exists('customerInsured', $data) && $data['customerInsured'] === null) {
+        }
+        elseif (\array_key_exists('customerInsured', $data) && $data['customerInsured'] === null) {
             $object->setCustomerInsured(null);
         }
         if (\array_key_exists('customerInternalNote', $data) && $data['customerInternalNote'] !== null) {
             $object->setCustomerInternalNote($data['customerInternalNote']);
             unset($data['customerInternalNote']);
-        } elseif (\array_key_exists('customerInternalNote', $data) && $data['customerInternalNote'] === null) {
+        }
+        elseif (\array_key_exists('customerInternalNote', $data) && $data['customerInternalNote'] === null) {
             $object->setCustomerInternalNote(null);
         }
         if (\array_key_exists('customerLossDescription', $data) && $data['customerLossDescription'] !== null) {
             $object->setCustomerLossDescription($data['customerLossDescription']);
             unset($data['customerLossDescription']);
-        } elseif (\array_key_exists('customerLossDescription', $data) && $data['customerLossDescription'] === null) {
+        }
+        elseif (\array_key_exists('customerLossDescription', $data) && $data['customerLossDescription'] === null) {
             $object->setCustomerLossDescription(null);
         }
         if (\array_key_exists('customerLossReasonId', $data) && $data['customerLossReasonId'] !== null) {
             $object->setCustomerLossReasonId($data['customerLossReasonId']);
             unset($data['customerLossReasonId']);
-        } elseif (\array_key_exists('customerLossReasonId', $data) && $data['customerLossReasonId'] === null) {
-            $object->setCustomerLossReasonId(null);
         }
-        if (\array_key_exists('customerLossReasonName', $data) && $data['customerLossReasonName'] !== null) {
-            $object->setCustomerLossReasonName($data['customerLossReasonName']);
-            unset($data['customerLossReasonName']);
-        } elseif (\array_key_exists('customerLossReasonName', $data) && $data['customerLossReasonName'] === null) {
-            $object->setCustomerLossReasonName(null);
+        elseif (\array_key_exists('customerLossReasonId', $data) && $data['customerLossReasonId'] === null) {
+            $object->setCustomerLossReasonId(null);
         }
         if (\array_key_exists('customerNonStandardTaxId', $data) && $data['customerNonStandardTaxId'] !== null) {
             $object->setCustomerNonStandardTaxId($data['customerNonStandardTaxId']);
             unset($data['customerNonStandardTaxId']);
-        } elseif (\array_key_exists('customerNonStandardTaxId', $data) && $data['customerNonStandardTaxId'] === null) {
+        }
+        elseif (\array_key_exists('customerNonStandardTaxId', $data) && $data['customerNonStandardTaxId'] === null) {
             $object->setCustomerNonStandardTaxId(null);
         }
         if (\array_key_exists('customerNumber', $data) && $data['customerNumber'] !== null) {
             $object->setCustomerNumber($data['customerNumber']);
             unset($data['customerNumber']);
-        } elseif (\array_key_exists('customerNumber', $data) && $data['customerNumber'] === null) {
+        }
+        elseif (\array_key_exists('customerNumber', $data) && $data['customerNumber'] === null) {
             $object->setCustomerNumber(null);
         }
         if (\array_key_exists('customerNumberOld', $data) && $data['customerNumberOld'] !== null) {
             $object->setCustomerNumberOld($data['customerNumberOld']);
             unset($data['customerNumberOld']);
-        } elseif (\array_key_exists('customerNumberOld', $data) && $data['customerNumberOld'] === null) {
+        }
+        elseif (\array_key_exists('customerNumberOld', $data) && $data['customerNumberOld'] === null) {
             $object->setCustomerNumberOld(null);
         }
         if (\array_key_exists('customerPaymentMethodId', $data) && $data['customerPaymentMethodId'] !== null) {
             $object->setCustomerPaymentMethodId($data['customerPaymentMethodId']);
             unset($data['customerPaymentMethodId']);
-        } elseif (\array_key_exists('customerPaymentMethodId', $data) && $data['customerPaymentMethodId'] === null) {
-            $object->setCustomerPaymentMethodId(null);
         }
-        if (\array_key_exists('customerPaymentMethodName', $data) && $data['customerPaymentMethodName'] !== null) {
-            $object->setCustomerPaymentMethodName($data['customerPaymentMethodName']);
-            unset($data['customerPaymentMethodName']);
-        } elseif (\array_key_exists('customerPaymentMethodName', $data) && $data['customerPaymentMethodName'] === null) {
-            $object->setCustomerPaymentMethodName(null);
+        elseif (\array_key_exists('customerPaymentMethodId', $data) && $data['customerPaymentMethodId'] === null) {
+            $object->setCustomerPaymentMethodId(null);
         }
         if (\array_key_exists('customerSalesChannel', $data) && $data['customerSalesChannel'] !== null) {
             $object->setCustomerSalesChannel($data['customerSalesChannel']);
             unset($data['customerSalesChannel']);
-        } elseif (\array_key_exists('customerSalesChannel', $data) && $data['customerSalesChannel'] === null) {
+        }
+        elseif (\array_key_exists('customerSalesChannel', $data) && $data['customerSalesChannel'] === null) {
             $object->setCustomerSalesChannel(null);
         }
         if (\array_key_exists('customerSalesOrderPaymentType', $data) && $data['customerSalesOrderPaymentType'] !== null) {
             $object->setCustomerSalesOrderPaymentType($data['customerSalesOrderPaymentType']);
             unset($data['customerSalesOrderPaymentType']);
-        } elseif (\array_key_exists('customerSalesOrderPaymentType', $data) && $data['customerSalesOrderPaymentType'] === null) {
+        }
+        elseif (\array_key_exists('customerSalesOrderPaymentType', $data) && $data['customerSalesOrderPaymentType'] === null) {
             $object->setCustomerSalesOrderPaymentType(null);
         }
         if (\array_key_exists('customerSalesProbability', $data) && $data['customerSalesProbability'] !== null) {
             $object->setCustomerSalesProbability($data['customerSalesProbability']);
             unset($data['customerSalesProbability']);
-        } elseif (\array_key_exists('customerSalesProbability', $data) && $data['customerSalesProbability'] === null) {
+        }
+        elseif (\array_key_exists('customerSalesProbability', $data) && $data['customerSalesProbability'] === null) {
             $object->setCustomerSalesProbability(null);
         }
         if (\array_key_exists('customerSalesStageHistory', $data) && $data['customerSalesStageHistory'] !== null) {
@@ -586,211 +602,211 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
             }
             $object->setCustomerSalesStageHistory($values_7);
             unset($data['customerSalesStageHistory']);
-        } elseif (\array_key_exists('customerSalesStageHistory', $data) && $data['customerSalesStageHistory'] === null) {
+        }
+        elseif (\array_key_exists('customerSalesStageHistory', $data) && $data['customerSalesStageHistory'] === null) {
             $object->setCustomerSalesStageHistory(null);
         }
         if (\array_key_exists('customerSatisfaction', $data) && $data['customerSatisfaction'] !== null) {
             $object->setCustomerSatisfaction($data['customerSatisfaction']);
             unset($data['customerSatisfaction']);
-        } elseif (\array_key_exists('customerSatisfaction', $data) && $data['customerSatisfaction'] === null) {
+        }
+        elseif (\array_key_exists('customerSatisfaction', $data) && $data['customerSatisfaction'] === null) {
             $object->setCustomerSatisfaction(null);
         }
         if (\array_key_exists('customerShipmentMethodId', $data) && $data['customerShipmentMethodId'] !== null) {
             $object->setCustomerShipmentMethodId($data['customerShipmentMethodId']);
             unset($data['customerShipmentMethodId']);
-        } elseif (\array_key_exists('customerShipmentMethodId', $data) && $data['customerShipmentMethodId'] === null) {
-            $object->setCustomerShipmentMethodId(null);
         }
-        if (\array_key_exists('customerShipmentMethodName', $data) && $data['customerShipmentMethodName'] !== null) {
-            $object->setCustomerShipmentMethodName($data['customerShipmentMethodName']);
-            unset($data['customerShipmentMethodName']);
-        } elseif (\array_key_exists('customerShipmentMethodName', $data) && $data['customerShipmentMethodName'] === null) {
-            $object->setCustomerShipmentMethodName(null);
+        elseif (\array_key_exists('customerShipmentMethodId', $data) && $data['customerShipmentMethodId'] === null) {
+            $object->setCustomerShipmentMethodId(null);
         }
         if (\array_key_exists('customerSupplierNumber', $data) && $data['customerSupplierNumber'] !== null) {
             $object->setCustomerSupplierNumber($data['customerSupplierNumber']);
             unset($data['customerSupplierNumber']);
-        } elseif (\array_key_exists('customerSupplierNumber', $data) && $data['customerSupplierNumber'] === null) {
+        }
+        elseif (\array_key_exists('customerSupplierNumber', $data) && $data['customerSupplierNumber'] === null) {
             $object->setCustomerSupplierNumber(null);
         }
         if (\array_key_exists('customerTermOfPaymentId', $data) && $data['customerTermOfPaymentId'] !== null) {
             $object->setCustomerTermOfPaymentId($data['customerTermOfPaymentId']);
             unset($data['customerTermOfPaymentId']);
-        } elseif (\array_key_exists('customerTermOfPaymentId', $data) && $data['customerTermOfPaymentId'] === null) {
-            $object->setCustomerTermOfPaymentId(null);
         }
-        if (\array_key_exists('customerTermOfPaymentName', $data) && $data['customerTermOfPaymentName'] !== null) {
-            $object->setCustomerTermOfPaymentName($data['customerTermOfPaymentName']);
-            unset($data['customerTermOfPaymentName']);
-        } elseif (\array_key_exists('customerTermOfPaymentName', $data) && $data['customerTermOfPaymentName'] === null) {
-            $object->setCustomerTermOfPaymentName(null);
+        elseif (\array_key_exists('customerTermOfPaymentId', $data) && $data['customerTermOfPaymentId'] === null) {
+            $object->setCustomerTermOfPaymentId(null);
         }
         if (\array_key_exists('customerUseCustomsTariffNumber', $data) && $data['customerUseCustomsTariffNumber'] !== null) {
             $object->setCustomerUseCustomsTariffNumber($data['customerUseCustomsTariffNumber']);
             unset($data['customerUseCustomsTariffNumber']);
-        } elseif (\array_key_exists('customerUseCustomsTariffNumber', $data) && $data['customerUseCustomsTariffNumber'] === null) {
+        }
+        elseif (\array_key_exists('customerUseCustomsTariffNumber', $data) && $data['customerUseCustomsTariffNumber'] === null) {
             $object->setCustomerUseCustomsTariffNumber(null);
         }
         if (\array_key_exists('deliveryEmailAddressesId', $data) && $data['deliveryEmailAddressesId'] !== null) {
             $object->setDeliveryEmailAddressesId($data['deliveryEmailAddressesId']);
             unset($data['deliveryEmailAddressesId']);
-        } elseif (\array_key_exists('deliveryEmailAddressesId', $data) && $data['deliveryEmailAddressesId'] === null) {
+        }
+        elseif (\array_key_exists('deliveryEmailAddressesId', $data) && $data['deliveryEmailAddressesId'] === null) {
             $object->setDeliveryEmailAddressesId(null);
         }
         if (\array_key_exists('description', $data) && $data['description'] !== null) {
             $object->setDescription($data['description']);
             unset($data['description']);
-        } elseif (\array_key_exists('description', $data) && $data['description'] === null) {
+        }
+        elseif (\array_key_exists('description', $data) && $data['description'] === null) {
             $object->setDescription(null);
         }
         if (\array_key_exists('dunningAddressId', $data) && $data['dunningAddressId'] !== null) {
             $object->setDunningAddressId($data['dunningAddressId']);
             unset($data['dunningAddressId']);
-        } elseif (\array_key_exists('dunningAddressId', $data) && $data['dunningAddressId'] === null) {
+        }
+        elseif (\array_key_exists('dunningAddressId', $data) && $data['dunningAddressId'] === null) {
             $object->setDunningAddressId(null);
         }
         if (\array_key_exists('dunningEmailAddressesId', $data) && $data['dunningEmailAddressesId'] !== null) {
             $object->setDunningEmailAddressesId($data['dunningEmailAddressesId']);
             unset($data['dunningEmailAddressesId']);
-        } elseif (\array_key_exists('dunningEmailAddressesId', $data) && $data['dunningEmailAddressesId'] === null) {
+        }
+        elseif (\array_key_exists('dunningEmailAddressesId', $data) && $data['dunningEmailAddressesId'] === null) {
             $object->setDunningEmailAddressesId(null);
         }
         if (\array_key_exists('enableDropshippingInNewSupplySources', $data) && $data['enableDropshippingInNewSupplySources'] !== null) {
             $object->setEnableDropshippingInNewSupplySources($data['enableDropshippingInNewSupplySources']);
             unset($data['enableDropshippingInNewSupplySources']);
-        } elseif (\array_key_exists('enableDropshippingInNewSupplySources', $data) && $data['enableDropshippingInNewSupplySources'] === null) {
+        }
+        elseif (\array_key_exists('enableDropshippingInNewSupplySources', $data) && $data['enableDropshippingInNewSupplySources'] === null) {
             $object->setEnableDropshippingInNewSupplySources(null);
         }
         if (\array_key_exists('eoriNumber', $data) && $data['eoriNumber'] !== null) {
             $object->setEoriNumber($data['eoriNumber']);
             unset($data['eoriNumber']);
-        } elseif (\array_key_exists('eoriNumber', $data) && $data['eoriNumber'] === null) {
+        }
+        elseif (\array_key_exists('eoriNumber', $data) && $data['eoriNumber'] === null) {
             $object->setEoriNumber(null);
         }
         if (\array_key_exists('factoring', $data) && $data['factoring'] !== null) {
             $object->setFactoring($data['factoring']);
             unset($data['factoring']);
-        } elseif (\array_key_exists('factoring', $data) && $data['factoring'] === null) {
+        }
+        elseif (\array_key_exists('factoring', $data) && $data['factoring'] === null) {
             $object->setFactoring(null);
         }
         if (\array_key_exists('fixPhone2', $data) && $data['fixPhone2'] !== null) {
             $object->setFixPhone2($data['fixPhone2']);
             unset($data['fixPhone2']);
-        } elseif (\array_key_exists('fixPhone2', $data) && $data['fixPhone2'] === null) {
+        }
+        elseif (\array_key_exists('fixPhone2', $data) && $data['fixPhone2'] === null) {
             $object->setFixPhone2(null);
         }
         if (\array_key_exists('fixedResponsibleUser', $data) && $data['fixedResponsibleUser'] !== null) {
             $object->setFixedResponsibleUser($data['fixedResponsibleUser']);
             unset($data['fixedResponsibleUser']);
-        } elseif (\array_key_exists('fixedResponsibleUser', $data) && $data['fixedResponsibleUser'] === null) {
+        }
+        elseif (\array_key_exists('fixedResponsibleUser', $data) && $data['fixedResponsibleUser'] === null) {
             $object->setFixedResponsibleUser(null);
         }
         if (\array_key_exists('formerSalesPartner', $data) && $data['formerSalesPartner'] !== null) {
             $object->setFormerSalesPartner($data['formerSalesPartner']);
             unset($data['formerSalesPartner']);
-        } elseif (\array_key_exists('formerSalesPartner', $data) && $data['formerSalesPartner'] === null) {
+        }
+        elseif (\array_key_exists('formerSalesPartner', $data) && $data['formerSalesPartner'] === null) {
             $object->setFormerSalesPartner(null);
         }
         if (\array_key_exists('habitualExporter', $data) && $data['habitualExporter'] !== null) {
             $object->setHabitualExporter($data['habitualExporter']);
             unset($data['habitualExporter']);
-        } elseif (\array_key_exists('habitualExporter', $data) && $data['habitualExporter'] === null) {
+        }
+        elseif (\array_key_exists('habitualExporter', $data) && $data['habitualExporter'] === null) {
             $object->setHabitualExporter(null);
         }
         if (\array_key_exists('imageId', $data) && $data['imageId'] !== null) {
             $object->setImageId($data['imageId']);
             unset($data['imageId']);
-        } elseif (\array_key_exists('imageId', $data) && $data['imageId'] === null) {
+        }
+        elseif (\array_key_exists('imageId', $data) && $data['imageId'] === null) {
             $object->setImageId(null);
         }
         if (\array_key_exists('invoiceBlock', $data) && $data['invoiceBlock'] !== null) {
             $object->setInvoiceBlock($data['invoiceBlock']);
             unset($data['invoiceBlock']);
-        } elseif (\array_key_exists('invoiceBlock', $data) && $data['invoiceBlock'] === null) {
+        }
+        elseif (\array_key_exists('invoiceBlock', $data) && $data['invoiceBlock'] === null) {
             $object->setInvoiceBlock(null);
         }
         if (\array_key_exists('invoiceRecipientId', $data) && $data['invoiceRecipientId'] !== null) {
             $object->setInvoiceRecipientId($data['invoiceRecipientId']);
             unset($data['invoiceRecipientId']);
-        } elseif (\array_key_exists('invoiceRecipientId', $data) && $data['invoiceRecipientId'] === null) {
+        }
+        elseif (\array_key_exists('invoiceRecipientId', $data) && $data['invoiceRecipientId'] === null) {
             $object->setInvoiceRecipientId(null);
         }
         if (\array_key_exists('leadRatingId', $data) && $data['leadRatingId'] !== null) {
             $object->setLeadRatingId($data['leadRatingId']);
             unset($data['leadRatingId']);
-        } elseif (\array_key_exists('leadRatingId', $data) && $data['leadRatingId'] === null) {
-            $object->setLeadRatingId(null);
         }
-        if (\array_key_exists('leadRatingName', $data) && $data['leadRatingName'] !== null) {
-            $object->setLeadRatingName($data['leadRatingName']);
-            unset($data['leadRatingName']);
-        } elseif (\array_key_exists('leadRatingName', $data) && $data['leadRatingName'] === null) {
-            $object->setLeadRatingName(null);
+        elseif (\array_key_exists('leadRatingId', $data) && $data['leadRatingId'] === null) {
+            $object->setLeadRatingId(null);
         }
         if (\array_key_exists('leadSourceId', $data) && $data['leadSourceId'] !== null) {
             $object->setLeadSourceId($data['leadSourceId']);
             unset($data['leadSourceId']);
-        } elseif (\array_key_exists('leadSourceId', $data) && $data['leadSourceId'] === null) {
-            $object->setLeadSourceId(null);
         }
-        if (\array_key_exists('leadSourceName', $data) && $data['leadSourceName'] !== null) {
-            $object->setLeadSourceName($data['leadSourceName']);
-            unset($data['leadSourceName']);
-        } elseif (\array_key_exists('leadSourceName', $data) && $data['leadSourceName'] === null) {
-            $object->setLeadSourceName(null);
+        elseif (\array_key_exists('leadSourceId', $data) && $data['leadSourceId'] === null) {
+            $object->setLeadSourceId(null);
         }
         if (\array_key_exists('leadStatus', $data) && $data['leadStatus'] !== null) {
             $object->setLeadStatus($data['leadStatus']);
             unset($data['leadStatus']);
-        } elseif (\array_key_exists('leadStatus', $data) && $data['leadStatus'] === null) {
+        }
+        elseif (\array_key_exists('leadStatus', $data) && $data['leadStatus'] === null) {
             $object->setLeadStatus(null);
         }
         if (\array_key_exists('legalFormId', $data) && $data['legalFormId'] !== null) {
             $object->setLegalFormId($data['legalFormId']);
             unset($data['legalFormId']);
-        } elseif (\array_key_exists('legalFormId', $data) && $data['legalFormId'] === null) {
-            $object->setLegalFormId(null);
         }
-        if (\array_key_exists('legalFormName', $data) && $data['legalFormName'] !== null) {
-            $object->setLegalFormName($data['legalFormName']);
-            unset($data['legalFormName']);
-        } elseif (\array_key_exists('legalFormName', $data) && $data['legalFormName'] === null) {
-            $object->setLegalFormName(null);
+        elseif (\array_key_exists('legalFormId', $data) && $data['legalFormId'] === null) {
+            $object->setLegalFormId(null);
         }
         if (\array_key_exists('mobilePhone2', $data) && $data['mobilePhone2'] !== null) {
             $object->setMobilePhone2($data['mobilePhone2']);
             unset($data['mobilePhone2']);
-        } elseif (\array_key_exists('mobilePhone2', $data) && $data['mobilePhone2'] === null) {
+        }
+        elseif (\array_key_exists('mobilePhone2', $data) && $data['mobilePhone2'] === null) {
             $object->setMobilePhone2(null);
         }
         if (\array_key_exists('optInEmail', $data) && $data['optInEmail'] !== null) {
             $object->setOptInEmail($data['optInEmail']);
             unset($data['optInEmail']);
-        } elseif (\array_key_exists('optInEmail', $data) && $data['optInEmail'] === null) {
+        }
+        elseif (\array_key_exists('optInEmail', $data) && $data['optInEmail'] === null) {
             $object->setOptInEmail(null);
         }
         if (\array_key_exists('optInLetter', $data) && $data['optInLetter'] !== null) {
             $object->setOptInLetter($data['optInLetter']);
             unset($data['optInLetter']);
-        } elseif (\array_key_exists('optInLetter', $data) && $data['optInLetter'] === null) {
+        }
+        elseif (\array_key_exists('optInLetter', $data) && $data['optInLetter'] === null) {
             $object->setOptInLetter(null);
         }
         if (\array_key_exists('optInPhone', $data) && $data['optInPhone'] !== null) {
             $object->setOptInPhone($data['optInPhone']);
             unset($data['optInPhone']);
-        } elseif (\array_key_exists('optInPhone', $data) && $data['optInPhone'] === null) {
+        }
+        elseif (\array_key_exists('optInPhone', $data) && $data['optInPhone'] === null) {
             $object->setOptInPhone(null);
         }
         if (\array_key_exists('optInSms', $data) && $data['optInSms'] !== null) {
             $object->setOptInSms($data['optInSms']);
             unset($data['optInSms']);
-        } elseif (\array_key_exists('optInSms', $data) && $data['optInSms'] === null) {
+        }
+        elseif (\array_key_exists('optInSms', $data) && $data['optInSms'] === null) {
             $object->setOptInSms(null);
         }
         if (\array_key_exists('parentPartyId', $data) && $data['parentPartyId'] !== null) {
             $object->setParentPartyId($data['parentPartyId']);
             unset($data['parentPartyId']);
-        } elseif (\array_key_exists('parentPartyId', $data) && $data['parentPartyId'] === null) {
+        }
+        elseif (\array_key_exists('parentPartyId', $data) && $data['parentPartyId'] === null) {
             $object->setParentPartyId(null);
         }
         if (\array_key_exists('partyEmailAddresses', $data) && $data['partyEmailAddresses'] !== null) {
@@ -800,7 +816,8 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
             }
             $object->setPartyEmailAddresses($values_8);
             unset($data['partyEmailAddresses']);
-        } elseif (\array_key_exists('partyEmailAddresses', $data) && $data['partyEmailAddresses'] === null) {
+        }
+        elseif (\array_key_exists('partyEmailAddresses', $data) && $data['partyEmailAddresses'] === null) {
             $object->setPartyEmailAddresses(null);
         }
         if (\array_key_exists('partyHabitualExporterLettersOfIntent', $data) && $data['partyHabitualExporterLettersOfIntent'] !== null) {
@@ -810,269 +827,278 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
             }
             $object->setPartyHabitualExporterLettersOfIntent($values_9);
             unset($data['partyHabitualExporterLettersOfIntent']);
-        } elseif (\array_key_exists('partyHabitualExporterLettersOfIntent', $data) && $data['partyHabitualExporterLettersOfIntent'] === null) {
+        }
+        elseif (\array_key_exists('partyHabitualExporterLettersOfIntent', $data) && $data['partyHabitualExporterLettersOfIntent'] === null) {
             $object->setPartyHabitualExporterLettersOfIntent(null);
         }
         if (\array_key_exists('phoneHome', $data) && $data['phoneHome'] !== null) {
             $object->setPhoneHome($data['phoneHome']);
             unset($data['phoneHome']);
-        } elseif (\array_key_exists('phoneHome', $data) && $data['phoneHome'] === null) {
+        }
+        elseif (\array_key_exists('phoneHome', $data) && $data['phoneHome'] === null) {
             $object->setPhoneHome(null);
         }
         if (\array_key_exists('primaryContactId', $data) && $data['primaryContactId'] !== null) {
             $object->setPrimaryContactId($data['primaryContactId']);
             unset($data['primaryContactId']);
-        } elseif (\array_key_exists('primaryContactId', $data) && $data['primaryContactId'] === null) {
+        }
+        elseif (\array_key_exists('primaryContactId', $data) && $data['primaryContactId'] === null) {
             $object->setPrimaryContactId(null);
         }
         if (\array_key_exists('publicPageExpirationDate', $data) && $data['publicPageExpirationDate'] !== null) {
             $object->setPublicPageExpirationDate($data['publicPageExpirationDate']);
             unset($data['publicPageExpirationDate']);
-        } elseif (\array_key_exists('publicPageExpirationDate', $data) && $data['publicPageExpirationDate'] === null) {
+        }
+        elseif (\array_key_exists('publicPageExpirationDate', $data) && $data['publicPageExpirationDate'] === null) {
             $object->setPublicPageExpirationDate(null);
         }
         if (\array_key_exists('publicPageUuid', $data) && $data['publicPageUuid'] !== null) {
             $object->setPublicPageUuid($data['publicPageUuid']);
             unset($data['publicPageUuid']);
-        } elseif (\array_key_exists('publicPageUuid', $data) && $data['publicPageUuid'] === null) {
+        }
+        elseif (\array_key_exists('publicPageUuid', $data) && $data['publicPageUuid'] === null) {
             $object->setPublicPageUuid(null);
         }
         if (\array_key_exists('purchaseEmailAddressesId', $data) && $data['purchaseEmailAddressesId'] !== null) {
             $object->setPurchaseEmailAddressesId($data['purchaseEmailAddressesId']);
             unset($data['purchaseEmailAddressesId']);
-        } elseif (\array_key_exists('purchaseEmailAddressesId', $data) && $data['purchaseEmailAddressesId'] === null) {
+        }
+        elseif (\array_key_exists('purchaseEmailAddressesId', $data) && $data['purchaseEmailAddressesId'] === null) {
             $object->setPurchaseEmailAddressesId(null);
         }
         if (\array_key_exists('purchaseViaPlafond', $data) && $data['purchaseViaPlafond'] !== null) {
             $object->setPurchaseViaPlafond($data['purchaseViaPlafond']);
             unset($data['purchaseViaPlafond']);
-        } elseif (\array_key_exists('purchaseViaPlafond', $data) && $data['purchaseViaPlafond'] === null) {
+        }
+        elseif (\array_key_exists('purchaseViaPlafond', $data) && $data['purchaseViaPlafond'] === null) {
             $object->setPurchaseViaPlafond(null);
         }
         if (\array_key_exists('quotationEmailAddressesId', $data) && $data['quotationEmailAddressesId'] !== null) {
             $object->setQuotationEmailAddressesId($data['quotationEmailAddressesId']);
             unset($data['quotationEmailAddressesId']);
-        } elseif (\array_key_exists('quotationEmailAddressesId', $data) && $data['quotationEmailAddressesId'] === null) {
+        }
+        elseif (\array_key_exists('quotationEmailAddressesId', $data) && $data['quotationEmailAddressesId'] === null) {
             $object->setQuotationEmailAddressesId(null);
         }
         if (\array_key_exists('ratingId', $data) && $data['ratingId'] !== null) {
             $object->setRatingId($data['ratingId']);
             unset($data['ratingId']);
-        } elseif (\array_key_exists('ratingId', $data) && $data['ratingId'] === null) {
-            $object->setRatingId(null);
         }
-        if (\array_key_exists('ratingName', $data) && $data['ratingName'] !== null) {
-            $object->setRatingName($data['ratingName']);
-            unset($data['ratingName']);
-        } elseif (\array_key_exists('ratingName', $data) && $data['ratingName'] === null) {
-            $object->setRatingName(null);
+        elseif (\array_key_exists('ratingId', $data) && $data['ratingId'] === null) {
+            $object->setRatingId(null);
         }
         if (\array_key_exists('referenceNumber', $data) && $data['referenceNumber'] !== null) {
             $object->setReferenceNumber($data['referenceNumber']);
             unset($data['referenceNumber']);
-        } elseif (\array_key_exists('referenceNumber', $data) && $data['referenceNumber'] === null) {
+        }
+        elseif (\array_key_exists('referenceNumber', $data) && $data['referenceNumber'] === null) {
             $object->setReferenceNumber(null);
         }
         if (\array_key_exists('regionId', $data) && $data['regionId'] !== null) {
             $object->setRegionId($data['regionId']);
             unset($data['regionId']);
-        } elseif (\array_key_exists('regionId', $data) && $data['regionId'] === null) {
+        }
+        elseif (\array_key_exists('regionId', $data) && $data['regionId'] === null) {
             $object->setRegionId(null);
         }
         if (\array_key_exists('responsibleUserId', $data) && $data['responsibleUserId'] !== null) {
             $object->setResponsibleUserId($data['responsibleUserId']);
             unset($data['responsibleUserId']);
-        } elseif (\array_key_exists('responsibleUserId', $data) && $data['responsibleUserId'] === null) {
-            $object->setResponsibleUserId(null);
         }
-        if (\array_key_exists('responsibleUserUsername', $data) && $data['responsibleUserUsername'] !== null) {
-            $object->setResponsibleUserUsername($data['responsibleUserUsername']);
-            unset($data['responsibleUserUsername']);
-        } elseif (\array_key_exists('responsibleUserUsername', $data) && $data['responsibleUserUsername'] === null) {
-            $object->setResponsibleUserUsername(null);
+        elseif (\array_key_exists('responsibleUserId', $data) && $data['responsibleUserId'] === null) {
+            $object->setResponsibleUserId(null);
         }
         if (\array_key_exists('salesInvoiceEmailAddressesId', $data) && $data['salesInvoiceEmailAddressesId'] !== null) {
             $object->setSalesInvoiceEmailAddressesId($data['salesInvoiceEmailAddressesId']);
             unset($data['salesInvoiceEmailAddressesId']);
-        } elseif (\array_key_exists('salesInvoiceEmailAddressesId', $data) && $data['salesInvoiceEmailAddressesId'] === null) {
+        }
+        elseif (\array_key_exists('salesInvoiceEmailAddressesId', $data) && $data['salesInvoiceEmailAddressesId'] === null) {
             $object->setSalesInvoiceEmailAddressesId(null);
         }
         if (\array_key_exists('salesOrderEmailAddressesId', $data) && $data['salesOrderEmailAddressesId'] !== null) {
             $object->setSalesOrderEmailAddressesId($data['salesOrderEmailAddressesId']);
             unset($data['salesOrderEmailAddressesId']);
-        } elseif (\array_key_exists('salesOrderEmailAddressesId', $data) && $data['salesOrderEmailAddressesId'] === null) {
+        }
+        elseif (\array_key_exists('salesOrderEmailAddressesId', $data) && $data['salesOrderEmailAddressesId'] === null) {
             $object->setSalesOrderEmailAddressesId(null);
         }
         if (\array_key_exists('salesPartner', $data) && $data['salesPartner'] !== null) {
             $object->setSalesPartner($data['salesPartner']);
             unset($data['salesPartner']);
-        } elseif (\array_key_exists('salesPartner', $data) && $data['salesPartner'] === null) {
+        }
+        elseif (\array_key_exists('salesPartner', $data) && $data['salesPartner'] === null) {
             $object->setSalesPartner(null);
         }
         if (\array_key_exists('salesPartnerDefaultCommissionFix', $data) && $data['salesPartnerDefaultCommissionFix'] !== null) {
             $object->setSalesPartnerDefaultCommissionFix($data['salesPartnerDefaultCommissionFix']);
             unset($data['salesPartnerDefaultCommissionFix']);
-        } elseif (\array_key_exists('salesPartnerDefaultCommissionFix', $data) && $data['salesPartnerDefaultCommissionFix'] === null) {
+        }
+        elseif (\array_key_exists('salesPartnerDefaultCommissionFix', $data) && $data['salesPartnerDefaultCommissionFix'] === null) {
             $object->setSalesPartnerDefaultCommissionFix(null);
         }
         if (\array_key_exists('salesPartnerDefaultCommissionPercentage', $data) && $data['salesPartnerDefaultCommissionPercentage'] !== null) {
             $object->setSalesPartnerDefaultCommissionPercentage($data['salesPartnerDefaultCommissionPercentage']);
             unset($data['salesPartnerDefaultCommissionPercentage']);
-        } elseif (\array_key_exists('salesPartnerDefaultCommissionPercentage', $data) && $data['salesPartnerDefaultCommissionPercentage'] === null) {
+        }
+        elseif (\array_key_exists('salesPartnerDefaultCommissionPercentage', $data) && $data['salesPartnerDefaultCommissionPercentage'] === null) {
             $object->setSalesPartnerDefaultCommissionPercentage(null);
         }
         if (\array_key_exists('salesPartnerDefaultCommissionType', $data) && $data['salesPartnerDefaultCommissionType'] !== null) {
             $object->setSalesPartnerDefaultCommissionType($data['salesPartnerDefaultCommissionType']);
             unset($data['salesPartnerDefaultCommissionType']);
-        } elseif (\array_key_exists('salesPartnerDefaultCommissionType', $data) && $data['salesPartnerDefaultCommissionType'] === null) {
+        }
+        elseif (\array_key_exists('salesPartnerDefaultCommissionType', $data) && $data['salesPartnerDefaultCommissionType'] === null) {
             $object->setSalesPartnerDefaultCommissionType(null);
         }
         if (\array_key_exists('sectorId', $data) && $data['sectorId'] !== null) {
             $object->setSectorId($data['sectorId']);
             unset($data['sectorId']);
-        } elseif (\array_key_exists('sectorId', $data) && $data['sectorId'] === null) {
-            $object->setSectorId(null);
         }
-        if (\array_key_exists('sectorName', $data) && $data['sectorName'] !== null) {
-            $object->setSectorName($data['sectorName']);
-            unset($data['sectorName']);
-        } elseif (\array_key_exists('sectorName', $data) && $data['sectorName'] === null) {
-            $object->setSectorName(null);
+        elseif (\array_key_exists('sectorId', $data) && $data['sectorId'] === null) {
+            $object->setSectorId(null);
         }
         if (\array_key_exists('supplier', $data) && $data['supplier'] !== null) {
             $object->setSupplier($data['supplier']);
             unset($data['supplier']);
-        } elseif (\array_key_exists('supplier', $data) && $data['supplier'] === null) {
+        }
+        elseif (\array_key_exists('supplier', $data) && $data['supplier'] === null) {
             $object->setSupplier(null);
+        }
+        if (\array_key_exists('supplierActive', $data) && $data['supplierActive'] !== null) {
+            $object->setSupplierActive($data['supplierActive']);
+            unset($data['supplierActive']);
+        }
+        elseif (\array_key_exists('supplierActive', $data) && $data['supplierActive'] === null) {
+            $object->setSupplierActive(null);
         }
         if (\array_key_exists('supplierCreditorAccountId', $data) && $data['supplierCreditorAccountId'] !== null) {
             $object->setSupplierCreditorAccountId($data['supplierCreditorAccountId']);
             unset($data['supplierCreditorAccountId']);
-        } elseif (\array_key_exists('supplierCreditorAccountId', $data) && $data['supplierCreditorAccountId'] === null) {
-            $object->setSupplierCreditorAccountId(null);
         }
-        if (\array_key_exists('supplierCreditorAccountNumber', $data) && $data['supplierCreditorAccountNumber'] !== null) {
-            $object->setSupplierCreditorAccountNumber($data['supplierCreditorAccountNumber']);
-            unset($data['supplierCreditorAccountNumber']);
-        } elseif (\array_key_exists('supplierCreditorAccountNumber', $data) && $data['supplierCreditorAccountNumber'] === null) {
-            $object->setSupplierCreditorAccountNumber(null);
+        elseif (\array_key_exists('supplierCreditorAccountId', $data) && $data['supplierCreditorAccountId'] === null) {
+            $object->setSupplierCreditorAccountId(null);
         }
         if (\array_key_exists('supplierCreditorAccountingCodeId', $data) && $data['supplierCreditorAccountingCodeId'] !== null) {
             $object->setSupplierCreditorAccountingCodeId($data['supplierCreditorAccountingCodeId']);
             unset($data['supplierCreditorAccountingCodeId']);
-        } elseif (\array_key_exists('supplierCreditorAccountingCodeId', $data) && $data['supplierCreditorAccountingCodeId'] === null) {
+        }
+        elseif (\array_key_exists('supplierCreditorAccountingCodeId', $data) && $data['supplierCreditorAccountingCodeId'] === null) {
             $object->setSupplierCreditorAccountingCodeId(null);
         }
         if (\array_key_exists('supplierCustomerNumberAtSupplier', $data) && $data['supplierCustomerNumberAtSupplier'] !== null) {
             $object->setSupplierCustomerNumberAtSupplier($data['supplierCustomerNumberAtSupplier']);
             unset($data['supplierCustomerNumberAtSupplier']);
-        } elseif (\array_key_exists('supplierCustomerNumberAtSupplier', $data) && $data['supplierCustomerNumberAtSupplier'] === null) {
+        }
+        elseif (\array_key_exists('supplierCustomerNumberAtSupplier', $data) && $data['supplierCustomerNumberAtSupplier'] === null) {
             $object->setSupplierCustomerNumberAtSupplier(null);
         }
         if (\array_key_exists('supplierDefaultShippingCarrierId', $data) && $data['supplierDefaultShippingCarrierId'] !== null) {
             $object->setSupplierDefaultShippingCarrierId($data['supplierDefaultShippingCarrierId']);
             unset($data['supplierDefaultShippingCarrierId']);
-        } elseif (\array_key_exists('supplierDefaultShippingCarrierId', $data) && $data['supplierDefaultShippingCarrierId'] === null) {
+        }
+        elseif (\array_key_exists('supplierDefaultShippingCarrierId', $data) && $data['supplierDefaultShippingCarrierId'] === null) {
             $object->setSupplierDefaultShippingCarrierId(null);
         }
         if (\array_key_exists('supplierInternalNote', $data) && $data['supplierInternalNote'] !== null) {
             $object->setSupplierInternalNote($data['supplierInternalNote']);
             unset($data['supplierInternalNote']);
-        } elseif (\array_key_exists('supplierInternalNote', $data) && $data['supplierInternalNote'] === null) {
+        }
+        elseif (\array_key_exists('supplierInternalNote', $data) && $data['supplierInternalNote'] === null) {
             $object->setSupplierInternalNote(null);
+        }
+        if (\array_key_exists('supplierMergeItemsForOcrInvoiceUpload', $data) && $data['supplierMergeItemsForOcrInvoiceUpload'] !== null) {
+            $object->setSupplierMergeItemsForOcrInvoiceUpload($data['supplierMergeItemsForOcrInvoiceUpload']);
+            unset($data['supplierMergeItemsForOcrInvoiceUpload']);
+        }
+        elseif (\array_key_exists('supplierMergeItemsForOcrInvoiceUpload', $data) && $data['supplierMergeItemsForOcrInvoiceUpload'] === null) {
+            $object->setSupplierMergeItemsForOcrInvoiceUpload(null);
         }
         if (\array_key_exists('supplierMinimumPurchaseOrderAmount', $data) && $data['supplierMinimumPurchaseOrderAmount'] !== null) {
             $object->setSupplierMinimumPurchaseOrderAmount($data['supplierMinimumPurchaseOrderAmount']);
             unset($data['supplierMinimumPurchaseOrderAmount']);
-        } elseif (\array_key_exists('supplierMinimumPurchaseOrderAmount', $data) && $data['supplierMinimumPurchaseOrderAmount'] === null) {
+        }
+        elseif (\array_key_exists('supplierMinimumPurchaseOrderAmount', $data) && $data['supplierMinimumPurchaseOrderAmount'] === null) {
             $object->setSupplierMinimumPurchaseOrderAmount(null);
         }
         if (\array_key_exists('supplierNonStandardTaxId', $data) && $data['supplierNonStandardTaxId'] !== null) {
             $object->setSupplierNonStandardTaxId($data['supplierNonStandardTaxId']);
             unset($data['supplierNonStandardTaxId']);
-        } elseif (\array_key_exists('supplierNonStandardTaxId', $data) && $data['supplierNonStandardTaxId'] === null) {
+        }
+        elseif (\array_key_exists('supplierNonStandardTaxId', $data) && $data['supplierNonStandardTaxId'] === null) {
             $object->setSupplierNonStandardTaxId(null);
         }
         if (\array_key_exists('supplierNumber', $data) && $data['supplierNumber'] !== null) {
             $object->setSupplierNumber($data['supplierNumber']);
             unset($data['supplierNumber']);
-        } elseif (\array_key_exists('supplierNumber', $data) && $data['supplierNumber'] === null) {
+        }
+        elseif (\array_key_exists('supplierNumber', $data) && $data['supplierNumber'] === null) {
             $object->setSupplierNumber(null);
         }
         if (\array_key_exists('supplierNumberOld', $data) && $data['supplierNumberOld'] !== null) {
             $object->setSupplierNumberOld($data['supplierNumberOld']);
             unset($data['supplierNumberOld']);
-        } elseif (\array_key_exists('supplierNumberOld', $data) && $data['supplierNumberOld'] === null) {
+        }
+        elseif (\array_key_exists('supplierNumberOld', $data) && $data['supplierNumberOld'] === null) {
             $object->setSupplierNumberOld(null);
         }
         if (\array_key_exists('supplierOrderBlock', $data) && $data['supplierOrderBlock'] !== null) {
             $object->setSupplierOrderBlock($data['supplierOrderBlock']);
             unset($data['supplierOrderBlock']);
-        } elseif (\array_key_exists('supplierOrderBlock', $data) && $data['supplierOrderBlock'] === null) {
+        }
+        elseif (\array_key_exists('supplierOrderBlock', $data) && $data['supplierOrderBlock'] === null) {
             $object->setSupplierOrderBlock(null);
         }
         if (\array_key_exists('supplierPaymentMethodId', $data) && $data['supplierPaymentMethodId'] !== null) {
             $object->setSupplierPaymentMethodId($data['supplierPaymentMethodId']);
             unset($data['supplierPaymentMethodId']);
-        } elseif (\array_key_exists('supplierPaymentMethodId', $data) && $data['supplierPaymentMethodId'] === null) {
-            $object->setSupplierPaymentMethodId(null);
         }
-        if (\array_key_exists('supplierPaymentMethodName', $data) && $data['supplierPaymentMethodName'] !== null) {
-            $object->setSupplierPaymentMethodName($data['supplierPaymentMethodName']);
-            unset($data['supplierPaymentMethodName']);
-        } elseif (\array_key_exists('supplierPaymentMethodName', $data) && $data['supplierPaymentMethodName'] === null) {
-            $object->setSupplierPaymentMethodName(null);
+        elseif (\array_key_exists('supplierPaymentMethodId', $data) && $data['supplierPaymentMethodId'] === null) {
+            $object->setSupplierPaymentMethodId(null);
         }
         if (\array_key_exists('supplierShipmentMethodId', $data) && $data['supplierShipmentMethodId'] !== null) {
             $object->setSupplierShipmentMethodId($data['supplierShipmentMethodId']);
             unset($data['supplierShipmentMethodId']);
-        } elseif (\array_key_exists('supplierShipmentMethodId', $data) && $data['supplierShipmentMethodId'] === null) {
-            $object->setSupplierShipmentMethodId(null);
         }
-        if (\array_key_exists('supplierShipmentMethodName', $data) && $data['supplierShipmentMethodName'] !== null) {
-            $object->setSupplierShipmentMethodName($data['supplierShipmentMethodName']);
-            unset($data['supplierShipmentMethodName']);
-        } elseif (\array_key_exists('supplierShipmentMethodName', $data) && $data['supplierShipmentMethodName'] === null) {
-            $object->setSupplierShipmentMethodName(null);
+        elseif (\array_key_exists('supplierShipmentMethodId', $data) && $data['supplierShipmentMethodId'] === null) {
+            $object->setSupplierShipmentMethodId(null);
         }
         if (\array_key_exists('supplierTermOfPaymentId', $data) && $data['supplierTermOfPaymentId'] !== null) {
             $object->setSupplierTermOfPaymentId($data['supplierTermOfPaymentId']);
             unset($data['supplierTermOfPaymentId']);
-        } elseif (\array_key_exists('supplierTermOfPaymentId', $data) && $data['supplierTermOfPaymentId'] === null) {
-            $object->setSupplierTermOfPaymentId(null);
         }
-        if (\array_key_exists('supplierTermOfPaymentName', $data) && $data['supplierTermOfPaymentName'] !== null) {
-            $object->setSupplierTermOfPaymentName($data['supplierTermOfPaymentName']);
-            unset($data['supplierTermOfPaymentName']);
-        } elseif (\array_key_exists('supplierTermOfPaymentName', $data) && $data['supplierTermOfPaymentName'] === null) {
-            $object->setSupplierTermOfPaymentName(null);
+        elseif (\array_key_exists('supplierTermOfPaymentId', $data) && $data['supplierTermOfPaymentId'] === null) {
+            $object->setSupplierTermOfPaymentId(null);
         }
         if (\array_key_exists('taxId', $data) && $data['taxId'] !== null) {
             $object->setTaxId($data['taxId']);
             unset($data['taxId']);
-        } elseif (\array_key_exists('taxId', $data) && $data['taxId'] === null) {
+        }
+        elseif (\array_key_exists('taxId', $data) && $data['taxId'] === null) {
             $object->setTaxId(null);
         }
         if (\array_key_exists('topics', $data) && $data['topics'] !== null) {
             $values_10 = [];
             foreach ($data['topics'] as $value_10) {
-                $values_10[] = $this->denormalizer->denormalize($value_10, \Webhubworks\WeclappApiCore\Model\Entity::class, 'json', $context);
+                $values_10[] = $this->denormalizer->denormalize($value_10, \Webhubworks\WeclappApiCore\Model\OnlyId::class, 'json', $context);
             }
             $object->setTopics($values_10);
             unset($data['topics']);
-        } elseif (\array_key_exists('topics', $data) && $data['topics'] === null) {
+        }
+        elseif (\array_key_exists('topics', $data) && $data['topics'] === null) {
             $object->setTopics(null);
         }
         if (\array_key_exists('vatIdentificationNumber', $data) && $data['vatIdentificationNumber'] !== null) {
             $object->setVatIdentificationNumber($data['vatIdentificationNumber']);
             unset($data['vatIdentificationNumber']);
-        } elseif (\array_key_exists('vatIdentificationNumber', $data) && $data['vatIdentificationNumber'] === null) {
+        }
+        elseif (\array_key_exists('vatIdentificationNumber', $data) && $data['vatIdentificationNumber'] === null) {
             $object->setVatIdentificationNumber(null);
         }
         if (\array_key_exists('xRechnungLeitwegId', $data) && $data['xRechnungLeitwegId'] !== null) {
             $object->setXRechnungLeitwegId($data['xRechnungLeitwegId']);
             unset($data['xRechnungLeitwegId']);
-        } elseif (\array_key_exists('xRechnungLeitwegId', $data) && $data['xRechnungLeitwegId'] === null) {
+        }
+        elseif (\array_key_exists('xRechnungLeitwegId', $data) && $data['xRechnungLeitwegId'] === null) {
             $object->setXRechnungLeitwegId(null);
         }
         foreach ($data as $key => $value_11) {
@@ -1080,516 +1106,436 @@ class PartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterfa
                 $object[$key] = $value_11;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
-            $dataArray['version'] = $data->getVersion();
-        }
-        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
+        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('addresses') && $data->getAddresses() !== null) {
+        if ($data->isInitialized('addresses') && null !== $data->getAddresses()) {
             $values_1 = [];
             foreach ($data->getAddresses() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['addresses'] = $values_1;
         }
-        if ($data->isInitialized('birthDate') && $data->getBirthDate() !== null) {
+        if ($data->isInitialized('birthDate') && null !== $data->getBirthDate()) {
             $dataArray['birthDate'] = $data->getBirthDate();
         }
-        if ($data->isInitialized('company') && $data->getCompany() !== null) {
+        if ($data->isInitialized('company') && null !== $data->getCompany()) {
             $dataArray['company'] = $data->getCompany();
         }
-        if ($data->isInitialized('company2') && $data->getCompany2() !== null) {
+        if ($data->isInitialized('company2') && null !== $data->getCompany2()) {
             $dataArray['company2'] = $data->getCompany2();
         }
-        if ($data->isInitialized('deliveryAddressId') && $data->getDeliveryAddressId() !== null) {
+        if ($data->isInitialized('deliveryAddressId') && null !== $data->getDeliveryAddressId()) {
             $dataArray['deliveryAddressId'] = $data->getDeliveryAddressId();
         }
-        if ($data->isInitialized('email') && $data->getEmail() !== null) {
+        if ($data->isInitialized('email') && null !== $data->getEmail()) {
             $dataArray['email'] = $data->getEmail();
         }
-        if ($data->isInitialized('fax') && $data->getFax() !== null) {
+        if ($data->isInitialized('fax') && null !== $data->getFax()) {
             $dataArray['fax'] = $data->getFax();
         }
-        if ($data->isInitialized('firstName') && $data->getFirstName() !== null) {
+        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
             $dataArray['firstName'] = $data->getFirstName();
         }
-        if ($data->isInitialized('invoiceAddressId') && $data->getInvoiceAddressId() !== null) {
+        if ($data->isInitialized('invoiceAddressId') && null !== $data->getInvoiceAddressId()) {
             $dataArray['invoiceAddressId'] = $data->getInvoiceAddressId();
         }
-        if ($data->isInitialized('lastName') && $data->getLastName() !== null) {
+        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
             $dataArray['lastName'] = $data->getLastName();
         }
-        if ($data->isInitialized('middleName') && $data->getMiddleName() !== null) {
+        if ($data->isInitialized('middleName') && null !== $data->getMiddleName()) {
             $dataArray['middleName'] = $data->getMiddleName();
         }
-        if ($data->isInitialized('mobilePhone1') && $data->getMobilePhone1() !== null) {
+        if ($data->isInitialized('mobilePhone1') && null !== $data->getMobilePhone1()) {
             $dataArray['mobilePhone1'] = $data->getMobilePhone1();
         }
-        if ($data->isInitialized('onlineAccounts') && $data->getOnlineAccounts() !== null) {
+        if ($data->isInitialized('onlineAccounts') && null !== $data->getOnlineAccounts()) {
             $values_2 = [];
             foreach ($data->getOnlineAccounts() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['onlineAccounts'] = $values_2;
         }
-        if ($data->isInitialized('partyType') && $data->getPartyType() !== null) {
+        if ($data->isInitialized('partyType') && null !== $data->getPartyType()) {
             $dataArray['partyType'] = $data->getPartyType();
         }
-        if ($data->isInitialized('personCompany') && $data->getPersonCompany() !== null) {
+        if ($data->isInitialized('personCompany') && null !== $data->getPersonCompany()) {
             $dataArray['personCompany'] = $data->getPersonCompany();
         }
-        if ($data->isInitialized('personDepartmentId') && $data->getPersonDepartmentId() !== null) {
+        if ($data->isInitialized('personDepartmentId') && null !== $data->getPersonDepartmentId()) {
             $dataArray['personDepartmentId'] = $data->getPersonDepartmentId();
         }
-        if ($data->isInitialized('personRoleId') && $data->getPersonRoleId() !== null) {
+        if ($data->isInitialized('personRoleId') && null !== $data->getPersonRoleId()) {
             $dataArray['personRoleId'] = $data->getPersonRoleId();
         }
-        if ($data->isInitialized('phone') && $data->getPhone() !== null) {
+        if ($data->isInitialized('phone') && null !== $data->getPhone()) {
             $dataArray['phone'] = $data->getPhone();
         }
-        if ($data->isInitialized('primaryAddressId') && $data->getPrimaryAddressId() !== null) {
+        if ($data->isInitialized('primaryAddressId') && null !== $data->getPrimaryAddressId()) {
             $dataArray['primaryAddressId'] = $data->getPrimaryAddressId();
         }
-        if ($data->isInitialized('salutation') && $data->getSalutation() !== null) {
+        if ($data->isInitialized('salutation') && null !== $data->getSalutation()) {
             $dataArray['salutation'] = $data->getSalutation();
         }
-        if ($data->isInitialized('tags') && $data->getTags() !== null) {
+        if ($data->isInitialized('tags') && null !== $data->getTags()) {
             $values_3 = [];
             foreach ($data->getTags() as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['tags'] = $values_3;
         }
-        if ($data->isInitialized('title') && $data->getTitle() !== null) {
-            $dataArray['title'] = $data->getTitle();
-        }
-        if ($data->isInitialized('titleId') && $data->getTitleId() !== null) {
+        if ($data->isInitialized('titleId') && null !== $data->getTitleId()) {
             $dataArray['titleId'] = $data->getTitleId();
         }
-        if ($data->isInitialized('website') && $data->getWebsite() !== null) {
+        if ($data->isInitialized('website') && null !== $data->getWebsite()) {
             $dataArray['website'] = $data->getWebsite();
         }
-        if ($data->isInitialized('allowPurchaseOrderCreation') && $data->getAllowPurchaseOrderCreation() !== null) {
-            $dataArray['allowPurchaseOrderCreation'] = $data->getAllowPurchaseOrderCreation();
-        }
-        if ($data->isInitialized('bankAccounts') && $data->getBankAccounts() !== null) {
+        if ($data->isInitialized('bankAccounts') && null !== $data->getBankAccounts()) {
             $values_4 = [];
             foreach ($data->getBankAccounts() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $dataArray['bankAccounts'] = $values_4;
         }
-        if ($data->isInitialized('commercialLanguageId') && $data->getCommercialLanguageId() !== null) {
+        if ($data->isInitialized('commercialLanguageId') && null !== $data->getCommercialLanguageId()) {
             $dataArray['commercialLanguageId'] = $data->getCommercialLanguageId();
         }
-        if ($data->isInitialized('commissionBlock') && $data->getCommissionBlock() !== null) {
+        if ($data->isInitialized('commissionBlock') && null !== $data->getCommissionBlock()) {
             $dataArray['commissionBlock'] = $data->getCommissionBlock();
         }
-        if ($data->isInitialized('commissionSalesPartners') && $data->getCommissionSalesPartners() !== null) {
+        if ($data->isInitialized('commissionSalesPartners') && null !== $data->getCommissionSalesPartners()) {
             $values_5 = [];
             foreach ($data->getCommissionSalesPartners() as $value_5) {
                 $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
             }
             $dataArray['commissionSalesPartners'] = $values_5;
         }
-        if ($data->isInitialized('companySizeId') && $data->getCompanySizeId() !== null) {
+        if ($data->isInitialized('companySizeId') && null !== $data->getCompanySizeId()) {
             $dataArray['companySizeId'] = $data->getCompanySizeId();
         }
-        if ($data->isInitialized('companySizeName') && $data->getCompanySizeName() !== null) {
-            $dataArray['companySizeName'] = $data->getCompanySizeName();
-        }
-        if ($data->isInitialized('competitor') && $data->getCompetitor() !== null) {
+        if ($data->isInitialized('competitor') && null !== $data->getCompetitor()) {
             $dataArray['competitor'] = $data->getCompetitor();
         }
-        if ($data->isInitialized('contacts') && $data->getContacts() !== null) {
+        if ($data->isInitialized('contacts') && null !== $data->getContacts()) {
             $values_6 = [];
             foreach ($data->getContacts() as $value_6) {
                 $values_6[] = $this->normalizer->normalize($value_6, 'json', $context);
             }
             $dataArray['contacts'] = $values_6;
         }
-        if ($data->isInitialized('currencyId') && $data->getCurrencyId() !== null) {
+        if ($data->isInitialized('currencyId') && null !== $data->getCurrencyId()) {
             $dataArray['currencyId'] = $data->getCurrencyId();
         }
-        if ($data->isInitialized('currencyName') && $data->getCurrencyName() !== null) {
-            $dataArray['currencyName'] = $data->getCurrencyName();
-        }
-        if ($data->isInitialized('customer') && $data->getCustomer() !== null) {
+        if ($data->isInitialized('customer') && null !== $data->getCustomer()) {
             $dataArray['customer'] = $data->getCustomer();
         }
-        if ($data->isInitialized('customerAllowDropshippingOrderCreation') && $data->getCustomerAllowDropshippingOrderCreation() !== null) {
+        if ($data->isInitialized('customerAllowDropshippingOrderCreation') && null !== $data->getCustomerAllowDropshippingOrderCreation()) {
             $dataArray['customerAllowDropshippingOrderCreation'] = $data->getCustomerAllowDropshippingOrderCreation();
         }
-        if ($data->isInitialized('customerAmountInsured') && $data->getCustomerAmountInsured() !== null) {
+        if ($data->isInitialized('customerAmountInsured') && null !== $data->getCustomerAmountInsured()) {
             $dataArray['customerAmountInsured'] = $data->getCustomerAmountInsured();
         }
-        if ($data->isInitialized('customerAnnualRevenue') && $data->getCustomerAnnualRevenue() !== null) {
+        if ($data->isInitialized('customerAnnualRevenue') && null !== $data->getCustomerAnnualRevenue()) {
             $dataArray['customerAnnualRevenue'] = $data->getCustomerAnnualRevenue();
         }
-        if ($data->isInitialized('customerBlockNotice') && $data->getCustomerBlockNotice() !== null) {
+        if ($data->isInitialized('customerBlockNotice') && null !== $data->getCustomerBlockNotice()) {
             $dataArray['customerBlockNotice'] = $data->getCustomerBlockNotice();
         }
-        if ($data->isInitialized('customerBlocked') && $data->getCustomerBlocked() !== null) {
+        if ($data->isInitialized('customerBlocked') && null !== $data->getCustomerBlocked()) {
             $dataArray['customerBlocked'] = $data->getCustomerBlocked();
         }
-        if ($data->isInitialized('customerBusinessType') && $data->getCustomerBusinessType() !== null) {
+        if ($data->isInitialized('customerBusinessType') && null !== $data->getCustomerBusinessType()) {
             $dataArray['customerBusinessType'] = $data->getCustomerBusinessType();
         }
-        if ($data->isInitialized('customerCategoryId') && $data->getCustomerCategoryId() !== null) {
+        if ($data->isInitialized('customerCategoryId') && null !== $data->getCustomerCategoryId()) {
             $dataArray['customerCategoryId'] = $data->getCustomerCategoryId();
         }
-        if ($data->isInitialized('customerCategoryName') && $data->getCustomerCategoryName() !== null) {
-            $dataArray['customerCategoryName'] = $data->getCustomerCategoryName();
-        }
-        if ($data->isInitialized('customerCreditLimit') && $data->getCustomerCreditLimit() !== null) {
+        if ($data->isInitialized('customerCreditLimit') && null !== $data->getCustomerCreditLimit()) {
             $dataArray['customerCreditLimit'] = $data->getCustomerCreditLimit();
         }
-        if ($data->isInitialized('customerCurrentSalesStageId') && $data->getCustomerCurrentSalesStageId() !== null) {
+        if ($data->isInitialized('customerCurrentSalesStageId') && null !== $data->getCustomerCurrentSalesStageId()) {
             $dataArray['customerCurrentSalesStageId'] = $data->getCustomerCurrentSalesStageId();
         }
-        if ($data->isInitialized('customerCurrentSalesStageName') && $data->getCustomerCurrentSalesStageName() !== null) {
-            $dataArray['customerCurrentSalesStageName'] = $data->getCustomerCurrentSalesStageName();
-        }
-        if ($data->isInitialized('customerDebtorAccountId') && $data->getCustomerDebtorAccountId() !== null) {
+        if ($data->isInitialized('customerDebtorAccountId') && null !== $data->getCustomerDebtorAccountId()) {
             $dataArray['customerDebtorAccountId'] = $data->getCustomerDebtorAccountId();
         }
-        if ($data->isInitialized('customerDebtorAccountNumber') && $data->getCustomerDebtorAccountNumber() !== null) {
-            $dataArray['customerDebtorAccountNumber'] = $data->getCustomerDebtorAccountNumber();
-        }
-        if ($data->isInitialized('customerDebtorAccountingCodeId') && $data->getCustomerDebtorAccountingCodeId() !== null) {
+        if ($data->isInitialized('customerDebtorAccountingCodeId') && null !== $data->getCustomerDebtorAccountingCodeId()) {
             $dataArray['customerDebtorAccountingCodeId'] = $data->getCustomerDebtorAccountingCodeId();
         }
-        if ($data->isInitialized('customerDefaultHeaderDiscount') && $data->getCustomerDefaultHeaderDiscount() !== null) {
+        if ($data->isInitialized('customerDefaultHeaderDiscount') && null !== $data->getCustomerDefaultHeaderDiscount()) {
             $dataArray['customerDefaultHeaderDiscount'] = $data->getCustomerDefaultHeaderDiscount();
         }
-        if ($data->isInitialized('customerDefaultHeaderSurcharge') && $data->getCustomerDefaultHeaderSurcharge() !== null) {
+        if ($data->isInitialized('customerDefaultHeaderSurcharge') && null !== $data->getCustomerDefaultHeaderSurcharge()) {
             $dataArray['customerDefaultHeaderSurcharge'] = $data->getCustomerDefaultHeaderSurcharge();
         }
-        if ($data->isInitialized('customerDefaultShippingCarrierId') && $data->getCustomerDefaultShippingCarrierId() !== null) {
+        if ($data->isInitialized('customerDefaultShippingCarrierId') && null !== $data->getCustomerDefaultShippingCarrierId()) {
             $dataArray['customerDefaultShippingCarrierId'] = $data->getCustomerDefaultShippingCarrierId();
         }
-        if ($data->isInitialized('customerDeliveryBlock') && $data->getCustomerDeliveryBlock() !== null) {
+        if ($data->isInitialized('customerDeliveryBlock') && null !== $data->getCustomerDeliveryBlock()) {
             $dataArray['customerDeliveryBlock'] = $data->getCustomerDeliveryBlock();
         }
-        if ($data->isInitialized('customerInsolvent') && $data->getCustomerInsolvent() !== null) {
+        if ($data->isInitialized('customerInsolvent') && null !== $data->getCustomerInsolvent()) {
             $dataArray['customerInsolvent'] = $data->getCustomerInsolvent();
         }
-        if ($data->isInitialized('customerInsured') && $data->getCustomerInsured() !== null) {
+        if ($data->isInitialized('customerInsured') && null !== $data->getCustomerInsured()) {
             $dataArray['customerInsured'] = $data->getCustomerInsured();
         }
-        if ($data->isInitialized('customerInternalNote') && $data->getCustomerInternalNote() !== null) {
+        if ($data->isInitialized('customerInternalNote') && null !== $data->getCustomerInternalNote()) {
             $dataArray['customerInternalNote'] = $data->getCustomerInternalNote();
         }
-        if ($data->isInitialized('customerLossDescription') && $data->getCustomerLossDescription() !== null) {
+        if ($data->isInitialized('customerLossDescription') && null !== $data->getCustomerLossDescription()) {
             $dataArray['customerLossDescription'] = $data->getCustomerLossDescription();
         }
-        if ($data->isInitialized('customerLossReasonId') && $data->getCustomerLossReasonId() !== null) {
+        if ($data->isInitialized('customerLossReasonId') && null !== $data->getCustomerLossReasonId()) {
             $dataArray['customerLossReasonId'] = $data->getCustomerLossReasonId();
         }
-        if ($data->isInitialized('customerLossReasonName') && $data->getCustomerLossReasonName() !== null) {
-            $dataArray['customerLossReasonName'] = $data->getCustomerLossReasonName();
-        }
-        if ($data->isInitialized('customerNonStandardTaxId') && $data->getCustomerNonStandardTaxId() !== null) {
+        if ($data->isInitialized('customerNonStandardTaxId') && null !== $data->getCustomerNonStandardTaxId()) {
             $dataArray['customerNonStandardTaxId'] = $data->getCustomerNonStandardTaxId();
         }
-        if ($data->isInitialized('customerNumber') && $data->getCustomerNumber() !== null) {
+        if ($data->isInitialized('customerNumber') && null !== $data->getCustomerNumber()) {
             $dataArray['customerNumber'] = $data->getCustomerNumber();
         }
-        if ($data->isInitialized('customerNumberOld') && $data->getCustomerNumberOld() !== null) {
+        if ($data->isInitialized('customerNumberOld') && null !== $data->getCustomerNumberOld()) {
             $dataArray['customerNumberOld'] = $data->getCustomerNumberOld();
         }
-        if ($data->isInitialized('customerPaymentMethodId') && $data->getCustomerPaymentMethodId() !== null) {
+        if ($data->isInitialized('customerPaymentMethodId') && null !== $data->getCustomerPaymentMethodId()) {
             $dataArray['customerPaymentMethodId'] = $data->getCustomerPaymentMethodId();
         }
-        if ($data->isInitialized('customerPaymentMethodName') && $data->getCustomerPaymentMethodName() !== null) {
-            $dataArray['customerPaymentMethodName'] = $data->getCustomerPaymentMethodName();
-        }
-        if ($data->isInitialized('customerSalesChannel') && $data->getCustomerSalesChannel() !== null) {
+        if ($data->isInitialized('customerSalesChannel') && null !== $data->getCustomerSalesChannel()) {
             $dataArray['customerSalesChannel'] = $data->getCustomerSalesChannel();
         }
-        if ($data->isInitialized('customerSalesOrderPaymentType') && $data->getCustomerSalesOrderPaymentType() !== null) {
+        if ($data->isInitialized('customerSalesOrderPaymentType') && null !== $data->getCustomerSalesOrderPaymentType()) {
             $dataArray['customerSalesOrderPaymentType'] = $data->getCustomerSalesOrderPaymentType();
         }
-        if ($data->isInitialized('customerSalesProbability') && $data->getCustomerSalesProbability() !== null) {
+        if ($data->isInitialized('customerSalesProbability') && null !== $data->getCustomerSalesProbability()) {
             $dataArray['customerSalesProbability'] = $data->getCustomerSalesProbability();
         }
-        if ($data->isInitialized('customerSalesStageHistory') && $data->getCustomerSalesStageHistory() !== null) {
-            $values_7 = [];
-            foreach ($data->getCustomerSalesStageHistory() as $value_7) {
-                $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
-            }
-            $dataArray['customerSalesStageHistory'] = $values_7;
-        }
-        if ($data->isInitialized('customerSatisfaction') && $data->getCustomerSatisfaction() !== null) {
+        if ($data->isInitialized('customerSatisfaction') && null !== $data->getCustomerSatisfaction()) {
             $dataArray['customerSatisfaction'] = $data->getCustomerSatisfaction();
         }
-        if ($data->isInitialized('customerShipmentMethodId') && $data->getCustomerShipmentMethodId() !== null) {
+        if ($data->isInitialized('customerShipmentMethodId') && null !== $data->getCustomerShipmentMethodId()) {
             $dataArray['customerShipmentMethodId'] = $data->getCustomerShipmentMethodId();
         }
-        if ($data->isInitialized('customerShipmentMethodName') && $data->getCustomerShipmentMethodName() !== null) {
-            $dataArray['customerShipmentMethodName'] = $data->getCustomerShipmentMethodName();
-        }
-        if ($data->isInitialized('customerSupplierNumber') && $data->getCustomerSupplierNumber() !== null) {
+        if ($data->isInitialized('customerSupplierNumber') && null !== $data->getCustomerSupplierNumber()) {
             $dataArray['customerSupplierNumber'] = $data->getCustomerSupplierNumber();
         }
-        if ($data->isInitialized('customerTermOfPaymentId') && $data->getCustomerTermOfPaymentId() !== null) {
+        if ($data->isInitialized('customerTermOfPaymentId') && null !== $data->getCustomerTermOfPaymentId()) {
             $dataArray['customerTermOfPaymentId'] = $data->getCustomerTermOfPaymentId();
         }
-        if ($data->isInitialized('customerTermOfPaymentName') && $data->getCustomerTermOfPaymentName() !== null) {
-            $dataArray['customerTermOfPaymentName'] = $data->getCustomerTermOfPaymentName();
-        }
-        if ($data->isInitialized('customerUseCustomsTariffNumber') && $data->getCustomerUseCustomsTariffNumber() !== null) {
+        if ($data->isInitialized('customerUseCustomsTariffNumber') && null !== $data->getCustomerUseCustomsTariffNumber()) {
             $dataArray['customerUseCustomsTariffNumber'] = $data->getCustomerUseCustomsTariffNumber();
         }
-        if ($data->isInitialized('deliveryEmailAddressesId') && $data->getDeliveryEmailAddressesId() !== null) {
+        if ($data->isInitialized('deliveryEmailAddressesId') && null !== $data->getDeliveryEmailAddressesId()) {
             $dataArray['deliveryEmailAddressesId'] = $data->getDeliveryEmailAddressesId();
         }
-        if ($data->isInitialized('description') && $data->getDescription() !== null) {
+        if ($data->isInitialized('description') && null !== $data->getDescription()) {
             $dataArray['description'] = $data->getDescription();
         }
-        if ($data->isInitialized('dunningAddressId') && $data->getDunningAddressId() !== null) {
+        if ($data->isInitialized('dunningAddressId') && null !== $data->getDunningAddressId()) {
             $dataArray['dunningAddressId'] = $data->getDunningAddressId();
         }
-        if ($data->isInitialized('dunningEmailAddressesId') && $data->getDunningEmailAddressesId() !== null) {
+        if ($data->isInitialized('dunningEmailAddressesId') && null !== $data->getDunningEmailAddressesId()) {
             $dataArray['dunningEmailAddressesId'] = $data->getDunningEmailAddressesId();
         }
-        if ($data->isInitialized('enableDropshippingInNewSupplySources') && $data->getEnableDropshippingInNewSupplySources() !== null) {
+        if ($data->isInitialized('enableDropshippingInNewSupplySources') && null !== $data->getEnableDropshippingInNewSupplySources()) {
             $dataArray['enableDropshippingInNewSupplySources'] = $data->getEnableDropshippingInNewSupplySources();
         }
-        if ($data->isInitialized('eoriNumber') && $data->getEoriNumber() !== null) {
+        if ($data->isInitialized('eoriNumber') && null !== $data->getEoriNumber()) {
             $dataArray['eoriNumber'] = $data->getEoriNumber();
         }
-        if ($data->isInitialized('factoring') && $data->getFactoring() !== null) {
+        if ($data->isInitialized('factoring') && null !== $data->getFactoring()) {
             $dataArray['factoring'] = $data->getFactoring();
         }
-        if ($data->isInitialized('fixPhone2') && $data->getFixPhone2() !== null) {
+        if ($data->isInitialized('fixPhone2') && null !== $data->getFixPhone2()) {
             $dataArray['fixPhone2'] = $data->getFixPhone2();
         }
-        if ($data->isInitialized('fixedResponsibleUser') && $data->getFixedResponsibleUser() !== null) {
+        if ($data->isInitialized('fixedResponsibleUser') && null !== $data->getFixedResponsibleUser()) {
             $dataArray['fixedResponsibleUser'] = $data->getFixedResponsibleUser();
         }
-        if ($data->isInitialized('formerSalesPartner') && $data->getFormerSalesPartner() !== null) {
+        if ($data->isInitialized('formerSalesPartner') && null !== $data->getFormerSalesPartner()) {
             $dataArray['formerSalesPartner'] = $data->getFormerSalesPartner();
         }
-        if ($data->isInitialized('habitualExporter') && $data->getHabitualExporter() !== null) {
+        if ($data->isInitialized('habitualExporter') && null !== $data->getHabitualExporter()) {
             $dataArray['habitualExporter'] = $data->getHabitualExporter();
         }
-        if ($data->isInitialized('imageId') && $data->getImageId() !== null) {
+        if ($data->isInitialized('imageId') && null !== $data->getImageId()) {
             $dataArray['imageId'] = $data->getImageId();
         }
-        if ($data->isInitialized('invoiceBlock') && $data->getInvoiceBlock() !== null) {
+        if ($data->isInitialized('invoiceBlock') && null !== $data->getInvoiceBlock()) {
             $dataArray['invoiceBlock'] = $data->getInvoiceBlock();
         }
-        if ($data->isInitialized('invoiceRecipientId') && $data->getInvoiceRecipientId() !== null) {
+        if ($data->isInitialized('invoiceRecipientId') && null !== $data->getInvoiceRecipientId()) {
             $dataArray['invoiceRecipientId'] = $data->getInvoiceRecipientId();
         }
-        if ($data->isInitialized('leadRatingId') && $data->getLeadRatingId() !== null) {
+        if ($data->isInitialized('leadRatingId') && null !== $data->getLeadRatingId()) {
             $dataArray['leadRatingId'] = $data->getLeadRatingId();
         }
-        if ($data->isInitialized('leadRatingName') && $data->getLeadRatingName() !== null) {
-            $dataArray['leadRatingName'] = $data->getLeadRatingName();
-        }
-        if ($data->isInitialized('leadSourceId') && $data->getLeadSourceId() !== null) {
+        if ($data->isInitialized('leadSourceId') && null !== $data->getLeadSourceId()) {
             $dataArray['leadSourceId'] = $data->getLeadSourceId();
         }
-        if ($data->isInitialized('leadSourceName') && $data->getLeadSourceName() !== null) {
-            $dataArray['leadSourceName'] = $data->getLeadSourceName();
-        }
-        if ($data->isInitialized('leadStatus') && $data->getLeadStatus() !== null) {
+        if ($data->isInitialized('leadStatus') && null !== $data->getLeadStatus()) {
             $dataArray['leadStatus'] = $data->getLeadStatus();
         }
-        if ($data->isInitialized('legalFormId') && $data->getLegalFormId() !== null) {
+        if ($data->isInitialized('legalFormId') && null !== $data->getLegalFormId()) {
             $dataArray['legalFormId'] = $data->getLegalFormId();
         }
-        if ($data->isInitialized('legalFormName') && $data->getLegalFormName() !== null) {
-            $dataArray['legalFormName'] = $data->getLegalFormName();
-        }
-        if ($data->isInitialized('mobilePhone2') && $data->getMobilePhone2() !== null) {
+        if ($data->isInitialized('mobilePhone2') && null !== $data->getMobilePhone2()) {
             $dataArray['mobilePhone2'] = $data->getMobilePhone2();
         }
-        if ($data->isInitialized('optInEmail') && $data->getOptInEmail() !== null) {
+        if ($data->isInitialized('optInEmail') && null !== $data->getOptInEmail()) {
             $dataArray['optInEmail'] = $data->getOptInEmail();
         }
-        if ($data->isInitialized('optInLetter') && $data->getOptInLetter() !== null) {
+        if ($data->isInitialized('optInLetter') && null !== $data->getOptInLetter()) {
             $dataArray['optInLetter'] = $data->getOptInLetter();
         }
-        if ($data->isInitialized('optInPhone') && $data->getOptInPhone() !== null) {
+        if ($data->isInitialized('optInPhone') && null !== $data->getOptInPhone()) {
             $dataArray['optInPhone'] = $data->getOptInPhone();
         }
-        if ($data->isInitialized('optInSms') && $data->getOptInSms() !== null) {
+        if ($data->isInitialized('optInSms') && null !== $data->getOptInSms()) {
             $dataArray['optInSms'] = $data->getOptInSms();
         }
-        if ($data->isInitialized('parentPartyId') && $data->getParentPartyId() !== null) {
+        if ($data->isInitialized('parentPartyId') && null !== $data->getParentPartyId()) {
             $dataArray['parentPartyId'] = $data->getParentPartyId();
         }
-        if ($data->isInitialized('partyEmailAddresses') && $data->getPartyEmailAddresses() !== null) {
+        if ($data->isInitialized('partyEmailAddresses') && null !== $data->getPartyEmailAddresses()) {
+            $values_7 = [];
+            foreach ($data->getPartyEmailAddresses() as $value_7) {
+                $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
+            }
+            $dataArray['partyEmailAddresses'] = $values_7;
+        }
+        if ($data->isInitialized('partyHabitualExporterLettersOfIntent') && null !== $data->getPartyHabitualExporterLettersOfIntent()) {
             $values_8 = [];
-            foreach ($data->getPartyEmailAddresses() as $value_8) {
+            foreach ($data->getPartyHabitualExporterLettersOfIntent() as $value_8) {
                 $values_8[] = $this->normalizer->normalize($value_8, 'json', $context);
             }
-            $dataArray['partyEmailAddresses'] = $values_8;
+            $dataArray['partyHabitualExporterLettersOfIntent'] = $values_8;
         }
-        if ($data->isInitialized('partyHabitualExporterLettersOfIntent') && $data->getPartyHabitualExporterLettersOfIntent() !== null) {
-            $values_9 = [];
-            foreach ($data->getPartyHabitualExporterLettersOfIntent() as $value_9) {
-                $values_9[] = $this->normalizer->normalize($value_9, 'json', $context);
-            }
-            $dataArray['partyHabitualExporterLettersOfIntent'] = $values_9;
-        }
-        if ($data->isInitialized('phoneHome') && $data->getPhoneHome() !== null) {
+        if ($data->isInitialized('phoneHome') && null !== $data->getPhoneHome()) {
             $dataArray['phoneHome'] = $data->getPhoneHome();
         }
-        if ($data->isInitialized('primaryContactId') && $data->getPrimaryContactId() !== null) {
+        if ($data->isInitialized('primaryContactId') && null !== $data->getPrimaryContactId()) {
             $dataArray['primaryContactId'] = $data->getPrimaryContactId();
         }
-        if ($data->isInitialized('publicPageExpirationDate') && $data->getPublicPageExpirationDate() !== null) {
-            $dataArray['publicPageExpirationDate'] = $data->getPublicPageExpirationDate();
-        }
-        if ($data->isInitialized('publicPageUuid') && $data->getPublicPageUuid() !== null) {
-            $dataArray['publicPageUuid'] = $data->getPublicPageUuid();
-        }
-        if ($data->isInitialized('purchaseEmailAddressesId') && $data->getPurchaseEmailAddressesId() !== null) {
+        if ($data->isInitialized('purchaseEmailAddressesId') && null !== $data->getPurchaseEmailAddressesId()) {
             $dataArray['purchaseEmailAddressesId'] = $data->getPurchaseEmailAddressesId();
         }
-        if ($data->isInitialized('purchaseViaPlafond') && $data->getPurchaseViaPlafond() !== null) {
+        if ($data->isInitialized('purchaseViaPlafond') && null !== $data->getPurchaseViaPlafond()) {
             $dataArray['purchaseViaPlafond'] = $data->getPurchaseViaPlafond();
         }
-        if ($data->isInitialized('quotationEmailAddressesId') && $data->getQuotationEmailAddressesId() !== null) {
+        if ($data->isInitialized('quotationEmailAddressesId') && null !== $data->getQuotationEmailAddressesId()) {
             $dataArray['quotationEmailAddressesId'] = $data->getQuotationEmailAddressesId();
         }
-        if ($data->isInitialized('ratingId') && $data->getRatingId() !== null) {
+        if ($data->isInitialized('ratingId') && null !== $data->getRatingId()) {
             $dataArray['ratingId'] = $data->getRatingId();
         }
-        if ($data->isInitialized('ratingName') && $data->getRatingName() !== null) {
-            $dataArray['ratingName'] = $data->getRatingName();
-        }
-        if ($data->isInitialized('referenceNumber') && $data->getReferenceNumber() !== null) {
+        if ($data->isInitialized('referenceNumber') && null !== $data->getReferenceNumber()) {
             $dataArray['referenceNumber'] = $data->getReferenceNumber();
         }
-        if ($data->isInitialized('regionId') && $data->getRegionId() !== null) {
-            $dataArray['regionId'] = $data->getRegionId();
-        }
-        if ($data->isInitialized('responsibleUserId') && $data->getResponsibleUserId() !== null) {
+        if ($data->isInitialized('responsibleUserId') && null !== $data->getResponsibleUserId()) {
             $dataArray['responsibleUserId'] = $data->getResponsibleUserId();
         }
-        if ($data->isInitialized('responsibleUserUsername') && $data->getResponsibleUserUsername() !== null) {
-            $dataArray['responsibleUserUsername'] = $data->getResponsibleUserUsername();
-        }
-        if ($data->isInitialized('salesInvoiceEmailAddressesId') && $data->getSalesInvoiceEmailAddressesId() !== null) {
+        if ($data->isInitialized('salesInvoiceEmailAddressesId') && null !== $data->getSalesInvoiceEmailAddressesId()) {
             $dataArray['salesInvoiceEmailAddressesId'] = $data->getSalesInvoiceEmailAddressesId();
         }
-        if ($data->isInitialized('salesOrderEmailAddressesId') && $data->getSalesOrderEmailAddressesId() !== null) {
+        if ($data->isInitialized('salesOrderEmailAddressesId') && null !== $data->getSalesOrderEmailAddressesId()) {
             $dataArray['salesOrderEmailAddressesId'] = $data->getSalesOrderEmailAddressesId();
         }
-        if ($data->isInitialized('salesPartner') && $data->getSalesPartner() !== null) {
+        if ($data->isInitialized('salesPartner') && null !== $data->getSalesPartner()) {
             $dataArray['salesPartner'] = $data->getSalesPartner();
         }
-        if ($data->isInitialized('salesPartnerDefaultCommissionFix') && $data->getSalesPartnerDefaultCommissionFix() !== null) {
+        if ($data->isInitialized('salesPartnerDefaultCommissionFix') && null !== $data->getSalesPartnerDefaultCommissionFix()) {
             $dataArray['salesPartnerDefaultCommissionFix'] = $data->getSalesPartnerDefaultCommissionFix();
         }
-        if ($data->isInitialized('salesPartnerDefaultCommissionPercentage') && $data->getSalesPartnerDefaultCommissionPercentage() !== null) {
+        if ($data->isInitialized('salesPartnerDefaultCommissionPercentage') && null !== $data->getSalesPartnerDefaultCommissionPercentage()) {
             $dataArray['salesPartnerDefaultCommissionPercentage'] = $data->getSalesPartnerDefaultCommissionPercentage();
         }
-        if ($data->isInitialized('salesPartnerDefaultCommissionType') && $data->getSalesPartnerDefaultCommissionType() !== null) {
+        if ($data->isInitialized('salesPartnerDefaultCommissionType') && null !== $data->getSalesPartnerDefaultCommissionType()) {
             $dataArray['salesPartnerDefaultCommissionType'] = $data->getSalesPartnerDefaultCommissionType();
         }
-        if ($data->isInitialized('sectorId') && $data->getSectorId() !== null) {
+        if ($data->isInitialized('sectorId') && null !== $data->getSectorId()) {
             $dataArray['sectorId'] = $data->getSectorId();
         }
-        if ($data->isInitialized('sectorName') && $data->getSectorName() !== null) {
-            $dataArray['sectorName'] = $data->getSectorName();
-        }
-        if ($data->isInitialized('supplier') && $data->getSupplier() !== null) {
+        if ($data->isInitialized('supplier') && null !== $data->getSupplier()) {
             $dataArray['supplier'] = $data->getSupplier();
         }
-        if ($data->isInitialized('supplierCreditorAccountId') && $data->getSupplierCreditorAccountId() !== null) {
+        if ($data->isInitialized('supplierActive') && null !== $data->getSupplierActive()) {
+            $dataArray['supplierActive'] = $data->getSupplierActive();
+        }
+        if ($data->isInitialized('supplierCreditorAccountId') && null !== $data->getSupplierCreditorAccountId()) {
             $dataArray['supplierCreditorAccountId'] = $data->getSupplierCreditorAccountId();
         }
-        if ($data->isInitialized('supplierCreditorAccountNumber') && $data->getSupplierCreditorAccountNumber() !== null) {
-            $dataArray['supplierCreditorAccountNumber'] = $data->getSupplierCreditorAccountNumber();
-        }
-        if ($data->isInitialized('supplierCreditorAccountingCodeId') && $data->getSupplierCreditorAccountingCodeId() !== null) {
+        if ($data->isInitialized('supplierCreditorAccountingCodeId') && null !== $data->getSupplierCreditorAccountingCodeId()) {
             $dataArray['supplierCreditorAccountingCodeId'] = $data->getSupplierCreditorAccountingCodeId();
         }
-        if ($data->isInitialized('supplierCustomerNumberAtSupplier') && $data->getSupplierCustomerNumberAtSupplier() !== null) {
+        if ($data->isInitialized('supplierCustomerNumberAtSupplier') && null !== $data->getSupplierCustomerNumberAtSupplier()) {
             $dataArray['supplierCustomerNumberAtSupplier'] = $data->getSupplierCustomerNumberAtSupplier();
         }
-        if ($data->isInitialized('supplierDefaultShippingCarrierId') && $data->getSupplierDefaultShippingCarrierId() !== null) {
+        if ($data->isInitialized('supplierDefaultShippingCarrierId') && null !== $data->getSupplierDefaultShippingCarrierId()) {
             $dataArray['supplierDefaultShippingCarrierId'] = $data->getSupplierDefaultShippingCarrierId();
         }
-        if ($data->isInitialized('supplierInternalNote') && $data->getSupplierInternalNote() !== null) {
+        if ($data->isInitialized('supplierInternalNote') && null !== $data->getSupplierInternalNote()) {
             $dataArray['supplierInternalNote'] = $data->getSupplierInternalNote();
         }
-        if ($data->isInitialized('supplierMinimumPurchaseOrderAmount') && $data->getSupplierMinimumPurchaseOrderAmount() !== null) {
+        if ($data->isInitialized('supplierMergeItemsForOcrInvoiceUpload') && null !== $data->getSupplierMergeItemsForOcrInvoiceUpload()) {
+            $dataArray['supplierMergeItemsForOcrInvoiceUpload'] = $data->getSupplierMergeItemsForOcrInvoiceUpload();
+        }
+        if ($data->isInitialized('supplierMinimumPurchaseOrderAmount') && null !== $data->getSupplierMinimumPurchaseOrderAmount()) {
             $dataArray['supplierMinimumPurchaseOrderAmount'] = $data->getSupplierMinimumPurchaseOrderAmount();
         }
-        if ($data->isInitialized('supplierNonStandardTaxId') && $data->getSupplierNonStandardTaxId() !== null) {
+        if ($data->isInitialized('supplierNonStandardTaxId') && null !== $data->getSupplierNonStandardTaxId()) {
             $dataArray['supplierNonStandardTaxId'] = $data->getSupplierNonStandardTaxId();
         }
-        if ($data->isInitialized('supplierNumber') && $data->getSupplierNumber() !== null) {
+        if ($data->isInitialized('supplierNumber') && null !== $data->getSupplierNumber()) {
             $dataArray['supplierNumber'] = $data->getSupplierNumber();
         }
-        if ($data->isInitialized('supplierNumberOld') && $data->getSupplierNumberOld() !== null) {
+        if ($data->isInitialized('supplierNumberOld') && null !== $data->getSupplierNumberOld()) {
             $dataArray['supplierNumberOld'] = $data->getSupplierNumberOld();
         }
-        if ($data->isInitialized('supplierOrderBlock') && $data->getSupplierOrderBlock() !== null) {
+        if ($data->isInitialized('supplierOrderBlock') && null !== $data->getSupplierOrderBlock()) {
             $dataArray['supplierOrderBlock'] = $data->getSupplierOrderBlock();
         }
-        if ($data->isInitialized('supplierPaymentMethodId') && $data->getSupplierPaymentMethodId() !== null) {
+        if ($data->isInitialized('supplierPaymentMethodId') && null !== $data->getSupplierPaymentMethodId()) {
             $dataArray['supplierPaymentMethodId'] = $data->getSupplierPaymentMethodId();
         }
-        if ($data->isInitialized('supplierPaymentMethodName') && $data->getSupplierPaymentMethodName() !== null) {
-            $dataArray['supplierPaymentMethodName'] = $data->getSupplierPaymentMethodName();
-        }
-        if ($data->isInitialized('supplierShipmentMethodId') && $data->getSupplierShipmentMethodId() !== null) {
+        if ($data->isInitialized('supplierShipmentMethodId') && null !== $data->getSupplierShipmentMethodId()) {
             $dataArray['supplierShipmentMethodId'] = $data->getSupplierShipmentMethodId();
         }
-        if ($data->isInitialized('supplierShipmentMethodName') && $data->getSupplierShipmentMethodName() !== null) {
-            $dataArray['supplierShipmentMethodName'] = $data->getSupplierShipmentMethodName();
-        }
-        if ($data->isInitialized('supplierTermOfPaymentId') && $data->getSupplierTermOfPaymentId() !== null) {
+        if ($data->isInitialized('supplierTermOfPaymentId') && null !== $data->getSupplierTermOfPaymentId()) {
             $dataArray['supplierTermOfPaymentId'] = $data->getSupplierTermOfPaymentId();
         }
-        if ($data->isInitialized('supplierTermOfPaymentName') && $data->getSupplierTermOfPaymentName() !== null) {
-            $dataArray['supplierTermOfPaymentName'] = $data->getSupplierTermOfPaymentName();
-        }
-        if ($data->isInitialized('taxId') && $data->getTaxId() !== null) {
+        if ($data->isInitialized('taxId') && null !== $data->getTaxId()) {
             $dataArray['taxId'] = $data->getTaxId();
         }
-        if ($data->isInitialized('topics') && $data->getTopics() !== null) {
-            $values_10 = [];
-            foreach ($data->getTopics() as $value_10) {
-                $values_10[] = $this->normalizer->normalize($value_10, 'json', $context);
+        if ($data->isInitialized('topics') && null !== $data->getTopics()) {
+            $values_9 = [];
+            foreach ($data->getTopics() as $value_9) {
+                $values_9[] = $this->normalizer->normalize($value_9, 'json', $context);
             }
-            $dataArray['topics'] = $values_10;
+            $dataArray['topics'] = $values_9;
         }
-        if ($data->isInitialized('vatIdentificationNumber') && $data->getVatIdentificationNumber() !== null) {
+        if ($data->isInitialized('vatIdentificationNumber') && null !== $data->getVatIdentificationNumber()) {
             $dataArray['vatIdentificationNumber'] = $data->getVatIdentificationNumber();
         }
-        if ($data->isInitialized('xRechnungLeitwegId') && $data->getXRechnungLeitwegId() !== null) {
+        if ($data->isInitialized('xRechnungLeitwegId') && null !== $data->getXRechnungLeitwegId()) {
             $dataArray['xRechnungLeitwegId'] = $data->getXRechnungLeitwegId();
         }
-        foreach ($data as $key => $value_11) {
+        foreach ($data as $key => $value_10) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_11;
+                $dataArray[$key] = $value_10;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\Party::class => false];

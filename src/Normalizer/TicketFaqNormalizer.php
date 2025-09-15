@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class TicketFaqNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class TicketFaqNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\TicketFaq::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\TicketFaq::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,53 +33,60 @@ class TicketFaqNormalizer implements DenormalizerAwareInterface, DenormalizerInt
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\TicketFaq;
+        $object = new \Webhubworks\WeclappApiCore\Model\TicketFaq();
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
-        if ($data === null || \is_array($data) === false) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
-        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        }
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
-        } elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+        }
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
             $object->setCreatedDate(null);
         }
         if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
-        } elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+        }
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
             $object->setLastModifiedDate(null);
         }
         if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
-        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+        }
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
             $object->setVersion(null);
         }
         if (\array_key_exists('active', $data) && $data['active'] !== null) {
             $object->setActive($data['active']);
             unset($data['active']);
-        } elseif (\array_key_exists('active', $data) && $data['active'] === null) {
+        }
+        elseif (\array_key_exists('active', $data) && $data['active'] === null) {
             $object->setActive(null);
         }
         if (\array_key_exists('answer', $data) && $data['answer'] !== null) {
             $object->setAnswer($data['answer']);
             unset($data['answer']);
-        } elseif (\array_key_exists('answer', $data) && $data['answer'] === null) {
+        }
+        elseif (\array_key_exists('answer', $data) && $data['answer'] === null) {
             $object->setAnswer(null);
         }
         if (\array_key_exists('createdById', $data) && $data['createdById'] !== null) {
             $object->setCreatedById($data['createdById']);
             unset($data['createdById']);
-        } elseif (\array_key_exists('createdById', $data) && $data['createdById'] === null) {
+        }
+        elseif (\array_key_exists('createdById', $data) && $data['createdById'] === null) {
             $object->setCreatedById(null);
         }
         if (\array_key_exists('customers', $data) && $data['customers'] !== null) {
@@ -93,19 +96,22 @@ class TicketFaqNormalizer implements DenormalizerAwareInterface, DenormalizerInt
             }
             $object->setCustomers($values);
             unset($data['customers']);
-        } elseif (\array_key_exists('customers', $data) && $data['customers'] === null) {
+        }
+        elseif (\array_key_exists('customers', $data) && $data['customers'] === null) {
             $object->setCustomers(null);
         }
         if (\array_key_exists('positionNumber', $data) && $data['positionNumber'] !== null) {
             $object->setPositionNumber($data['positionNumber']);
             unset($data['positionNumber']);
-        } elseif (\array_key_exists('positionNumber', $data) && $data['positionNumber'] === null) {
+        }
+        elseif (\array_key_exists('positionNumber', $data) && $data['positionNumber'] === null) {
             $object->setPositionNumber(null);
         }
         if (\array_key_exists('question', $data) && $data['question'] !== null) {
             $object->setQuestion($data['question']);
             unset($data['question']);
-        } elseif (\array_key_exists('question', $data) && $data['question'] === null) {
+        }
+        elseif (\array_key_exists('question', $data) && $data['question'] === null) {
             $object->setQuestion(null);
         }
         if (\array_key_exists('ticketCategories', $data) && $data['ticketCategories'] !== null) {
@@ -115,13 +121,15 @@ class TicketFaqNormalizer implements DenormalizerAwareInterface, DenormalizerInt
             }
             $object->setTicketCategories($values_1);
             unset($data['ticketCategories']);
-        } elseif (\array_key_exists('ticketCategories', $data) && $data['ticketCategories'] === null) {
+        }
+        elseif (\array_key_exists('ticketCategories', $data) && $data['ticketCategories'] === null) {
             $object->setTicketCategories(null);
         }
         if (\array_key_exists('visibility', $data) && $data['visibility'] !== null) {
             $object->setVisibility($data['visibility']);
             unset($data['visibility']);
-        } elseif (\array_key_exists('visibility', $data) && $data['visibility'] === null) {
+        }
+        elseif (\array_key_exists('visibility', $data) && $data['visibility'] === null) {
             $object->setVisibility(null);
         }
         foreach ($data as $key => $value_2) {
@@ -129,46 +137,41 @@ class TicketFaqNormalizer implements DenormalizerAwareInterface, DenormalizerInt
                 $object[$key] = $value_2;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
-            $dataArray['version'] = $data->getVersion();
-        }
-        if ($data->isInitialized('active') && $data->getActive() !== null) {
+        if ($data->isInitialized('active') && null !== $data->getActive()) {
             $dataArray['active'] = $data->getActive();
         }
-        if ($data->isInitialized('answer') && $data->getAnswer() !== null) {
+        if ($data->isInitialized('answer') && null !== $data->getAnswer()) {
             $dataArray['answer'] = $data->getAnswer();
         }
-        if ($data->isInitialized('createdById') && $data->getCreatedById() !== null) {
+        if ($data->isInitialized('createdById') && null !== $data->getCreatedById()) {
             $dataArray['createdById'] = $data->getCreatedById();
         }
-        if ($data->isInitialized('customers') && $data->getCustomers() !== null) {
+        if ($data->isInitialized('customers') && null !== $data->getCustomers()) {
             $values = [];
             foreach ($data->getCustomers() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['customers'] = $values;
         }
-        if ($data->isInitialized('positionNumber') && $data->getPositionNumber() !== null) {
+        if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
             $dataArray['positionNumber'] = $data->getPositionNumber();
         }
-        if ($data->isInitialized('question') && $data->getQuestion() !== null) {
+        if ($data->isInitialized('question') && null !== $data->getQuestion()) {
             $dataArray['question'] = $data->getQuestion();
         }
-        if ($data->isInitialized('ticketCategories') && $data->getTicketCategories() !== null) {
+        if ($data->isInitialized('ticketCategories') && null !== $data->getTicketCategories()) {
             $values_1 = [];
             foreach ($data->getTicketCategories() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['ticketCategories'] = $values_1;
         }
-        if ($data->isInitialized('visibility') && $data->getVisibility() !== null) {
+        if ($data->isInitialized('visibility') && null !== $data->getVisibility()) {
             $dataArray['visibility'] = $data->getVisibility();
         }
         foreach ($data as $key => $value_2) {
@@ -176,10 +179,8 @@ class TicketFaqNormalizer implements DenormalizerAwareInterface, DenormalizerInt
                 $dataArray[$key] = $value_2;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\TicketFaq::class => false];

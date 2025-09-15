@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class PaymentMethodNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class PaymentMethodNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\PaymentMethod::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\PaymentMethod::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,83 +33,95 @@ class PaymentMethodNormalizer implements DenormalizerAwareInterface, Denormalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\PaymentMethod;
+        $object = new \Webhubworks\WeclappApiCore\Model\PaymentMethod();
         if (\array_key_exists('autoClearingAccountTransaction', $data) && \is_int($data['autoClearingAccountTransaction'])) {
             $data['autoClearingAccountTransaction'] = (bool) $data['autoClearingAccountTransaction'];
         }
-        if ($data === null || \is_array($data) === false) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
-        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        }
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
-        } elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+        }
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
             $object->setCreatedDate(null);
         }
         if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
-        } elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+        }
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
             $object->setLastModifiedDate(null);
         }
         if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
-        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+        }
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
             $object->setVersion(null);
         }
         if (\array_key_exists('autoClearingAccountTransaction', $data) && $data['autoClearingAccountTransaction'] !== null) {
             $object->setAutoClearingAccountTransaction($data['autoClearingAccountTransaction']);
             unset($data['autoClearingAccountTransaction']);
-        } elseif (\array_key_exists('autoClearingAccountTransaction', $data) && $data['autoClearingAccountTransaction'] === null) {
+        }
+        elseif (\array_key_exists('autoClearingAccountTransaction', $data) && $data['autoClearingAccountTransaction'] === null) {
             $object->setAutoClearingAccountTransaction(null);
         }
         if (\array_key_exists('clearingAccountId', $data) && $data['clearingAccountId'] !== null) {
             $object->setClearingAccountId($data['clearingAccountId']);
             unset($data['clearingAccountId']);
-        } elseif (\array_key_exists('clearingAccountId', $data) && $data['clearingAccountId'] === null) {
+        }
+        elseif (\array_key_exists('clearingAccountId', $data) && $data['clearingAccountId'] === null) {
             $object->setClearingAccountId(null);
         }
         if (\array_key_exists('discountPercentage', $data) && $data['discountPercentage'] !== null) {
             $object->setDiscountPercentage($data['discountPercentage']);
             unset($data['discountPercentage']);
-        } elseif (\array_key_exists('discountPercentage', $data) && $data['discountPercentage'] === null) {
+        }
+        elseif (\array_key_exists('discountPercentage', $data) && $data['discountPercentage'] === null) {
             $object->setDiscountPercentage(null);
         }
         if (\array_key_exists('discountValue', $data) && $data['discountValue'] !== null) {
             $object->setDiscountValue($data['discountValue']);
             unset($data['discountValue']);
-        } elseif (\array_key_exists('discountValue', $data) && $data['discountValue'] === null) {
+        }
+        elseif (\array_key_exists('discountValue', $data) && $data['discountValue'] === null) {
             $object->setDiscountValue(null);
         }
         if (\array_key_exists('documentText', $data) && $data['documentText'] !== null) {
             $object->setDocumentText($data['documentText']);
             unset($data['documentText']);
-        } elseif (\array_key_exists('documentText', $data) && $data['documentText'] === null) {
+        }
+        elseif (\array_key_exists('documentText', $data) && $data['documentText'] === null) {
             $object->setDocumentText(null);
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
-        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        }
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
         if (\array_key_exists('reference', $data) && $data['reference'] !== null) {
             $object->setReference($data['reference']);
             unset($data['reference']);
-        } elseif (\array_key_exists('reference', $data) && $data['reference'] === null) {
+        }
+        elseif (\array_key_exists('reference', $data) && $data['reference'] === null) {
             $object->setReference(null);
         }
         if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
             unset($data['type']);
-        } elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+        }
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
             $object->setType(null);
         }
         foreach ($data as $key => $value) {
@@ -121,38 +129,33 @@ class PaymentMethodNormalizer implements DenormalizerAwareInterface, Denormalize
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
-            $dataArray['version'] = $data->getVersion();
-        }
-        if ($data->isInitialized('autoClearingAccountTransaction') && $data->getAutoClearingAccountTransaction() !== null) {
+        if ($data->isInitialized('autoClearingAccountTransaction') && null !== $data->getAutoClearingAccountTransaction()) {
             $dataArray['autoClearingAccountTransaction'] = $data->getAutoClearingAccountTransaction();
         }
-        if ($data->isInitialized('clearingAccountId') && $data->getClearingAccountId() !== null) {
+        if ($data->isInitialized('clearingAccountId') && null !== $data->getClearingAccountId()) {
             $dataArray['clearingAccountId'] = $data->getClearingAccountId();
         }
-        if ($data->isInitialized('discountPercentage') && $data->getDiscountPercentage() !== null) {
+        if ($data->isInitialized('discountPercentage') && null !== $data->getDiscountPercentage()) {
             $dataArray['discountPercentage'] = $data->getDiscountPercentage();
         }
-        if ($data->isInitialized('discountValue') && $data->getDiscountValue() !== null) {
+        if ($data->isInitialized('discountValue') && null !== $data->getDiscountValue()) {
             $dataArray['discountValue'] = $data->getDiscountValue();
         }
-        if ($data->isInitialized('documentText') && $data->getDocumentText() !== null) {
+        if ($data->isInitialized('documentText') && null !== $data->getDocumentText()) {
             $dataArray['documentText'] = $data->getDocumentText();
         }
-        if ($data->isInitialized('name') && $data->getName() !== null) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('reference') && $data->getReference() !== null) {
+        if ($data->isInitialized('reference') && null !== $data->getReference()) {
             $dataArray['reference'] = $data->getReference();
         }
-        if ($data->isInitialized('type') && $data->getType() !== null) {
+        if ($data->isInitialized('type') && null !== $data->getType()) {
             $dataArray['type'] = $data->getType();
         }
         foreach ($data as $key => $value) {
@@ -160,10 +163,8 @@ class PaymentMethodNormalizer implements DenormalizerAwareInterface, Denormalize
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\PaymentMethod::class => false];

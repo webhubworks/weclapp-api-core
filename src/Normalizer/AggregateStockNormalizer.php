@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class AggregateStockNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class AggregateStockNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\AggregateStock::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\AggregateStock::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,14 +33,15 @@ class AggregateStockNormalizer implements DenormalizerAwareInterface, Denormaliz
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\AggregateStock;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\AggregateStock();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('articleId', $data) && $data['articleId'] !== null) {
             $object->setArticleId($data['articleId']);
             unset($data['articleId']);
-        } elseif (\array_key_exists('articleId', $data) && $data['articleId'] === null) {
+        }
+        elseif (\array_key_exists('articleId', $data) && $data['articleId'] === null) {
             $object->setArticleId(null);
         }
         if (\array_key_exists('packagingUnits', $data) && $data['packagingUnits'] !== null) {
@@ -54,25 +51,29 @@ class AggregateStockNormalizer implements DenormalizerAwareInterface, Denormaliz
             }
             $object->setPackagingUnits($values);
             unset($data['packagingUnits']);
-        } elseif (\array_key_exists('packagingUnits', $data) && $data['packagingUnits'] === null) {
+        }
+        elseif (\array_key_exists('packagingUnits', $data) && $data['packagingUnits'] === null) {
             $object->setPackagingUnits(null);
         }
         if (\array_key_exists('quantity', $data) && $data['quantity'] !== null) {
             $object->setQuantity($data['quantity']);
             unset($data['quantity']);
-        } elseif (\array_key_exists('quantity', $data) && $data['quantity'] === null) {
+        }
+        elseif (\array_key_exists('quantity', $data) && $data['quantity'] === null) {
             $object->setQuantity(null);
         }
         if (\array_key_exists('salesOrderItemId', $data) && $data['salesOrderItemId'] !== null) {
             $object->setSalesOrderItemId($data['salesOrderItemId']);
             unset($data['salesOrderItemId']);
-        } elseif (\array_key_exists('salesOrderItemId', $data) && $data['salesOrderItemId'] === null) {
+        }
+        elseif (\array_key_exists('salesOrderItemId', $data) && $data['salesOrderItemId'] === null) {
             $object->setSalesOrderItemId(null);
         }
         if (\array_key_exists('warehouseId', $data) && $data['warehouseId'] !== null) {
             $object->setWarehouseId($data['warehouseId']);
             unset($data['warehouseId']);
-        } elseif (\array_key_exists('warehouseId', $data) && $data['warehouseId'] === null) {
+        }
+        elseif (\array_key_exists('warehouseId', $data) && $data['warehouseId'] === null) {
             $object->setWarehouseId(null);
         }
         foreach ($data as $key => $value_1) {
@@ -80,30 +81,28 @@ class AggregateStockNormalizer implements DenormalizerAwareInterface, Denormaliz
                 $object[$key] = $value_1;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('articleId') && $data->getArticleId() !== null) {
+        if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
             $dataArray['articleId'] = $data->getArticleId();
         }
-        if ($data->isInitialized('packagingUnits') && $data->getPackagingUnits() !== null) {
+        if ($data->isInitialized('packagingUnits') && null !== $data->getPackagingUnits()) {
             $values = [];
             foreach ($data->getPackagingUnits() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['packagingUnits'] = $values;
         }
-        if ($data->isInitialized('quantity') && $data->getQuantity() !== null) {
+        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
             $dataArray['quantity'] = $data->getQuantity();
         }
-        if ($data->isInitialized('salesOrderItemId') && $data->getSalesOrderItemId() !== null) {
+        if ($data->isInitialized('salesOrderItemId') && null !== $data->getSalesOrderItemId()) {
             $dataArray['salesOrderItemId'] = $data->getSalesOrderItemId();
         }
-        if ($data->isInitialized('warehouseId') && $data->getWarehouseId() !== null) {
+        if ($data->isInitialized('warehouseId') && null !== $data->getWarehouseId()) {
             $dataArray['warehouseId'] = $data->getWarehouseId();
         }
         foreach ($data as $key => $value_1) {
@@ -111,10 +110,8 @@ class AggregateStockNormalizer implements DenormalizerAwareInterface, Denormaliz
                 $dataArray[$key] = $value_1;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\AggregateStock::class => false];

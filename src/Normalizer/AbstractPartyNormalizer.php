@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class AbstractPartyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class AbstractPartyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\AbstractParty::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\AbstractParty::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,32 +33,36 @@ class AbstractPartyNormalizer implements DenormalizerAwareInterface, Denormalize
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\AbstractParty;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\AbstractParty();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
-        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        }
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
-        } elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+        }
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
             $object->setCreatedDate(null);
         }
         if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
-        } elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+        }
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
             $object->setLastModifiedDate(null);
         }
         if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
-        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+        }
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
             $object->setVersion(null);
         }
         if (\array_key_exists('customAttributes', $data) && $data['customAttributes'] !== null) {
@@ -72,7 +72,8 @@ class AbstractPartyNormalizer implements DenormalizerAwareInterface, Denormalize
             }
             $object->setCustomAttributes($values);
             unset($data['customAttributes']);
-        } elseif (\array_key_exists('customAttributes', $data) && $data['customAttributes'] === null) {
+        }
+        elseif (\array_key_exists('customAttributes', $data) && $data['customAttributes'] === null) {
             $object->setCustomAttributes(null);
         }
         if (\array_key_exists('addresses', $data) && $data['addresses'] !== null) {
@@ -82,73 +83,85 @@ class AbstractPartyNormalizer implements DenormalizerAwareInterface, Denormalize
             }
             $object->setAddresses($values_1);
             unset($data['addresses']);
-        } elseif (\array_key_exists('addresses', $data) && $data['addresses'] === null) {
+        }
+        elseif (\array_key_exists('addresses', $data) && $data['addresses'] === null) {
             $object->setAddresses(null);
         }
         if (\array_key_exists('birthDate', $data) && $data['birthDate'] !== null) {
             $object->setBirthDate($data['birthDate']);
             unset($data['birthDate']);
-        } elseif (\array_key_exists('birthDate', $data) && $data['birthDate'] === null) {
+        }
+        elseif (\array_key_exists('birthDate', $data) && $data['birthDate'] === null) {
             $object->setBirthDate(null);
         }
         if (\array_key_exists('company', $data) && $data['company'] !== null) {
             $object->setCompany($data['company']);
             unset($data['company']);
-        } elseif (\array_key_exists('company', $data) && $data['company'] === null) {
+        }
+        elseif (\array_key_exists('company', $data) && $data['company'] === null) {
             $object->setCompany(null);
         }
         if (\array_key_exists('company2', $data) && $data['company2'] !== null) {
             $object->setCompany2($data['company2']);
             unset($data['company2']);
-        } elseif (\array_key_exists('company2', $data) && $data['company2'] === null) {
+        }
+        elseif (\array_key_exists('company2', $data) && $data['company2'] === null) {
             $object->setCompany2(null);
         }
         if (\array_key_exists('deliveryAddressId', $data) && $data['deliveryAddressId'] !== null) {
             $object->setDeliveryAddressId($data['deliveryAddressId']);
             unset($data['deliveryAddressId']);
-        } elseif (\array_key_exists('deliveryAddressId', $data) && $data['deliveryAddressId'] === null) {
+        }
+        elseif (\array_key_exists('deliveryAddressId', $data) && $data['deliveryAddressId'] === null) {
             $object->setDeliveryAddressId(null);
         }
         if (\array_key_exists('email', $data) && $data['email'] !== null) {
             $object->setEmail($data['email']);
             unset($data['email']);
-        } elseif (\array_key_exists('email', $data) && $data['email'] === null) {
+        }
+        elseif (\array_key_exists('email', $data) && $data['email'] === null) {
             $object->setEmail(null);
         }
         if (\array_key_exists('fax', $data) && $data['fax'] !== null) {
             $object->setFax($data['fax']);
             unset($data['fax']);
-        } elseif (\array_key_exists('fax', $data) && $data['fax'] === null) {
+        }
+        elseif (\array_key_exists('fax', $data) && $data['fax'] === null) {
             $object->setFax(null);
         }
         if (\array_key_exists('firstName', $data) && $data['firstName'] !== null) {
             $object->setFirstName($data['firstName']);
             unset($data['firstName']);
-        } elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
+        }
+        elseif (\array_key_exists('firstName', $data) && $data['firstName'] === null) {
             $object->setFirstName(null);
         }
         if (\array_key_exists('invoiceAddressId', $data) && $data['invoiceAddressId'] !== null) {
             $object->setInvoiceAddressId($data['invoiceAddressId']);
             unset($data['invoiceAddressId']);
-        } elseif (\array_key_exists('invoiceAddressId', $data) && $data['invoiceAddressId'] === null) {
+        }
+        elseif (\array_key_exists('invoiceAddressId', $data) && $data['invoiceAddressId'] === null) {
             $object->setInvoiceAddressId(null);
         }
         if (\array_key_exists('lastName', $data) && $data['lastName'] !== null) {
             $object->setLastName($data['lastName']);
             unset($data['lastName']);
-        } elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
+        }
+        elseif (\array_key_exists('lastName', $data) && $data['lastName'] === null) {
             $object->setLastName(null);
         }
         if (\array_key_exists('middleName', $data) && $data['middleName'] !== null) {
             $object->setMiddleName($data['middleName']);
             unset($data['middleName']);
-        } elseif (\array_key_exists('middleName', $data) && $data['middleName'] === null) {
+        }
+        elseif (\array_key_exists('middleName', $data) && $data['middleName'] === null) {
             $object->setMiddleName(null);
         }
         if (\array_key_exists('mobilePhone1', $data) && $data['mobilePhone1'] !== null) {
             $object->setMobilePhone1($data['mobilePhone1']);
             unset($data['mobilePhone1']);
-        } elseif (\array_key_exists('mobilePhone1', $data) && $data['mobilePhone1'] === null) {
+        }
+        elseif (\array_key_exists('mobilePhone1', $data) && $data['mobilePhone1'] === null) {
             $object->setMobilePhone1(null);
         }
         if (\array_key_exists('onlineAccounts', $data) && $data['onlineAccounts'] !== null) {
@@ -158,49 +171,57 @@ class AbstractPartyNormalizer implements DenormalizerAwareInterface, Denormalize
             }
             $object->setOnlineAccounts($values_2);
             unset($data['onlineAccounts']);
-        } elseif (\array_key_exists('onlineAccounts', $data) && $data['onlineAccounts'] === null) {
+        }
+        elseif (\array_key_exists('onlineAccounts', $data) && $data['onlineAccounts'] === null) {
             $object->setOnlineAccounts(null);
         }
         if (\array_key_exists('partyType', $data) && $data['partyType'] !== null) {
             $object->setPartyType($data['partyType']);
             unset($data['partyType']);
-        } elseif (\array_key_exists('partyType', $data) && $data['partyType'] === null) {
+        }
+        elseif (\array_key_exists('partyType', $data) && $data['partyType'] === null) {
             $object->setPartyType(null);
         }
         if (\array_key_exists('personCompany', $data) && $data['personCompany'] !== null) {
             $object->setPersonCompany($data['personCompany']);
             unset($data['personCompany']);
-        } elseif (\array_key_exists('personCompany', $data) && $data['personCompany'] === null) {
+        }
+        elseif (\array_key_exists('personCompany', $data) && $data['personCompany'] === null) {
             $object->setPersonCompany(null);
         }
         if (\array_key_exists('personDepartmentId', $data) && $data['personDepartmentId'] !== null) {
             $object->setPersonDepartmentId($data['personDepartmentId']);
             unset($data['personDepartmentId']);
-        } elseif (\array_key_exists('personDepartmentId', $data) && $data['personDepartmentId'] === null) {
+        }
+        elseif (\array_key_exists('personDepartmentId', $data) && $data['personDepartmentId'] === null) {
             $object->setPersonDepartmentId(null);
         }
         if (\array_key_exists('personRoleId', $data) && $data['personRoleId'] !== null) {
             $object->setPersonRoleId($data['personRoleId']);
             unset($data['personRoleId']);
-        } elseif (\array_key_exists('personRoleId', $data) && $data['personRoleId'] === null) {
+        }
+        elseif (\array_key_exists('personRoleId', $data) && $data['personRoleId'] === null) {
             $object->setPersonRoleId(null);
         }
         if (\array_key_exists('phone', $data) && $data['phone'] !== null) {
             $object->setPhone($data['phone']);
             unset($data['phone']);
-        } elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
+        }
+        elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
             $object->setPhone(null);
         }
         if (\array_key_exists('primaryAddressId', $data) && $data['primaryAddressId'] !== null) {
             $object->setPrimaryAddressId($data['primaryAddressId']);
             unset($data['primaryAddressId']);
-        } elseif (\array_key_exists('primaryAddressId', $data) && $data['primaryAddressId'] === null) {
+        }
+        elseif (\array_key_exists('primaryAddressId', $data) && $data['primaryAddressId'] === null) {
             $object->setPrimaryAddressId(null);
         }
         if (\array_key_exists('salutation', $data) && $data['salutation'] !== null) {
             $object->setSalutation($data['salutation']);
             unset($data['salutation']);
-        } elseif (\array_key_exists('salutation', $data) && $data['salutation'] === null) {
+        }
+        elseif (\array_key_exists('salutation', $data) && $data['salutation'] === null) {
             $object->setSalutation(null);
         }
         if (\array_key_exists('tags', $data) && $data['tags'] !== null) {
@@ -210,25 +231,22 @@ class AbstractPartyNormalizer implements DenormalizerAwareInterface, Denormalize
             }
             $object->setTags($values_3);
             unset($data['tags']);
-        } elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
-            $object->setTags(null);
         }
-        if (\array_key_exists('title', $data) && $data['title'] !== null) {
-            $object->setTitle($data['title']);
-            unset($data['title']);
-        } elseif (\array_key_exists('title', $data) && $data['title'] === null) {
-            $object->setTitle(null);
+        elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
+            $object->setTags(null);
         }
         if (\array_key_exists('titleId', $data) && $data['titleId'] !== null) {
             $object->setTitleId($data['titleId']);
             unset($data['titleId']);
-        } elseif (\array_key_exists('titleId', $data) && $data['titleId'] === null) {
+        }
+        elseif (\array_key_exists('titleId', $data) && $data['titleId'] === null) {
             $object->setTitleId(null);
         }
         if (\array_key_exists('website', $data) && $data['website'] !== null) {
             $object->setWebsite($data['website']);
             unset($data['website']);
-        } elseif (\array_key_exists('website', $data) && $data['website'] === null) {
+        }
+        elseif (\array_key_exists('website', $data) && $data['website'] === null) {
             $object->setWebsite(null);
         }
         foreach ($data as $key => $value_4) {
@@ -236,105 +254,97 @@ class AbstractPartyNormalizer implements DenormalizerAwareInterface, Denormalize
                 $object[$key] = $value_4;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
-            $dataArray['version'] = $data->getVersion();
-        }
-        if ($data->isInitialized('customAttributes') && $data->getCustomAttributes() !== null) {
+        if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['customAttributes'] = $values;
         }
-        if ($data->isInitialized('addresses') && $data->getAddresses() !== null) {
+        if ($data->isInitialized('addresses') && null !== $data->getAddresses()) {
             $values_1 = [];
             foreach ($data->getAddresses() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['addresses'] = $values_1;
         }
-        if ($data->isInitialized('birthDate') && $data->getBirthDate() !== null) {
+        if ($data->isInitialized('birthDate') && null !== $data->getBirthDate()) {
             $dataArray['birthDate'] = $data->getBirthDate();
         }
-        if ($data->isInitialized('company') && $data->getCompany() !== null) {
+        if ($data->isInitialized('company') && null !== $data->getCompany()) {
             $dataArray['company'] = $data->getCompany();
         }
-        if ($data->isInitialized('company2') && $data->getCompany2() !== null) {
+        if ($data->isInitialized('company2') && null !== $data->getCompany2()) {
             $dataArray['company2'] = $data->getCompany2();
         }
-        if ($data->isInitialized('deliveryAddressId') && $data->getDeliveryAddressId() !== null) {
+        if ($data->isInitialized('deliveryAddressId') && null !== $data->getDeliveryAddressId()) {
             $dataArray['deliveryAddressId'] = $data->getDeliveryAddressId();
         }
-        if ($data->isInitialized('email') && $data->getEmail() !== null) {
+        if ($data->isInitialized('email') && null !== $data->getEmail()) {
             $dataArray['email'] = $data->getEmail();
         }
-        if ($data->isInitialized('fax') && $data->getFax() !== null) {
+        if ($data->isInitialized('fax') && null !== $data->getFax()) {
             $dataArray['fax'] = $data->getFax();
         }
-        if ($data->isInitialized('firstName') && $data->getFirstName() !== null) {
+        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
             $dataArray['firstName'] = $data->getFirstName();
         }
-        if ($data->isInitialized('invoiceAddressId') && $data->getInvoiceAddressId() !== null) {
+        if ($data->isInitialized('invoiceAddressId') && null !== $data->getInvoiceAddressId()) {
             $dataArray['invoiceAddressId'] = $data->getInvoiceAddressId();
         }
-        if ($data->isInitialized('lastName') && $data->getLastName() !== null) {
+        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
             $dataArray['lastName'] = $data->getLastName();
         }
-        if ($data->isInitialized('middleName') && $data->getMiddleName() !== null) {
+        if ($data->isInitialized('middleName') && null !== $data->getMiddleName()) {
             $dataArray['middleName'] = $data->getMiddleName();
         }
-        if ($data->isInitialized('mobilePhone1') && $data->getMobilePhone1() !== null) {
+        if ($data->isInitialized('mobilePhone1') && null !== $data->getMobilePhone1()) {
             $dataArray['mobilePhone1'] = $data->getMobilePhone1();
         }
-        if ($data->isInitialized('onlineAccounts') && $data->getOnlineAccounts() !== null) {
+        if ($data->isInitialized('onlineAccounts') && null !== $data->getOnlineAccounts()) {
             $values_2 = [];
             foreach ($data->getOnlineAccounts() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $dataArray['onlineAccounts'] = $values_2;
         }
-        if ($data->isInitialized('partyType') && $data->getPartyType() !== null) {
+        if ($data->isInitialized('partyType') && null !== $data->getPartyType()) {
             $dataArray['partyType'] = $data->getPartyType();
         }
-        if ($data->isInitialized('personCompany') && $data->getPersonCompany() !== null) {
+        if ($data->isInitialized('personCompany') && null !== $data->getPersonCompany()) {
             $dataArray['personCompany'] = $data->getPersonCompany();
         }
-        if ($data->isInitialized('personDepartmentId') && $data->getPersonDepartmentId() !== null) {
+        if ($data->isInitialized('personDepartmentId') && null !== $data->getPersonDepartmentId()) {
             $dataArray['personDepartmentId'] = $data->getPersonDepartmentId();
         }
-        if ($data->isInitialized('personRoleId') && $data->getPersonRoleId() !== null) {
+        if ($data->isInitialized('personRoleId') && null !== $data->getPersonRoleId()) {
             $dataArray['personRoleId'] = $data->getPersonRoleId();
         }
-        if ($data->isInitialized('phone') && $data->getPhone() !== null) {
+        if ($data->isInitialized('phone') && null !== $data->getPhone()) {
             $dataArray['phone'] = $data->getPhone();
         }
-        if ($data->isInitialized('primaryAddressId') && $data->getPrimaryAddressId() !== null) {
+        if ($data->isInitialized('primaryAddressId') && null !== $data->getPrimaryAddressId()) {
             $dataArray['primaryAddressId'] = $data->getPrimaryAddressId();
         }
-        if ($data->isInitialized('salutation') && $data->getSalutation() !== null) {
+        if ($data->isInitialized('salutation') && null !== $data->getSalutation()) {
             $dataArray['salutation'] = $data->getSalutation();
         }
-        if ($data->isInitialized('tags') && $data->getTags() !== null) {
+        if ($data->isInitialized('tags') && null !== $data->getTags()) {
             $values_3 = [];
             foreach ($data->getTags() as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['tags'] = $values_3;
         }
-        if ($data->isInitialized('title') && $data->getTitle() !== null) {
-            $dataArray['title'] = $data->getTitle();
-        }
-        if ($data->isInitialized('titleId') && $data->getTitleId() !== null) {
+        if ($data->isInitialized('titleId') && null !== $data->getTitleId()) {
             $dataArray['titleId'] = $data->getTitleId();
         }
-        if ($data->isInitialized('website') && $data->getWebsite() !== null) {
+        if ($data->isInitialized('website') && null !== $data->getWebsite()) {
             $dataArray['website'] = $data->getWebsite();
         }
         foreach ($data as $key => $value_4) {
@@ -342,10 +352,8 @@ class AbstractPartyNormalizer implements DenormalizerAwareInterface, Denormalize
                 $dataArray[$key] = $value_4;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\AbstractParty::class => false];

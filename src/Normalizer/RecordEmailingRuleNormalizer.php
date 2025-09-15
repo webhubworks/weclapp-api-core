@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class RecordEmailingRuleNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class RecordEmailingRuleNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\RecordEmailingRule::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\RecordEmailingRule::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,7 +33,7 @@ class RecordEmailingRuleNormalizer implements DenormalizerAwareInterface, Denorm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\RecordEmailingRule;
+        $object = new \Webhubworks\WeclappApiCore\Model\RecordEmailingRule();
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
@@ -53,113 +49,130 @@ class RecordEmailingRuleNormalizer implements DenormalizerAwareInterface, Denorm
         if (\array_key_exists('attachShippingLabel', $data) && \is_int($data['attachShippingLabel'])) {
             $data['attachShippingLabel'] = (bool) $data['attachShippingLabel'];
         }
-        if ($data === null || \is_array($data) === false) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('id', $data) && $data['id'] !== null) {
             $object->setId($data['id']);
             unset($data['id']);
-        } elseif (\array_key_exists('id', $data) && $data['id'] === null) {
+        }
+        elseif (\array_key_exists('id', $data) && $data['id'] === null) {
             $object->setId(null);
         }
         if (\array_key_exists('createdDate', $data) && $data['createdDate'] !== null) {
             $object->setCreatedDate($data['createdDate']);
             unset($data['createdDate']);
-        } elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
+        }
+        elseif (\array_key_exists('createdDate', $data) && $data['createdDate'] === null) {
             $object->setCreatedDate(null);
         }
         if (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] !== null) {
             $object->setLastModifiedDate($data['lastModifiedDate']);
             unset($data['lastModifiedDate']);
-        } elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
+        }
+        elseif (\array_key_exists('lastModifiedDate', $data) && $data['lastModifiedDate'] === null) {
             $object->setLastModifiedDate(null);
         }
         if (\array_key_exists('version', $data) && $data['version'] !== null) {
             $object->setVersion($data['version']);
             unset($data['version']);
-        } elseif (\array_key_exists('version', $data) && $data['version'] === null) {
+        }
+        elseif (\array_key_exists('version', $data) && $data['version'] === null) {
             $object->setVersion(null);
         }
         if (\array_key_exists('active', $data) && $data['active'] !== null) {
             $object->setActive($data['active']);
             unset($data['active']);
-        } elseif (\array_key_exists('active', $data) && $data['active'] === null) {
+        }
+        elseif (\array_key_exists('active', $data) && $data['active'] === null) {
             $object->setActive(null);
         }
         if (\array_key_exists('attachPurchaseOrderRequestCsvFile', $data) && $data['attachPurchaseOrderRequestCsvFile'] !== null) {
             $object->setAttachPurchaseOrderRequestCsvFile($data['attachPurchaseOrderRequestCsvFile']);
             unset($data['attachPurchaseOrderRequestCsvFile']);
-        } elseif (\array_key_exists('attachPurchaseOrderRequestCsvFile', $data) && $data['attachPurchaseOrderRequestCsvFile'] === null) {
+        }
+        elseif (\array_key_exists('attachPurchaseOrderRequestCsvFile', $data) && $data['attachPurchaseOrderRequestCsvFile'] === null) {
             $object->setAttachPurchaseOrderRequestCsvFile(null);
         }
         if (\array_key_exists('attachRecordDocument', $data) && $data['attachRecordDocument'] !== null) {
             $object->setAttachRecordDocument($data['attachRecordDocument']);
             unset($data['attachRecordDocument']);
-        } elseif (\array_key_exists('attachRecordDocument', $data) && $data['attachRecordDocument'] === null) {
+        }
+        elseif (\array_key_exists('attachRecordDocument', $data) && $data['attachRecordDocument'] === null) {
             $object->setAttachRecordDocument(null);
         }
         if (\array_key_exists('attachReturnLabel', $data) && $data['attachReturnLabel'] !== null) {
             $object->setAttachReturnLabel($data['attachReturnLabel']);
             unset($data['attachReturnLabel']);
-        } elseif (\array_key_exists('attachReturnLabel', $data) && $data['attachReturnLabel'] === null) {
+        }
+        elseif (\array_key_exists('attachReturnLabel', $data) && $data['attachReturnLabel'] === null) {
             $object->setAttachReturnLabel(null);
         }
         if (\array_key_exists('attachShippingLabel', $data) && $data['attachShippingLabel'] !== null) {
             $object->setAttachShippingLabel($data['attachShippingLabel']);
             unset($data['attachShippingLabel']);
-        } elseif (\array_key_exists('attachShippingLabel', $data) && $data['attachShippingLabel'] === null) {
+        }
+        elseif (\array_key_exists('attachShippingLabel', $data) && $data['attachShippingLabel'] === null) {
             $object->setAttachShippingLabel(null);
         }
         if (\array_key_exists('bccRecipients', $data) && $data['bccRecipients'] !== null) {
             $object->setBccRecipients($data['bccRecipients']);
             unset($data['bccRecipients']);
-        } elseif (\array_key_exists('bccRecipients', $data) && $data['bccRecipients'] === null) {
+        }
+        elseif (\array_key_exists('bccRecipients', $data) && $data['bccRecipients'] === null) {
             $object->setBccRecipients(null);
         }
         if (\array_key_exists('ccRecipients', $data) && $data['ccRecipients'] !== null) {
             $object->setCcRecipients($data['ccRecipients']);
             unset($data['ccRecipients']);
-        } elseif (\array_key_exists('ccRecipients', $data) && $data['ccRecipients'] === null) {
+        }
+        elseif (\array_key_exists('ccRecipients', $data) && $data['ccRecipients'] === null) {
             $object->setCcRecipients(null);
         }
         if (\array_key_exists('event', $data) && $data['event'] !== null) {
             $object->setEvent($data['event']);
             unset($data['event']);
-        } elseif (\array_key_exists('event', $data) && $data['event'] === null) {
+        }
+        elseif (\array_key_exists('event', $data) && $data['event'] === null) {
             $object->setEvent(null);
         }
         if (\array_key_exists('mailAccountId', $data) && $data['mailAccountId'] !== null) {
             $object->setMailAccountId($data['mailAccountId']);
             unset($data['mailAccountId']);
-        } elseif (\array_key_exists('mailAccountId', $data) && $data['mailAccountId'] === null) {
+        }
+        elseif (\array_key_exists('mailAccountId', $data) && $data['mailAccountId'] === null) {
             $object->setMailAccountId(null);
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
-        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        }
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
         if (\array_key_exists('otherRecipients', $data) && $data['otherRecipients'] !== null) {
             $object->setOtherRecipients($data['otherRecipients']);
             unset($data['otherRecipients']);
-        } elseif (\array_key_exists('otherRecipients', $data) && $data['otherRecipients'] === null) {
+        }
+        elseif (\array_key_exists('otherRecipients', $data) && $data['otherRecipients'] === null) {
             $object->setOtherRecipients(null);
         }
-        if (\array_key_exists('paymentMethodTypes', $data) && $data['paymentMethodTypes'] !== null) {
+        if (\array_key_exists('paymentMethods', $data) && $data['paymentMethods'] !== null) {
             $values = [];
-            foreach ($data['paymentMethodTypes'] as $value) {
+            foreach ($data['paymentMethods'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Webhubworks\WeclappApiCore\Model\OnlyId::class, 'json', $context);
             }
-            $object->setPaymentMethodTypes($values);
-            unset($data['paymentMethodTypes']);
-        } elseif (\array_key_exists('paymentMethodTypes', $data) && $data['paymentMethodTypes'] === null) {
-            $object->setPaymentMethodTypes(null);
+            $object->setPaymentMethods($values);
+            unset($data['paymentMethods']);
+        }
+        elseif (\array_key_exists('paymentMethods', $data) && $data['paymentMethods'] === null) {
+            $object->setPaymentMethods(null);
         }
         if (\array_key_exists('recipientType', $data) && $data['recipientType'] !== null) {
             $object->setRecipientType($data['recipientType']);
             unset($data['recipientType']);
-        } elseif (\array_key_exists('recipientType', $data) && $data['recipientType'] === null) {
+        }
+        elseif (\array_key_exists('recipientType', $data) && $data['recipientType'] === null) {
             $object->setRecipientType(null);
         }
         if (\array_key_exists('salesChannels', $data) && $data['salesChannels'] !== null) {
@@ -169,13 +182,15 @@ class RecordEmailingRuleNormalizer implements DenormalizerAwareInterface, Denorm
             }
             $object->setSalesChannels($values_1);
             unset($data['salesChannels']);
-        } elseif (\array_key_exists('salesChannels', $data) && $data['salesChannels'] === null) {
+        }
+        elseif (\array_key_exists('salesChannels', $data) && $data['salesChannels'] === null) {
             $object->setSalesChannels(null);
         }
         if (\array_key_exists('salesInvoiceOrigin', $data) && $data['salesInvoiceOrigin'] !== null) {
             $object->setSalesInvoiceOrigin($data['salesInvoiceOrigin']);
             unset($data['salesInvoiceOrigin']);
-        } elseif (\array_key_exists('salesInvoiceOrigin', $data) && $data['salesInvoiceOrigin'] === null) {
+        }
+        elseif (\array_key_exists('salesInvoiceOrigin', $data) && $data['salesInvoiceOrigin'] === null) {
             $object->setSalesInvoiceOrigin(null);
         }
         if (\array_key_exists('salesInvoiceTypes', $data) && $data['salesInvoiceTypes'] !== null) {
@@ -185,119 +200,133 @@ class RecordEmailingRuleNormalizer implements DenormalizerAwareInterface, Denorm
             }
             $object->setSalesInvoiceTypes($values_2);
             unset($data['salesInvoiceTypes']);
-        } elseif (\array_key_exists('salesInvoiceTypes', $data) && $data['salesInvoiceTypes'] === null) {
+        }
+        elseif (\array_key_exists('salesInvoiceTypes', $data) && $data['salesInvoiceTypes'] === null) {
             $object->setSalesInvoiceTypes(null);
         }
-        if (\array_key_exists('shipmentOutTypes', $data) && $data['shipmentOutTypes'] !== null) {
+        if (\array_key_exists('salesOrderOrigins', $data) && $data['salesOrderOrigins'] !== null) {
             $values_3 = [];
-            foreach ($data['shipmentOutTypes'] as $value_3) {
+            foreach ($data['salesOrderOrigins'] as $value_3) {
                 $values_3[] = $value_3;
             }
-            $object->setShipmentOutTypes($values_3);
+            $object->setSalesOrderOrigins($values_3);
+            unset($data['salesOrderOrigins']);
+        }
+        elseif (\array_key_exists('salesOrderOrigins', $data) && $data['salesOrderOrigins'] === null) {
+            $object->setSalesOrderOrigins(null);
+        }
+        if (\array_key_exists('shipmentOutTypes', $data) && $data['shipmentOutTypes'] !== null) {
+            $values_4 = [];
+            foreach ($data['shipmentOutTypes'] as $value_4) {
+                $values_4[] = $value_4;
+            }
+            $object->setShipmentOutTypes($values_4);
             unset($data['shipmentOutTypes']);
-        } elseif (\array_key_exists('shipmentOutTypes', $data) && $data['shipmentOutTypes'] === null) {
+        }
+        elseif (\array_key_exists('shipmentOutTypes', $data) && $data['shipmentOutTypes'] === null) {
             $object->setShipmentOutTypes(null);
         }
         if (\array_key_exists('templateId', $data) && $data['templateId'] !== null) {
             $object->setTemplateId($data['templateId']);
             unset($data['templateId']);
-        } elseif (\array_key_exists('templateId', $data) && $data['templateId'] === null) {
+        }
+        elseif (\array_key_exists('templateId', $data) && $data['templateId'] === null) {
             $object->setTemplateId(null);
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_4;
+                $object[$key] = $value_5;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('version') && $data->getVersion() !== null) {
-            $dataArray['version'] = $data->getVersion();
-        }
-        if ($data->isInitialized('active') && $data->getActive() !== null) {
+        if ($data->isInitialized('active') && null !== $data->getActive()) {
             $dataArray['active'] = $data->getActive();
         }
-        if ($data->isInitialized('attachPurchaseOrderRequestCsvFile') && $data->getAttachPurchaseOrderRequestCsvFile() !== null) {
+        if ($data->isInitialized('attachPurchaseOrderRequestCsvFile') && null !== $data->getAttachPurchaseOrderRequestCsvFile()) {
             $dataArray['attachPurchaseOrderRequestCsvFile'] = $data->getAttachPurchaseOrderRequestCsvFile();
         }
-        if ($data->isInitialized('attachRecordDocument') && $data->getAttachRecordDocument() !== null) {
+        if ($data->isInitialized('attachRecordDocument') && null !== $data->getAttachRecordDocument()) {
             $dataArray['attachRecordDocument'] = $data->getAttachRecordDocument();
         }
-        if ($data->isInitialized('attachReturnLabel') && $data->getAttachReturnLabel() !== null) {
+        if ($data->isInitialized('attachReturnLabel') && null !== $data->getAttachReturnLabel()) {
             $dataArray['attachReturnLabel'] = $data->getAttachReturnLabel();
         }
-        if ($data->isInitialized('attachShippingLabel') && $data->getAttachShippingLabel() !== null) {
+        if ($data->isInitialized('attachShippingLabel') && null !== $data->getAttachShippingLabel()) {
             $dataArray['attachShippingLabel'] = $data->getAttachShippingLabel();
         }
-        if ($data->isInitialized('bccRecipients') && $data->getBccRecipients() !== null) {
+        if ($data->isInitialized('bccRecipients') && null !== $data->getBccRecipients()) {
             $dataArray['bccRecipients'] = $data->getBccRecipients();
         }
-        if ($data->isInitialized('ccRecipients') && $data->getCcRecipients() !== null) {
+        if ($data->isInitialized('ccRecipients') && null !== $data->getCcRecipients()) {
             $dataArray['ccRecipients'] = $data->getCcRecipients();
         }
-        if ($data->isInitialized('event') && $data->getEvent() !== null) {
+        if ($data->isInitialized('event') && null !== $data->getEvent()) {
             $dataArray['event'] = $data->getEvent();
         }
-        if ($data->isInitialized('mailAccountId') && $data->getMailAccountId() !== null) {
+        if ($data->isInitialized('mailAccountId') && null !== $data->getMailAccountId()) {
             $dataArray['mailAccountId'] = $data->getMailAccountId();
         }
-        if ($data->isInitialized('name') && $data->getName() !== null) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('otherRecipients') && $data->getOtherRecipients() !== null) {
+        if ($data->isInitialized('otherRecipients') && null !== $data->getOtherRecipients()) {
             $dataArray['otherRecipients'] = $data->getOtherRecipients();
         }
-        if ($data->isInitialized('paymentMethodTypes') && $data->getPaymentMethodTypes() !== null) {
+        if ($data->isInitialized('paymentMethods') && null !== $data->getPaymentMethods()) {
             $values = [];
-            foreach ($data->getPaymentMethodTypes() as $value) {
+            foreach ($data->getPaymentMethods() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $dataArray['paymentMethodTypes'] = $values;
+            $dataArray['paymentMethods'] = $values;
         }
-        if ($data->isInitialized('recipientType') && $data->getRecipientType() !== null) {
+        if ($data->isInitialized('recipientType') && null !== $data->getRecipientType()) {
             $dataArray['recipientType'] = $data->getRecipientType();
         }
-        if ($data->isInitialized('salesChannels') && $data->getSalesChannels() !== null) {
+        if ($data->isInitialized('salesChannels') && null !== $data->getSalesChannels()) {
             $values_1 = [];
             foreach ($data->getSalesChannels() as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['salesChannels'] = $values_1;
         }
-        if ($data->isInitialized('salesInvoiceOrigin') && $data->getSalesInvoiceOrigin() !== null) {
+        if ($data->isInitialized('salesInvoiceOrigin') && null !== $data->getSalesInvoiceOrigin()) {
             $dataArray['salesInvoiceOrigin'] = $data->getSalesInvoiceOrigin();
         }
-        if ($data->isInitialized('salesInvoiceTypes') && $data->getSalesInvoiceTypes() !== null) {
+        if ($data->isInitialized('salesInvoiceTypes') && null !== $data->getSalesInvoiceTypes()) {
             $values_2 = [];
             foreach ($data->getSalesInvoiceTypes() as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['salesInvoiceTypes'] = $values_2;
         }
-        if ($data->isInitialized('shipmentOutTypes') && $data->getShipmentOutTypes() !== null) {
+        if ($data->isInitialized('salesOrderOrigins') && null !== $data->getSalesOrderOrigins()) {
             $values_3 = [];
-            foreach ($data->getShipmentOutTypes() as $value_3) {
+            foreach ($data->getSalesOrderOrigins() as $value_3) {
                 $values_3[] = $value_3;
             }
-            $dataArray['shipmentOutTypes'] = $values_3;
+            $dataArray['salesOrderOrigins'] = $values_3;
         }
-        if ($data->isInitialized('templateId') && $data->getTemplateId() !== null) {
+        if ($data->isInitialized('shipmentOutTypes') && null !== $data->getShipmentOutTypes()) {
+            $values_4 = [];
+            foreach ($data->getShipmentOutTypes() as $value_4) {
+                $values_4[] = $value_4;
+            }
+            $dataArray['shipmentOutTypes'] = $values_4;
+        }
+        if ($data->isInitialized('templateId') && null !== $data->getTemplateId()) {
             $dataArray['templateId'] = $data->getTemplateId();
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_4;
+                $dataArray[$key] = $value_5;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\RecordEmailingRule::class => false];

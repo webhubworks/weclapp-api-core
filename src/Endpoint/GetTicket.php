@@ -7,45 +7,38 @@ class GetTicket extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoint 
     /**
      * query ticket
      *
-     * @param  array  $queryParameters  {
-     *
-     * @var int $page
-     * @var int $pageSize
-     * @var bool $serializeNulls
-     * @var string $sort
-     * @var string $filter
-     * @var string $properties
-     * @var string $includeReferencedEntities
-     * @var string $additionalProperties
-     *             }
+     * @param array $queryParameters {
+     *     @var int $page 
+     *     @var int $pageSize 
+     *     @var bool $serializeNulls 
+     *     @var string $sort 
+     *     @var string $filter 
+     *     @var string $properties 
+     *     @var string $includeReferencedEntities 
+     *     @var string $additionalProperties 
+     * }
      */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
     }
-
     use \Webhubworks\WeclappApiCore\Runtime\Client\EndpointTrait;
-
     public function getMethod(): string
     {
         return 'GET';
     }
-
     public function getUri(): string
     {
         return '/ticket';
     }
-
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
-
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
     }
-
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -60,10 +53,8 @@ class GetTicket extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoint 
         $optionsResolver->addAllowedTypes('properties', ['string']);
         $optionsResolver->addAllowedTypes('includeReferencedEntities', ['string']);
         $optionsResolver->addAllowedTypes('additionalProperties', ['string']);
-
         return $optionsResolver;
     }
-
     /**
      * {@inheritdoc}
      *
@@ -74,14 +65,13 @@ class GetTicket extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoint 
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
-        if (is_null($contentType) === false && ($status === 200 && mb_strpos($contentType, 'application/json') !== false)) {
+        if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\TicketGetResponse200', 'json');
         }
         if (mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'Webhubworks\WeclappApiCore\Model\ApiProblem', 'json');
         }
     }
-
     public function getAuthenticationScopes(): array
     {
         return ['api-token'];

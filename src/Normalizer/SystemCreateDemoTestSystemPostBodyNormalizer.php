@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class SystemCreateDemoTestSystemPostBodyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class SystemCreateDemoTestSystemPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\SystemCreateDemoTestSystemPostBody::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\SystemCreateDemoTestSystemPostBody::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,29 +33,32 @@ class SystemCreateDemoTestSystemPostBodyNormalizer implements DenormalizerAwareI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\SystemCreateDemoTestSystemPostBody;
+        $object = new \Webhubworks\WeclappApiCore\Model\SystemCreateDemoTestSystemPostBody();
         if (\array_key_exists('allUsers', $data) && \is_int($data['allUsers'])) {
             $data['allUsers'] = (bool) $data['allUsers'];
         }
-        if ($data === null || \is_array($data) === false) {
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('allUsers', $data) && $data['allUsers'] !== null) {
             $object->setAllUsers($data['allUsers']);
             unset($data['allUsers']);
-        } elseif (\array_key_exists('allUsers', $data) && $data['allUsers'] === null) {
+        }
+        elseif (\array_key_exists('allUsers', $data) && $data['allUsers'] === null) {
             $object->setAllUsers(null);
         }
         if (\array_key_exists('label', $data) && $data['label'] !== null) {
             $object->setLabel($data['label']);
             unset($data['label']);
-        } elseif (\array_key_exists('label', $data) && $data['label'] === null) {
+        }
+        elseif (\array_key_exists('label', $data) && $data['label'] === null) {
             $object->setLabel(null);
         }
         if (\array_key_exists('preset', $data) && $data['preset'] !== null) {
             $object->setPreset($data['preset']);
             unset($data['preset']);
-        } elseif (\array_key_exists('preset', $data) && $data['preset'] === null) {
+        }
+        elseif (\array_key_exists('preset', $data) && $data['preset'] === null) {
             $object->setPreset(null);
         }
         foreach ($data as $key => $value) {
@@ -67,14 +66,12 @@ class SystemCreateDemoTestSystemPostBodyNormalizer implements DenormalizerAwareI
                 $object[$key] = $value;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('allUsers') && $data->getAllUsers() !== null) {
+        if ($data->isInitialized('allUsers') && null !== $data->getAllUsers()) {
             $dataArray['allUsers'] = $data->getAllUsers();
         }
         $dataArray['label'] = $data->getLabel();
@@ -84,10 +81,8 @@ class SystemCreateDemoTestSystemPostBodyNormalizer implements DenormalizerAwareI
                 $dataArray[$key] = $value;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\SystemCreateDemoTestSystemPostBody::class => false];

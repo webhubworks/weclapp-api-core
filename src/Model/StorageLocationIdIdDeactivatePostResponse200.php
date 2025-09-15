@@ -8,27 +8,36 @@ class StorageLocationIdIdDeactivatePostResponse200 extends \ArrayObject
      * @var array
      */
     protected $initialized = [];
-
     public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
-
     /**
+     * 
+     *
      * @var StorageLocation|null
      */
     protected $result;
-
+    /**
+     * 
+     *
+     * @return StorageLocation|null
+     */
     public function getResult(): ?StorageLocation
     {
         return $this->result;
     }
-
+    /**
+     * 
+     *
+     * @param StorageLocation|null $result
+     *
+     * @return self
+     */
     public function setResult(?StorageLocation $result): self
     {
         $this->initialized['result'] = true;
         $this->result = $result;
-
         return $this;
     }
 }

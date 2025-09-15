@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class LicenseNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class LicenseNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\License::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\License::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,14 +33,15 @@ class LicenseNormalizer implements DenormalizerAwareInterface, DenormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\License;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\License();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
             $object->setName($data['name']);
             unset($data['name']);
-        } elseif (\array_key_exists('name', $data) && $data['name'] === null) {
+        }
+        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
             $object->setName(null);
         }
         if (\array_key_exists('permissions', $data) && $data['permissions'] !== null) {
@@ -54,7 +51,8 @@ class LicenseNormalizer implements DenormalizerAwareInterface, DenormalizerInter
             }
             $object->setPermissions($values);
             unset($data['permissions']);
-        } elseif (\array_key_exists('permissions', $data) && $data['permissions'] === null) {
+        }
+        elseif (\array_key_exists('permissions', $data) && $data['permissions'] === null) {
             $object->setPermissions(null);
         }
         foreach ($data as $key => $value_1) {
@@ -62,17 +60,15 @@ class LicenseNormalizer implements DenormalizerAwareInterface, DenormalizerInter
                 $object[$key] = $value_1;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('name') && $data->getName() !== null) {
+        if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
         }
-        if ($data->isInitialized('permissions') && $data->getPermissions() !== null) {
+        if ($data->isInitialized('permissions') && null !== $data->getPermissions()) {
             $values = [];
             foreach ($data->getPermissions() as $value) {
                 $values[] = $value;
@@ -84,10 +80,8 @@ class LicenseNormalizer implements DenormalizerAwareInterface, DenormalizerInter
                 $dataArray[$key] = $value_1;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\License::class => false];

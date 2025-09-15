@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class PropertyTranslationUpdatePropertyTranslationsPostBodyNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class PropertyTranslationUpdatePropertyTranslationsPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\PropertyTranslationUpdatePropertyTranslationsPostBody::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\PropertyTranslationUpdatePropertyTranslationsPostBody::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,20 +33,22 @@ class PropertyTranslationUpdatePropertyTranslationsPostBodyNormalizer implements
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\PropertyTranslationUpdatePropertyTranslationsPostBody;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\PropertyTranslationUpdatePropertyTranslationsPostBody();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('entityId', $data) && $data['entityId'] !== null) {
             $object->setEntityId($data['entityId']);
             unset($data['entityId']);
-        } elseif (\array_key_exists('entityId', $data) && $data['entityId'] === null) {
+        }
+        elseif (\array_key_exists('entityId', $data) && $data['entityId'] === null) {
             $object->setEntityId(null);
         }
         if (\array_key_exists('entityName', $data) && $data['entityName'] !== null) {
             $object->setEntityName($data['entityName']);
             unset($data['entityName']);
-        } elseif (\array_key_exists('entityName', $data) && $data['entityName'] === null) {
+        }
+        elseif (\array_key_exists('entityName', $data) && $data['entityName'] === null) {
             $object->setEntityName(null);
         }
         if (\array_key_exists('propertyTranslations', $data) && $data['propertyTranslations'] !== null) {
@@ -60,7 +58,8 @@ class PropertyTranslationUpdatePropertyTranslationsPostBodyNormalizer implements
             }
             $object->setPropertyTranslations($values);
             unset($data['propertyTranslations']);
-        } elseif (\array_key_exists('propertyTranslations', $data) && $data['propertyTranslations'] === null) {
+        }
+        elseif (\array_key_exists('propertyTranslations', $data) && $data['propertyTranslations'] === null) {
             $object->setPropertyTranslations(null);
         }
         foreach ($data as $key => $value_1) {
@@ -68,10 +67,8 @@ class PropertyTranslationUpdatePropertyTranslationsPostBodyNormalizer implements
                 $object[$key] = $value_1;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
@@ -87,10 +84,8 @@ class PropertyTranslationUpdatePropertyTranslationsPostBodyNormalizer implements
                 $dataArray[$key] = $value_1;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\PropertyTranslationUpdatePropertyTranslationsPostBody::class => false];

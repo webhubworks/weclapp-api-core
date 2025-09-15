@@ -3,32 +3,28 @@
 namespace Webhubworks\WeclappApiCore\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
+use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\CheckArray;
-use Webhubworks\WeclappApiCore\Runtime\Normalizer\ValidatorTrait;
-
-class PropertyTranslationNormalizer implements DenormalizerAwareInterface, DenormalizerInterface, NormalizerAwareInterface, NormalizerInterface
+class PropertyTranslationNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
-    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
     use ValidatorTrait;
-
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return $type === \Webhubworks\WeclappApiCore\Model\PropertyTranslation::class;
     }
-
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && get_class($data) === \Webhubworks\WeclappApiCore\Model\PropertyTranslation::class;
     }
-
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
@@ -37,14 +33,15 @@ class PropertyTranslationNormalizer implements DenormalizerAwareInterface, Denor
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Webhubworks\WeclappApiCore\Model\PropertyTranslation;
-        if ($data === null || \is_array($data) === false) {
+        $object = new \Webhubworks\WeclappApiCore\Model\PropertyTranslation();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('propertyName', $data) && $data['propertyName'] !== null) {
             $object->setPropertyName($data['propertyName']);
             unset($data['propertyName']);
-        } elseif (\array_key_exists('propertyName', $data) && $data['propertyName'] === null) {
+        }
+        elseif (\array_key_exists('propertyName', $data) && $data['propertyName'] === null) {
             $object->setPropertyName(null);
         }
         if (\array_key_exists('values', $data) && $data['values'] !== null) {
@@ -54,7 +51,8 @@ class PropertyTranslationNormalizer implements DenormalizerAwareInterface, Denor
             }
             $object->setValues($values);
             unset($data['values']);
-        } elseif (\array_key_exists('values', $data) && $data['values'] === null) {
+        }
+        elseif (\array_key_exists('values', $data) && $data['values'] === null) {
             $object->setValues(null);
         }
         foreach ($data as $key => $value_1) {
@@ -62,17 +60,15 @@ class PropertyTranslationNormalizer implements DenormalizerAwareInterface, Denor
                 $object[$key] = $value_1;
             }
         }
-
         return $object;
     }
-
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('propertyName') && $data->getPropertyName() !== null) {
+        if ($data->isInitialized('propertyName') && null !== $data->getPropertyName()) {
             $dataArray['propertyName'] = $data->getPropertyName();
         }
-        if ($data->isInitialized('values') && $data->getValues() !== null) {
+        if ($data->isInitialized('values') && null !== $data->getValues()) {
             $values = [];
             foreach ($data->getValues() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -84,10 +80,8 @@ class PropertyTranslationNormalizer implements DenormalizerAwareInterface, Denor
                 $dataArray[$key] = $value_1;
             }
         }
-
         return $dataArray;
     }
-
     public function getSupportedTypes(?string $format = null): array
     {
         return [\Webhubworks\WeclappApiCore\Model\PropertyTranslation::class => false];
