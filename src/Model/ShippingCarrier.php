@@ -71,6 +71,18 @@ class ShippingCarrier extends \ArrayObject
      *
      * @var string|null
      */
+    protected $sendcloudContractId;
+    /**
+     * 
+     *
+     * @var string|null
+     */
+    protected $sendcloudContractName;
+    /**
+     * 
+     *
+     * @var string|null
+     */
     protected $shippingServiceProviderType;
     /**
      * 
@@ -274,6 +286,50 @@ class ShippingCarrier extends \ArrayObject
     {
         $this->initialized['positionNumber'] = true;
         $this->positionNumber = $positionNumber;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSendcloudContractId(): ?string
+    {
+        return $this->sendcloudContractId;
+    }
+    /**
+     * 
+     *
+     * @param string|null $sendcloudContractId
+     *
+     * @return self
+     */
+    public function setSendcloudContractId(?string $sendcloudContractId): self
+    {
+        $this->initialized['sendcloudContractId'] = true;
+        $this->sendcloudContractId = $sendcloudContractId;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSendcloudContractName(): ?string
+    {
+        return $this->sendcloudContractName;
+    }
+    /**
+     * 
+     *
+     * @param string|null $sendcloudContractName
+     *
+     * @return self
+     */
+    public function setSendcloudContractName(?string $sendcloudContractName): self
+    {
+        $this->initialized['sendcloudContractName'] = true;
+        $this->sendcloudContractName = $sendcloudContractName;
         return $this;
     }
     /**

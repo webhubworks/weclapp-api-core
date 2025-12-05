@@ -83,6 +83,12 @@ class AbstractParty extends \ArrayObject
      *
      * @var string|null
      */
+    protected $emailHome;
+    /**
+     * 
+     *
+     * @var string|null
+     */
     protected $fax;
     /**
      * 
@@ -420,6 +426,28 @@ class AbstractParty extends \ArrayObject
     {
         $this->initialized['email'] = true;
         $this->email = $email;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getEmailHome(): ?string
+    {
+        return $this->emailHome;
+    }
+    /**
+     * 
+     *
+     * @param string|null $emailHome
+     *
+     * @return self
+     */
+    public function setEmailHome(?string $emailHome): self
+    {
+        $this->initialized['emailHome'] = true;
+        $this->emailHome = $emailHome;
         return $this;
     }
     /**

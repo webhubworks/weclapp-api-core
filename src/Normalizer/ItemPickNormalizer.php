@@ -182,6 +182,9 @@ class ItemPickNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('storagePlaceId') && null !== $data->getStoragePlaceId()) {
             $dataArray['storagePlaceId'] = $data->getStoragePlaceId();
         }
+        if ($data->isInitialized('orderItemId') && null !== $data->getOrderItemId()) {
+            $dataArray['orderItemId'] = $data->getOrderItemId();
+        }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

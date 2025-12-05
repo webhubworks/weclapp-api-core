@@ -1491,6 +1491,52 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostBlanketPurchaseOrderIdByIdGenerateRelease($id, $requestBody), $fetch);
     }
     /**
+     * query blanketSalesOrder
+     *
+     * @param array $queryParameters {
+     *     @var int $page 
+     *     @var int $pageSize 
+     *     @var bool $serializeNulls 
+     *     @var string $sort 
+     *     @var string $filter 
+     *     @var string $properties 
+     *     @var string $includeReferencedEntities 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\BlanketSalesOrderGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getBlanketSalesOrder(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetBlanketSalesOrder($queryParameters), $fetch);
+    }
+    /**
+     * count blanketSalesOrder
+     *
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\BlanketSalesOrderCountGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getBlanketSalesOrderCount(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetBlanketSalesOrderCount($queryParameters), $fetch);
+    }
+    /**
+     * query a specific blanketSalesOrder
+     *
+     * @param string $id 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\BlanketSalesOrder|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getBlanketSalesOrderIdById(string $id, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetBlanketSalesOrderIdById($id), $fetch);
+    }
+    /**
      * query calendar
      *
      * @param array $queryParameters {
@@ -1960,6 +2006,98 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
     public function putCashAccountIdById(string $id, ?\Webhubworks\WeclappApiCore\Model\CashAccount $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutCashAccountIdById($id, $requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * query cashAccountSheet
+     *
+     * @param array $queryParameters {
+     *     @var int $page 
+     *     @var int $pageSize 
+     *     @var bool $serializeNulls 
+     *     @var string $sort 
+     *     @var string $filter 
+     *     @var string $properties 
+     *     @var string $includeReferencedEntities 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\CashAccountSheetGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getCashAccountSheet(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetCashAccountSheet($queryParameters), $fetch);
+    }
+    /**
+     * create a cashAccountSheet
+     *
+     * @param null|\Webhubworks\WeclappApiCore\Model\CashAccountSheet $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\CashAccountSheet|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postCashAccountSheet(?\Webhubworks\WeclappApiCore\Model\CashAccountSheet $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostCashAccountSheet($requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * count cashAccountSheet
+     *
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\CashAccountSheetCountGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getCashAccountSheetCount(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetCashAccountSheetCount($queryParameters), $fetch);
+    }
+    /**
+     * delete a cashAccountSheet
+     *
+     * @param string $id 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteCashAccountSheetIdById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\DeleteCashAccountSheetIdById($id, $queryParameters), $fetch);
+    }
+    /**
+     * query a specific cashAccountSheet
+     *
+     * @param string $id 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\CashAccountSheet|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getCashAccountSheetIdById(string $id, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetCashAccountSheetIdById($id), $fetch);
+    }
+    /**
+     * update cashAccountSheet
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\CashAccountSheet $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\CashAccountSheet|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function putCashAccountSheetIdById(string $id, ?\Webhubworks\WeclappApiCore\Model\CashAccountSheet $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutCashAccountSheetIdById($id, $requestBody, $queryParameters), $fetch);
     }
     /**
      * query cashAccountTransaction
@@ -4085,6 +4223,45 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetExternalConnectionIdById($id), $fetch);
     }
     /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartArticleSynchronizationPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartArticleSynchronizationPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postExternalConnectionIdByIdStartArticleSynchronization(string $id, ?\Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartArticleSynchronizationPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostExternalConnectionIdByIdStartArticleSynchronization($id, $requestBody), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartEbayListingSynchronizationPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartEbayListingSynchronizationPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postExternalConnectionIdByIdStartEbayListingSynchronization(string $id, ?\Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartEbayListingSynchronizationPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostExternalConnectionIdByIdStartEbayListingSynchronization($id, $requestBody), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartOrderSynchronizationPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartOrderSynchronizationPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postExternalConnectionIdByIdStartOrderSynchronization(string $id, ?\Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartOrderSynchronizationPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostExternalConnectionIdByIdStartOrderSynchronization($id, $requestBody), $fetch);
+    }
+    /**
      * query financialYear
      *
      * @param array $queryParameters {
@@ -4611,6 +4788,21 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostInventoryCreate($requestBody), $fetch);
     }
     /**
+     * delete a inventory
+     *
+     * @param string $id 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteInventoryIdById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\DeleteInventoryIdById($id, $queryParameters), $fetch);
+    }
+    /**
      * query a specific inventory
      *
      * @param string $id 
@@ -4637,6 +4829,19 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
     public function putInventoryIdById(string $id, ?\Webhubworks\WeclappApiCore\Model\Inventory $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutInventoryIdById($id, $requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\InventoryIdIdBookInventoryPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\InventoryIdIdBookInventoryPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postInventoryIdByIdBookInventory(string $id, ?\Webhubworks\WeclappApiCore\Model\InventoryIdIdBookInventoryPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostInventoryIdByIdBookInventory($id, $requestBody), $fetch);
     }
     /**
      * query inventoryGroup
@@ -5533,6 +5738,20 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
+     * @return null|\Webhubworks\WeclappApiCore\Model\MetaLegacyReferencePropertiesGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getMetaLegacyReferenceProperty(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetMetaLegacyReferenceProperty($queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var string $resource 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
      * @return null|\Webhubworks\WeclappApiCore\Model\MetaQueryFilterPropertiesGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
      */
     public function getMetaQueryFilterProperty(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
@@ -5620,6 +5839,98 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
     public function postNotificationIdByIdMarkRead(string $id, ?\Webhubworks\WeclappApiCore\Model\NotificationIdIdMarkReadPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostNotificationIdByIdMarkRead($id, $requestBody), $fetch);
+    }
+    /**
+     * query numberRange
+     *
+     * @param array $queryParameters {
+     *     @var int $page 
+     *     @var int $pageSize 
+     *     @var bool $serializeNulls 
+     *     @var string $sort 
+     *     @var string $filter 
+     *     @var string $properties 
+     *     @var string $includeReferencedEntities 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\NumberRangeGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getNumberRange(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetNumberRange($queryParameters), $fetch);
+    }
+    /**
+     * count numberRange
+     *
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\NumberRangeCountGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getNumberRangeCount(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetNumberRangeCount($queryParameters), $fetch);
+    }
+    /**
+     * query a specific numberRange
+     *
+     * @param string $id 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\NumberRange|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getNumberRangeIdById(string $id, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetNumberRangeIdById($id), $fetch);
+    }
+    /**
+     * query numberRangeValue
+     *
+     * @param array $queryParameters {
+     *     @var int $page 
+     *     @var int $pageSize 
+     *     @var bool $serializeNulls 
+     *     @var string $sort 
+     *     @var string $filter 
+     *     @var string $properties 
+     *     @var string $includeReferencedEntities 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\NumberRangeValueGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getNumberRangeValue(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetNumberRangeValue($queryParameters), $fetch);
+    }
+    /**
+     * count numberRangeValue
+     *
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\NumberRangeValueCountGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getNumberRangeValueCount(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetNumberRangeValueCount($queryParameters), $fetch);
+    }
+    /**
+     * query a specific numberRangeValue
+     *
+     * @param string $id 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\NumberRangeValue|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getNumberRangeValueIdById(string $id, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetNumberRangeValueIdById($id), $fetch);
     }
     /**
      * query opportunity
@@ -6038,6 +6349,19 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
      * 
      *
      * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\PartyIdIdStartTransferEmailAddressesToOpenRecordsPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\PartyIdIdStartTransferEmailAddressesToOpenRecordsPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postPartyIdByIdStartTransferEmailAddressesToOpenRecord(string $id, ?\Webhubworks\WeclappApiCore\Model\PartyIdIdStartTransferEmailAddressesToOpenRecordsPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostPartyIdByIdStartTransferEmailAddressesToOpenRecord($id, $requestBody), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
      * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -6353,6 +6677,198 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
     public function getPaymentRunItemIdById(string $id, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetPaymentRunItemIdById($id), $fetch);
+    }
+    /**
+     * query performanceRecord
+     *
+     * @param array $queryParameters {
+     *     @var int $page 
+     *     @var int $pageSize 
+     *     @var bool $serializeNulls 
+     *     @var string $sort 
+     *     @var string $filter 
+     *     @var string $properties 
+     *     @var string $includeReferencedEntities 
+     *     @var string $additionalProperties 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\PerformanceRecordGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getPerformanceRecord(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetPerformanceRecord($queryParameters), $fetch);
+    }
+    /**
+     * create a performanceRecord
+     *
+     * @param null|\Webhubworks\WeclappApiCore\Model\PerformanceRecord $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\PerformanceRecord|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postPerformanceRecord(?\Webhubworks\WeclappApiCore\Model\PerformanceRecord $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostPerformanceRecord($requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * count performanceRecord
+     *
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\PerformanceRecordCountGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getPerformanceRecordCount(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetPerformanceRecordCount($queryParameters), $fetch);
+    }
+    /**
+     * delete a performanceRecord
+     *
+     * @param string $id 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function deletePerformanceRecordIdById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\DeletePerformanceRecordIdById($id, $queryParameters), $fetch);
+    }
+    /**
+     * query a specific performanceRecord
+     *
+     * @param string $id 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\PerformanceRecord|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getPerformanceRecordIdById(string $id, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetPerformanceRecordIdById($id), $fetch);
+    }
+    /**
+     * update performanceRecord
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\PerformanceRecord $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\PerformanceRecord|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function putPerformanceRecordIdById(string $id, ?\Webhubworks\WeclappApiCore\Model\PerformanceRecord $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutPerformanceRecordIdById($id, $requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdAddToPerformanceRecordPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdAddToPerformanceRecordPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postPerformanceRecordIdByIdAddToPerformanceRecord(string $id, ?\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdAddToPerformanceRecordPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostPerformanceRecordIdByIdAddToPerformanceRecord($id, $requestBody), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdCreateInvoicePostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdCreateInvoicePostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postPerformanceRecordIdByIdCreateInvoice(string $id, ?\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdCreateInvoicePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostPerformanceRecordIdByIdCreateInvoice($id, $requestBody), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header *\/*|application/pdf|image/jpeg|image/png|application/json
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getPerformanceRecordIdByIdDownloadLatestPerformanceRecordPdf(string $id, string $fetch = self::FETCH_OBJECT, array $accept = [])
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetPerformanceRecordIdByIdDownloadLatestPerformanceRecordPdf($id, $accept), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param array $queryParameters {
+     *     @var int $scaleWidth 
+     *     @var int $scaleHeight 
+     *     @var bool $customerSignature 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param array $accept Accept content header *\/*|application/pdf|image/jpeg|image/png|application/json
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getPerformanceRecordIdByIdDownloadSignature(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT, array $accept = [])
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetPerformanceRecordIdByIdDownloadSignature($id, $queryParameters, $accept), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRecalculateQuantitiesPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRecalculateQuantitiesPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postPerformanceRecordIdByIdRecalculateQuantity(string $id, ?\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRecalculateQuantitiesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostPerformanceRecordIdByIdRecalculateQuantity($id, $requestBody), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRemoveSignaturePostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRemoveSignaturePostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postPerformanceRecordIdByIdRemoveSignature(string $id, ?\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRemoveSignaturePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostPerformanceRecordIdByIdRemoveSignature($id, $requestBody), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|string|resource|\Psr\Http\Message\StreamInterface $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $customerSignature 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdUploadSignaturePostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postPerformanceRecordIdByIdUploadSignature(string $id, $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostPerformanceRecordIdByIdUploadSignature($id, $requestBody, $queryParameters), $fetch);
     }
     /**
      * query personDepartment
@@ -7269,6 +7785,98 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutProductionWorkScheduleAssignmentIdById($id, $requestBody, $queryParameters), $fetch);
     }
     /**
+     * query projectOrderStatusPage
+     *
+     * @param array $queryParameters {
+     *     @var int $page 
+     *     @var int $pageSize 
+     *     @var bool $serializeNulls 
+     *     @var string $sort 
+     *     @var string $filter 
+     *     @var string $properties 
+     *     @var string $includeReferencedEntities 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPageGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getProjectOrderStatusPage(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetProjectOrderStatusPage($queryParameters), $fetch);
+    }
+    /**
+     * create a projectOrderStatusPage
+     *
+     * @param null|\Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPage $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPage|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postProjectOrderStatusPage(?\Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPage $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostProjectOrderStatusPage($requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * count projectOrderStatusPage
+     *
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPageCountGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getProjectOrderStatusPageCount(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetProjectOrderStatusPageCount($queryParameters), $fetch);
+    }
+    /**
+     * delete a projectOrderStatusPage
+     *
+     * @param string $id 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteProjectOrderStatusPageIdById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\DeleteProjectOrderStatusPageIdById($id, $queryParameters), $fetch);
+    }
+    /**
+     * query a specific projectOrderStatusPage
+     *
+     * @param string $id 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPage|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getProjectOrderStatusPageIdById(string $id, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetProjectOrderStatusPageIdById($id), $fetch);
+    }
+    /**
+     * update projectOrderStatusPage
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPage $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPage|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function putProjectOrderStatusPageIdById(string $id, ?\Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPage $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutProjectOrderStatusPageIdById($id, $requestBody, $queryParameters), $fetch);
+    }
+    /**
      * 
      *
      * @param array $queryParameters {
@@ -7388,6 +7996,19 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
     public function putPurchaseInvoiceIdById(string $id, ?\Webhubworks\WeclappApiCore\Model\PurchaseInvoice $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutPurchaseInvoiceIdById($id, $requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\PurchaseInvoiceIdIdCancelPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\PurchaseInvoiceIdIdCancelPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postPurchaseInvoiceIdByIdCancel(string $id, ?\Webhubworks\WeclappApiCore\Model\PurchaseInvoiceIdIdCancelPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostPurchaseInvoiceIdByIdCancel($id, $requestBody), $fetch);
     }
     /**
      * 
@@ -8784,6 +9405,20 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetSalesChannelActiveSalesChannel(), $fetch);
     }
     /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var string $salesChannel 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\SalesChannelSalesChannelUsageGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getSalesChannelSalesChannelUsage(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetSalesChannelSalesChannelUsage($queryParameters), $fetch);
+    }
+    /**
      * query salesInvoice
      *
      * @param array $queryParameters {
@@ -8900,6 +9535,19 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
     public function postSalesInvoiceIdByIdCalculateSalesPrice(string $id, ?\Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCalculateSalesPricesPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostSalesInvoiceIdByIdCalculateSalesPrice($id, $requestBody), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCancelPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCancelPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postSalesInvoiceIdByIdCancel(string $id, ?\Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCancelPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostSalesInvoiceIdByIdCancel($id, $requestBody), $fetch);
     }
     /**
      * 
@@ -9302,6 +9950,19 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
     public function postSalesOrderIdByIdCreatePartPaymentInvoice(string $id, ?\Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePartPaymentInvoicePostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostSalesOrderIdByIdCreatePartPaymentInvoice($id, $requestBody), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePerformanceRecordPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePerformanceRecordPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postSalesOrderIdByIdCreatePerformanceRecord(string $id, ?\Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePerformanceRecordPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostSalesOrderIdByIdCreatePerformanceRecord($id, $requestBody), $fetch);
     }
     /**
      * 
@@ -10161,6 +10822,7 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
      * @param array $queryParameters {
      *     @var string $name 
      *     @var string $description 
+     *     @var string $parcelId 
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
@@ -11268,6 +11930,323 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutTagIdById($id, $requestBody, $queryParameters), $fetch);
     }
     /**
+     * query task
+     *
+     * @param array $queryParameters {
+     *     @var int $page 
+     *     @var int $pageSize 
+     *     @var bool $serializeNulls 
+     *     @var string $sort 
+     *     @var string $filter 
+     *     @var string $properties 
+     *     @var string $includeReferencedEntities 
+     *     @var string $additionalProperties 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTask(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTask($queryParameters), $fetch);
+    }
+    /**
+     * create a task
+     *
+     * @param null|\Webhubworks\WeclappApiCore\Model\Task $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\Task|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postTask(?\Webhubworks\WeclappApiCore\Model\Task $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostTask($requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * count task
+     *
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskCountGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTaskCount(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTaskCount($queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param array $queryParameters {
+     *     @var string $templateId 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskFromTemplateGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTaskFromTemplate(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTaskFromTemplate($queryParameters), $fetch);
+    }
+    /**
+     * delete a task
+     *
+     * @param string $id 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteTaskIdById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\DeleteTaskIdById($id, $queryParameters), $fetch);
+    }
+    /**
+     * query a specific task
+     *
+     * @param string $id 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\Task|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTaskIdById(string $id, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTaskIdById($id), $fetch);
+    }
+    /**
+     * update task
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\Task $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\Task|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function putTaskIdById(string $id, ?\Webhubworks\WeclappApiCore\Model\Task $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutTaskIdById($id, $requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\TaskIdIdCreatePerformanceRecordPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskIdIdCreatePerformanceRecordPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postTaskIdByIdCreatePerformanceRecord(string $id, ?\Webhubworks\WeclappApiCore\Model\TaskIdIdCreatePerformanceRecordPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostTaskIdByIdCreatePerformanceRecord($id, $requestBody), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\TaskIdIdUpdateBillingDataPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskIdIdUpdateBillingDataPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postTaskIdByIdUpdateBillingDatum(string $id, ?\Webhubworks\WeclappApiCore\Model\TaskIdIdUpdateBillingDataPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostTaskIdByIdUpdateBillingDatum($id, $requestBody), $fetch);
+    }
+    /**
+     * query taskList
+     *
+     * @param array $queryParameters {
+     *     @var int $page 
+     *     @var int $pageSize 
+     *     @var bool $serializeNulls 
+     *     @var string $sort 
+     *     @var string $filter 
+     *     @var string $properties 
+     *     @var string $includeReferencedEntities 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskListGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTaskList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTaskList($queryParameters), $fetch);
+    }
+    /**
+     * create a taskList
+     *
+     * @param null|\Webhubworks\WeclappApiCore\Model\TaskList $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskList|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postTaskList(?\Webhubworks\WeclappApiCore\Model\TaskList $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostTaskList($requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * count taskList
+     *
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskListCountGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTaskListCount(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTaskListCount($queryParameters), $fetch);
+    }
+    /**
+     * delete a taskList
+     *
+     * @param string $id 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteTaskListIdById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\DeleteTaskListIdById($id, $queryParameters), $fetch);
+    }
+    /**
+     * query a specific taskList
+     *
+     * @param string $id 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskList|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTaskListIdById(string $id, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTaskListIdById($id), $fetch);
+    }
+    /**
+     * update taskList
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\TaskList $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskList|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function putTaskListIdById(string $id, ?\Webhubworks\WeclappApiCore\Model\TaskList $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutTaskListIdById($id, $requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * query taskTemplate
+     *
+     * @param array $queryParameters {
+     *     @var int $page 
+     *     @var int $pageSize 
+     *     @var bool $serializeNulls 
+     *     @var string $sort 
+     *     @var string $filter 
+     *     @var string $properties 
+     *     @var string $includeReferencedEntities 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskTemplateGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTaskTemplate(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTaskTemplate($queryParameters), $fetch);
+    }
+    /**
+     * create a taskTemplate
+     *
+     * @param null|\Webhubworks\WeclappApiCore\Model\TaskTemplate $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskTemplate|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postTaskTemplate(?\Webhubworks\WeclappApiCore\Model\TaskTemplate $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostTaskTemplate($requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * count taskTemplate
+     *
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskTemplateCountGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTaskTemplateCount(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTaskTemplateCount($queryParameters), $fetch);
+    }
+    /**
+     * delete a taskTemplate
+     *
+     * @param string $id 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteTaskTemplateIdById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\DeleteTaskTemplateIdById($id, $queryParameters), $fetch);
+    }
+    /**
+     * query a specific taskTemplate
+     *
+     * @param string $id 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskTemplate|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTaskTemplateIdById(string $id, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTaskTemplateIdById($id), $fetch);
+    }
+    /**
+     * update taskTemplate
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\TaskTemplate $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TaskTemplate|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function putTaskTemplateIdById(string $id, ?\Webhubworks\WeclappApiCore\Model\TaskTemplate $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutTaskTemplateIdById($id, $requestBody, $queryParameters), $fetch);
+    }
+    /**
      * query tax
      *
      * @param array $queryParameters {
@@ -11712,6 +12691,19 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
     public function putTicketIdById(string $id, ?\Webhubworks\WeclappApiCore\Model\Ticket $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutTicketIdById($id, $requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * 
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\TicketIdIdCreatePerformanceRecordPostBody $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TicketIdIdCreatePerformanceRecordPostResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postTicketIdByIdCreatePerformanceRecord(string $id, ?\Webhubworks\WeclappApiCore\Model\TicketIdIdCreatePerformanceRecordPostBody $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostTicketIdByIdCreatePerformanceRecord($id, $requestBody), $fetch);
     }
     /**
      * 
@@ -12408,6 +13400,99 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
     public function putTicketTypeIdById(string $id, ?\Webhubworks\WeclappApiCore\Model\TicketType $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutTicketTypeIdById($id, $requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * query timeRecord
+     *
+     * @param array $queryParameters {
+     *     @var int $page 
+     *     @var int $pageSize 
+     *     @var bool $serializeNulls 
+     *     @var string $sort 
+     *     @var string $filter 
+     *     @var string $properties 
+     *     @var string $includeReferencedEntities 
+     *     @var string $additionalProperties 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TimeRecordGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTimeRecord(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTimeRecord($queryParameters), $fetch);
+    }
+    /**
+     * create a timeRecord
+     *
+     * @param null|\Webhubworks\WeclappApiCore\Model\TimeRecord $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TimeRecord|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function postTimeRecord(?\Webhubworks\WeclappApiCore\Model\TimeRecord $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PostTimeRecord($requestBody, $queryParameters), $fetch);
+    }
+    /**
+     * count timeRecord
+     *
+     * @param array $queryParameters {
+     *     @var string $filter 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TimeRecordCountGetResponse200|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTimeRecordCount(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTimeRecordCount($queryParameters), $fetch);
+    }
+    /**
+     * delete a timeRecord
+     *
+     * @param string $id 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteTimeRecordIdById(string $id, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\DeleteTimeRecordIdById($id, $queryParameters), $fetch);
+    }
+    /**
+     * query a specific timeRecord
+     *
+     * @param string $id 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TimeRecord|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function getTimeRecordIdById(string $id, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\GetTimeRecordIdById($id), $fetch);
+    }
+    /**
+     * update timeRecord
+     *
+     * @param string $id 
+     * @param null|\Webhubworks\WeclappApiCore\Model\TimeRecord $requestBody 
+     * @param array $queryParameters {
+     *     @var bool $dryRun 
+     * }
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return null|\Webhubworks\WeclappApiCore\Model\TimeRecord|\Webhubworks\WeclappApiCore\Model\ApiProblem|\Psr\Http\Message\ResponseInterface
+     */
+    public function putTimeRecordIdById(string $id, ?\Webhubworks\WeclappApiCore\Model\TimeRecord $requestBody = null, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Webhubworks\WeclappApiCore\Endpoint\PutTimeRecordIdById($id, $requestBody, $queryParameters), $fetch);
     }
     /**
      * query title
@@ -13762,6 +14847,7 @@ class Client extends \Webhubworks\WeclappApiCore\Runtime\Client\Client
      *     @var string $filter 
      *     @var string $properties 
      *     @var string $includeReferencedEntities 
+     *     @var string $additionalProperties 
      * }
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *

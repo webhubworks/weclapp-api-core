@@ -297,6 +297,8 @@ class SalesOrderItem extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @var string|null
      */
     protected $serviceQuotaId;
@@ -1355,6 +1357,8 @@ class SalesOrderItem extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return string|null
      */
     public function getServiceQuotaId(): ?string
@@ -1365,6 +1369,8 @@ class SalesOrderItem extends \ArrayObject
      * 
      *
      * @param string|null $serviceQuotaId
+     *
+     * @deprecated
      *
      * @return self
      */

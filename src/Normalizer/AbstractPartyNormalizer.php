@@ -122,6 +122,13 @@ class AbstractPartyNormalizer implements DenormalizerInterface, NormalizerInterf
         elseif (\array_key_exists('email', $data) && $data['email'] === null) {
             $object->setEmail(null);
         }
+        if (\array_key_exists('emailHome', $data) && $data['emailHome'] !== null) {
+            $object->setEmailHome($data['emailHome']);
+            unset($data['emailHome']);
+        }
+        elseif (\array_key_exists('emailHome', $data) && $data['emailHome'] === null) {
+            $object->setEmailHome(null);
+        }
         if (\array_key_exists('fax', $data) && $data['fax'] !== null) {
             $object->setFax($data['fax']);
             unset($data['fax']);
@@ -287,6 +294,9 @@ class AbstractPartyNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if ($data->isInitialized('email') && null !== $data->getEmail()) {
             $dataArray['email'] = $data->getEmail();
+        }
+        if ($data->isInitialized('emailHome') && null !== $data->getEmailHome()) {
+            $dataArray['emailHome'] = $data->getEmailHome();
         }
         if ($data->isInitialized('fax') && null !== $data->getFax()) {
             $dataArray['fax'] = $data->getFax();

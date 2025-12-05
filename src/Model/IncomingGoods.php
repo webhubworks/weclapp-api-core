@@ -99,18 +99,6 @@ class IncomingGoods extends \ArrayObject
     /**
      * 
      *
-     * @var RecordAddress|null
-     */
-    protected $invoiceAddress;
-    /**
-     * 
-     *
-     * @var RecordAddress|null
-     */
-    protected $recipientAddress;
-    /**
-     * 
-     *
      * @var list<OnlyId>|null
      */
     protected $salesOrders;
@@ -177,6 +165,12 @@ class IncomingGoods extends \ArrayObject
     /**
      * 
      *
+     * @var RecordAddress|null
+     */
+    protected $invoiceAddress;
+    /**
+     * 
+     *
      * @var string|null
      */
     protected $invoiceRecipientId;
@@ -186,6 +180,12 @@ class IncomingGoods extends \ArrayObject
      * @var list<OnlyId>|null
      */
     protected $purchaseOrders;
+    /**
+     * 
+     *
+     * @var RecordAddress|null
+     */
+    protected $recipientAddress;
     /**
      * 
      *
@@ -551,50 +551,6 @@ class IncomingGoods extends \ArrayObject
     /**
      * 
      *
-     * @return RecordAddress|null
-     */
-    public function getInvoiceAddress(): ?RecordAddress
-    {
-        return $this->invoiceAddress;
-    }
-    /**
-     * 
-     *
-     * @param RecordAddress|null $invoiceAddress
-     *
-     * @return self
-     */
-    public function setInvoiceAddress(?RecordAddress $invoiceAddress): self
-    {
-        $this->initialized['invoiceAddress'] = true;
-        $this->invoiceAddress = $invoiceAddress;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return RecordAddress|null
-     */
-    public function getRecipientAddress(): ?RecordAddress
-    {
-        return $this->recipientAddress;
-    }
-    /**
-     * 
-     *
-     * @param RecordAddress|null $recipientAddress
-     *
-     * @return self
-     */
-    public function setRecipientAddress(?RecordAddress $recipientAddress): self
-    {
-        $this->initialized['recipientAddress'] = true;
-        $this->recipientAddress = $recipientAddress;
-        return $this;
-    }
-    /**
-     * 
-     *
      * @return list<OnlyId>|null
      */
     public function getSalesOrders(): ?array
@@ -837,6 +793,28 @@ class IncomingGoods extends \ArrayObject
     /**
      * 
      *
+     * @return RecordAddress|null
+     */
+    public function getInvoiceAddress(): ?RecordAddress
+    {
+        return $this->invoiceAddress;
+    }
+    /**
+     * 
+     *
+     * @param RecordAddress|null $invoiceAddress
+     *
+     * @return self
+     */
+    public function setInvoiceAddress(?RecordAddress $invoiceAddress): self
+    {
+        $this->initialized['invoiceAddress'] = true;
+        $this->invoiceAddress = $invoiceAddress;
+        return $this;
+    }
+    /**
+     * 
+     *
      * @return string|null
      */
     public function getInvoiceRecipientId(): ?string
@@ -876,6 +854,28 @@ class IncomingGoods extends \ArrayObject
     {
         $this->initialized['purchaseOrders'] = true;
         $this->purchaseOrders = $purchaseOrders;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return RecordAddress|null
+     */
+    public function getRecipientAddress(): ?RecordAddress
+    {
+        return $this->recipientAddress;
+    }
+    /**
+     * 
+     *
+     * @param RecordAddress|null $recipientAddress
+     *
+     * @return self
+     */
+    public function setRecipientAddress(?RecordAddress $recipientAddress): self
+    {
+        $this->initialized['recipientAddress'] = true;
+        $this->recipientAddress = $recipientAddress;
         return $this;
     }
     /**

@@ -114,6 +114,12 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\BlanketPurchaseOrderStatusHistory::class => \Webhubworks\WeclappApiCore\Normalizer\BlanketPurchaseOrderStatusHistoryNormalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\BlanketSalesOrder::class => \Webhubworks\WeclappApiCore\Normalizer\BlanketSalesOrderNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\BlanketSalesOrderItem::class => \Webhubworks\WeclappApiCore\Normalizer\BlanketSalesOrderItemNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\BlanketSalesOrderStatusHistory::class => \Webhubworks\WeclappApiCore\Normalizer\BlanketSalesOrderStatusHistoryNormalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\Calendar::class => \Webhubworks\WeclappApiCore\Normalizer\CalendarNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\CalendarEvent::class => \Webhubworks\WeclappApiCore\Normalizer\CalendarEventNormalizer::class,
@@ -127,6 +133,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\CampaignParticipant::class => \Webhubworks\WeclappApiCore\Normalizer\CampaignParticipantNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\CashAccount::class => \Webhubworks\WeclappApiCore\Normalizer\CashAccountNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\CashAccountCashCountItem::class => \Webhubworks\WeclappApiCore\Normalizer\CashAccountCashCountItemNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\CashAccountSheet::class => \Webhubworks\WeclappApiCore\Normalizer\CashAccountSheetNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\CashAccountTransaction::class => \Webhubworks\WeclappApiCore\Normalizer\CashAccountTransactionNormalizer::class,
         
@@ -248,6 +258,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\Notification::class => \Webhubworks\WeclappApiCore\Normalizer\NotificationNormalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\NumberRange::class => \Webhubworks\WeclappApiCore\Normalizer\NumberRangeNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\NumberRangeValue::class => \Webhubworks\WeclappApiCore\Normalizer\NumberRangeValueNormalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\OnlineAccount::class => \Webhubworks\WeclappApiCore\Normalizer\OnlineAccountNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\OnlyId::class => \Webhubworks\WeclappApiCore\Normalizer\OnlyIdNormalizer::class,
@@ -257,6 +271,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\Opportunity::class => \Webhubworks\WeclappApiCore\Normalizer\OpportunityNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\PackagingUnit::class => \Webhubworks\WeclappApiCore\Normalizer\PackagingUnitNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\Parcel::class => \Webhubworks\WeclappApiCore\Normalizer\ParcelNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\Party::class => \Webhubworks\WeclappApiCore\Normalizer\PartyNormalizer::class,
         
@@ -273,6 +289,12 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\PaymentRun::class => \Webhubworks\WeclappApiCore\Normalizer\PaymentRunNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\PaymentRunItem::class => \Webhubworks\WeclappApiCore\Normalizer\PaymentRunItemNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecord::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordItem::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordItemNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordStatusHistory::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordStatusHistoryNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\Period::class => \Webhubworks\WeclappApiCore\Normalizer\PeriodNormalizer::class,
         
@@ -299,6 +321,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleItem::class => \Webhubworks\WeclappApiCore\Normalizer\ProductionWorkScheduleItemNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\ProjectMembers::class => \Webhubworks\WeclappApiCore\Normalizer\ProjectMembersNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPage::class => \Webhubworks\WeclappApiCore\Normalizer\ProjectOrderStatusPageNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\PropertyTranslation::class => \Webhubworks\WeclappApiCore\Normalizer\PropertyTranslationNormalizer::class,
         
@@ -350,6 +374,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\QuotationItem::class => \Webhubworks\WeclappApiCore\Normalizer\QuotationItemNormalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\QuotationItemRelationship::class => \Webhubworks\WeclappApiCore\Normalizer\QuotationItemRelationshipNormalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\QuotationItemScaleValue::class => \Webhubworks\WeclappApiCore\Normalizer\QuotationItemScaleValueNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\QuotationShippingCostItem::class => \Webhubworks\WeclappApiCore\Normalizer\QuotationShippingCostItemNormalizer::class,
@@ -379,6 +405,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\SalesBillOfMaterialArticleItem::class => \Webhubworks\WeclappApiCore\Normalizer\SalesBillOfMaterialArticleItemNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\SalesChannel::class => \Webhubworks\WeclappApiCore\Normalizer\SalesChannelNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\SalesChannelUsage::class => \Webhubworks\WeclappApiCore\Normalizer\SalesChannelUsageNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\SalesInvoice::class => \Webhubworks\WeclappApiCore\Normalizer\SalesInvoiceNormalizer::class,
         
@@ -440,6 +468,18 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\Tag::class => \Webhubworks\WeclappApiCore\Normalizer\TagNormalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\Task::class => \Webhubworks\WeclappApiCore\Normalizer\TaskNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskAssignee::class => \Webhubworks\WeclappApiCore\Normalizer\TaskAssigneeNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskList::class => \Webhubworks\WeclappApiCore\Normalizer\TaskListNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskMailAccount::class => \Webhubworks\WeclappApiCore\Normalizer\TaskMailAccountNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskTemplate::class => \Webhubworks\WeclappApiCore\Normalizer\TaskTemplateNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskTemplateAssignee::class => \Webhubworks\WeclappApiCore\Normalizer\TaskTemplateAssigneeNormalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\Tax::class => \Webhubworks\WeclappApiCore\Normalizer\TaxNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\TaxDeterminationRule::class => \Webhubworks\WeclappApiCore\Normalizer\TaxDeterminationRuleNormalizer::class,
@@ -467,6 +507,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\TicketStatus::class => \Webhubworks\WeclappApiCore\Normalizer\TicketStatusNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\TicketType::class => \Webhubworks\WeclappApiCore\Normalizer\TicketTypeNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TimeRecord::class => \Webhubworks\WeclappApiCore\Normalizer\TimeRecordNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\Translation::class => \Webhubworks\WeclappApiCore\Normalizer\TranslationNormalizer::class,
         
@@ -616,6 +658,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\BlanketPurchaseOrderIdIdGenerateReleasesPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\BlanketPurchaseOrderIdIdGenerateReleasesPostResponse200Normalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\BlanketSalesOrderGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\BlanketSalesOrderGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\BlanketSalesOrderCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\BlanketSalesOrderCountGetResponse200Normalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\CalendarGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\CalendarGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\CalendarCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\CalendarCountGetResponse200Normalizer::class,
@@ -639,6 +685,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\CashAccountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\CashAccountGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\CashAccountCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\CashAccountCountGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\CashAccountSheetGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\CashAccountSheetGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\CashAccountSheetCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\CashAccountSheetCountGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\CashAccountTransactionGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\CashAccountTransactionGetResponse200Normalizer::class,
         
@@ -756,6 +806,18 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\ExternalConnectionCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\ExternalConnectionCountGetResponse200Normalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartArticleSynchronizationPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\ExternalConnectionIdIdStartArticleSynchronizationPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartArticleSynchronizationPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\ExternalConnectionIdIdStartArticleSynchronizationPostResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartEbayListingSynchronizationPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\ExternalConnectionIdIdStartEbayListingSynchronizationPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartEbayListingSynchronizationPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\ExternalConnectionIdIdStartEbayListingSynchronizationPostResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartOrderSynchronizationPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\ExternalConnectionIdIdStartOrderSynchronizationPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartOrderSynchronizationPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\ExternalConnectionIdIdStartOrderSynchronizationPostResponse200Normalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\FinancialYearGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\FinancialYearGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\FinancialYearCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\FinancialYearCountGetResponse200Normalizer::class,
@@ -820,6 +882,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\InventoryCreatePostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\InventoryCreatePostResponse200Normalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\InventoryIdIdBookInventoryPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\InventoryIdIdBookInventoryPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\InventoryIdIdBookInventoryPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\InventoryIdIdBookInventoryPostResponse200Normalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\InventoryGroupGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\InventoryGroupGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\InventoryGroupCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\InventoryGroupCountGetResponse200Normalizer::class,
@@ -864,6 +930,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\ManufacturerCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\ManufacturerCountGetResponse200Normalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\MetaLegacyReferencePropertiesGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\MetaLegacyReferencePropertiesGetResponse200Normalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\MetaQueryFilterPropertiesGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\MetaQueryFilterPropertiesGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\MetaQuerySortPropertiesGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\MetaQuerySortPropertiesGetResponse200Normalizer::class,
@@ -877,6 +945,14 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\NotificationIdIdMarkReadPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\NotificationIdIdMarkReadPostBodyNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\NotificationIdIdMarkReadPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\NotificationIdIdMarkReadPostResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\NumberRangeGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\NumberRangeGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\NumberRangeCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\NumberRangeCountGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\NumberRangeValueGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\NumberRangeValueGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\NumberRangeValueCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\NumberRangeValueCountGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\OpportunityGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\OpportunityGetResponse200Normalizer::class,
         
@@ -904,6 +980,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\PartyIdIdCreatePublicPagePostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PartyIdIdCreatePublicPagePostResponse200Normalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\PartyIdIdStartTransferEmailAddressesToOpenRecordsPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\PartyIdIdStartTransferEmailAddressesToOpenRecordsPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PartyIdIdStartTransferEmailAddressesToOpenRecordsPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PartyIdIdStartTransferEmailAddressesToOpenRecordsPostResponse200Normalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\PartyIdIdUploadImagePostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PartyIdIdUploadImagePostResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\PartyRatingGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PartyRatingGetResponse200Normalizer::class,
@@ -921,6 +1001,30 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\PaymentRunItemGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PaymentRunItemGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\PaymentRunItemCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PaymentRunItemCountGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordGetResponse200AdditionalProperties::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordGetResponse200AdditionalPropertiesNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordCountGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdAddToPerformanceRecordPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordIdIdAddToPerformanceRecordPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdAddToPerformanceRecordPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordIdIdAddToPerformanceRecordPostResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdCreateInvoicePostBody::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordIdIdCreateInvoicePostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdCreateInvoicePostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordIdIdCreateInvoicePostResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRecalculateQuantitiesPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordIdIdRecalculateQuantitiesPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRecalculateQuantitiesPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordIdIdRecalculateQuantitiesPostResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRemoveSignaturePostBody::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordIdIdRemoveSignaturePostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRemoveSignaturePostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordIdIdRemoveSignaturePostResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdUploadSignaturePostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PerformanceRecordIdIdUploadSignaturePostResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\PersonDepartmentGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PersonDepartmentGetResponse200Normalizer::class,
         
@@ -970,6 +1074,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleAssignmentCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\ProductionWorkScheduleAssignmentCountGetResponse200Normalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPageGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\ProjectOrderStatusPageGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPageCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\ProjectOrderStatusPageCountGetResponse200Normalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\PropertyTranslationReadPropertyTranslationsGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PropertyTranslationReadPropertyTranslationsGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\PropertyTranslationUpdatePropertyTranslationsPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\PropertyTranslationUpdatePropertyTranslationsPostBodyNormalizer::class,
@@ -981,6 +1089,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PurchaseInvoiceGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PurchaseInvoiceCountGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceIdIdCancelPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\PurchaseInvoiceIdIdCancelPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceIdIdCancelPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\PurchaseInvoiceIdIdCancelPostResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceIdIdConvertPurchaseInvoiceToCreditNotePostBody::class => \Webhubworks\WeclappApiCore\Normalizer\PurchaseInvoiceIdIdConvertPurchaseInvoiceToCreditNotePostBodyNormalizer::class,
         
@@ -1172,6 +1284,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\SalesChannelActiveSalesChannelsGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\SalesChannelActiveSalesChannelsGetResponse200Normalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\SalesChannelSalesChannelUsageGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\SalesChannelSalesChannelUsageGetResponse200Normalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\SalesInvoiceGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\SalesInvoiceGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\SalesInvoiceCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\SalesInvoiceCountGetResponse200Normalizer::class,
@@ -1183,6 +1297,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCalculateSalesPricesPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\SalesInvoiceIdIdCalculateSalesPricesPostBodyNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCalculateSalesPricesPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\SalesInvoiceIdIdCalculateSalesPricesPostResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCancelPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\SalesInvoiceIdIdCancelPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCancelPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\SalesInvoiceIdIdCancelPostResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCreateContractPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\SalesInvoiceIdIdCreateContractPostBodyNormalizer::class,
         
@@ -1265,6 +1383,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePartPaymentInvoicePostBody::class => \Webhubworks\WeclappApiCore\Normalizer\SalesOrderIdIdCreatePartPaymentInvoicePostBodyNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePartPaymentInvoicePostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\SalesOrderIdIdCreatePartPaymentInvoicePostResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePerformanceRecordPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\SalesOrderIdIdCreatePerformanceRecordPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePerformanceRecordPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\SalesOrderIdIdCreatePerformanceRecordPostResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePrepaymentFinalInvoicePostBody::class => \Webhubworks\WeclappApiCore\Normalizer\SalesOrderIdIdCreatePrepaymentFinalInvoicePostBodyNormalizer::class,
         
@@ -1446,6 +1568,32 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\TagCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TagCountGetResponse200Normalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\TaskGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TaskGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskGetResponse200AdditionalProperties::class => \Webhubworks\WeclappApiCore\Normalizer\TaskGetResponse200AdditionalPropertiesNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TaskCountGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskFromTemplateGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TaskFromTemplateGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskIdIdCreatePerformanceRecordPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\TaskIdIdCreatePerformanceRecordPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskIdIdCreatePerformanceRecordPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TaskIdIdCreatePerformanceRecordPostResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskIdIdUpdateBillingDataPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\TaskIdIdUpdateBillingDataPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskIdIdUpdateBillingDataPostBodyBillingData::class => \Webhubworks\WeclappApiCore\Normalizer\TaskIdIdUpdateBillingDataPostBodyBillingDataNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskIdIdUpdateBillingDataPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TaskIdIdUpdateBillingDataPostResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskListGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TaskListGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskListCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TaskListCountGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskTemplateGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TaskTemplateGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TaskTemplateCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TaskTemplateCountGetResponse200Normalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\TaxGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TaxGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\TaxConfigurePurchaseTaxesPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\TaxConfigurePurchaseTaxesPostBodyNormalizer::class,
@@ -1479,6 +1627,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\TicketGetResponse200AdditionalProperties::class => \Webhubworks\WeclappApiCore\Normalizer\TicketGetResponse200AdditionalPropertiesNormalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\TicketCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TicketCountGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TicketIdIdCreatePerformanceRecordPostBody::class => \Webhubworks\WeclappApiCore\Normalizer\TicketIdIdCreatePerformanceRecordPostBodyNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TicketIdIdCreatePerformanceRecordPostResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TicketIdIdCreatePerformanceRecordPostResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\TicketIdIdCreatePublicPagePostBody::class => \Webhubworks\WeclappApiCore\Normalizer\TicketIdIdCreatePublicPagePostBodyNormalizer::class,
         
@@ -1527,6 +1679,12 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Webhubworks\WeclappApiCore\Model\TicketTypeGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TicketTypeGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\TicketTypeCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TicketTypeCountGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TimeRecordGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TimeRecordGetResponse200Normalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TimeRecordGetResponse200AdditionalProperties::class => \Webhubworks\WeclappApiCore\Normalizer\TimeRecordGetResponse200AdditionalPropertiesNormalizer::class,
+        
+        \Webhubworks\WeclappApiCore\Model\TimeRecordCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TimeRecordCountGetResponse200Normalizer::class,
         
         \Webhubworks\WeclappApiCore\Model\TitleGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\TitleGetResponse200Normalizer::class,
         
@@ -1666,6 +1824,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Webhubworks\WeclappApiCore\Model\WeclappOsGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\WeclappOsGetResponse200Normalizer::class,
         
+        \Webhubworks\WeclappApiCore\Model\WeclappOsGetResponse200AdditionalProperties::class => \Webhubworks\WeclappApiCore\Normalizer\WeclappOsGetResponse200AdditionalPropertiesNormalizer::class,
+        
         \Webhubworks\WeclappApiCore\Model\WeclappOsCountGetResponse200::class => \Webhubworks\WeclappApiCore\Normalizer\WeclappOsCountGetResponse200Normalizer::class,
         
         \Jane\Component\JsonSchemaRuntime\Reference::class => \Webhubworks\WeclappApiCore\Runtime\Normalizer\ReferenceNormalizer::class,
@@ -1754,6 +1914,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\BillOfMaterial::class => false,
             \Webhubworks\WeclappApiCore\Model\BlanketPurchaseOrder::class => false,
             \Webhubworks\WeclappApiCore\Model\BlanketPurchaseOrderStatusHistory::class => false,
+            \Webhubworks\WeclappApiCore\Model\BlanketSalesOrder::class => false,
+            \Webhubworks\WeclappApiCore\Model\BlanketSalesOrderItem::class => false,
+            \Webhubworks\WeclappApiCore\Model\BlanketSalesOrderStatusHistory::class => false,
             \Webhubworks\WeclappApiCore\Model\Calendar::class => false,
             \Webhubworks\WeclappApiCore\Model\CalendarEvent::class => false,
             \Webhubworks\WeclappApiCore\Model\CalendarEventAttendee::class => false,
@@ -1761,6 +1924,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\Campaign::class => false,
             \Webhubworks\WeclappApiCore\Model\CampaignParticipant::class => false,
             \Webhubworks\WeclappApiCore\Model\CashAccount::class => false,
+            \Webhubworks\WeclappApiCore\Model\CashAccountCashCountItem::class => false,
+            \Webhubworks\WeclappApiCore\Model\CashAccountSheet::class => false,
             \Webhubworks\WeclappApiCore\Model\CashAccountTransaction::class => false,
             \Webhubworks\WeclappApiCore\Model\Comment::class => false,
             \Webhubworks\WeclappApiCore\Model\CommercialLanguage::class => false,
@@ -1821,11 +1986,14 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\MinimalStoragePlace::class => false,
             \Webhubworks\WeclappApiCore\Model\NestedStoragePlace::class => false,
             \Webhubworks\WeclappApiCore\Model\Notification::class => false,
+            \Webhubworks\WeclappApiCore\Model\NumberRange::class => false,
+            \Webhubworks\WeclappApiCore\Model\NumberRangeValue::class => false,
             \Webhubworks\WeclappApiCore\Model\OnlineAccount::class => false,
             \Webhubworks\WeclappApiCore\Model\OnlyId::class => false,
             \Webhubworks\WeclappApiCore\Model\OpenItem::class => false,
             \Webhubworks\WeclappApiCore\Model\Opportunity::class => false,
             \Webhubworks\WeclappApiCore\Model\PackagingUnit::class => false,
+            \Webhubworks\WeclappApiCore\Model\Parcel::class => false,
             \Webhubworks\WeclappApiCore\Model\Party::class => false,
             \Webhubworks\WeclappApiCore\Model\PartyBankAccount::class => false,
             \Webhubworks\WeclappApiCore\Model\PartyEmailAddresses::class => false,
@@ -1834,6 +2002,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\PaymentMethod::class => false,
             \Webhubworks\WeclappApiCore\Model\PaymentRun::class => false,
             \Webhubworks\WeclappApiCore\Model\PaymentRunItem::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecord::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordItem::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordStatusHistory::class => false,
             \Webhubworks\WeclappApiCore\Model\Period::class => false,
             \Webhubworks\WeclappApiCore\Model\Pick::class => false,
             \Webhubworks\WeclappApiCore\Model\PriceCalculationParameter::class => false,
@@ -1847,6 +2018,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleAssignment::class => false,
             \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleItem::class => false,
             \Webhubworks\WeclappApiCore\Model\ProjectMembers::class => false,
+            \Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPage::class => false,
             \Webhubworks\WeclappApiCore\Model\PropertyTranslation::class => false,
             \Webhubworks\WeclappApiCore\Model\PropertyTranslationValue::class => false,
             \Webhubworks\WeclappApiCore\Model\PurchaseInvoice::class => false,
@@ -1872,6 +2044,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\QuantityConversion::class => false,
             \Webhubworks\WeclappApiCore\Model\Quotation::class => false,
             \Webhubworks\WeclappApiCore\Model\QuotationItem::class => false,
+            \Webhubworks\WeclappApiCore\Model\QuotationItemRelationship::class => false,
             \Webhubworks\WeclappApiCore\Model\QuotationItemScaleValue::class => false,
             \Webhubworks\WeclappApiCore\Model\QuotationShippingCostItem::class => false,
             \Webhubworks\WeclappApiCore\Model\QuotationStatusHistory::class => false,
@@ -1887,6 +2060,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\RemotePrintJob::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesBillOfMaterialArticleItem::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesChannel::class => false,
+            \Webhubworks\WeclappApiCore\Model\SalesChannelUsage::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesInvoice::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesInvoiceItem::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesInvoiceItemRelationship::class => false,
@@ -1917,6 +2091,12 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\SuccessResponse::class => false,
             \Webhubworks\WeclappApiCore\Model\SupplySource::class => false,
             \Webhubworks\WeclappApiCore\Model\Tag::class => false,
+            \Webhubworks\WeclappApiCore\Model\Task::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskAssignee::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskList::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskMailAccount::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskTemplate::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskTemplateAssignee::class => false,
             \Webhubworks\WeclappApiCore\Model\Tax::class => false,
             \Webhubworks\WeclappApiCore\Model\TaxDeterminationRule::class => false,
             \Webhubworks\WeclappApiCore\Model\TermOfPayment::class => false,
@@ -1931,6 +2111,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\TicketServiceLevelAgreementTarget::class => false,
             \Webhubworks\WeclappApiCore\Model\TicketStatus::class => false,
             \Webhubworks\WeclappApiCore\Model\TicketType::class => false,
+            \Webhubworks\WeclappApiCore\Model\TimeRecord::class => false,
             \Webhubworks\WeclappApiCore\Model\Translation::class => false,
             \Webhubworks\WeclappApiCore\Model\TranslationValue::class => false,
             \Webhubworks\WeclappApiCore\Model\TransportPick::class => false,
@@ -2005,6 +2186,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\BlanketPurchaseOrderCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\BlanketPurchaseOrderIdIdGenerateReleasesPostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\BlanketPurchaseOrderIdIdGenerateReleasesPostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\BlanketSalesOrderGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\BlanketSalesOrderCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\CalendarGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\CalendarCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\CalendarIdIdDeleteCalendarAndMoveEventsPostBody::class => false,
@@ -2017,6 +2200,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\CampaignParticipantCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\CashAccountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\CashAccountCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\CashAccountSheetGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\CashAccountSheetCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\CashAccountTransactionGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\CashAccountTransactionCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\CommentGetResponse200::class => false,
@@ -2075,6 +2260,12 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\DocumentUploadPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\ExternalConnectionGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\ExternalConnectionCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartArticleSynchronizationPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartArticleSynchronizationPostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartEbayListingSynchronizationPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartEbayListingSynchronizationPostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartOrderSynchronizationPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\ExternalConnectionIdIdStartOrderSynchronizationPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\FinancialYearGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\FinancialYearCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\FinancialYearIdIdGeneratePeriodsPostBody::class => false,
@@ -2107,6 +2298,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\InventoryCreatePostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\InventoryCreatePostBodyInventory::class => false,
             \Webhubworks\WeclappApiCore\Model\InventoryCreatePostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\InventoryIdIdBookInventoryPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\InventoryIdIdBookInventoryPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\InventoryGroupGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\InventoryGroupCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\InventoryItemGetResponse200::class => false,
@@ -2129,6 +2322,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\MailTemplateCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\ManufacturerGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\ManufacturerCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\MetaLegacyReferencePropertiesGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\MetaQueryFilterPropertiesGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\MetaQuerySortPropertiesGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\MetaResourcesGetResponse200::class => false,
@@ -2136,6 +2330,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\NotificationCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\NotificationIdIdMarkReadPostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\NotificationIdIdMarkReadPostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\NumberRangeGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\NumberRangeCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\NumberRangeValueGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\NumberRangeValueCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\OpportunityGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\OpportunityCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\OpportunityIdIdLinkQuotationPostBody::class => false,
@@ -2149,6 +2347,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\PartyCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PartyIdIdCreatePublicPagePostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\PartyIdIdCreatePublicPagePostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\PartyIdIdStartTransferEmailAddressesToOpenRecordsPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\PartyIdIdStartTransferEmailAddressesToOpenRecordsPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PartyIdIdUploadImagePostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PartyRatingGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PartyRatingCountGetResponse200::class => false,
@@ -2158,6 +2358,18 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\PaymentRunCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PaymentRunItemGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PaymentRunItemCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordGetResponse200AdditionalProperties::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdAddToPerformanceRecordPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdAddToPerformanceRecordPostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdCreateInvoicePostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdCreateInvoicePostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRecalculateQuantitiesPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRecalculateQuantitiesPostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRemoveSignaturePostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdRemoveSignaturePostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\PerformanceRecordIdIdUploadSignaturePostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PersonDepartmentGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PersonDepartmentCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PersonRoleGetResponse200::class => false,
@@ -2182,12 +2394,16 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleAssignmentGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\ProductionWorkScheduleAssignmentCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPageGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\ProjectOrderStatusPageCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PropertyTranslationReadPropertyTranslationsGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PropertyTranslationUpdatePropertyTranslationsPostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\PropertyTranslationUpdatePropertyTranslationsPostBodyPropertyTranslationsItem::class => false,
             \Webhubworks\WeclappApiCore\Model\PropertyTranslationUpdatePropertyTranslationsPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceIdIdCancelPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceIdIdCancelPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceIdIdConvertPurchaseInvoiceToCreditNotePostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceIdIdConvertPurchaseInvoiceToCreditNotePostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceIdIdCreateContractPostBody::class => false,
@@ -2283,12 +2499,15 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\RemotePrintJobCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\RemotePrintJobCreatePrintJobWithDocumentPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesChannelActiveSalesChannelsGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\SalesChannelSalesChannelUsageGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesInvoiceGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesInvoiceCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdAddSalesOrdersPostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdAddSalesOrdersPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCalculateSalesPricesPostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCalculateSalesPricesPostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCancelPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCancelPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCreateContractPostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCreateContractPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesInvoiceIdIdCreateCreditNotePostBody::class => false,
@@ -2330,6 +2549,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreateDropshippingPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePartPaymentInvoicePostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePartPaymentInvoicePostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePerformanceRecordPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePerformanceRecordPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePrepaymentFinalInvoicePostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreatePrepaymentFinalInvoicePostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\SalesOrderIdIdCreateProductionOrdersPostBody::class => false,
@@ -2420,6 +2641,19 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\SystemPermissionsGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\TagGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\TagCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskGetResponse200AdditionalProperties::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskFromTemplateGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskIdIdCreatePerformanceRecordPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskIdIdCreatePerformanceRecordPostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskIdIdUpdateBillingDataPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskIdIdUpdateBillingDataPostBodyBillingData::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskIdIdUpdateBillingDataPostResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskListGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskListCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskTemplateGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\TaskTemplateCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\TaxGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\TaxConfigurePurchaseTaxesPostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\TaxConfigurePurchaseTaxesPostResponse200::class => false,
@@ -2437,6 +2671,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\TicketGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\TicketGetResponse200AdditionalProperties::class => false,
             \Webhubworks\WeclappApiCore\Model\TicketCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\TicketIdIdCreatePerformanceRecordPostBody::class => false,
+            \Webhubworks\WeclappApiCore\Model\TicketIdIdCreatePerformanceRecordPostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\TicketIdIdCreatePublicPagePostBody::class => false,
             \Webhubworks\WeclappApiCore\Model\TicketIdIdCreatePublicPagePostResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\TicketIdIdDisablePublicPagePostBody::class => false,
@@ -2461,6 +2697,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\TicketStatusCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\TicketTypeGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\TicketTypeCountGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\TimeRecordGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\TimeRecordGetResponse200AdditionalProperties::class => false,
+            \Webhubworks\WeclappApiCore\Model\TimeRecordCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\TitleGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\TitleCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\TranslationGetResponse200::class => false,
@@ -2530,6 +2769,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Webhubworks\WeclappApiCore\Model\WebhookGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\WebhookCountGetResponse200::class => false,
             \Webhubworks\WeclappApiCore\Model\WeclappOsGetResponse200::class => false,
+            \Webhubworks\WeclappApiCore\Model\WeclappOsGetResponse200AdditionalProperties::class => false,
             \Webhubworks\WeclappApiCore\Model\WeclappOsCountGetResponse200::class => false,
             \Jane\Component\JsonSchemaRuntime\Reference::class => false,
         ];

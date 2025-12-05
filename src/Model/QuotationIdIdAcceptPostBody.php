@@ -21,6 +21,12 @@ class QuotationIdIdAcceptPostBody extends \ArrayObject
     /**
      * 
      *
+     * @var string|null
+     */
+    protected $quotationType;
+    /**
+     * 
+     *
      * @return list<QuotationIdIdAcceptPostBodyAcceptQuotationItemsItem>|null
      */
     public function getAcceptQuotationItems(): ?array
@@ -38,6 +44,28 @@ class QuotationIdIdAcceptPostBody extends \ArrayObject
     {
         $this->initialized['acceptQuotationItems'] = true;
         $this->acceptQuotationItems = $acceptQuotationItems;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getQuotationType(): ?string
+    {
+        return $this->quotationType;
+    }
+    /**
+     * 
+     *
+     * @param string|null $quotationType
+     *
+     * @return self
+     */
+    public function setQuotationType(?string $quotationType): self
+    {
+        $this->initialized['quotationType'] = true;
+        $this->quotationType = $quotationType;
         return $this;
     }
 }

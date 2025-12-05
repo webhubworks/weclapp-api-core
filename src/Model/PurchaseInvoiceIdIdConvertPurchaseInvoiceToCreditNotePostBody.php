@@ -12,4 +12,32 @@ class PurchaseInvoiceIdIdConvertPurchaseInvoiceToCreditNotePostBody extends \Arr
     {
         return array_key_exists($property, $this->initialized);
     }
+    /**
+     * 
+     *
+     * @var bool|null
+     */
+    protected $reverseSignsOfPrices;
+    /**
+     * 
+     *
+     * @return bool|null
+     */
+    public function getReverseSignsOfPrices(): ?bool
+    {
+        return $this->reverseSignsOfPrices;
+    }
+    /**
+     * 
+     *
+     * @param bool|null $reverseSignsOfPrices
+     *
+     * @return self
+     */
+    public function setReverseSignsOfPrices(?bool $reverseSignsOfPrices): self
+    {
+        $this->initialized['reverseSignsOfPrices'] = true;
+        $this->reverseSignsOfPrices = $reverseSignsOfPrices;
+        return $this;
+    }
 }

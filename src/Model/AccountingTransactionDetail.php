@@ -29,6 +29,12 @@ class AccountingTransactionDetail extends \ArrayObject
      *
      * @var string|null
      */
+    protected $costCenterId;
+    /**
+     * 
+     *
+     * @var string|null
+     */
     protected $debitCredit;
     /**
      * 
@@ -84,6 +90,28 @@ class AccountingTransactionDetail extends \ArrayObject
     {
         $this->initialized['amount'] = true;
         $this->amount = $amount;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCostCenterId(): ?string
+    {
+        return $this->costCenterId;
+    }
+    /**
+     * 
+     *
+     * @param string|null $costCenterId
+     *
+     * @return self
+     */
+    public function setCostCenterId(?string $costCenterId): self
+    {
+        $this->initialized['costCenterId'] = true;
+        $this->costCenterId = $costCenterId;
         return $this;
     }
     /**

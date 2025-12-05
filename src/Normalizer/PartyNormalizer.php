@@ -197,6 +197,13 @@ class PartyNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         elseif (\array_key_exists('email', $data) && $data['email'] === null) {
             $object->setEmail(null);
         }
+        if (\array_key_exists('emailHome', $data) && $data['emailHome'] !== null) {
+            $object->setEmailHome($data['emailHome']);
+            unset($data['emailHome']);
+        }
+        elseif (\array_key_exists('emailHome', $data) && $data['emailHome'] === null) {
+            $object->setEmailHome(null);
+        }
         if (\array_key_exists('fax', $data) && $data['fax'] !== null) {
             $object->setFax($data['fax']);
             unset($data['fax']);
@@ -503,6 +510,13 @@ class PartyNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         elseif (\array_key_exists('customerDefaultShippingCarrierId', $data) && $data['customerDefaultShippingCarrierId'] === null) {
             $object->setCustomerDefaultShippingCarrierId(null);
+        }
+        if (\array_key_exists('customerDefaultWarehouseId', $data) && $data['customerDefaultWarehouseId'] !== null) {
+            $object->setCustomerDefaultWarehouseId($data['customerDefaultWarehouseId']);
+            unset($data['customerDefaultWarehouseId']);
+        }
+        elseif (\array_key_exists('customerDefaultWarehouseId', $data) && $data['customerDefaultWarehouseId'] === null) {
+            $object->setCustomerDefaultWarehouseId(null);
         }
         if (\array_key_exists('customerDeliveryBlock', $data) && $data['customerDeliveryBlock'] !== null) {
             $object->setCustomerDeliveryBlock($data['customerDeliveryBlock']);
@@ -1140,6 +1154,9 @@ class PartyNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if ($data->isInitialized('email') && null !== $data->getEmail()) {
             $dataArray['email'] = $data->getEmail();
         }
+        if ($data->isInitialized('emailHome') && null !== $data->getEmailHome()) {
+            $dataArray['emailHome'] = $data->getEmailHome();
+        }
         if ($data->isInitialized('fax') && null !== $data->getFax()) {
             $dataArray['fax'] = $data->getFax();
         }
@@ -1279,6 +1296,9 @@ class PartyNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if ($data->isInitialized('customerDefaultShippingCarrierId') && null !== $data->getCustomerDefaultShippingCarrierId()) {
             $dataArray['customerDefaultShippingCarrierId'] = $data->getCustomerDefaultShippingCarrierId();
+        }
+        if ($data->isInitialized('customerDefaultWarehouseId') && null !== $data->getCustomerDefaultWarehouseId()) {
+            $dataArray['customerDefaultWarehouseId'] = $data->getCustomerDefaultWarehouseId();
         }
         if ($data->isInitialized('customerDeliveryBlock') && null !== $data->getCustomerDeliveryBlock()) {
             $dataArray['customerDeliveryBlock'] = $data->getCustomerDeliveryBlock();

@@ -255,6 +255,8 @@ class SalesInvoice extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @var int|null
      */
     protected $cancellationDate;
@@ -369,6 +371,12 @@ class SalesInvoice extends \ArrayObject
     /**
      * 
      *
+     * @var string|null
+     */
+    protected $epcQrCodeReference;
+    /**
+     * 
+     *
      * @var int|null
      */
     protected $invoiceDate;
@@ -402,6 +410,12 @@ class SalesInvoice extends \ArrayObject
      * @var string|null
      */
     protected $precedingSalesInvoiceId;
+    /**
+     * 
+     *
+     * @var string|null
+     */
+    protected $quotationId;
     /**
      * 
      *
@@ -1375,6 +1389,8 @@ class SalesInvoice extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return int|null
      */
     public function getCancellationDate(): ?int
@@ -1385,6 +1401,8 @@ class SalesInvoice extends \ArrayObject
      * 
      *
      * @param int|null $cancellationDate
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -1793,6 +1811,28 @@ class SalesInvoice extends \ArrayObject
     /**
      * 
      *
+     * @return string|null
+     */
+    public function getEpcQrCodeReference(): ?string
+    {
+        return $this->epcQrCodeReference;
+    }
+    /**
+     * 
+     *
+     * @param string|null $epcQrCodeReference
+     *
+     * @return self
+     */
+    public function setEpcQrCodeReference(?string $epcQrCodeReference): self
+    {
+        $this->initialized['epcQrCodeReference'] = true;
+        $this->epcQrCodeReference = $epcQrCodeReference;
+        return $this;
+    }
+    /**
+     * 
+     *
      * @return int|null
      */
     public function getInvoiceDate(): ?int
@@ -1920,6 +1960,28 @@ class SalesInvoice extends \ArrayObject
     {
         $this->initialized['precedingSalesInvoiceId'] = true;
         $this->precedingSalesInvoiceId = $precedingSalesInvoiceId;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getQuotationId(): ?string
+    {
+        return $this->quotationId;
+    }
+    /**
+     * 
+     *
+     * @param string|null $quotationId
+     *
+     * @return self
+     */
+    public function setQuotationId(?string $quotationId): self
+    {
+        $this->initialized['quotationId'] = true;
+        $this->quotationId = $quotationId;
         return $this;
     }
     /**

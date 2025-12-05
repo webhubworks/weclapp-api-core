@@ -51,6 +51,13 @@ class AccountingTransactionDetailNormalizer implements DenormalizerInterface, No
         elseif (\array_key_exists('amount', $data) && $data['amount'] === null) {
             $object->setAmount(null);
         }
+        if (\array_key_exists('costCenterId', $data) && $data['costCenterId'] !== null) {
+            $object->setCostCenterId($data['costCenterId']);
+            unset($data['costCenterId']);
+        }
+        elseif (\array_key_exists('costCenterId', $data) && $data['costCenterId'] === null) {
+            $object->setCostCenterId(null);
+        }
         if (\array_key_exists('debitCredit', $data) && $data['debitCredit'] !== null) {
             $object->setDebitCredit($data['debitCredit']);
             unset($data['debitCredit']);
@@ -87,6 +94,9 @@ class AccountingTransactionDetailNormalizer implements DenormalizerInterface, No
         }
         if ($data->isInitialized('amount') && null !== $data->getAmount()) {
             $dataArray['amount'] = $data->getAmount();
+        }
+        if ($data->isInitialized('costCenterId') && null !== $data->getCostCenterId()) {
+            $dataArray['costCenterId'] = $data->getCostCenterId();
         }
         if ($data->isInitialized('debitCredit') && null !== $data->getDebitCredit()) {
             $dataArray['debitCredit'] = $data->getDebitCredit();

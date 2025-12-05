@@ -37,6 +37,13 @@ class WeclappOsGetResponse200Normalizer implements DenormalizerInterface, Normal
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        if (\array_key_exists('additionalProperties', $data) && $data['additionalProperties'] !== null) {
+            $object->setAdditionalProperties($this->denormalizer->denormalize($data['additionalProperties'], \Webhubworks\WeclappApiCore\Model\WeclappOsGetResponse200AdditionalProperties::class, 'json', $context));
+            unset($data['additionalProperties']);
+        }
+        elseif (\array_key_exists('additionalProperties', $data) && $data['additionalProperties'] === null) {
+            $object->setAdditionalProperties(null);
+        }
         if (\array_key_exists('result', $data) && $data['result'] !== null) {
             $values = [];
             foreach ($data['result'] as $value) {
@@ -58,6 +65,9 @@ class WeclappOsGetResponse200Normalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
+        if ($data->isInitialized('additionalProperties') && null !== $data->getAdditionalProperties()) {
+            $dataArray['additionalProperties'] = $this->normalizer->normalize($data->getAdditionalProperties(), 'json', $context);
+        }
         if ($data->isInitialized('result') && null !== $data->getResult()) {
             $values = [];
             foreach ($data->getResult() as $value) {

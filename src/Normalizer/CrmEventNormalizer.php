@@ -76,6 +76,13 @@ class CrmEventNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('customAttributes', $data) && $data['customAttributes'] === null) {
             $object->setCustomAttributes(null);
         }
+        if (\array_key_exists('calendarEventId', $data) && $data['calendarEventId'] !== null) {
+            $object->setCalendarEventId($data['calendarEventId']);
+            unset($data['calendarEventId']);
+        }
+        elseif (\array_key_exists('calendarEventId', $data) && $data['calendarEventId'] === null) {
+            $object->setCalendarEventId(null);
+        }
         if (\array_key_exists('callCategoryId', $data) && $data['callCategoryId'] !== null) {
             $object->setCallCategoryId($data['callCategoryId']);
             unset($data['callCategoryId']);

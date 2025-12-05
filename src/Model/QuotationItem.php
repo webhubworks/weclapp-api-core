@@ -285,6 +285,12 @@ class QuotationItem extends \ArrayObject
     /**
      * 
      *
+     * @var list<QuotationItemRelationship>|null
+     */
+    protected $quotationItemRelationships;
+    /**
+     * 
+     *
      * @var list<QuotationItemScaleValue>|null
      */
     protected $scaleValues;
@@ -1276,6 +1282,28 @@ class QuotationItem extends \ArrayObject
     {
         $this->initialized['optional'] = true;
         $this->optional = $optional;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return list<QuotationItemRelationship>|null
+     */
+    public function getQuotationItemRelationships(): ?array
+    {
+        return $this->quotationItemRelationships;
+    }
+    /**
+     * 
+     *
+     * @param list<QuotationItemRelationship>|null $quotationItemRelationships
+     *
+     * @return self
+     */
+    public function setQuotationItemRelationships(?array $quotationItemRelationships): self
+    {
+        $this->initialized['quotationItemRelationships'] = true;
+        $this->quotationItemRelationships = $quotationItemRelationships;
         return $this;
     }
     /**

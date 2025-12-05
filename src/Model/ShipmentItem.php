@@ -135,9 +135,17 @@ class ShipmentItem extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @var string|null
      */
     protected $returnAssessmentId;
+    /**
+     * 
+     *
+     * @var list<OnlyId>|null
+     */
+    protected $returnAssessments;
     /**
      * 
      *
@@ -147,11 +155,21 @@ class ShipmentItem extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @var string|null
      */
     protected $returnErrorId;
     /**
      * 
+     *
+     * @var list<OnlyId>|null
+     */
+    protected $returnErrors;
+    /**
+     * 
+     *
+     * @deprecated
      *
      * @var string|null
      */
@@ -159,9 +177,23 @@ class ShipmentItem extends \ArrayObject
     /**
      * 
      *
+     * @var list<OnlyId>|null
+     */
+    protected $returnReasons;
+    /**
+     * 
+     *
+     * @deprecated
+     *
      * @var string|null
      */
     protected $returnRectificationId;
+    /**
+     * 
+     *
+     * @var list<OnlyId>|null
+     */
+    protected $returnRectifications;
     /**
      * 
      *
@@ -611,6 +643,8 @@ class ShipmentItem extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return string|null
      */
     public function getReturnAssessmentId(): ?string
@@ -622,12 +656,36 @@ class ShipmentItem extends \ArrayObject
      *
      * @param string|null $returnAssessmentId
      *
+     * @deprecated
+     *
      * @return self
      */
     public function setReturnAssessmentId(?string $returnAssessmentId): self
     {
         $this->initialized['returnAssessmentId'] = true;
         $this->returnAssessmentId = $returnAssessmentId;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return list<OnlyId>|null
+     */
+    public function getReturnAssessments(): ?array
+    {
+        return $this->returnAssessments;
+    }
+    /**
+     * 
+     *
+     * @param list<OnlyId>|null $returnAssessments
+     *
+     * @return self
+     */
+    public function setReturnAssessments(?array $returnAssessments): self
+    {
+        $this->initialized['returnAssessments'] = true;
+        $this->returnAssessments = $returnAssessments;
         return $this;
     }
     /**
@@ -655,6 +713,8 @@ class ShipmentItem extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return string|null
      */
     public function getReturnErrorId(): ?string
@@ -665,6 +725,8 @@ class ShipmentItem extends \ArrayObject
      * 
      *
      * @param string|null $returnErrorId
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -677,6 +739,30 @@ class ShipmentItem extends \ArrayObject
     /**
      * 
      *
+     * @return list<OnlyId>|null
+     */
+    public function getReturnErrors(): ?array
+    {
+        return $this->returnErrors;
+    }
+    /**
+     * 
+     *
+     * @param list<OnlyId>|null $returnErrors
+     *
+     * @return self
+     */
+    public function setReturnErrors(?array $returnErrors): self
+    {
+        $this->initialized['returnErrors'] = true;
+        $this->returnErrors = $returnErrors;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @deprecated
+     *
      * @return string|null
      */
     public function getReturnReasonId(): ?string
@@ -687,6 +773,8 @@ class ShipmentItem extends \ArrayObject
      * 
      *
      * @param string|null $returnReasonId
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -699,6 +787,30 @@ class ShipmentItem extends \ArrayObject
     /**
      * 
      *
+     * @return list<OnlyId>|null
+     */
+    public function getReturnReasons(): ?array
+    {
+        return $this->returnReasons;
+    }
+    /**
+     * 
+     *
+     * @param list<OnlyId>|null $returnReasons
+     *
+     * @return self
+     */
+    public function setReturnReasons(?array $returnReasons): self
+    {
+        $this->initialized['returnReasons'] = true;
+        $this->returnReasons = $returnReasons;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @deprecated
+     *
      * @return string|null
      */
     public function getReturnRectificationId(): ?string
@@ -710,12 +822,36 @@ class ShipmentItem extends \ArrayObject
      *
      * @param string|null $returnRectificationId
      *
+     * @deprecated
+     *
      * @return self
      */
     public function setReturnRectificationId(?string $returnRectificationId): self
     {
         $this->initialized['returnRectificationId'] = true;
         $this->returnRectificationId = $returnRectificationId;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return list<OnlyId>|null
+     */
+    public function getReturnRectifications(): ?array
+    {
+        return $this->returnRectifications;
+    }
+    /**
+     * 
+     *
+     * @param list<OnlyId>|null $returnRectifications
+     *
+     * @return self
+     */
+    public function setReturnRectifications(?array $returnRectifications): self
+    {
+        $this->initialized['returnRectifications'] = true;
+        $this->returnRectifications = $returnRectifications;
         return $this;
     }
     /**

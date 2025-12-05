@@ -217,6 +217,15 @@ class PickNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($data->isInitialized('storagePlaceId') && null !== $data->getStoragePlaceId()) {
             $dataArray['storagePlaceId'] = $data->getStoragePlaceId();
         }
+        if ($data->isInitialized('orderItemId') && null !== $data->getOrderItemId()) {
+            $dataArray['orderItemId'] = $data->getOrderItemId();
+        }
+        if ($data->isInitialized('packagingUnitBaseArticleId') && null !== $data->getPackagingUnitBaseArticleId()) {
+            $dataArray['packagingUnitBaseArticleId'] = $data->getPackagingUnitBaseArticleId();
+        }
+        if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
+            $dataArray['positionNumber'] = $data->getPositionNumber();
+        }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;

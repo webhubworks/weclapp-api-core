@@ -15,9 +15,37 @@ class WeclappOsGetResponse200 extends \ArrayObject
     /**
      * 
      *
+     * @var WeclappOsGetResponse200AdditionalProperties|null
+     */
+    protected $additionalProperties;
+    /**
+     * 
+     *
      * @var list<WeclappOs>|null
      */
     protected $result;
+    /**
+     * 
+     *
+     * @return WeclappOsGetResponse200AdditionalProperties|null
+     */
+    public function getAdditionalProperties(): ?WeclappOsGetResponse200AdditionalProperties
+    {
+        return $this->additionalProperties;
+    }
+    /**
+     * 
+     *
+     * @param WeclappOsGetResponse200AdditionalProperties|null $additionalProperties
+     *
+     * @return self
+     */
+    public function setAdditionalProperties(?WeclappOsGetResponse200AdditionalProperties $additionalProperties): self
+    {
+        $this->initialized['additionalProperties'] = true;
+        $this->additionalProperties = $additionalProperties;
+        return $this;
+    }
     /**
      * 
      *

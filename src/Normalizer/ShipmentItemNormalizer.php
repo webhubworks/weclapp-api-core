@@ -201,6 +201,17 @@ class ShipmentItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         elseif (\array_key_exists('returnAssessmentId', $data) && $data['returnAssessmentId'] === null) {
             $object->setReturnAssessmentId(null);
         }
+        if (\array_key_exists('returnAssessments', $data) && $data['returnAssessments'] !== null) {
+            $values_2 = [];
+            foreach ($data['returnAssessments'] as $value_2) {
+                $values_2[] = $this->denormalizer->denormalize($value_2, \Webhubworks\WeclappApiCore\Model\OnlyId::class, 'json', $context);
+            }
+            $object->setReturnAssessments($values_2);
+            unset($data['returnAssessments']);
+        }
+        elseif (\array_key_exists('returnAssessments', $data) && $data['returnAssessments'] === null) {
+            $object->setReturnAssessments(null);
+        }
         if (\array_key_exists('returnDescription', $data) && $data['returnDescription'] !== null) {
             $object->setReturnDescription($data['returnDescription']);
             unset($data['returnDescription']);
@@ -215,12 +226,34 @@ class ShipmentItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         elseif (\array_key_exists('returnErrorId', $data) && $data['returnErrorId'] === null) {
             $object->setReturnErrorId(null);
         }
+        if (\array_key_exists('returnErrors', $data) && $data['returnErrors'] !== null) {
+            $values_3 = [];
+            foreach ($data['returnErrors'] as $value_3) {
+                $values_3[] = $this->denormalizer->denormalize($value_3, \Webhubworks\WeclappApiCore\Model\OnlyId::class, 'json', $context);
+            }
+            $object->setReturnErrors($values_3);
+            unset($data['returnErrors']);
+        }
+        elseif (\array_key_exists('returnErrors', $data) && $data['returnErrors'] === null) {
+            $object->setReturnErrors(null);
+        }
         if (\array_key_exists('returnReasonId', $data) && $data['returnReasonId'] !== null) {
             $object->setReturnReasonId($data['returnReasonId']);
             unset($data['returnReasonId']);
         }
         elseif (\array_key_exists('returnReasonId', $data) && $data['returnReasonId'] === null) {
             $object->setReturnReasonId(null);
+        }
+        if (\array_key_exists('returnReasons', $data) && $data['returnReasons'] !== null) {
+            $values_4 = [];
+            foreach ($data['returnReasons'] as $value_4) {
+                $values_4[] = $this->denormalizer->denormalize($value_4, \Webhubworks\WeclappApiCore\Model\OnlyId::class, 'json', $context);
+            }
+            $object->setReturnReasons($values_4);
+            unset($data['returnReasons']);
+        }
+        elseif (\array_key_exists('returnReasons', $data) && $data['returnReasons'] === null) {
+            $object->setReturnReasons(null);
         }
         if (\array_key_exists('returnRectificationId', $data) && $data['returnRectificationId'] !== null) {
             $object->setReturnRectificationId($data['returnRectificationId']);
@@ -229,6 +262,17 @@ class ShipmentItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         elseif (\array_key_exists('returnRectificationId', $data) && $data['returnRectificationId'] === null) {
             $object->setReturnRectificationId(null);
         }
+        if (\array_key_exists('returnRectifications', $data) && $data['returnRectifications'] !== null) {
+            $values_5 = [];
+            foreach ($data['returnRectifications'] as $value_5) {
+                $values_5[] = $this->denormalizer->denormalize($value_5, \Webhubworks\WeclappApiCore\Model\OnlyId::class, 'json', $context);
+            }
+            $object->setReturnRectifications($values_5);
+            unset($data['returnRectifications']);
+        }
+        elseif (\array_key_exists('returnRectifications', $data) && $data['returnRectifications'] === null) {
+            $object->setReturnRectifications(null);
+        }
         if (\array_key_exists('salesOrderItemId', $data) && $data['salesOrderItemId'] !== null) {
             $object->setSalesOrderItemId($data['salesOrderItemId']);
             unset($data['salesOrderItemId']);
@@ -236,9 +280,9 @@ class ShipmentItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         elseif (\array_key_exists('salesOrderItemId', $data) && $data['salesOrderItemId'] === null) {
             $object->setSalesOrderItemId(null);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_6) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value_6;
             }
         }
         return $object;
@@ -305,24 +349,52 @@ class ShipmentItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('returnAssessmentId') && null !== $data->getReturnAssessmentId()) {
             $dataArray['returnAssessmentId'] = $data->getReturnAssessmentId();
         }
+        if ($data->isInitialized('returnAssessments') && null !== $data->getReturnAssessments()) {
+            $values_2 = [];
+            foreach ($data->getReturnAssessments() as $value_2) {
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            }
+            $dataArray['returnAssessments'] = $values_2;
+        }
         if ($data->isInitialized('returnDescription') && null !== $data->getReturnDescription()) {
             $dataArray['returnDescription'] = $data->getReturnDescription();
         }
         if ($data->isInitialized('returnErrorId') && null !== $data->getReturnErrorId()) {
             $dataArray['returnErrorId'] = $data->getReturnErrorId();
         }
+        if ($data->isInitialized('returnErrors') && null !== $data->getReturnErrors()) {
+            $values_3 = [];
+            foreach ($data->getReturnErrors() as $value_3) {
+                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            }
+            $dataArray['returnErrors'] = $values_3;
+        }
         if ($data->isInitialized('returnReasonId') && null !== $data->getReturnReasonId()) {
             $dataArray['returnReasonId'] = $data->getReturnReasonId();
+        }
+        if ($data->isInitialized('returnReasons') && null !== $data->getReturnReasons()) {
+            $values_4 = [];
+            foreach ($data->getReturnReasons() as $value_4) {
+                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+            }
+            $dataArray['returnReasons'] = $values_4;
         }
         if ($data->isInitialized('returnRectificationId') && null !== $data->getReturnRectificationId()) {
             $dataArray['returnRectificationId'] = $data->getReturnRectificationId();
         }
+        if ($data->isInitialized('returnRectifications') && null !== $data->getReturnRectifications()) {
+            $values_5 = [];
+            foreach ($data->getReturnRectifications() as $value_5) {
+                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
+            }
+            $dataArray['returnRectifications'] = $values_5;
+        }
         if ($data->isInitialized('salesOrderItemId') && null !== $data->getSalesOrderItemId()) {
             $dataArray['salesOrderItemId'] = $data->getSalesOrderItemId();
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_6) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+                $dataArray[$key] = $value_6;
             }
         }
         return $dataArray;

@@ -47,6 +47,12 @@ class PurchaseShippingCostItem extends \ArrayObject
      *
      * @var string|null
      */
+    protected $discountPercentage;
+    /**
+     * 
+     *
+     * @var string|null
+     */
     protected $grossAmount;
     /**
      * 
@@ -75,6 +81,18 @@ class PurchaseShippingCostItem extends \ArrayObject
     /**
      * 
      *
+     * @var list<ReductionAdditionItem>|null
+     */
+    protected $reductionAdditionItems;
+    /**
+     * 
+     *
+     * @var string|null
+     */
+    protected $taxId;
+    /**
+     * 
+     *
      * @var string|null
      */
     protected $unitPrice;
@@ -84,12 +102,6 @@ class PurchaseShippingCostItem extends \ArrayObject
      * @var string|null
      */
     protected $unitPriceInCompanyCurrency;
-    /**
-     * 
-     *
-     * @var string|null
-     */
-    protected $taxId;
     /**
      * 
      *
@@ -205,6 +217,28 @@ class PurchaseShippingCostItem extends \ArrayObject
      *
      * @return string|null
      */
+    public function getDiscountPercentage(): ?string
+    {
+        return $this->discountPercentage;
+    }
+    /**
+     * 
+     *
+     * @param string|null $discountPercentage
+     *
+     * @return self
+     */
+    public function setDiscountPercentage(?string $discountPercentage): self
+    {
+        $this->initialized['discountPercentage'] = true;
+        $this->discountPercentage = $discountPercentage;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
     public function getGrossAmount(): ?string
     {
         return $this->grossAmount;
@@ -313,6 +347,50 @@ class PurchaseShippingCostItem extends \ArrayObject
     /**
      * 
      *
+     * @return list<ReductionAdditionItem>|null
+     */
+    public function getReductionAdditionItems(): ?array
+    {
+        return $this->reductionAdditionItems;
+    }
+    /**
+     * 
+     *
+     * @param list<ReductionAdditionItem>|null $reductionAdditionItems
+     *
+     * @return self
+     */
+    public function setReductionAdditionItems(?array $reductionAdditionItems): self
+    {
+        $this->initialized['reductionAdditionItems'] = true;
+        $this->reductionAdditionItems = $reductionAdditionItems;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTaxId(): ?string
+    {
+        return $this->taxId;
+    }
+    /**
+     * 
+     *
+     * @param string|null $taxId
+     *
+     * @return self
+     */
+    public function setTaxId(?string $taxId): self
+    {
+        $this->initialized['taxId'] = true;
+        $this->taxId = $taxId;
+        return $this;
+    }
+    /**
+     * 
+     *
      * @return string|null
      */
     public function getUnitPrice(): ?string
@@ -352,28 +430,6 @@ class PurchaseShippingCostItem extends \ArrayObject
     {
         $this->initialized['unitPriceInCompanyCurrency'] = true;
         $this->unitPriceInCompanyCurrency = $unitPriceInCompanyCurrency;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return string|null
-     */
-    public function getTaxId(): ?string
-    {
-        return $this->taxId;
-    }
-    /**
-     * 
-     *
-     * @param string|null $taxId
-     *
-     * @return self
-     */
-    public function setTaxId(?string $taxId): self
-    {
-        $this->initialized['taxId'] = true;
-        $this->taxId = $taxId;
         return $this;
     }
 }

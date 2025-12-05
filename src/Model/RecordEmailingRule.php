@@ -111,6 +111,12 @@ class RecordEmailingRule extends \ArrayObject
     /**
      * 
      *
+     * @var list<string>|null
+     */
+    protected $performanceRecordInvoicingModes;
+    /**
+     * 
+     *
      * @var string|null
      */
     protected $recipientType;
@@ -500,6 +506,28 @@ class RecordEmailingRule extends \ArrayObject
     {
         $this->initialized['paymentMethods'] = true;
         $this->paymentMethods = $paymentMethods;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return list<string>|null
+     */
+    public function getPerformanceRecordInvoicingModes(): ?array
+    {
+        return $this->performanceRecordInvoicingModes;
+    }
+    /**
+     * 
+     *
+     * @param list<string>|null $performanceRecordInvoicingModes
+     *
+     * @return self
+     */
+    public function setPerformanceRecordInvoicingModes(?array $performanceRecordInvoicingModes): self
+    {
+        $this->initialized['performanceRecordInvoicingModes'] = true;
+        $this->performanceRecordInvoicingModes = $performanceRecordInvoicingModes;
         return $this;
     }
     /**

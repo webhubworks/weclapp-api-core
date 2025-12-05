@@ -39,7 +39,7 @@ class Campaign extends \ArrayObject
     /**
      * 
      *
-     * @var list<CustomAttribute>|null
+     * @var list<mixed>|null
      */
     protected $customAttributes;
     /**
@@ -175,7 +175,7 @@ class Campaign extends \ArrayObject
     /**
      * 
      *
-     * @return list<CustomAttribute>|null
+     * @return list<mixed>|null
      */
     public function getCustomAttributes(): ?array
     {
@@ -184,7 +184,7 @@ class Campaign extends \ArrayObject
     /**
      * 
      *
-     * @param list<CustomAttribute>|null $customAttributes
+     * @param list<mixed>|null $customAttributes
      *
      * @return self
      */

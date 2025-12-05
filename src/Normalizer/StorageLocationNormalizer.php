@@ -196,6 +196,9 @@ class StorageLocationNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('storagePlaceTypeSettingsStock') && null !== $data->getStoragePlaceTypeSettingsStock()) {
             $dataArray['storagePlaceTypeSettingsStock'] = $this->normalizer->normalize($data->getStoragePlaceTypeSettingsStock(), 'json', $context);
         }
+        if ($data->isInitialized('warehouseId') && null !== $data->getWarehouseId()) {
+            $dataArray['warehouseId'] = $data->getWarehouseId();
+        }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;

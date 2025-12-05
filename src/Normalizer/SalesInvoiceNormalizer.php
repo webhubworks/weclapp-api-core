@@ -504,6 +504,13 @@ class SalesInvoiceNormalizer implements DenormalizerInterface, NormalizerInterfa
         elseif (\array_key_exists('dunningBlockState', $data) && $data['dunningBlockState'] === null) {
             $object->setDunningBlockState(null);
         }
+        if (\array_key_exists('epcQrCodeReference', $data) && $data['epcQrCodeReference'] !== null) {
+            $object->setEpcQrCodeReference($data['epcQrCodeReference']);
+            unset($data['epcQrCodeReference']);
+        }
+        elseif (\array_key_exists('epcQrCodeReference', $data) && $data['epcQrCodeReference'] === null) {
+            $object->setEpcQrCodeReference(null);
+        }
         if (\array_key_exists('invoiceDate', $data) && $data['invoiceDate'] !== null) {
             $object->setInvoiceDate($data['invoiceDate']);
             unset($data['invoiceDate']);
@@ -545,6 +552,13 @@ class SalesInvoiceNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('precedingSalesInvoiceId', $data) && $data['precedingSalesInvoiceId'] === null) {
             $object->setPrecedingSalesInvoiceId(null);
+        }
+        if (\array_key_exists('quotationId', $data) && $data['quotationId'] !== null) {
+            $object->setQuotationId($data['quotationId']);
+            unset($data['quotationId']);
+        }
+        elseif (\array_key_exists('quotationId', $data) && $data['quotationId'] === null) {
+            $object->setQuotationId(null);
         }
         if (\array_key_exists('recordAddress', $data) && $data['recordAddress'] !== null) {
             $object->setRecordAddress($this->denormalizer->denormalize($data['recordAddress'], \Webhubworks\WeclappApiCore\Model\RecordAddress::class, 'json', $context));

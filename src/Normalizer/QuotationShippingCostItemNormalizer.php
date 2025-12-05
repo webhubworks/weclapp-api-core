@@ -78,6 +78,13 @@ class QuotationShippingCostItemNormalizer implements DenormalizerInterface, Norm
         elseif (\array_key_exists('articleId', $data) && $data['articleId'] === null) {
             $object->setArticleId(null);
         }
+        if (\array_key_exists('discountPercentage', $data) && $data['discountPercentage'] !== null) {
+            $object->setDiscountPercentage($data['discountPercentage']);
+            unset($data['discountPercentage']);
+        }
+        elseif (\array_key_exists('discountPercentage', $data) && $data['discountPercentage'] === null) {
+            $object->setDiscountPercentage(null);
+        }
         if (\array_key_exists('grossAmount', $data) && $data['grossAmount'] !== null) {
             $object->setGrossAmount($data['grossAmount']);
             unset($data['grossAmount']);
@@ -113,6 +120,24 @@ class QuotationShippingCostItemNormalizer implements DenormalizerInterface, Norm
         elseif (\array_key_exists('netAmountInCompanyCurrency', $data) && $data['netAmountInCompanyCurrency'] === null) {
             $object->setNetAmountInCompanyCurrency(null);
         }
+        if (\array_key_exists('reductionAdditionItems', $data) && $data['reductionAdditionItems'] !== null) {
+            $values = [];
+            foreach ($data['reductionAdditionItems'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \Webhubworks\WeclappApiCore\Model\ReductionAdditionItem::class, 'json', $context);
+            }
+            $object->setReductionAdditionItems($values);
+            unset($data['reductionAdditionItems']);
+        }
+        elseif (\array_key_exists('reductionAdditionItems', $data) && $data['reductionAdditionItems'] === null) {
+            $object->setReductionAdditionItems(null);
+        }
+        if (\array_key_exists('taxId', $data) && $data['taxId'] !== null) {
+            $object->setTaxId($data['taxId']);
+            unset($data['taxId']);
+        }
+        elseif (\array_key_exists('taxId', $data) && $data['taxId'] === null) {
+            $object->setTaxId(null);
+        }
         if (\array_key_exists('unitPrice', $data) && $data['unitPrice'] !== null) {
             $object->setUnitPrice($data['unitPrice']);
             unset($data['unitPrice']);
@@ -134,13 +159,6 @@ class QuotationShippingCostItemNormalizer implements DenormalizerInterface, Norm
         elseif (\array_key_exists('manualUnitCost', $data) && $data['manualUnitCost'] === null) {
             $object->setManualUnitCost(null);
         }
-        if (\array_key_exists('taxId', $data) && $data['taxId'] !== null) {
-            $object->setTaxId($data['taxId']);
-            unset($data['taxId']);
-        }
-        elseif (\array_key_exists('taxId', $data) && $data['taxId'] === null) {
-            $object->setTaxId(null);
-        }
         if (\array_key_exists('unitCost', $data) && $data['unitCost'] !== null) {
             $object->setUnitCost($data['unitCost']);
             unset($data['unitCost']);
@@ -155,9 +173,9 @@ class QuotationShippingCostItemNormalizer implements DenormalizerInterface, Norm
         elseif (\array_key_exists('unitCostInCompanyCurrency', $data) && $data['unitCostInCompanyCurrency'] === null) {
             $object->setUnitCostInCompanyCurrency(null);
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -168,17 +186,20 @@ class QuotationShippingCostItemNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('articleId') && null !== $data->getArticleId()) {
             $dataArray['articleId'] = $data->getArticleId();
         }
+        if ($data->isInitialized('discountPercentage') && null !== $data->getDiscountPercentage()) {
+            $dataArray['discountPercentage'] = $data->getDiscountPercentage();
+        }
         if ($data->isInitialized('manualUnitPrice') && null !== $data->getManualUnitPrice()) {
             $dataArray['manualUnitPrice'] = $data->getManualUnitPrice();
+        }
+        if ($data->isInitialized('taxId') && null !== $data->getTaxId()) {
+            $dataArray['taxId'] = $data->getTaxId();
         }
         if ($data->isInitialized('unitPrice') && null !== $data->getUnitPrice()) {
             $dataArray['unitPrice'] = $data->getUnitPrice();
         }
         if ($data->isInitialized('manualUnitCost') && null !== $data->getManualUnitCost()) {
             $dataArray['manualUnitCost'] = $data->getManualUnitCost();
-        }
-        if ($data->isInitialized('taxId') && null !== $data->getTaxId()) {
-            $dataArray['taxId'] = $data->getTaxId();
         }
         if ($data->isInitialized('unitCost') && null !== $data->getUnitCost()) {
             $dataArray['unitCost'] = $data->getUnitCost();

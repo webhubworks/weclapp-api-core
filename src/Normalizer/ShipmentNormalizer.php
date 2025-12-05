@@ -152,20 +152,6 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
             $object->setTags(null);
         }
-        if (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] !== null) {
-            $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], \Webhubworks\WeclappApiCore\Model\RecordAddress::class, 'json', $context));
-            unset($data['invoiceAddress']);
-        }
-        elseif (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] === null) {
-            $object->setInvoiceAddress(null);
-        }
-        if (\array_key_exists('recipientAddress', $data) && $data['recipientAddress'] !== null) {
-            $object->setRecipientAddress($this->denormalizer->denormalize($data['recipientAddress'], \Webhubworks\WeclappApiCore\Model\RecordAddress::class, 'json', $context));
-            unset($data['recipientAddress']);
-        }
-        elseif (\array_key_exists('recipientAddress', $data) && $data['recipientAddress'] === null) {
-            $object->setRecipientAddress(null);
-        }
         if (\array_key_exists('salesOrders', $data) && $data['salesOrders'] !== null) {
             $values_2 = [];
             foreach ($data['salesOrders'] as $value_2) {
@@ -258,6 +244,13 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('dhlReceiverId', $data) && $data['dhlReceiverId'] === null) {
             $object->setDhlReceiverId(null);
         }
+        if (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] !== null) {
+            $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], \Webhubworks\WeclappApiCore\Model\RecordAddress::class, 'json', $context));
+            unset($data['invoiceAddress']);
+        }
+        elseif (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] === null) {
+            $object->setInvoiceAddress(null);
+        }
         if (\array_key_exists('invoiceRecipientId', $data) && $data['invoiceRecipientId'] !== null) {
             $object->setInvoiceRecipientId($data['invoiceRecipientId']);
             unset($data['invoiceRecipientId']);
@@ -335,6 +328,17 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('packageWidth', $data) && $data['packageWidth'] === null) {
             $object->setPackageWidth(null);
         }
+        if (\array_key_exists('parcels', $data) && $data['parcels'] !== null) {
+            $values_4 = [];
+            foreach ($data['parcels'] as $value_4) {
+                $values_4[] = $this->denormalizer->denormalize($value_4, \Webhubworks\WeclappApiCore\Model\Parcel::class, 'json', $context);
+            }
+            $object->setParcels($values_4);
+            unset($data['parcels']);
+        }
+        elseif (\array_key_exists('parcels', $data) && $data['parcels'] === null) {
+            $object->setParcels(null);
+        }
         if (\array_key_exists('pickingInstructions', $data) && $data['pickingInstructions'] !== null) {
             $object->setPickingInstructions($data['pickingInstructions']);
             unset($data['pickingInstructions']);
@@ -350,15 +354,22 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setPicksComplete(null);
         }
         if (\array_key_exists('purchaseOrders', $data) && $data['purchaseOrders'] !== null) {
-            $values_4 = [];
-            foreach ($data['purchaseOrders'] as $value_4) {
-                $values_4[] = $this->denormalizer->denormalize($value_4, \Webhubworks\WeclappApiCore\Model\OnlyId::class, 'json', $context);
+            $values_5 = [];
+            foreach ($data['purchaseOrders'] as $value_5) {
+                $values_5[] = $this->denormalizer->denormalize($value_5, \Webhubworks\WeclappApiCore\Model\OnlyId::class, 'json', $context);
             }
-            $object->setPurchaseOrders($values_4);
+            $object->setPurchaseOrders($values_5);
             unset($data['purchaseOrders']);
         }
         elseif (\array_key_exists('purchaseOrders', $data) && $data['purchaseOrders'] === null) {
             $object->setPurchaseOrders(null);
+        }
+        if (\array_key_exists('recipientAddress', $data) && $data['recipientAddress'] !== null) {
+            $object->setRecipientAddress($this->denormalizer->denormalize($data['recipientAddress'], \Webhubworks\WeclappApiCore\Model\RecordAddress::class, 'json', $context));
+            unset($data['recipientAddress']);
+        }
+        elseif (\array_key_exists('recipientAddress', $data) && $data['recipientAddress'] === null) {
+            $object->setRecipientAddress(null);
         }
         if (\array_key_exists('recipientCustomerNumber', $data) && $data['recipientCustomerNumber'] !== null) {
             $object->setRecipientCustomerNumber($data['recipientCustomerNumber']);
@@ -403,11 +414,11 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setSalesInvoiceEmailAddresses(null);
         }
         if (\array_key_exists('shipmentItems', $data) && $data['shipmentItems'] !== null) {
-            $values_5 = [];
-            foreach ($data['shipmentItems'] as $value_5) {
-                $values_5[] = $this->denormalizer->denormalize($value_5, \Webhubworks\WeclappApiCore\Model\ShipmentItem::class, 'json', $context);
+            $values_6 = [];
+            foreach ($data['shipmentItems'] as $value_6) {
+                $values_6[] = $this->denormalizer->denormalize($value_6, \Webhubworks\WeclappApiCore\Model\ShipmentItem::class, 'json', $context);
             }
-            $object->setShipmentItems($values_5);
+            $object->setShipmentItems($values_6);
             unset($data['shipmentItems']);
         }
         elseif (\array_key_exists('shipmentItems', $data) && $data['shipmentItems'] === null) {
@@ -469,6 +480,13 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('shippingReturnCarrierId', $data) && $data['shippingReturnCarrierId'] === null) {
             $object->setShippingReturnCarrierId(null);
         }
+        if (\array_key_exists('totalWeight', $data) && $data['totalWeight'] !== null) {
+            $object->setTotalWeight($data['totalWeight']);
+            unset($data['totalWeight']);
+        }
+        elseif (\array_key_exists('totalWeight', $data) && $data['totalWeight'] === null) {
+            $object->setTotalWeight(null);
+        }
         if (\array_key_exists('warehouseId', $data) && $data['warehouseId'] !== null) {
             $object->setWarehouseId($data['warehouseId']);
             unset($data['warehouseId']);
@@ -476,9 +494,9 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('warehouseId', $data) && $data['warehouseId'] === null) {
             $object->setWarehouseId(null);
         }
-        foreach ($data as $key => $value_6) {
+        foreach ($data as $key => $value_7) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_6;
+                $object[$key] = $value_7;
             }
         }
         return $object;
@@ -521,12 +539,6 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $dataArray['tags'] = $values_1;
         }
-        if ($data->isInitialized('invoiceAddress') && null !== $data->getInvoiceAddress()) {
-            $dataArray['invoiceAddress'] = $this->normalizer->normalize($data->getInvoiceAddress(), 'json', $context);
-        }
-        if ($data->isInitialized('recipientAddress') && null !== $data->getRecipientAddress()) {
-            $dataArray['recipientAddress'] = $this->normalizer->normalize($data->getRecipientAddress(), 'json', $context);
-        }
         if ($data->isInitialized('salesOrders') && null !== $data->getSalesOrders()) {
             $values_2 = [];
             foreach ($data->getSalesOrders() as $value_2) {
@@ -564,6 +576,9 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('dhlReceiverId') && null !== $data->getDhlReceiverId()) {
             $dataArray['dhlReceiverId'] = $data->getDhlReceiverId();
         }
+        if ($data->isInitialized('invoiceAddress') && null !== $data->getInvoiceAddress()) {
+            $dataArray['invoiceAddress'] = $this->normalizer->normalize($data->getInvoiceAddress(), 'json', $context);
+        }
         if ($data->isInitialized('invoiceRecipientId') && null !== $data->getInvoiceRecipientId()) {
             $dataArray['invoiceRecipientId'] = $data->getInvoiceRecipientId();
         }
@@ -597,8 +612,18 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('packageWidth') && null !== $data->getPackageWidth()) {
             $dataArray['packageWidth'] = $data->getPackageWidth();
         }
+        if ($data->isInitialized('parcels') && null !== $data->getParcels()) {
+            $values_3 = [];
+            foreach ($data->getParcels() as $value_3) {
+                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            }
+            $dataArray['parcels'] = $values_3;
+        }
         if ($data->isInitialized('pickingInstructions') && null !== $data->getPickingInstructions()) {
             $dataArray['pickingInstructions'] = $data->getPickingInstructions();
+        }
+        if ($data->isInitialized('recipientAddress') && null !== $data->getRecipientAddress()) {
+            $dataArray['recipientAddress'] = $this->normalizer->normalize($data->getRecipientAddress(), 'json', $context);
         }
         if ($data->isInitialized('recipientPartyId') && null !== $data->getRecipientPartyId()) {
             $dataArray['recipientPartyId'] = $data->getRecipientPartyId();
@@ -613,11 +638,11 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['salesInvoiceEmailAddresses'] = $this->normalizer->normalize($data->getSalesInvoiceEmailAddresses(), 'json', $context);
         }
         if ($data->isInitialized('shipmentItems') && null !== $data->getShipmentItems()) {
-            $values_3 = [];
-            foreach ($data->getShipmentItems() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            $values_4 = [];
+            foreach ($data->getShipmentItems() as $value_4) {
+                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
-            $dataArray['shipmentItems'] = $values_3;
+            $dataArray['shipmentItems'] = $values_4;
         }
         if ($data->isInitialized('shipmentMethodId') && null !== $data->getShipmentMethodId()) {
             $dataArray['shipmentMethodId'] = $data->getShipmentMethodId();
@@ -643,12 +668,15 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('shippingReturnCarrierId') && null !== $data->getShippingReturnCarrierId()) {
             $dataArray['shippingReturnCarrierId'] = $data->getShippingReturnCarrierId();
         }
+        if ($data->isInitialized('totalWeight') && null !== $data->getTotalWeight()) {
+            $dataArray['totalWeight'] = $data->getTotalWeight();
+        }
         if ($data->isInitialized('warehouseId') && null !== $data->getWarehouseId()) {
             $dataArray['warehouseId'] = $data->getWarehouseId();
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_4;
+                $dataArray[$key] = $value_5;
             }
         }
         return $dataArray;

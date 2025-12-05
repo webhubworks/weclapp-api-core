@@ -13,6 +13,7 @@ class PostShipmentIdByIdCreateShippingLabelPdf extends \Webhubworks\WeclappApiCo
      * @param array $queryParameters {
      *     @var string $name 
      *     @var string $description 
+     *     @var string $parcelId 
      * }
      */
     public function __construct(string $id, $requestBody = null, array $queryParameters = [])
@@ -53,11 +54,12 @@ class PostShipmentIdByIdCreateShippingLabelPdf extends \Webhubworks\WeclappApiCo
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['name', 'description']);
+        $optionsResolver->setDefined(['name', 'description', 'parcelId']);
         $optionsResolver->setRequired(['name']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('name', ['string']);
         $optionsResolver->addAllowedTypes('description', ['string']);
+        $optionsResolver->addAllowedTypes('parcelId', ['string']);
         return $optionsResolver;
     }
     /**

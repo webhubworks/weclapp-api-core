@@ -34,8 +34,18 @@ class PurchaseInvoiceIdIdConvertPurchaseInvoiceToCreditNotePostBodyNormalizer im
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Webhubworks\WeclappApiCore\Model\PurchaseInvoiceIdIdConvertPurchaseInvoiceToCreditNotePostBody();
+        if (\array_key_exists('reverseSignsOfPrices', $data) && \is_int($data['reverseSignsOfPrices'])) {
+            $data['reverseSignsOfPrices'] = (bool) $data['reverseSignsOfPrices'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
+        }
+        if (\array_key_exists('reverseSignsOfPrices', $data) && $data['reverseSignsOfPrices'] !== null) {
+            $object->setReverseSignsOfPrices($data['reverseSignsOfPrices']);
+            unset($data['reverseSignsOfPrices']);
+        }
+        elseif (\array_key_exists('reverseSignsOfPrices', $data) && $data['reverseSignsOfPrices'] === null) {
+            $object->setReverseSignsOfPrices(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -47,6 +57,9 @@ class PurchaseInvoiceIdIdConvertPurchaseInvoiceToCreditNotePostBodyNormalizer im
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
+        if ($data->isInitialized('reverseSignsOfPrices') && null !== $data->getReverseSignsOfPrices()) {
+            $dataArray['reverseSignsOfPrices'] = $data->getReverseSignsOfPrices();
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

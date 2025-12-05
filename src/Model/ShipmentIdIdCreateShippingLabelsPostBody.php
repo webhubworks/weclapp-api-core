@@ -12,4 +12,32 @@ class ShipmentIdIdCreateShippingLabelsPostBody extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
+    /**
+     * 
+     *
+     * @var list<string>|null
+     */
+    protected $parcelIds;
+    /**
+     * 
+     *
+     * @return list<string>|null
+     */
+    public function getParcelIds(): ?array
+    {
+        return $this->parcelIds;
+    }
+    /**
+     * 
+     *
+     * @param list<string>|null $parcelIds
+     *
+     * @return self
+     */
+    public function setParcelIds(?array $parcelIds): self
+    {
+        $this->initialized['parcelIds'] = true;
+        $this->parcelIds = $parcelIds;
+        return $this;
+    }
 }

@@ -57,9 +57,7 @@ class SalesInvoiceIdIdCreateCreditNoteOpenItemPostBodyNormalizer implements Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('clearCreditNote') && null !== $data->getClearCreditNote()) {
-            $dataArray['clearCreditNote'] = $data->getClearCreditNote();
-        }
+        $dataArray['clearCreditNote'] = $data->getClearCreditNote();
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

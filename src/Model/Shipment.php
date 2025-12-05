@@ -99,18 +99,6 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
-     * @var RecordAddress|null
-     */
-    protected $invoiceAddress;
-    /**
-     * 
-     *
-     * @var RecordAddress|null
-     */
-    protected $recipientAddress;
-    /**
-     * 
-     *
      * @var list<OnlyId>|null
      */
     protected $salesOrders;
@@ -147,11 +135,15 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @var string|null
      */
     protected $declaredValueAmount;
     /**
      * 
+     *
+     * @deprecated
      *
      * @var string|null
      */
@@ -183,6 +175,12 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @var RecordAddress|null
+     */
+    protected $invoiceAddress;
+    /**
+     * 
+     *
      * @var string|null
      */
     protected $invoiceRecipientId;
@@ -195,17 +193,23 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @var int|null
      */
     protected $packageHeight;
     /**
      * 
      *
+     * @deprecated
+     *
      * @var int|null
      */
     protected $packageLength;
     /**
      * 
+     *
+     * @deprecated
      *
      * @var string|null
      */
@@ -225,11 +229,15 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @var string|null
      */
     protected $packageTrackingNumber;
     /**
      * 
+     *
+     * @deprecated
      *
      * @var string|null
      */
@@ -237,15 +245,25 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @var string|null
      */
     protected $packageWeight;
     /**
      * 
      *
+     * @deprecated
+     *
      * @var int|null
      */
     protected $packageWidth;
+    /**
+     * 
+     *
+     * @var list<Parcel>|null
+     */
+    protected $parcels;
     /**
      * 
      *
@@ -264,6 +282,12 @@ class Shipment extends \ArrayObject
      * @var list<OnlyId>|null
      */
     protected $purchaseOrders;
+    /**
+     * 
+     *
+     * @var RecordAddress|null
+     */
+    protected $recipientAddress;
     /**
      * 
      *
@@ -333,6 +357,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @var string|null
      */
     protected $shippingCarrierId;
@@ -345,6 +371,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @var int|null
      */
     protected $shippingLabelsCount;
@@ -354,6 +382,12 @@ class Shipment extends \ArrayObject
      * @var string|null
      */
     protected $shippingReturnCarrierId;
+    /**
+     * 
+     *
+     * @var string|null
+     */
+    protected $totalWeight;
     /**
      * 
      *
@@ -671,50 +705,6 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
-     * @return RecordAddress|null
-     */
-    public function getInvoiceAddress(): ?RecordAddress
-    {
-        return $this->invoiceAddress;
-    }
-    /**
-     * 
-     *
-     * @param RecordAddress|null $invoiceAddress
-     *
-     * @return self
-     */
-    public function setInvoiceAddress(?RecordAddress $invoiceAddress): self
-    {
-        $this->initialized['invoiceAddress'] = true;
-        $this->invoiceAddress = $invoiceAddress;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return RecordAddress|null
-     */
-    public function getRecipientAddress(): ?RecordAddress
-    {
-        return $this->recipientAddress;
-    }
-    /**
-     * 
-     *
-     * @param RecordAddress|null $recipientAddress
-     *
-     * @return self
-     */
-    public function setRecipientAddress(?RecordAddress $recipientAddress): self
-    {
-        $this->initialized['recipientAddress'] = true;
-        $this->recipientAddress = $recipientAddress;
-        return $this;
-    }
-    /**
-     * 
-     *
      * @return list<OnlyId>|null
      */
     public function getSalesOrders(): ?array
@@ -847,6 +837,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return string|null
      */
     public function getDeclaredValueAmount(): ?string
@@ -857,6 +849,8 @@ class Shipment extends \ArrayObject
      * 
      *
      * @param string|null $declaredValueAmount
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -869,6 +863,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return string|null
      */
     public function getDeclaredValueAmountCurrencyId(): ?string
@@ -879,6 +875,8 @@ class Shipment extends \ArrayObject
      * 
      *
      * @param string|null $declaredValueAmountCurrencyId
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -979,6 +977,28 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @return RecordAddress|null
+     */
+    public function getInvoiceAddress(): ?RecordAddress
+    {
+        return $this->invoiceAddress;
+    }
+    /**
+     * 
+     *
+     * @param RecordAddress|null $invoiceAddress
+     *
+     * @return self
+     */
+    public function setInvoiceAddress(?RecordAddress $invoiceAddress): self
+    {
+        $this->initialized['invoiceAddress'] = true;
+        $this->invoiceAddress = $invoiceAddress;
+        return $this;
+    }
+    /**
+     * 
+     *
      * @return string|null
      */
     public function getInvoiceRecipientId(): ?string
@@ -1023,6 +1043,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return int|null
      */
     public function getPackageHeight(): ?int
@@ -1033,6 +1055,8 @@ class Shipment extends \ArrayObject
      * 
      *
      * @param int|null $packageHeight
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -1045,6 +1069,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return int|null
      */
     public function getPackageLength(): ?int
@@ -1055,6 +1081,8 @@ class Shipment extends \ArrayObject
      * 
      *
      * @param int|null $packageLength
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -1067,6 +1095,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return string|null
      */
     public function getPackageReferenceNumber(): ?string
@@ -1077,6 +1107,8 @@ class Shipment extends \ArrayObject
      * 
      *
      * @param string|null $packageReferenceNumber
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -1133,6 +1165,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return string|null
      */
     public function getPackageTrackingNumber(): ?string
@@ -1143,6 +1177,8 @@ class Shipment extends \ArrayObject
      * 
      *
      * @param string|null $packageTrackingNumber
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -1155,6 +1191,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return string|null
      */
     public function getPackageTrackingUrl(): ?string
@@ -1165,6 +1203,8 @@ class Shipment extends \ArrayObject
      * 
      *
      * @param string|null $packageTrackingUrl
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -1177,6 +1217,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return string|null
      */
     public function getPackageWeight(): ?string
@@ -1187,6 +1229,8 @@ class Shipment extends \ArrayObject
      * 
      *
      * @param string|null $packageWeight
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -1199,6 +1243,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return int|null
      */
     public function getPackageWidth(): ?int
@@ -1210,12 +1256,36 @@ class Shipment extends \ArrayObject
      *
      * @param int|null $packageWidth
      *
+     * @deprecated
+     *
      * @return self
      */
     public function setPackageWidth(?int $packageWidth): self
     {
         $this->initialized['packageWidth'] = true;
         $this->packageWidth = $packageWidth;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return list<Parcel>|null
+     */
+    public function getParcels(): ?array
+    {
+        return $this->parcels;
+    }
+    /**
+     * 
+     *
+     * @param list<Parcel>|null $parcels
+     *
+     * @return self
+     */
+    public function setParcels(?array $parcels): self
+    {
+        $this->initialized['parcels'] = true;
+        $this->parcels = $parcels;
         return $this;
     }
     /**
@@ -1282,6 +1352,28 @@ class Shipment extends \ArrayObject
     {
         $this->initialized['purchaseOrders'] = true;
         $this->purchaseOrders = $purchaseOrders;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return RecordAddress|null
+     */
+    public function getRecipientAddress(): ?RecordAddress
+    {
+        return $this->recipientAddress;
+    }
+    /**
+     * 
+     *
+     * @param RecordAddress|null $recipientAddress
+     *
+     * @return self
+     */
+    public function setRecipientAddress(?RecordAddress $recipientAddress): self
+    {
+        $this->initialized['recipientAddress'] = true;
+        $this->recipientAddress = $recipientAddress;
         return $this;
     }
     /**
@@ -1529,6 +1621,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return string|null
      */
     public function getShippingCarrierId(): ?string
@@ -1539,6 +1633,8 @@ class Shipment extends \ArrayObject
      * 
      *
      * @param string|null $shippingCarrierId
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -1573,6 +1669,8 @@ class Shipment extends \ArrayObject
     /**
      * 
      *
+     * @deprecated
+     *
      * @return int|null
      */
     public function getShippingLabelsCount(): ?int
@@ -1583,6 +1681,8 @@ class Shipment extends \ArrayObject
      * 
      *
      * @param int|null $shippingLabelsCount
+     *
+     * @deprecated
      *
      * @return self
      */
@@ -1612,6 +1712,28 @@ class Shipment extends \ArrayObject
     {
         $this->initialized['shippingReturnCarrierId'] = true;
         $this->shippingReturnCarrierId = $shippingReturnCarrierId;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTotalWeight(): ?string
+    {
+        return $this->totalWeight;
+    }
+    /**
+     * 
+     *
+     * @param string|null $totalWeight
+     *
+     * @return self
+     */
+    public function setTotalWeight(?string $totalWeight): self
+    {
+        $this->initialized['totalWeight'] = true;
+        $this->totalWeight = $totalWeight;
         return $this;
     }
     /**

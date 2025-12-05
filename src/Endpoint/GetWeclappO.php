@@ -15,6 +15,7 @@ class GetWeclappO extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoin
      *     @var string $filter 
      *     @var string $properties 
      *     @var string $includeReferencedEntities 
+     *     @var string $additionalProperties 
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -41,7 +42,7 @@ class GetWeclappO extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoin
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['page', 'pageSize', 'serializeNulls', 'sort', 'filter', 'properties', 'includeReferencedEntities']);
+        $optionsResolver->setDefined(['page', 'pageSize', 'serializeNulls', 'sort', 'filter', 'properties', 'includeReferencedEntities', 'additionalProperties']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('page', ['int']);
@@ -51,6 +52,7 @@ class GetWeclappO extends \Webhubworks\WeclappApiCore\Runtime\Client\BaseEndpoin
         $optionsResolver->addAllowedTypes('filter', ['string']);
         $optionsResolver->addAllowedTypes('properties', ['string']);
         $optionsResolver->addAllowedTypes('includeReferencedEntities', ['string']);
+        $optionsResolver->addAllowedTypes('additionalProperties', ['string']);
         return $optionsResolver;
     }
     /**

@@ -68,7 +68,7 @@ class CampaignNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('customAttributes', $data) && $data['customAttributes'] !== null) {
             $values = [];
             foreach ($data['customAttributes'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Webhubworks\WeclappApiCore\Model\CustomAttribute::class, 'json', $context);
+                $values[] = $value;
             }
             $object->setCustomAttributes($values);
             unset($data['customAttributes']);
@@ -138,7 +138,7 @@ class CampaignNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('customAttributes') && null !== $data->getCustomAttributes()) {
             $values = [];
             foreach ($data->getCustomAttributes() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value;
             }
             $dataArray['customAttributes'] = $values;
         }

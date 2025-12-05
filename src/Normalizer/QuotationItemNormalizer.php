@@ -388,20 +388,31 @@ class QuotationItemNormalizer implements DenormalizerInterface, NormalizerInterf
         elseif (\array_key_exists('optional', $data) && $data['optional'] === null) {
             $object->setOptional(null);
         }
-        if (\array_key_exists('scaleValues', $data) && $data['scaleValues'] !== null) {
+        if (\array_key_exists('quotationItemRelationships', $data) && $data['quotationItemRelationships'] !== null) {
             $values_3 = [];
-            foreach ($data['scaleValues'] as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, \Webhubworks\WeclappApiCore\Model\QuotationItemScaleValue::class, 'json', $context);
+            foreach ($data['quotationItemRelationships'] as $value_3) {
+                $values_3[] = $this->denormalizer->denormalize($value_3, \Webhubworks\WeclappApiCore\Model\QuotationItemRelationship::class, 'json', $context);
             }
-            $object->setScaleValues($values_3);
+            $object->setQuotationItemRelationships($values_3);
+            unset($data['quotationItemRelationships']);
+        }
+        elseif (\array_key_exists('quotationItemRelationships', $data) && $data['quotationItemRelationships'] === null) {
+            $object->setQuotationItemRelationships(null);
+        }
+        if (\array_key_exists('scaleValues', $data) && $data['scaleValues'] !== null) {
+            $values_4 = [];
+            foreach ($data['scaleValues'] as $value_4) {
+                $values_4[] = $this->denormalizer->denormalize($value_4, \Webhubworks\WeclappApiCore\Model\QuotationItemScaleValue::class, 'json', $context);
+            }
+            $object->setScaleValues($values_4);
             unset($data['scaleValues']);
         }
         elseif (\array_key_exists('scaleValues', $data) && $data['scaleValues'] === null) {
             $object->setScaleValues(null);
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_5) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_4;
+                $object[$key] = $value_5;
             }
         }
         return $object;

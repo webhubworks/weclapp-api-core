@@ -47,6 +47,12 @@ class BaseShippingCostItem extends \ArrayObject
      *
      * @var string|null
      */
+    protected $discountPercentage;
+    /**
+     * 
+     *
+     * @var string|null
+     */
     protected $grossAmount;
     /**
      * 
@@ -72,6 +78,18 @@ class BaseShippingCostItem extends \ArrayObject
      * @var string|null
      */
     protected $netAmountInCompanyCurrency;
+    /**
+     * 
+     *
+     * @var list<ReductionAdditionItem>|null
+     */
+    protected $reductionAdditionItems;
+    /**
+     * 
+     *
+     * @var string|null
+     */
+    protected $taxId;
     /**
      * 
      *
@@ -199,6 +217,28 @@ class BaseShippingCostItem extends \ArrayObject
      *
      * @return string|null
      */
+    public function getDiscountPercentage(): ?string
+    {
+        return $this->discountPercentage;
+    }
+    /**
+     * 
+     *
+     * @param string|null $discountPercentage
+     *
+     * @return self
+     */
+    public function setDiscountPercentage(?string $discountPercentage): self
+    {
+        $this->initialized['discountPercentage'] = true;
+        $this->discountPercentage = $discountPercentage;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
     public function getGrossAmount(): ?string
     {
         return $this->grossAmount;
@@ -302,6 +342,50 @@ class BaseShippingCostItem extends \ArrayObject
     {
         $this->initialized['netAmountInCompanyCurrency'] = true;
         $this->netAmountInCompanyCurrency = $netAmountInCompanyCurrency;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return list<ReductionAdditionItem>|null
+     */
+    public function getReductionAdditionItems(): ?array
+    {
+        return $this->reductionAdditionItems;
+    }
+    /**
+     * 
+     *
+     * @param list<ReductionAdditionItem>|null $reductionAdditionItems
+     *
+     * @return self
+     */
+    public function setReductionAdditionItems(?array $reductionAdditionItems): self
+    {
+        $this->initialized['reductionAdditionItems'] = true;
+        $this->reductionAdditionItems = $reductionAdditionItems;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTaxId(): ?string
+    {
+        return $this->taxId;
+    }
+    /**
+     * 
+     *
+     * @param string|null $taxId
+     *
+     * @return self
+     */
+    public function setTaxId(?string $taxId): self
+    {
+        $this->initialized['taxId'] = true;
+        $this->taxId = $taxId;
         return $this;
     }
     /**

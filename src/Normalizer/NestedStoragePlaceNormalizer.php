@@ -184,6 +184,9 @@ class NestedStoragePlaceNormalizer implements DenormalizerInterface, NormalizerI
         if ($data->isInitialized('blockedForResupplyReasonId') && null !== $data->getBlockedForResupplyReasonId()) {
             $dataArray['blockedForResupplyReasonId'] = $data->getBlockedForResupplyReasonId();
         }
+        if ($data->isInitialized('customerId') && null !== $data->getCustomerId()) {
+            $dataArray['customerId'] = $data->getCustomerId();
+        }
         if ($data->isInitialized('fieldNumber') && null !== $data->getFieldNumber()) {
             $dataArray['fieldNumber'] = $data->getFieldNumber();
         }

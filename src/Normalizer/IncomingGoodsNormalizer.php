@@ -149,20 +149,6 @@ class IncomingGoodsNormalizer implements DenormalizerInterface, NormalizerInterf
         elseif (\array_key_exists('tags', $data) && $data['tags'] === null) {
             $object->setTags(null);
         }
-        if (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] !== null) {
-            $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], \Webhubworks\WeclappApiCore\Model\RecordAddress::class, 'json', $context));
-            unset($data['invoiceAddress']);
-        }
-        elseif (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] === null) {
-            $object->setInvoiceAddress(null);
-        }
-        if (\array_key_exists('recipientAddress', $data) && $data['recipientAddress'] !== null) {
-            $object->setRecipientAddress($this->denormalizer->denormalize($data['recipientAddress'], \Webhubworks\WeclappApiCore\Model\RecordAddress::class, 'json', $context));
-            unset($data['recipientAddress']);
-        }
-        elseif (\array_key_exists('recipientAddress', $data) && $data['recipientAddress'] === null) {
-            $object->setRecipientAddress(null);
-        }
         if (\array_key_exists('salesOrders', $data) && $data['salesOrders'] !== null) {
             $values_2 = [];
             foreach ($data['salesOrders'] as $value_2) {
@@ -252,6 +238,13 @@ class IncomingGoodsNormalizer implements DenormalizerInterface, NormalizerInterf
         elseif (\array_key_exists('incomingGoodsType', $data) && $data['incomingGoodsType'] === null) {
             $object->setIncomingGoodsType(null);
         }
+        if (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] !== null) {
+            $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], \Webhubworks\WeclappApiCore\Model\RecordAddress::class, 'json', $context));
+            unset($data['invoiceAddress']);
+        }
+        elseif (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] === null) {
+            $object->setInvoiceAddress(null);
+        }
         if (\array_key_exists('invoiceRecipientId', $data) && $data['invoiceRecipientId'] !== null) {
             $object->setInvoiceRecipientId($data['invoiceRecipientId']);
             unset($data['invoiceRecipientId']);
@@ -269,6 +262,13 @@ class IncomingGoodsNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         elseif (\array_key_exists('purchaseOrders', $data) && $data['purchaseOrders'] === null) {
             $object->setPurchaseOrders(null);
+        }
+        if (\array_key_exists('recipientAddress', $data) && $data['recipientAddress'] !== null) {
+            $object->setRecipientAddress($this->denormalizer->denormalize($data['recipientAddress'], \Webhubworks\WeclappApiCore\Model\RecordAddress::class, 'json', $context));
+            unset($data['recipientAddress']);
+        }
+        elseif (\array_key_exists('recipientAddress', $data) && $data['recipientAddress'] === null) {
+            $object->setRecipientAddress(null);
         }
         if (\array_key_exists('relatedShipmentId', $data) && $data['relatedShipmentId'] !== null) {
             $object->setRelatedShipmentId($data['relatedShipmentId']);
@@ -378,12 +378,6 @@ class IncomingGoodsNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $dataArray['tags'] = $values_1;
         }
-        if ($data->isInitialized('invoiceAddress') && null !== $data->getInvoiceAddress()) {
-            $dataArray['invoiceAddress'] = $this->normalizer->normalize($data->getInvoiceAddress(), 'json', $context);
-        }
-        if ($data->isInitialized('recipientAddress') && null !== $data->getRecipientAddress()) {
-            $dataArray['recipientAddress'] = $this->normalizer->normalize($data->getRecipientAddress(), 'json', $context);
-        }
         if ($data->isInitialized('salesOrders') && null !== $data->getSalesOrders()) {
             $values_2 = [];
             foreach ($data->getSalesOrders() as $value_2) {
@@ -419,8 +413,14 @@ class IncomingGoodsNormalizer implements DenormalizerInterface, NormalizerInterf
         if ($data->isInitialized('incomingGoodsType') && null !== $data->getIncomingGoodsType()) {
             $dataArray['incomingGoodsType'] = $data->getIncomingGoodsType();
         }
+        if ($data->isInitialized('invoiceAddress') && null !== $data->getInvoiceAddress()) {
+            $dataArray['invoiceAddress'] = $this->normalizer->normalize($data->getInvoiceAddress(), 'json', $context);
+        }
         if ($data->isInitialized('invoiceRecipientId') && null !== $data->getInvoiceRecipientId()) {
             $dataArray['invoiceRecipientId'] = $data->getInvoiceRecipientId();
+        }
+        if ($data->isInitialized('recipientAddress') && null !== $data->getRecipientAddress()) {
+            $dataArray['recipientAddress'] = $this->normalizer->normalize($data->getRecipientAddress(), 'json', $context);
         }
         if ($data->isInitialized('responsibleUserId') && null !== $data->getResponsibleUserId()) {
             $dataArray['responsibleUserId'] = $data->getResponsibleUserId();

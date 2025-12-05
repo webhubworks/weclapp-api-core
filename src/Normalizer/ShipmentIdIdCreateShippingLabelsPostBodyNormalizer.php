@@ -37,9 +37,20 @@ class ShipmentIdIdCreateShippingLabelsPostBodyNormalizer implements Denormalizer
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        foreach ($data as $key => $value) {
+        if (\array_key_exists('parcelIds', $data) && $data['parcelIds'] !== null) {
+            $values = [];
+            foreach ($data['parcelIds'] as $value) {
+                $values[] = $value;
+            }
+            $object->setParcelIds($values);
+            unset($data['parcelIds']);
+        }
+        elseif (\array_key_exists('parcelIds', $data) && $data['parcelIds'] === null) {
+            $object->setParcelIds(null);
+        }
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -47,9 +58,16 @@ class ShipmentIdIdCreateShippingLabelsPostBodyNormalizer implements Denormalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        foreach ($data as $key => $value) {
+        if ($data->isInitialized('parcelIds') && null !== $data->getParcelIds()) {
+            $values = [];
+            foreach ($data->getParcelIds() as $value) {
+                $values[] = $value;
+            }
+            $dataArray['parcelIds'] = $values;
+        }
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;

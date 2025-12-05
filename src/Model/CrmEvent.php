@@ -47,6 +47,12 @@ class CrmEvent extends \ArrayObject
      *
      * @var string|null
      */
+    protected $calendarEventId;
+    /**
+     * 
+     *
+     * @var string|null
+     */
     protected $callCategoryId;
     /**
      * 
@@ -222,6 +228,28 @@ class CrmEvent extends \ArrayObject
     {
         $this->initialized['customAttributes'] = true;
         $this->customAttributes = $customAttributes;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getCalendarEventId(): ?string
+    {
+        return $this->calendarEventId;
+    }
+    /**
+     * 
+     *
+     * @param string|null $calendarEventId
+     *
+     * @return self
+     */
+    public function setCalendarEventId(?string $calendarEventId): self
+    {
+        $this->initialized['calendarEventId'] = true;
+        $this->calendarEventId = $calendarEventId;
         return $this;
     }
     /**

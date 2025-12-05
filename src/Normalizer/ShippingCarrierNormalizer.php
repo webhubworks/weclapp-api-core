@@ -103,6 +103,20 @@ class ShippingCarrierNormalizer implements DenormalizerInterface, NormalizerInte
         elseif (\array_key_exists('positionNumber', $data) && $data['positionNumber'] === null) {
             $object->setPositionNumber(null);
         }
+        if (\array_key_exists('sendcloudContractId', $data) && $data['sendcloudContractId'] !== null) {
+            $object->setSendcloudContractId($data['sendcloudContractId']);
+            unset($data['sendcloudContractId']);
+        }
+        elseif (\array_key_exists('sendcloudContractId', $data) && $data['sendcloudContractId'] === null) {
+            $object->setSendcloudContractId(null);
+        }
+        if (\array_key_exists('sendcloudContractName', $data) && $data['sendcloudContractName'] !== null) {
+            $object->setSendcloudContractName($data['sendcloudContractName']);
+            unset($data['sendcloudContractName']);
+        }
+        elseif (\array_key_exists('sendcloudContractName', $data) && $data['sendcloudContractName'] === null) {
+            $object->setSendcloudContractName(null);
+        }
         if (\array_key_exists('shippingServiceProviderType', $data) && $data['shippingServiceProviderType'] !== null) {
             $object->setShippingServiceProviderType($data['shippingServiceProviderType']);
             unset($data['shippingServiceProviderType']);
@@ -141,6 +155,12 @@ class ShippingCarrierNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if ($data->isInitialized('positionNumber') && null !== $data->getPositionNumber()) {
             $dataArray['positionNumber'] = $data->getPositionNumber();
+        }
+        if ($data->isInitialized('sendcloudContractId') && null !== $data->getSendcloudContractId()) {
+            $dataArray['sendcloudContractId'] = $data->getSendcloudContractId();
+        }
+        if ($data->isInitialized('sendcloudContractName') && null !== $data->getSendcloudContractName()) {
+            $dataArray['sendcloudContractName'] = $data->getSendcloudContractName();
         }
         if ($data->isInitialized('shippingServiceProviderType') && null !== $data->getShippingServiceProviderType()) {
             $dataArray['shippingServiceProviderType'] = $data->getShippingServiceProviderType();

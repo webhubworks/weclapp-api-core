@@ -101,6 +101,12 @@ class ProductionOrder extends \ArrayObject
      *
      * @var string|null
      */
+    protected $salesOrderItemId;
+    /**
+     * 
+     *
+     * @var string|null
+     */
     protected $status;
     /**
      * 
@@ -444,6 +450,28 @@ class ProductionOrder extends \ArrayObject
     {
         $this->initialized['productionOrderNumber'] = true;
         $this->productionOrderNumber = $productionOrderNumber;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getSalesOrderItemId(): ?string
+    {
+        return $this->salesOrderItemId;
+    }
+    /**
+     * 
+     *
+     * @param string|null $salesOrderItemId
+     *
+     * @return self
+     */
+    public function setSalesOrderItemId(?string $salesOrderItemId): self
+    {
+        $this->initialized['salesOrderItemId'] = true;
+        $this->salesOrderItemId = $salesOrderItemId;
         return $this;
     }
     /**

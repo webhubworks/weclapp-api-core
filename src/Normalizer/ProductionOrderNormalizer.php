@@ -146,6 +146,13 @@ class ProductionOrderNormalizer implements DenormalizerInterface, NormalizerInte
         elseif (\array_key_exists('productionOrderNumber', $data) && $data['productionOrderNumber'] === null) {
             $object->setProductionOrderNumber(null);
         }
+        if (\array_key_exists('salesOrderItemId', $data) && $data['salesOrderItemId'] !== null) {
+            $object->setSalesOrderItemId($data['salesOrderItemId']);
+            unset($data['salesOrderItemId']);
+        }
+        elseif (\array_key_exists('salesOrderItemId', $data) && $data['salesOrderItemId'] === null) {
+            $object->setSalesOrderItemId(null);
+        }
         if (\array_key_exists('status', $data) && $data['status'] !== null) {
             $object->setStatus($data['status']);
             unset($data['status']);

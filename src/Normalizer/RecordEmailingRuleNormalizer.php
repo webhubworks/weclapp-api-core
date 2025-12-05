@@ -168,6 +168,17 @@ class RecordEmailingRuleNormalizer implements DenormalizerInterface, NormalizerI
         elseif (\array_key_exists('paymentMethods', $data) && $data['paymentMethods'] === null) {
             $object->setPaymentMethods(null);
         }
+        if (\array_key_exists('performanceRecordInvoicingModes', $data) && $data['performanceRecordInvoicingModes'] !== null) {
+            $values_1 = [];
+            foreach ($data['performanceRecordInvoicingModes'] as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $object->setPerformanceRecordInvoicingModes($values_1);
+            unset($data['performanceRecordInvoicingModes']);
+        }
+        elseif (\array_key_exists('performanceRecordInvoicingModes', $data) && $data['performanceRecordInvoicingModes'] === null) {
+            $object->setPerformanceRecordInvoicingModes(null);
+        }
         if (\array_key_exists('recipientType', $data) && $data['recipientType'] !== null) {
             $object->setRecipientType($data['recipientType']);
             unset($data['recipientType']);
@@ -176,11 +187,11 @@ class RecordEmailingRuleNormalizer implements DenormalizerInterface, NormalizerI
             $object->setRecipientType(null);
         }
         if (\array_key_exists('salesChannels', $data) && $data['salesChannels'] !== null) {
-            $values_1 = [];
-            foreach ($data['salesChannels'] as $value_1) {
-                $values_1[] = $value_1;
+            $values_2 = [];
+            foreach ($data['salesChannels'] as $value_2) {
+                $values_2[] = $value_2;
             }
-            $object->setSalesChannels($values_1);
+            $object->setSalesChannels($values_2);
             unset($data['salesChannels']);
         }
         elseif (\array_key_exists('salesChannels', $data) && $data['salesChannels'] === null) {
@@ -194,33 +205,33 @@ class RecordEmailingRuleNormalizer implements DenormalizerInterface, NormalizerI
             $object->setSalesInvoiceOrigin(null);
         }
         if (\array_key_exists('salesInvoiceTypes', $data) && $data['salesInvoiceTypes'] !== null) {
-            $values_2 = [];
-            foreach ($data['salesInvoiceTypes'] as $value_2) {
-                $values_2[] = $value_2;
+            $values_3 = [];
+            foreach ($data['salesInvoiceTypes'] as $value_3) {
+                $values_3[] = $value_3;
             }
-            $object->setSalesInvoiceTypes($values_2);
+            $object->setSalesInvoiceTypes($values_3);
             unset($data['salesInvoiceTypes']);
         }
         elseif (\array_key_exists('salesInvoiceTypes', $data) && $data['salesInvoiceTypes'] === null) {
             $object->setSalesInvoiceTypes(null);
         }
         if (\array_key_exists('salesOrderOrigins', $data) && $data['salesOrderOrigins'] !== null) {
-            $values_3 = [];
-            foreach ($data['salesOrderOrigins'] as $value_3) {
-                $values_3[] = $value_3;
+            $values_4 = [];
+            foreach ($data['salesOrderOrigins'] as $value_4) {
+                $values_4[] = $value_4;
             }
-            $object->setSalesOrderOrigins($values_3);
+            $object->setSalesOrderOrigins($values_4);
             unset($data['salesOrderOrigins']);
         }
         elseif (\array_key_exists('salesOrderOrigins', $data) && $data['salesOrderOrigins'] === null) {
             $object->setSalesOrderOrigins(null);
         }
         if (\array_key_exists('shipmentOutTypes', $data) && $data['shipmentOutTypes'] !== null) {
-            $values_4 = [];
-            foreach ($data['shipmentOutTypes'] as $value_4) {
-                $values_4[] = $value_4;
+            $values_5 = [];
+            foreach ($data['shipmentOutTypes'] as $value_5) {
+                $values_5[] = $value_5;
             }
-            $object->setShipmentOutTypes($values_4);
+            $object->setShipmentOutTypes($values_5);
             unset($data['shipmentOutTypes']);
         }
         elseif (\array_key_exists('shipmentOutTypes', $data) && $data['shipmentOutTypes'] === null) {
@@ -233,9 +244,9 @@ class RecordEmailingRuleNormalizer implements DenormalizerInterface, NormalizerI
         elseif (\array_key_exists('templateId', $data) && $data['templateId'] === null) {
             $object->setTemplateId(null);
         }
-        foreach ($data as $key => $value_5) {
+        foreach ($data as $key => $value_6) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_5;
+                $object[$key] = $value_6;
             }
         }
         return $object;
@@ -283,46 +294,53 @@ class RecordEmailingRuleNormalizer implements DenormalizerInterface, NormalizerI
             }
             $dataArray['paymentMethods'] = $values;
         }
+        if ($data->isInitialized('performanceRecordInvoicingModes') && null !== $data->getPerformanceRecordInvoicingModes()) {
+            $values_1 = [];
+            foreach ($data->getPerformanceRecordInvoicingModes() as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $dataArray['performanceRecordInvoicingModes'] = $values_1;
+        }
         if ($data->isInitialized('recipientType') && null !== $data->getRecipientType()) {
             $dataArray['recipientType'] = $data->getRecipientType();
         }
         if ($data->isInitialized('salesChannels') && null !== $data->getSalesChannels()) {
-            $values_1 = [];
-            foreach ($data->getSalesChannels() as $value_1) {
-                $values_1[] = $value_1;
+            $values_2 = [];
+            foreach ($data->getSalesChannels() as $value_2) {
+                $values_2[] = $value_2;
             }
-            $dataArray['salesChannels'] = $values_1;
+            $dataArray['salesChannels'] = $values_2;
         }
         if ($data->isInitialized('salesInvoiceOrigin') && null !== $data->getSalesInvoiceOrigin()) {
             $dataArray['salesInvoiceOrigin'] = $data->getSalesInvoiceOrigin();
         }
         if ($data->isInitialized('salesInvoiceTypes') && null !== $data->getSalesInvoiceTypes()) {
-            $values_2 = [];
-            foreach ($data->getSalesInvoiceTypes() as $value_2) {
-                $values_2[] = $value_2;
-            }
-            $dataArray['salesInvoiceTypes'] = $values_2;
-        }
-        if ($data->isInitialized('salesOrderOrigins') && null !== $data->getSalesOrderOrigins()) {
             $values_3 = [];
-            foreach ($data->getSalesOrderOrigins() as $value_3) {
+            foreach ($data->getSalesInvoiceTypes() as $value_3) {
                 $values_3[] = $value_3;
             }
-            $dataArray['salesOrderOrigins'] = $values_3;
+            $dataArray['salesInvoiceTypes'] = $values_3;
         }
-        if ($data->isInitialized('shipmentOutTypes') && null !== $data->getShipmentOutTypes()) {
+        if ($data->isInitialized('salesOrderOrigins') && null !== $data->getSalesOrderOrigins()) {
             $values_4 = [];
-            foreach ($data->getShipmentOutTypes() as $value_4) {
+            foreach ($data->getSalesOrderOrigins() as $value_4) {
                 $values_4[] = $value_4;
             }
-            $dataArray['shipmentOutTypes'] = $values_4;
+            $dataArray['salesOrderOrigins'] = $values_4;
+        }
+        if ($data->isInitialized('shipmentOutTypes') && null !== $data->getShipmentOutTypes()) {
+            $values_5 = [];
+            foreach ($data->getShipmentOutTypes() as $value_5) {
+                $values_5[] = $value_5;
+            }
+            $dataArray['shipmentOutTypes'] = $values_5;
         }
         if ($data->isInitialized('templateId') && null !== $data->getTemplateId()) {
             $dataArray['templateId'] = $data->getTemplateId();
         }
-        foreach ($data as $key => $value_5) {
+        foreach ($data as $key => $value_6) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_5;
+                $dataArray[$key] = $value_6;
             }
         }
         return $dataArray;

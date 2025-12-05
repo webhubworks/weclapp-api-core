@@ -99,18 +99,6 @@ class BaseShipment extends \ArrayObject
     /**
      * 
      *
-     * @var RecordAddress|null
-     */
-    protected $invoiceAddress;
-    /**
-     * 
-     *
-     * @var RecordAddress|null
-     */
-    protected $recipientAddress;
-    /**
-     * 
-     *
      * @var list<OnlyId>|null
      */
     protected $salesOrders;
@@ -432,50 +420,6 @@ class BaseShipment extends \ArrayObject
     {
         $this->initialized['tags'] = true;
         $this->tags = $tags;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return RecordAddress|null
-     */
-    public function getInvoiceAddress(): ?RecordAddress
-    {
-        return $this->invoiceAddress;
-    }
-    /**
-     * 
-     *
-     * @param RecordAddress|null $invoiceAddress
-     *
-     * @return self
-     */
-    public function setInvoiceAddress(?RecordAddress $invoiceAddress): self
-    {
-        $this->initialized['invoiceAddress'] = true;
-        $this->invoiceAddress = $invoiceAddress;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return RecordAddress|null
-     */
-    public function getRecipientAddress(): ?RecordAddress
-    {
-        return $this->recipientAddress;
-    }
-    /**
-     * 
-     *
-     * @param RecordAddress|null $recipientAddress
-     *
-     * @return self
-     */
-    public function setRecipientAddress(?RecordAddress $recipientAddress): self
-    {
-        $this->initialized['recipientAddress'] = true;
-        $this->recipientAddress = $recipientAddress;
         return $this;
     }
     /**

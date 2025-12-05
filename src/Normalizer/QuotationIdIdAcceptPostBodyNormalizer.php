@@ -48,6 +48,13 @@ class QuotationIdIdAcceptPostBodyNormalizer implements DenormalizerInterface, No
         elseif (\array_key_exists('acceptQuotationItems', $data) && $data['acceptQuotationItems'] === null) {
             $object->setAcceptQuotationItems(null);
         }
+        if (\array_key_exists('quotationType', $data) && $data['quotationType'] !== null) {
+            $object->setQuotationType($data['quotationType']);
+            unset($data['quotationType']);
+        }
+        elseif (\array_key_exists('quotationType', $data) && $data['quotationType'] === null) {
+            $object->setQuotationType(null);
+        }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
@@ -64,6 +71,9 @@ class QuotationIdIdAcceptPostBodyNormalizer implements DenormalizerInterface, No
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['acceptQuotationItems'] = $values;
+        }
+        if ($data->isInitialized('quotationType') && null !== $data->getQuotationType()) {
+            $dataArray['quotationType'] = $data->getQuotationType();
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
